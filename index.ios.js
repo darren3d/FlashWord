@@ -12,6 +12,22 @@ import {
   View
 } from 'react-native';
 import CryptoJS from 'crypto-js';
+import AV from 'avoscloud-sdk'
+
+//参数依次为 AppId, AppKey
+AV.initialize('1RqTKwrmz8mdN7T363hYr5EE-gzGzoHsz', 'nVnctcogLY34o0sXcXvdiKd5');
+console.log("AV.initialize");
+
+// var TestObject = AV.Object.extend('TestObject');
+// var testObject = new TestObject();
+// testObject.save({
+//   words: 'Hello World!'
+// }, {
+//   success: function(object) {
+//     alert('LeanCloud Rocks!');
+//   }
+// });
+// console.log("AV.TestObject");
 
 class FlashWord extends Component {
   render() {
