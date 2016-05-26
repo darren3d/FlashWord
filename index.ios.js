@@ -11,9 +11,11 @@ import {
   Text,
   View
 } from 'react-native';
+import CryptoJS from 'crypto-js';
 
 class FlashWord extends Component {
   render() {
+    console.log(CryptoJS.MD5('gasgasd').toString());
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
