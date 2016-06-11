@@ -1,180 +1,257 @@
 //
-//  FlatUIColors.swift
-//  FlatUIColors
+//  SDevFlatColors.swift
+//  SDevFlatColors
 //
-//  Created by bryn austin bellomy on 6.16.14.
-//  Copyright (c) 2014 bryn austin bellomy. All rights reserved.
+//  Created by Sedat Ciftci on 19/05/15.
+//  Copyright (c) 2015 Sedat Ciftci. All rights reserved.
 //
 
 import UIKit
 
-
-/**
-    Contains helpers for generating color values from the Flat UI color palette (see http://flatuicolors.com/).
- */
-public struct FlatUIColors
-{
-#if os(iOS)
-    public typealias OSColor = UIColor
-#elseif os(OSX)
-    public typealias OSColor = NSColor
-#endif
-
-    /**
-        Generates an NS- or UIColor from a hex color string.
-
-        - parameter hex: The hex color string from which to create the color object.  '#' sign is optional.
-     */
-    public static func colorFromHexCode(hex:String) -> OSColor!
-    {
-        var colorString: String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
-
-        if colorString.hasPrefix("#") {
-            colorString = colorString.fui_substringFromIndex(1)
-        }
-
-        let stringLength = colorString.characters.count
-        if stringLength != 6 && stringLength != 8 {
-            return nil
-        }
-
-        let rString = colorString.fui_substringToIndex(2)
-        let gString = colorString.fui_substringFromIndex(2).fui_substringToIndex(2)
-        let bString = colorString.fui_substringFromIndex(4).fui_substringToIndex(2)
-        var aString : String?
-        if stringLength == 8 { aString = colorString.fui_substringFromIndex(6).fui_substringToIndex(2) }
-
-        var r: CUnsignedInt = 0
-        var g: CUnsignedInt = 0
-        var b: CUnsignedInt = 0
-        var a: CUnsignedInt = 1
-
-        NSScanner(string:rString).scanHexInt(&r)
-        NSScanner(string:gString).scanHexInt(&g)
-        NSScanner(string:bString).scanHexInt(&b)
-        if let aString = aString {
-            NSScanner(string:aString).scanHexInt(&a)
-        }
-
-        let red     = CGFloat(r) / 255.0
-        let green   = CGFloat(g) / 255.0
-        let blue    = CGFloat(b) / 255.0
-        let alpha   = CGFloat(a) / 255.0
-        return OSColor(red:red, green:green, blue:blue, alpha:alpha)
-    }
-
-    private static func alphaHEX(alpha: CGFloat) -> String {
-        
-        if alpha <= 1 {
-            return String(Int(alpha * 255), radix: 16, uppercase: true)
-        } else { return "FF" }
-    }
-
-    public static func turquoiseColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.turquoise + alphaHEX(alpha)) }
-    public static func greenSeaColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.greenSea + alphaHEX(alpha)) }
-    public static func mediumTurquoiseColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.mediumTurquoise + alphaHEX(alpha)) }
-    public static func lightSeaGreenColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.lightSeaGreen + alphaHEX(alpha)) }
-    public static func emeraldColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.emerald + alphaHEX(alpha)) }
-    public static func nephritisColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.nephritis + alphaHEX(alpha)) }
-    public static func gossipColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.gossip + alphaHEX(alpha)) }
-    public static func salemColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.salem + alphaHEX(alpha)) }
-    public static func peterRiverColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.peterRiver + alphaHEX(alpha)) }
-    public static func belizeHoleColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.belizeHole + alphaHEX(alpha)) }
-    public static func riptideColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.riptide + alphaHEX(alpha)) }
-    public static func dodgerBlueColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.dodgerBlue + alphaHEX(alpha)) }
-    public static func amethystColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.amethyst + alphaHEX(alpha)) }
-    public static func wisteriaColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.wisteria + alphaHEX(alpha)) }
-    public static func lightWisteriaColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.lightWisteria + alphaHEX(alpha)) }
-    public static func plumColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.plum + alphaHEX(alpha)) }
-    public static func wetAsphaltColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.wetAsphalt + alphaHEX(alpha)) }
-    public static func midnightBlueColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.midnightBlue + alphaHEX(alpha)) }
-    public static func hokiColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.hoki + alphaHEX(alpha)) }
-    public static func ebonyClayColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.ebonyClay + alphaHEX(alpha)) }
-    public static func sunflowerColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.sunflower + alphaHEX(alpha)) }
-    public static func tangerineColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.tangerine + alphaHEX(alpha)) }
-    public static func confettiColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.confetti + alphaHEX(alpha)) }
-    public static func capeHoneyColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.capeHoney + alphaHEX(alpha)) }
-    public static func carrotColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.carrot + alphaHEX(alpha)) }
-    public static func pumpkinColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.pumpkin + alphaHEX(alpha)) }
-    public static func ecstasyColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.ecstasy + alphaHEX(alpha)) }
-    public static func jaffaColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.jaffa + alphaHEX(alpha)) }
-    public static func alizarinColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.alizarin + alphaHEX(alpha)) }
-    public static func pomegranateColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.pomegranate + alphaHEX(alpha)) }
-    public static func monzaColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.monza + alphaHEX(alpha)) }
-    public static func thunderBirdColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.thunderbird + alphaHEX(alpha)) }
-    public static func cloudsColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.clouds + alphaHEX(alpha)) }
-    public static func silverColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.silver + alphaHEX(alpha)) }
-    public static func galleryColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.gallery + alphaHEX(alpha)) }
-    public static func ironColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.iron + alphaHEX(alpha)) }
-    public static func concreteColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.concrete + alphaHEX(alpha)) }
-    public static func asbestosColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.asbestos + alphaHEX(alpha)) }
-    public static func pumiceColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.pumice + alphaHEX(alpha)) }
-    public static func lynchColor(alpha: CGFloat = 1.0) -> OSColor! { return FlatUIColors.colorFromHexCode(ColorCodes.lynch + alphaHEX(alpha)) }
-
-    /**
-        Contains hex color code strings for the Flat UI color palette.
-     */
-    public struct ColorCodes
-    {
-        public static let turquoise = "1abc9c"
-        public static let greenSea  = "16a085"
-        public static let mediumTurquoise = "4ECDC4"
-        public static let lightSeaGreen = "1BA39C"
-        public static let emerald  = "2ecc71"
-        public static let nephritis = "27ae60"
-        public static let gossip = "87D37C"
-        public static let salem = "1E824C"
-        public static let peterRiver = "3498D8"
-        public static let belizeHole = "2980b9"
-        public static let riptide = "86E2D5"
-        public static let dodgerBlue = "19B5FE"
-        public static let amethyst = "9b59b6"
-        public static let wisteria = "8e44ad"
-        public static let lightWisteria = "BE90D4"
-        public static let plum = "913D88"
-        public static let wetAsphalt = "34495e"
-        public static let midnightBlue = "2C3E50"
-        public static let hoki = "67809F"
-        public static let ebonyClay = "22313F"
-        public static let sunflower = "F1C40F"
-        public static let tangerine = "F39C12"
-        public static let confetti = "E9D460"
-        public static let capeHoney = "FDE3A7"
-        public static let carrot = "E67E22"
-        public static let pumpkin = "D35400"
-        public static let ecstasy = "F9690E"
-        public static let jaffa = "F27935"
-        public static let alizarin = "E74C3C"
-        public static let pomegranate = "C0392B"
-        public static let monza = "CF000F"
-        public static let thunderbird = "D91E18"
-        public static let clouds = "ECF0F1"
-        public static let silver = "BDC3C7"
-        public static let gallery = "EEEEEE"
-        public static let iron = "DADFE1"
-        public static let concrete = "95A5A6"
-        public static let asbestos = "7F8C8D"
-        public static let pumice = "D2D7D3"
-        public static let lynch = "6C7A89"
+public extension UInt {
+    func convertToUIColor() -> UIColor {
+        return UIColor(
+            red: CGFloat((self & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((self & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(self & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
 
-
-private extension String
-{
-    func fui_substringFromIndex(index: Int) -> String
-    {
-        let newStart = startIndex.advancedBy(index)
-        return self[newStart ..< endIndex]
-    }
-
-
-
-    func fui_substringToIndex(index: Int) -> String
-    {
-        let newEnd = startIndex.advancedBy(index)
-        return self[startIndex ..< newEnd]
-    }
+public enum FlatColors {
+    case Turquoise,
+    Emerald,
+    PeterRiver,
+    Amethyst,
+    WetAsphalty,
+    GreenSea,
+    Nephritis,
+    BelizeHole,
+    Wisteria,
+    MidnightBlue,
+    SunFlower,
+    Carrot,
+    Alizarin,
+    Clouds,
+    Concrete,
+    Orange,
+    Pumpkin,
+    Pomegranate,
+    Silver,
+    Asbestos,
+    ChestnuteRose,
+    Thunderbird,
+    OldBrick,
+    Flamingo,
+    Valencia,
+    TallPoppy,
+    Monza,
+    Cinnabar,
+    Razzmatazz,
+    SunsetOrange,
+    WaxFlower,
+    Cabaret,
+    NewYorkPink,
+    RadicalRed,
+    Sunglo,
+    Snuff,
+    Rebeccapurple,
+    HoneyFlower,
+    Wistful,
+    Plum,
+    Seance,
+    MediumPurple,
+    LightWisteria,
+    Studio,
+    SanMarino,
+    AliceBlue,
+    RoyalBlue,
+    PictonBlue,
+    Spray,
+    Shakespeare,
+    HummingBird,
+    Curious,
+    Madison,
+    DodgerBlue,
+    Ming,
+    EbonyClay,
+    Malibu,
+    SummerySky,
+    Chambray,
+    PickledBluewood,
+    Hoki,
+    JellyBean,
+    JacksonsPurple,
+    JordyBlue,
+    SteelBlue,
+    FountainBlue,
+    MediumTurquoise,
+    AquaIsland,
+    Gossip,
+    DarkSeaGreen,
+    Eucalyptus,
+    CaribbeanGreen,
+    SilverTree,
+    Downy,
+    MountainMeadow,
+    LightSeaGreen,
+    MediumAquamarine,
+    Madang,
+    Riptide,
+    Shamrock,
+    Niagara,
+    GreenHaze,
+    OceanGreen,
+    NiagaraOne,
+    Jade,
+    Salem,
+    Observatory,
+    JungleGreen,
+    CapeHoney,
+    California,
+    FireBush,
+    TahitiGold,
+    Casablanca,
+    Crusta,
+    SeaBuckthorn,
+    LightningYellow,
+    BurntOrange,
+    ButterCup,
+    Ecstasy,
+    Sandstorm,
+    Jaffa,
+    Zest,
+    WhiteSmoke,
+    Lynch,
+    Pumice,
+    Gallery,
+    SilverSand,
+    Porcelain,
+    Cascade,
+    Iron,
+    Edward,
+    Cararra
 }
 
+var colors: Dictionary<FlatColors, UInt> = [
+    FlatColors.Turquoise: UInt(0x1abc9c),
+    FlatColors.Emerald: UInt(0x2ecc71),
+    FlatColors.PeterRiver: UInt(0x3498db),
+    FlatColors.Amethyst: UInt(0x9b59b6),
+    FlatColors.WetAsphalty: UInt(0x34495e),
+    FlatColors.GreenSea: UInt(0x16a085),
+    FlatColors.Nephritis: UInt(0x27ae60),
+    FlatColors.BelizeHole: UInt(0x2980b9),
+    FlatColors.Wisteria: UInt(0x8e44ad),
+    FlatColors.MidnightBlue: UInt(0x2c3e50),
+    FlatColors.SunFlower: UInt(0xf1c40f),
+    FlatColors.Carrot: UInt(0xe67e22),
+    FlatColors.Alizarin: UInt(0xe74c3c),
+    FlatColors.Clouds: UInt(0xecf0f1),
+    FlatColors.Concrete: UInt(0x95a5a6),
+    FlatColors.Orange: UInt(0xf39c12),
+    FlatColors.Pumpkin: UInt(0xd35400),
+    FlatColors.Pomegranate: UInt(0xc0392b),
+    FlatColors.Silver: UInt(0xbdc3c7),
+    FlatColors.Asbestos: UInt(0x7f8c8d),
+    FlatColors.ChestnuteRose: UInt(0xd24d57),
+    FlatColors.Thunderbird: UInt(0xD91E18),
+    FlatColors.OldBrick: UInt(0x96281B),
+    FlatColors.Flamingo: UInt(0xEF4836),
+    FlatColors.Valencia: UInt(0xD64541),
+    FlatColors.TallPoppy: UInt(0xC0392B),
+    FlatColors.Monza: UInt(0xCF000F),
+    FlatColors.Cinnabar: UInt(0xE74C3C),
+    FlatColors.Razzmatazz: UInt(0xDB0A5B),
+    FlatColors.SunsetOrange: UInt(0xF64747),
+    FlatColors.WaxFlower: UInt(0xF1A9A0),
+    FlatColors.Cabaret: UInt(0xD2527F),
+    FlatColors.NewYorkPink: UInt(0xE08283),
+    FlatColors.RadicalRed: UInt(0xF62459),
+    FlatColors.Sunglo: UInt(0xE26A6A),
+    FlatColors.Snuff: UInt(0xDCC6E0),
+    FlatColors.Rebeccapurple: UInt(0x663399),
+    FlatColors.HoneyFlower: UInt(0x674172),
+    FlatColors.Wistful: UInt(0xAEA8D3),
+    FlatColors.Plum: UInt(0x913D88),
+    FlatColors.Seance: UInt(0x9A12B3),
+    FlatColors.MediumPurple: UInt(0xBF55EC),
+    FlatColors.LightWisteria: UInt(0xBE90D4),
+    FlatColors.Studio: UInt(0x8E44AD),
+    FlatColors.SanMarino: UInt(0x446CB3),
+    FlatColors.AliceBlue: UInt(0xE4F1FE),
+    FlatColors.RoyalBlue: UInt(0x4183D7),
+    FlatColors.PictonBlue: UInt(0x22A7F0),
+    FlatColors.Spray: UInt(0x81CFE0),
+    FlatColors.Shakespeare: UInt(0x52B3D9),
+    FlatColors.HummingBird: UInt(0xC5EFF7),
+    FlatColors.Curious: UInt(0x3498DB),
+    FlatColors.Madison: UInt(0x2C3E50),
+    FlatColors.DodgerBlue: UInt(0x19B5FE),
+    FlatColors.Ming: UInt(0x336E7B),
+    FlatColors.EbonyClay: UInt(0x22313F),
+    FlatColors.Malibu: UInt(0x6BB9F0),
+    FlatColors.SummerySky: UInt(0x1E8BC3),
+    FlatColors.Chambray: UInt(0x3A539B),
+    FlatColors.PickledBluewood: UInt(0x34495E),
+    FlatColors.Hoki: UInt(0x67809F),
+    FlatColors.JellyBean: UInt(0x2574A9),
+    FlatColors.JacksonsPurple: UInt(0x1F3A93),
+    FlatColors.JordyBlue: UInt(0x89C4F4),
+    FlatColors.SteelBlue: UInt(0x4B77BE),
+    FlatColors.FountainBlue: UInt(0x5C97BF),
+    FlatColors.MediumTurquoise: UInt(0x4ECDC4),
+    FlatColors.AquaIsland: UInt(0xA2DED0),
+    FlatColors.Gossip: UInt(0x87D37C),
+    FlatColors.DarkSeaGreen: UInt(0x90C695),
+    FlatColors.Eucalyptus: UInt(0x26A65B),
+    FlatColors.CaribbeanGreen: UInt(0x03C9A9),
+    FlatColors.SilverTree: UInt(0x68C3A3),
+    FlatColors.Downy: UInt(0x65C6BB),
+    FlatColors.MountainMeadow: UInt(0x1BBC9B),
+    FlatColors.LightSeaGreen: UInt(0x1BA39C),
+    FlatColors.MediumAquamarine: UInt(0x66CC99),
+    FlatColors.Madang: UInt(0xC8F7C5),
+    FlatColors.Riptide: UInt(0x86E2D5),
+    FlatColors.Shamrock: UInt(0x2ECC71),
+    FlatColors.Niagara: UInt(0x16A085),
+    FlatColors.GreenHaze: UInt(0x019875),
+    FlatColors.OceanGreen: UInt(0x4DAF7C),
+    FlatColors.NiagaraOne: UInt(0x2ABB9B),
+    FlatColors.Jade: UInt(0x00B16A),
+    FlatColors.Salem: UInt(0x1E824C),
+    FlatColors.Observatory: UInt(0x049372),
+    FlatColors.JungleGreen: UInt(0x26C281),
+    FlatColors.CapeHoney: UInt(0xFDE3A7),
+    FlatColors.California: UInt(0xF89406),
+    FlatColors.FireBush: UInt(0xEB9532),
+    FlatColors.TahitiGold: UInt(0xE87E04),
+    FlatColors.Casablanca: UInt(0xF4B350),
+    FlatColors.Crusta: UInt(0xF2784B),
+    FlatColors.SeaBuckthorn: UInt(0xEB974E),
+    FlatColors.LightningYellow: UInt(0xF5AB35),
+    FlatColors.BurntOrange: UInt(0xD35400),
+    FlatColors.ButterCup: UInt(0xF39C12),
+    FlatColors.Ecstasy: UInt(0xF9690E),
+    FlatColors.Sandstorm: UInt(0xF9BF3B),
+    FlatColors.Jaffa: UInt(0xF27935),
+    FlatColors.Zest: UInt(0xE67E22),
+    FlatColors.WhiteSmoke: UInt(0xECECEC),
+    FlatColors.Lynch: UInt(0x6C7A89),
+    FlatColors.Pumice: UInt(0xD2D7D3),
+    FlatColors.Gallery: UInt(0xEEEEEE),
+    FlatColors.SilverSand: UInt(0xBDC3C7),
+    FlatColors.Porcelain: UInt(0xECF0F1),
+    FlatColors.Cascade: UInt(0x95A5A6),
+    FlatColors.Iron: UInt(0xDADFE1),
+    FlatColors.Edward: UInt(0xABB7B7),
+    FlatColors.Cararra: UInt(0xF2F1EF)
+];
 
+public extension UIColor {
+    class func flat(color: FlatColors) -> UIColor {
+        let selected: UInt = UInt(colors[color]!)
+        return selected.convertToUIColor()
+    }
+}

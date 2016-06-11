@@ -21,6 +21,9 @@
 		635B93BA1D09A40500A81CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B81D09A40500A81CAF /* LaunchScreen.storyboard */; };
 		635B93C51D09A40500A81CAF /* FlashWordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93C41D09A40500A81CAF /* FlashWordTests.swift */; };
 		635B93D01D09A40600A81CAF /* FlashWordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93CF1D09A40600A81CAF /* FlashWordUITests.swift */; };
+		6388D5B51D0C7A4F0029C988 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; };
+		6388D5B61D0C7AA70029C988 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; };
+		6388D5B71D0C7AA70029C988 /* AVOSCloud.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F31D09D7A800757F60 /* XCGLogger.swift */; };
 		639187F71D09EC1800757F60 /* DYLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F61D09EC1800757F60 /* DYLog.swift */; };
 		639187F91D09EE4200757F60 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F81D09EE4200757F60 /* AppConst.swift */; };
@@ -50,6 +53,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6388D5B81D0C7AA80029C988 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6388D5B71D0C7AA70029C988 /* AVOSCloud.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0402EC8172EC4DD126065338 /* Pods-FlashWord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashWord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlashWord/Pods-FlashWord.debug.xcconfig"; sourceTree = "<group>"; };
 		1E932C9C1D7FDCFDEF1B98CF /* Pods-FlashWord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashWord.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlashWord/Pods-FlashWord.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +92,7 @@
 		635B93CB1D09A40500A81CAF /* FlashWordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashWordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		635B93CF1D09A40600A81CAF /* FlashWordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashWordUITests.swift; sourceTree = "<group>"; };
 		635B93D11D09A40600A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		639187F31D09D7A800757F60 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		639187F61D09EC1800757F60 /* DYLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLog.swift; sourceTree = "<group>"; };
 		639187F81D09EE4200757F60 /* AppConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
@@ -95,6 +113,8 @@
 				632D04E01D09C94700F9744B /* RxCocoa.framework in Frameworks */,
 				632D04DE1D09C94400F9744B /* MagicalRecord.framework in Frameworks */,
 				F79FE96208CB634B4372980C /* Pods_FlashWord.framework in Frameworks */,
+				6388D5B51D0C7A4F0029C988 /* AVOSCloud.framework in Frameworks */,
+				6388D5B61D0C7AA70029C988 /* AVOSCloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +209,7 @@
 				635B93BB1D09A40500A81CAF /* Info.plist */,
 				632D04DC1D09C7E600F9744B /* FlashWord-Bridging-Header.h */,
 				639187F81D09EE4200757F60 /* AppConst.swift */,
+				6388D5B31D0C7A4F0029C988 /* Library */,
 			);
 			path = FlashWord;
 			sourceTree = "<group>";
@@ -209,6 +230,14 @@
 				635B93D11D09A40600A81CAF /* Info.plist */,
 			);
 			path = FlashWordUITests;
+			sourceTree = "<group>";
+		};
+		6388D5B31D0C7A4F0029C988 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		639187F11D09D7A800757F60 /* Foundation */ = {
@@ -280,6 +309,7 @@
 				8E032C6FB86B61386D978A42 /* [CP] Embed Pods Frameworks */,
 				B08E6EB18A0C5DF0BDEF63D9 /* [CP] Copy Pods Resources */,
 				639187FA1D09F24200757F60 /* ShellScript */,
+				6388D5B81D0C7AA80029C988 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -621,6 +651,10 @@
 			baseConfigurationReference = 0402EC8172EC4DD126065338 /* Pods-FlashWord.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlashWord/Library",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = FlashWord/Info.plist;
@@ -636,6 +670,10 @@
 			baseConfigurationReference = 1E932C9C1D7FDCFDEF1B98CF /* Pods-FlashWord.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlashWord/Library",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = FlashWord/Info.plist;

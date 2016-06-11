@@ -13,7 +13,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.backgroundColor = FlatUIColors.ironColor()
+        self.view.backgroundColor = UIColor.flat(FlatColors.MidnightBlue)
     }
     
     override func didReceiveMemoryWarning() {
