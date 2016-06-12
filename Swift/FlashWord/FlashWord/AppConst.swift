@@ -6,7 +6,7 @@
 //  Copyright © 2016年 FlashWord. All rights reserved.
 //
 
-import Foundation
+import UIKit
 public typealias CommonCallback = (object:AnyObject?, error:NSError!)->Void
 
 public enum Environment : Int8 {
@@ -81,4 +81,8 @@ public class AppConst: NSObject {
         }
         return false
     }
+    
+    public static let isLanguageFromLeft2Right : Bool = {
+        return UIApplication.sharedApplication().userInterfaceLayoutDirection == .LeftToRight
+    }()
 }

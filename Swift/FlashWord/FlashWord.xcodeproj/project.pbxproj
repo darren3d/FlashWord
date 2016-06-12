@@ -32,6 +32,10 @@
 		6388D5CD1D0DB1900029C988 /* DYViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5CC1D0DB1900029C988 /* DYViewController.swift */; };
 		6388D5CF1D0DB1AC0029C988 /* DYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5CE1D0DB1AC0029C988 /* DYNavigationController.swift */; };
 		6388D5D71D0DB3700029C988 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5D51D0DB3700029C988 /* LoginController.swift */; };
+		6388D5DD1D0DC45B0029C988 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5DA1D0DC45B0029C988 /* SkyFloatingLabelTextField.swift */; };
+		6388D5DE1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5DB1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift */; };
+		6388D5DF1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5DC1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift */; };
+		6388D5E31D0DC9850029C988 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6388D5E21D0DC9850029C988 /* fontawesome-webfont.ttf */; };
 		639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F31D09D7A800757F60 /* XCGLogger.swift */; };
 		639187F71D09EC1800757F60 /* DYLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F61D09EC1800757F60 /* DYLog.swift */; };
 		639187F91D09EE4200757F60 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F81D09EE4200757F60 /* AppConst.swift */; };
@@ -109,6 +113,10 @@
 		6388D5CC1D0DB1900029C988 /* DYViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYViewController.swift; sourceTree = "<group>"; };
 		6388D5CE1D0DB1AC0029C988 /* DYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYNavigationController.swift; sourceTree = "<group>"; };
 		6388D5D51D0DB3700029C988 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		6388D5DA1D0DC45B0029C988 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		6388D5DB1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
+		6388D5DC1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+SkyFloatingLabel.swift"; sourceTree = "<group>"; };
+		6388D5E21D0DC9850029C988 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		639187F31D09D7A800757F60 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		639187F61D09EC1800757F60 /* DYLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLog.swift; sourceTree = "<group>"; };
 		639187F81D09EE4200757F60 /* AppConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
@@ -217,6 +225,7 @@
 				639187F11D09D7A800757F60 /* Foundation */,
 				632D04E31D09C9BD00F9744B /* Model */,
 				6388D5D01D0DB2CD0029C988 /* UI */,
+				6388D5E01D0DC9850029C988 /* Resource */,
 				635B93AD1D09A40500A81CAF /* AppDelegate.swift */,
 				635B93AF1D09A40500A81CAF /* FirstViewController.swift */,
 				635B93B11D09A40500A81CAF /* SecondViewController.swift */,
@@ -280,6 +289,7 @@
 				6388D5CB1D0DB1620029C988 /* ViewController */,
 				6388D5C31D0DAEAC0029C988 /* CALayer */,
 				6388D5C61D0DAEEB0029C988 /* Button */,
+				6388D5D81D0DC45B0029C988 /* TextField */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -339,6 +349,40 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6388D5D81D0DC45B0029C988 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				6388D5D91D0DC45B0029C988 /* SkyFloatingLabelTextField */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		6388D5D91D0DC45B0029C988 /* SkyFloatingLabelTextField */ = {
+			isa = PBXGroup;
+			children = (
+				6388D5DA1D0DC45B0029C988 /* SkyFloatingLabelTextField.swift */,
+				6388D5DB1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift */,
+				6388D5DC1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift */,
+			);
+			path = SkyFloatingLabelTextField;
+			sourceTree = "<group>";
+		};
+		6388D5E01D0DC9850029C988 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6388D5E11D0DC9850029C988 /* Font */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		6388D5E11D0DC9850029C988 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				6388D5E21D0DC9850029C988 /* fontawesome-webfont.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		639187F11D09D7A800757F60 /* Foundation */ = {
@@ -509,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				635B93BA1D09A40500A81CAF /* LaunchScreen.storyboard in Resources */,
+				6388D5E31D0DC9850029C988 /* fontawesome-webfont.ttf in Resources */,
 				635B93B71D09A40500A81CAF /* Assets.xcassets in Resources */,
 				635B93B51D09A40500A81CAF /* Main.storyboard in Resources */,
 			);
@@ -602,6 +647,7 @@
 				6388D5CD1D0DB1900029C988 /* DYViewController.swift in Sources */,
 				632D04E61D09CA0200F9744B /* FlashWord.xcdatamodeld in Sources */,
 				639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */,
+				6388D5DD1D0DC45B0029C988 /* SkyFloatingLabelTextField.swift in Sources */,
 				639188061D0A915800757F60 /* DynamicColor.swift in Sources */,
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
 				6388D5C81D0DAEEB0029C988 /* DYSubmitButton.swift in Sources */,
@@ -611,11 +657,13 @@
 				6388D5C11D0DAE310029C988 /* FadeTransitionAnimator.swift in Sources */,
 				635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */,
 				6388D5BB1D0DAD630029C988 /* CGRectUtility.swift in Sources */,
+				6388D5DF1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift in Sources */,
 				6388D5CA1D0DAFDC0029C988 /* NSTimerUtility.swift in Sources */,
 				6391880A1D0A930500757F60 /* FlatUIColors.swift in Sources */,
 				639188041D0A915800757F60 /* DynamicColor+Deriving.swift in Sources */,
 				639187F71D09EC1800757F60 /* DYLog.swift in Sources */,
 				6388D5CF1D0DB1AC0029C988 /* DYNavigationController.swift in Sources */,
+				6388D5DE1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */,
 				6388D5C51D0DAEAC0029C988 /* SpinerLayer.swift in Sources */,
 				635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */,
