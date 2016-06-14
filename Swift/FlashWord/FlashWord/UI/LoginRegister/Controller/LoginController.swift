@@ -15,8 +15,8 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
     @IBOutlet weak var textFieldPassword : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var btnLogin : DYSubmitButton!
     
-    //TODO:  图片缓存用Nuke，字体加载用FontBlaster
-    //FIXME: 图片缓存用Nuke，字体加载用FontBlaster
+    //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster
+    //FIXME: 使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster
     
     override func viewDidLoad() {
         super.viewDidLoad()
