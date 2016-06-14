@@ -15,6 +15,9 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
     @IBOutlet weak var textFieldPassword : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var btnLogin : DYSubmitButton!
     
+    //TODO:  图片缓存用Nuke，字体加载用FontBlaster
+    //FIXME: 图片缓存用Nuke，字体加载用FontBlaster
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.flat(FlatColors.MidnightBlue)

@@ -27,6 +27,7 @@ extension UIViewController {
     
     func showProgressView(title:String = "") -> Void {
         let progressView = self.progressView
+        progressView.backgroundColor = self.view.backgroundColor;
         
         if progressView.isAnimating() {
             return
@@ -39,6 +40,11 @@ extension UIViewController {
         progressView.frame = self.view.frame
         
         progressView.startAnimation()
+        
+        
+        let options = BusyNavigationBarOptions()
+        options.animationType = .Stripes
+        self.navigationController?.navigationBar.start(options)
     }
     
     func dismissProgressView() -> Void {

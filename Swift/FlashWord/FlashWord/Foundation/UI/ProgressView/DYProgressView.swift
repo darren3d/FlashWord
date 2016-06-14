@@ -19,8 +19,8 @@ class DYProgressView: UIView {
                 return progressView;
             }
             
-            let progressView =  NVActivityIndicatorView(frame:CGRect(x: 120, y: 120, width: 60, height: 60), type:NVActivityIndicatorType.BallClipRotate)
-            progressView.backgroundColor = UIColor.flat(FlatColors.Orange)
+            let progressView =  NVActivityIndicatorView(frame:CGRect(x: 120, y: 120, width: 60, height: 60), type:NVActivityIndicatorType.Orbit)
+            //            progressView.backgroundColor = UIColor.flat(FlatColors.Orange)
             objc_setAssociatedObject(self, &DYProgressViewKey.dynProgressView, progressView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             return progressView;

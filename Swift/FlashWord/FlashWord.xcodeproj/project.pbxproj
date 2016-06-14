@@ -35,6 +35,9 @@
 		6388D5DE1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5DB1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift */; };
 		6388D5DF1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5DC1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift */; };
 		6388D5E31D0DC9850029C988 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6388D5E21D0DC9850029C988 /* fontawesome-webfont.ttf */; };
+		6388D5EC1D108B090029C988 /* AnimationLayerCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5E91D108B090029C988 /* AnimationLayerCreator.swift */; };
+		6388D5ED1D108B090029C988 /* BusyNavigationBarOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5EA1D108B090029C988 /* BusyNavigationBarOptions.swift */; };
+		6388D5EE1D108B090029C988 /* UINavigationBar+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5EB1D108B090029C988 /* UINavigationBar+Animation.swift */; };
 		639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F31D09D7A800757F60 /* XCGLogger.swift */; };
 		639187F71D09EC1800757F60 /* DYLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F61D09EC1800757F60 /* DYLog.swift */; };
 		639187F91D09EE4200757F60 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F81D09EE4200757F60 /* AppConst.swift */; };
@@ -155,6 +158,9 @@
 		6388D5DB1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
 		6388D5DC1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+SkyFloatingLabel.swift"; sourceTree = "<group>"; };
 		6388D5E21D0DC9850029C988 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		6388D5E91D108B090029C988 /* AnimationLayerCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationLayerCreator.swift; sourceTree = "<group>"; };
+		6388D5EA1D108B090029C988 /* BusyNavigationBarOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyNavigationBarOptions.swift; sourceTree = "<group>"; };
+		6388D5EB1D108B090029C988 /* UINavigationBar+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Animation.swift"; sourceTree = "<group>"; };
 		639187F31D09D7A800757F60 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		639187F61D09EC1800757F60 /* DYLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLog.swift; sourceTree = "<group>"; };
 		639187F81D09EE4200757F60 /* AppConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
@@ -365,6 +371,7 @@
 		6388D5C21D0DAEAC0029C988 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6388D5E71D108B090029C988 /* NavigationBar */,
 				844FBA421D0FE0F900D6C2EA /* ProgressView */,
 				6388D5CB1D0DB1620029C988 /* ViewController */,
 				6388D5C31D0DAEAC0029C988 /* CALayer */,
@@ -466,6 +473,24 @@
 				6388D5E21D0DC9850029C988 /* fontawesome-webfont.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		6388D5E71D108B090029C988 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				6388D5E81D108B090029C988 /* BusyNavigationBar */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		6388D5E81D108B090029C988 /* BusyNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				6388D5E91D108B090029C988 /* AnimationLayerCreator.swift */,
+				6388D5EA1D108B090029C988 /* BusyNavigationBarOptions.swift */,
+				6388D5EB1D108B090029C988 /* UINavigationBar+Animation.swift */,
+			);
+			path = BusyNavigationBar;
 			sourceTree = "<group>";
 		};
 		639187F11D09D7A800757F60 /* Foundation */ = {
@@ -805,6 +830,7 @@
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
 				844FBA731D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
 				844FBA7A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
+				6388D5EC1D108B090029C988 /* AnimationLayerCreator.swift in Sources */,
 				6388D5C81D0DAEEB0029C988 /* DYSubmitButton.swift in Sources */,
 				844FBA741D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
 				844FBA881D0FE0F900D6C2EA /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
@@ -832,6 +858,7 @@
 				6391880A1D0A930500757F60 /* FlatUIColors.swift in Sources */,
 				844FBA761D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
 				844FBA7F1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
+				6388D5ED1D108B090029C988 /* BusyNavigationBarOptions.swift in Sources */,
 				844FBA411D0FBFFE00D6C2EA /* LoginViewModel.swift in Sources */,
 				639188041D0A915800757F60 /* DynamicColor+Deriving.swift in Sources */,
 				844FBA751D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
@@ -842,6 +869,7 @@
 				844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */,
 				844FBA781D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
 				635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */,
+				6388D5EE1D108B090029C988 /* UINavigationBar+Animation.swift in Sources */,
 				844FBA6A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				6388D5C51D0DAEAC0029C988 /* SpinerLayer.swift in Sources */,
 				635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */,
