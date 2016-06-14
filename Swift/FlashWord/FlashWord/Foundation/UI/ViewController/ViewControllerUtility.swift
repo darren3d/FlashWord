@@ -8,17 +8,18 @@
 
 import UIKit
 
-let kViewControllerProgressView = "dy.key.controller.progressview"
+let dynUIViewControllerProgressView = "dyn.key.viewcontroller.progressview"
 
 extension UIViewController {
     
-    private var progressView : NVActivityIndicatorView {
-        if let progressView = objc_getAssociatedObject(self, kViewControllerProgressView) as? NVActivityIndicatorView {
+    private var progressView : DYProgressView {
+        if let progressView = objc_getAssociatedObject(self, dynUIViewControllerProgressView) as? DYProgressView {
             return progressView;
         }
         
-        let progressView =  NVActivityIndicatorView(frame:CGRect(x: 0, y: 0, width: 60, height: 60), type:NVActivityIndicatorType.BallClipRotate)
-        objc_setAssociatedObject(self, kViewControllerProgressView, progressView, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        let progressView =  DYProgressView(frame:self.view.frame)
+        progressView.backgroundColor = UIColor.flat(FlatColors.MidnightBlue)
+        objc_setAssociatedObject(self, dynUIViewControllerProgressView, progressView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         
         return progressView;
     }
@@ -27,7 +28,7 @@ extension UIViewController {
     func showProgressView(title:String = "") -> Void {
         let progressView = self.progressView
         
-        if progressView.animating {
+        if progressView.isAnimating() {
             return
         }
         
@@ -35,8 +36,7 @@ extension UIViewController {
             self.view.addSubview(progressView)
         }
         
-        progressView.frame.origin.x = (self.view.frame.size.width - progressView.frame.size.width) * 0.5
-        progressView.frame.origin.y = (self.view.frame.size.height - progressView.frame.size.height) * 0.5
+        progressView.frame = self.view.frame
         
         progressView.startAnimation()
     }

@@ -17,6 +17,8 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.flat(FlatColors.MidnightBlue)
+        
         let loginViewModel = LoginViewModel()
         viewModel = LoginViewModel()
         
@@ -134,11 +136,11 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
     
     //MARK: UI Action
     @IBAction func onButtonSubmit(button: DYSubmitButton) {
-        button.animate(1, completion: { () -> () in
-            let secondVC = SecondViewController()
-            secondVC.transitioningDelegate = self
-            self.presentViewController(secondVC, animated: true, completion: nil)
-        })
+        //        button.animate(1, completion: { () -> () in
+        //            let secondVC = SecondViewController()
+        //            secondVC.transitioningDelegate = self
+        //            self.presentViewController(secondVC, animated: true, completion: nil)
+        //        })
     }
     
     //MARK: UIViewControllerTransitioningDelegate

@@ -82,6 +82,7 @@
 		844FBA8A1D0FE0F900D6C2EA /* NVActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA671D0FE0F900D6C2EA /* NVActivityIndicatorView.swift */; };
 		844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA681D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift */; };
 		844FBA8D1D0FE2B700D6C2EA /* ViewControllerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA8C1D0FE2B700D6C2EA /* ViewControllerUtility.swift */; };
+		844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */; };
 		8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8492F19C1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld */; };
 		F79FE96208CB634B4372980C /* Pods_FlashWord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA376F5E1793DFA7F9D953B /* Pods_FlashWord.framework */; };
 /* End PBXBuildFile section */
@@ -202,6 +203,7 @@
 		844FBA671D0FE0F900D6C2EA /* NVActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorView.swift; sourceTree = "<group>"; };
 		844FBA681D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorViewable.swift; sourceTree = "<group>"; };
 		844FBA8C1D0FE2B700D6C2EA /* ViewControllerUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerUtility.swift; sourceTree = "<group>"; };
+		844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYProgressView.swift; sourceTree = "<group>"; };
 		8492F19D1D0EA2EE00EA95EE /* FlashWord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashWord.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -528,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				844FBA431D0FE0F900D6C2EA /* NVActivityIndicatorView */,
+				844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */,
 			);
 			path = ProgressView;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				639188071D0A915800757F60 /* HSL.swift in Sources */,
 				844FBA721D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */,
+				844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */,
 				844FBA6B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */,
 				639187FD1D09FB3E00757F60 /* DYUserDefaults.swift in Sources */,
