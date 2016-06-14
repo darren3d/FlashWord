@@ -20,6 +20,12 @@ public class DYSubmitButton : UIButton, UIViewControllerTransitioningDelegate {
         return s
     }()
     
+    @IBInspectable public var disableBackgroundColor: UIColor? = DARK_PINK {
+        didSet {
+            self.setBackgroundColor()
+        }
+    }
+    
     @IBInspectable public var highlightedBackgroundColor: UIColor? = DARK_PINK {
         didSet {
             self.setBackgroundColor()
@@ -44,6 +50,12 @@ public class DYSubmitButton : UIButton, UIViewControllerTransitioningDelegate {
         }
     }
     
+    override public var enabled: Bool {
+        didSet {
+            self.setBackgroundColor()
+        }
+    }
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()
@@ -56,11 +68,15 @@ public class DYSubmitButton : UIButton, UIViewControllerTransitioningDelegate {
     }
     
     func setBackgroundColor() {
-        if (highlighted) {
-            self.backgroundColor = highlightedBackgroundColor
-        }
-        else {
-            self.backgroundColor = normalBackgroundColor
+        if self.enabled {
+            if (highlighted) {
+                self.backgroundColor = highlightedBackgroundColor
+            }
+            else {
+                self.backgroundColor = normalBackgroundColor
+            }
+        } else {
+            self.backgroundColor = disableBackgroundColor
         }
     }
     
