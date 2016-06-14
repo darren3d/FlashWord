@@ -12,7 +12,7 @@ import RxSwift
 class DYViewModel: NSObject {
     var disposeBag : DisposeBag! = DisposeBag()
     
-    func setup(info:NSDictionary?) -> Void {
-        
+    deinit {
+        disposeBag = nil
     }
 }

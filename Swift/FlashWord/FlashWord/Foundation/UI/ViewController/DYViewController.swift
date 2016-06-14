@@ -12,7 +12,11 @@ import RxSwift
 class DYViewController: UIViewController {
     var viewModel : DYViewModel?
     
-    var disposeBag = DisposeBag()
+    var disposeBag : DisposeBag! = DisposeBag()
+    
+    deinit {
+        disposeBag = nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

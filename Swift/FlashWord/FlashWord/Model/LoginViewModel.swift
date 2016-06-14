@@ -9,7 +9,7 @@ import RxSwift
 import AVOSCloud
 
 class LoginViewModel: DYViewModel {
-    var email : String = "     " {
+    dynamic var email : String = "     " {
         willSet{
             
         }
@@ -17,7 +17,7 @@ class LoginViewModel: DYViewModel {
         //            isEmailValid = email.characters.count >= 6 && email.containsString("@")
         //        }
     }
-    var password : String = "    " {
+    dynamic var password : String = "    " {
         willSet{
             
         }
@@ -27,19 +27,21 @@ class LoginViewModel: DYViewModel {
     }
     
     /**email是否合法*/
-    var isEmailValid : Bool = false
+    dynamic var isEmailValid : Bool = false
     
     /**password是否合法*/
-    var isPasswordValid : Bool = false
+    dynamic var isPasswordValid : Bool = false
     
     /**是否正在登录*/
-    var isLoggingIn : Bool = false
+    dynamic var isLoggingIn : Bool = false
     
     override init() {
         super.init()
+        
+        setupObserve()
     }
     
-    override func setup(info: NSDictionary?) {
+    private func setupObserve() {
         
         self.rx_observe(String.self, "email", options: [.Initial, .New], retainSelf: false)
             .subscribeNext {[weak self] email in
@@ -51,7 +53,7 @@ class LoginViewModel: DYViewModel {
                 
             }.addDisposableTo(disposeBag)
         
-        self.rx_observe(String.self, "password", options: .New, retainSelf: false).asObservable()
+        self.rx_observe(String.self, "password", options: .New, retainSelf: false)
             .subscribeNext {[weak self] password in
                 guard let password = password else {
                     return

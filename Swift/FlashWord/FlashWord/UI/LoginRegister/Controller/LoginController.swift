@@ -19,7 +19,6 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
         super.viewDidLoad()
         let loginViewModel = LoginViewModel()
         viewModel = LoginViewModel()
-        viewModel?.setup(nil)
         
         var colorNorm = UIColor.flat(FlatColors.MidnightBlue)
         var colorHighlighted = UIColor.flat(FlatColors.Shamrock)
