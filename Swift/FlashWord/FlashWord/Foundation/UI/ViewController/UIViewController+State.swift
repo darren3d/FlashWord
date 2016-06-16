@@ -45,7 +45,7 @@ public protocol DYUIStateDelegate : class {
 
 private var dynDYUIStateDateSource = "dyn.key.viewcontroller.state.datasource"
 private var dynDYUIStateDelegate = "dyn.key.viewcontroller.state.delegate"
-extension UIViewController {
+extension UIViewController : DYUIStateViewDelegate{
     var dy_stateDataSource : DYUIStateDateSource? {
         get {
             guard let wrapper = self.dy_getAssociatedObject(&dynDYUIStateDateSource, 
@@ -98,8 +98,16 @@ extension UIViewController {
         }
     }
     
-}
+    
+    //MARK: DYUIStateViewDelegate
+    func didTapButton(view: DYUIStateView, sender: AnyObject) {
+        <#code#>
+    }}
 
+
+protocol DYUIStateViewDelegate : class {
+    func didTapButton(view:DYUIStateView, sender:AnyObject) -> Void;
+}
 
 class DYUIStateView: UIView {
     override init(frame:CGRect) {
@@ -118,6 +126,8 @@ class DYUIStateView: UIView {
         }
     }
     
+    var delegate : DYUIStateViewDelegate? = nil
+    
     lazy var contentView : UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -127,7 +137,7 @@ class DYUIStateView: UIView {
         return contentView
     }()
     
-    lazy var imageView : UIImageView = {
+    lazy var imageView : UIImageView? = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false;
         imageView.backgroundColor = UIColor.clearColor()
@@ -140,7 +150,7 @@ class DYUIStateView: UIView {
     }()
     
     
-    lazy var titleLabel : UILabel = {
+    lazy var titleLabel : UILabel? = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false;
         titleLabel.backgroundColor = UIColor.clearColor()
@@ -155,7 +165,7 @@ class DYUIStateView: UIView {
         return titleLabel
     }()
     
-    lazy var detailLabel : UILabel = {
+    lazy var detailLabel : UILabel? = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false;
         titleLabel.backgroundColor = UIColor.clearColor()
@@ -170,7 +180,7 @@ class DYUIStateView: UIView {
         return titleLabel
     }()
     
-    lazy var button : UIButton  = {
+    lazy var button : UIButton?  = {
         let button = UIButton(type:UIButtonType.Custom)
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.backgroundColor = UIColor.clearColor()
@@ -236,15 +246,33 @@ class DYUIStateView: UIView {
     //MARK: Action
     @objc
     private func didTapButton(sender:AnyObject) {
-        
+        delegate?.didTapButton(self, sender: sender)
     }
+    
+    
+    //MARK:内部方法
+    func removeAllConstraints() {
+        self.removeConstraints(self.constraints)
+        self.contentView.removeConstraints(self.contentView.constraints)
+    }
+    
+    func prepareForReuse() {
+        self.contentView.subviews.forEach { (subView) in
+            subView.removeFromSuperview()
+        }
+        
+        self.titleLabel = nil
+        self.detailLabel = nil
+        self.imageView = nil
+        self.button = nil
+        self.customView = nil
+        
+        self.removeAllConstraints()
+    }
+    
     
     func setupConstraints() {
         
     }
-    
-    func prepareForReuse() {
-    }
-    
     
 }
