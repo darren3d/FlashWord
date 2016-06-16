@@ -101,8 +101,9 @@ extension UIViewController : DYUIStateViewDelegate{
     
     //MARK: DYUIStateViewDelegate
     func didTapButton(view: DYUIStateView, sender: AnyObject) {
-        <#code#>
-    }}
+        
+    }
+}
 
 
 protocol DYUIStateViewDelegate : class {
@@ -137,7 +138,7 @@ class DYUIStateView: UIView {
         return contentView
     }()
     
-    lazy var imageView : UIImageView? = {
+    lazy var imageView : UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false;
         imageView.backgroundColor = UIColor.clearColor()
@@ -150,7 +151,7 @@ class DYUIStateView: UIView {
     }()
     
     
-    lazy var titleLabel : UILabel? = {
+    lazy var titleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false;
         titleLabel.backgroundColor = UIColor.clearColor()
@@ -165,7 +166,7 @@ class DYUIStateView: UIView {
         return titleLabel
     }()
     
-    lazy var detailLabel : UILabel? = {
+    lazy var detailLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false;
         titleLabel.backgroundColor = UIColor.clearColor()
@@ -180,7 +181,7 @@ class DYUIStateView: UIView {
         return titleLabel
     }()
     
-    lazy var button : UIButton?  = {
+    lazy var button : UIButton  = {
         let button = UIButton(type:UIButtonType.Custom)
         button.translatesAutoresizingMaskIntoConstraints = false;
         button.backgroundColor = UIColor.clearColor()
@@ -261,10 +262,10 @@ class DYUIStateView: UIView {
             subView.removeFromSuperview()
         }
         
-        self.titleLabel = nil
-        self.detailLabel = nil
-        self.imageView = nil
-        self.button = nil
+        //        self.titleLabel = nil
+        //        self.detailLabel = nil
+        //        self.imageView = nil
+        //        self.button = nil
         self.customView = nil
         
         self.removeAllConstraints()
@@ -272,7 +273,116 @@ class DYUIStateView: UIView {
     
     
     func setupConstraints() {
+        // contentView约束
+        // 居中
+        let centerXConstraint = self.dy_equallyRelatedConstraintWithView(self.contentView, attribute: NSLayoutAttribute.CenterX)
+        let centerYConstraint = self.dy_equallyRelatedConstraintWithView(self.contentView, attribute: NSLayoutAttribute.CenterY)
+        self.addConstraint(centerXConstraint)
+        self.addConstraint(centerYConstraint)
         
+        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|" ,
+            options: NSLayoutFormatOptions(rawValue: 0),
+            metrics: nil,
+            views: ["contentView": self.contentView]))
+        
+        if self.verticalOffset != 0 && self.constraints.count > 0 {
+            centerYConstraint.constant = self.verticalOffset
+        }
+        
+        if let customView = self.customView  {
+            customView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[customView]|" ,
+                options: NSLayoutFormatOptions(rawValue: 0),
+                metrics: nil,
+                views: ["customView": customView]))
+            
+            customView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[customView]|" ,
+                options: NSLayoutFormatOptions(rawValue: 0),
+                metrics: nil,
+                views: ["customView": customView]))
+        } else {
+            var width = Float(self.frame.size.width)
+            width = width > 0 ? width : Float(UIScreen.mainScreen().bounds.size.width);
+            
+            let padding =  UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone ? 20.0 : roundf(width/16.0);
+            let verticalSpace = self.verticalSpace > 0 ? self.verticalSpace : 11.0;
+            
+            var subviewStrings = [String]();
+            var views = [String:UIView]();
+            let metrics = ["padding": padding];
+            
+            // Assign the image view's horizontal constraints
+            if self.imageView.superview != nil {
+                subviewStrings.append("imageView")
+                
+                views["imageView"] = self.imageView;
+                self.contentView.addConstraint(self.contentView.dy_equallyRelatedConstraintWithView(self.imageView,
+                    attribute: NSLayoutAttribute.CenterX));
+            }
+            
+            // Assign the title label's horizontal constraints
+            if (canShowTitle()) {
+                subviewStrings.append("titleLabel")
+                views["titleLabel"] = self.titleLabel;
+                self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[titleLabel(>=0)]-padding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+            }
+                // or removes from its superview
+            else {
+                self.titleLabel.removeFromSuperview()
+            }
+            
+            // Assign the detail label's horizontal constraints
+            if (canShowDetail()) {
+                subviewStrings.append("detailLabel")
+                views["detailLabel"] = self.detailLabel;
+                self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[detailLabel(>=0)]-padding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+            }
+                // or removes from its superview
+            else {
+                self.detailLabel.removeFromSuperview()
+            }
+            
+            // Assign the button's horizontal constraints
+            if (canShowButton()) {
+                subviewStrings.append("button")
+                views["button"] = self.button;
+                self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[button(>=0)]-padding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+            }
+                // or removes from its superview
+            else {
+                self.button.removeFromSuperview()
+            }
+            
+            let verticalFormat = NSMutableString()
+            
+            // Build a dynamic string format for the vertical constraints, adding a margin between each element. Default is 11 pts.
+            for i in 0 ..< subviewStrings.count {
+                let string = subviewStrings[i];
+                verticalFormat.appendFormat("[%@]", string)
+                
+                if (i < subviewStrings.count-1) {
+                    verticalFormat.appendFormat("-(%.f)-", verticalSpace)
+                }
+            }
+            
+            // Assign the vertical constraints to the content view
+            if (verticalFormat.length > 0) {
+                self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(String(format: "V:|%@|", verticalFormat),
+                    options:NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
+            }
+        }
     }
     
+}
+
+
+extension UIView {
+    func dy_equallyRelatedConstraintWithView(view:UIView, attribute:NSLayoutAttribute) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: view,
+                                  attribute: attribute,
+                                  relatedBy: NSLayoutRelation.Equal,
+                                  toItem: self,
+                                  attribute: attribute,
+                                  multiplier: 1,
+                                  constant: 0.0)
+    }
 }
