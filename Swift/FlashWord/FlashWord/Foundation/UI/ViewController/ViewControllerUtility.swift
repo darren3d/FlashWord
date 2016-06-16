@@ -8,7 +8,7 @@
 
 import UIKit
 
-let dynUIViewControllerProgressView = "dyn.key.viewcontroller.progressview"
+private let dynUIViewControllerProgressView = "dyn.key.viewcontroller.progressview"
 
 extension UIViewController {
     

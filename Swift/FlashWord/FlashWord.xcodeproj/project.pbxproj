@@ -86,6 +86,8 @@
 		844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA681D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift */; };
 		844FBA8D1D0FE2B700D6C2EA /* ViewControllerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA8C1D0FE2B700D6C2EA /* ViewControllerUtility.swift */; };
 		844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */; };
+		847D70371D1298EA0025B54A /* UIViewController+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D70361D1298EA0025B54A /* UIViewController+State.swift */; };
+		847D70391D12A4AD0025B54A /* ObjectUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D70381D12A4AD0025B54A /* ObjectUtility.swift */; };
 		8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8492F19C1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld */; };
 		F79FE96208CB634B4372980C /* Pods_FlashWord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA376F5E1793DFA7F9D953B /* Pods_FlashWord.framework */; };
 /* End PBXBuildFile section */
@@ -210,6 +212,8 @@
 		844FBA681D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorViewable.swift; sourceTree = "<group>"; };
 		844FBA8C1D0FE2B700D6C2EA /* ViewControllerUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerUtility.swift; sourceTree = "<group>"; };
 		844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYProgressView.swift; sourceTree = "<group>"; };
+		847D70361D1298EA0025B54A /* UIViewController+State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+State.swift"; sourceTree = "<group>"; };
+		847D70381D12A4AD0025B54A /* ObjectUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectUtility.swift; sourceTree = "<group>"; };
 		8492F19D1D0EA2EE00EA95EE /* FlashWord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashWord.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -356,6 +360,7 @@
 			children = (
 				6388D5BA1D0DAD630029C988 /* CGRectUtility.swift */,
 				6388D5C91D0DAFDC0029C988 /* NSTimerUtility.swift */,
+				847D70381D12A4AD0025B54A /* ObjectUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 				6388D5CC1D0DB1900029C988 /* DYViewController.swift */,
 				6388D5CE1D0DB1AC0029C988 /* DYNavigationController.swift */,
 				844FBA8C1D0FE2B700D6C2EA /* ViewControllerUtility.swift */,
+				847D70361D1298EA0025B54A /* UIViewController+State.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -830,6 +836,7 @@
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
 				844FBA731D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
 				844FBA7A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
+				847D70391D12A4AD0025B54A /* ObjectUtility.swift in Sources */,
 				6388D5EC1D108B090029C988 /* AnimationLayerCreator.swift in Sources */,
 				6388D5C81D0DAEEB0029C988 /* DYSubmitButton.swift in Sources */,
 				844FBA741D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
@@ -838,6 +845,7 @@
 				844FBA791D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				639188051D0A915800757F60 /* DynamicColor+RGBA.swift in Sources */,
 				844FBA851D0FE0F900D6C2EA /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
+				847D70371D1298EA0025B54A /* UIViewController+State.swift in Sources */,
 				844FBA7E1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
 				632D04EC1D09CB4700F9744B /* AccountData.swift in Sources */,
 				844FBA811D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,

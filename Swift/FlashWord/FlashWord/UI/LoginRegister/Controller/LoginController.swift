@@ -47,11 +47,11 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
         colorHighlighted = colorNorm
         textFieldEmail.iconColor = colorNorm
         textFieldEmail.selectedIconColor = colorHighlighted
-        textFieldEmail.iconFont = UIFont(name: "FontAwesome", size: 15)
+        textFieldEmail.iconFont = UIFont(name: "FontAwesome", size: 18)
         textFieldEmail.iconText = "\u{f003}"
         textFieldPassword.iconColor = colorNorm
         textFieldPassword.selectedIconColor = colorHighlighted
-        textFieldPassword.iconFont = UIFont(name: "FontAwesome", size: 15)
+        textFieldPassword.iconFont = UIFont(name: "FontAwesome", size: 18)
         textFieldPassword.iconText = "\u{f13e}"
         //http://fontawesome.io/cheatsheet/
         
