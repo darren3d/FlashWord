@@ -8,26 +8,40 @@
 
 import UIKit
 
-public enum DYUIState : String {
-    case Init = "init"
-    case Loading = "loading"
-    case Content = "content"
-    case Empty = "empty"
-    case Warning = "warning"
-    case Error = "error"
+public enum DYUIState : Int32 {
+    case Init = 0
+    case Loading = 1
+    case Content = 2
+    case Empty = 4
+    case Warning = 8
+    case Error = 16
+}
+
+class DYUIStateModel {
+    var title : NSAttributedString?
+    var description : NSAttributedString?
+    var image : UIImage?
+    var imageTintColor : UIColor?
+    var buttonTitle : NSAttributedString?
+    var buttonImage : UIImage?
+    var buttonBackgroundImage : UIImage?
+    var backgroundColor : UIColor?
+    var verticalOffset : CGFloat = 0.0
+    var spaceHeight : CGFloat = 0.0
 }
 
 public protocol DYUIStateDateSource : class {
-    func titleForUIState(uistate:DYUIState)->NSAttributedString
-    func descriptionForUIState(uistate:DYUIState)->NSAttributedString
-    func imageForUIState(uistate:DYUIState)->UIImage
-    func imageTintColorForUIState(uistate:DYUIState)->UIColor
-    func buttonTitleForUIState(uistate:DYUIState, buttonState:UIControlState)->NSAttributedString
-    func buttonImageForUIState(uistate:DYUIState, buttonState:UIControlState)->UIImage
-    func buttonBackgroundImageForUIState(uistate:DYUIState, buttonState:UIControlState)->UIImage
-    func buttonBackgroundColorForUIState(uistate:DYUIState, buttonState:UIControlState)->UIColor
-    func customViewForUIState(uistate:DYUIState, buttonState:UIControlState)->UIView
-    func offsetForUIState(uistate:DYUIState) -> CGPoint
+    func superViewForUIState(uistate:DYUIState)->UIView?
+    func titleForUIState(uistate:DYUIState)->NSAttributedString?
+    func descriptionForUIState(uistate:DYUIState)->NSAttributedString?
+    func imageForUIState(uistate:DYUIState)->UIImage?
+    func imageTintColorForUIState(uistate:DYUIState)->UIColor?
+    func buttonTitleForUIState(uistate:DYUIState, buttonState:UIControlState)->NSAttributedString?
+    func buttonImageForUIState(uistate:DYUIState, buttonState:UIControlState)->UIImage?
+    func buttonBackgroundImageForUIState(uistate:DYUIState, buttonState:UIControlState)->UIImage?
+    func backgroundColorForUIState(uistate:DYUIState)->UIColor?
+    func customViewForUIState(uistate:DYUIState)->UIView?
+    func verticleOffsetForUIState(uistate:DYUIState) -> CGFloat
     func spaceHeightForUIState(uistate:DYUIState) -> CGFloat
 }
 
@@ -43,9 +57,89 @@ public protocol DYUIStateDelegate : class {
 }
 
 
+//class DYUIStateAdaptor : DYUIStateDateSource {
+//    weak var viewController : UIViewController?
+//    weak var superView : UIView?
+//    var stateModels : [DYUIState : DYUIStateModel]?
+//    
+//    init(viewController : UIViewController, superView:UIView) {
+//        self.viewController = viewController;
+//        self.superView = superView;
+//    }
+//    
+//    //MARK: DYUIStateAdaptor - DYUIStateDateSource
+//    func superViewForUIState(uistate:DYUIState)->UIView? {
+//        return self.superView
+//    }
+//    
+//    func titleForUIState(uistate:DYUIState)->NSAttributedString? {
+//        return stateModels?[uistate]?.title
+//    }
+//    
+//    func descriptionForUIState(uistate:DYUIState)->NSAttributedString? {
+//        return stateModels?[uistate]?.description
+//    }
+//    
+//    func imageForUIState(uistate:DYUIState)->UIImage? {
+//        return stateModels?[uistate]?.image
+//    }
+//    
+//    func imageTintColorForUIState(uistate:DYUIState)->UIColor? {
+//        return stateModels?[uistate]?.imageTintColor
+//    }
+//    
+//    func buttonTitleForUIState(uistate:DYUIState, buttonState:UIControlState)->NSAttributedString? {
+//        return stateModels?[uistate]?.imageTintColor
+//    }
+//    
+//    func buttonImageForUIState(uistate:DYUIState, buttonState:UIControlState)->UIImage? {
+//        
+//    }
+//    
+//    func buttonBackgroundImageForUIState(uistate:DYUIState, buttonState:UIControlState)->UIImage? {
+//        
+//    }
+//    
+//    func backgroundColorForUIState(uistate:DYUIState)->UIColor? {
+//        
+//    }
+//    
+//    func customViewForUIState(uistate:DYUIState)->UIView? {
+//        
+//    }
+//    
+//    func verticleOffsetForUIState(uistate:DYUIState) -> CGFloat {
+//        
+//    }
+//    
+//    func spaceHeightForUIState(uistate:DYUIState) -> CGFloat {
+//        
+//    }
+//}
+
 private var dynDYUIStateDateSource = "dyn.key.viewcontroller.state.datasource"
 private var dynDYUIStateDelegate = "dyn.key.viewcontroller.state.delegate"
-extension UIViewController : DYUIStateViewDelegate{
+private var dynDYUIStateView = "dyn.key.viewcontroller.state.stateview"
+private var dynDYUIStateCurrentState = "dyn.key.viewcontroller.state.current"
+
+extension UIViewController : DYUIStateViewDelegate {
+    var dy_state : DYUIState {
+        get {
+            let nState = self.dy_getAssociatedObject(&dynDYUIStateCurrentState, 
+                                                     policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC) { () -> NSNumber in
+                                                        return NSNumber(int:0)
+            }
+            return DYUIState(rawValue: nState!.intValue)!
+        }
+        
+        set {
+            self.dy_setAssociatedObject(&dynDYUIStateCurrentState, 
+                                        value: NSNumber(int:newValue.rawValue),
+                                        policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    
     var dy_stateDataSource : DYUIStateDateSource? {
         get {
             guard let wrapper = self.dy_getAssociatedObject(&dynDYUIStateDateSource, 
@@ -53,6 +147,7 @@ extension UIViewController : DYUIStateViewDelegate{
                                                             initial: { 
                                                                 return WeakWrapper();
             }) else {
+                DYLog.error("dy_stateDataSource wrapper alloc failed")
                 return nil
             }
             
@@ -65,10 +160,15 @@ extension UIViewController : DYUIStateViewDelegate{
                                                             initial: { 
                                                                 return WeakWrapper();
             }) else {
+                DYLog.error("dy_stateDataSource wrapper alloc failed")
                 return
             }
             
             wrapper.target = newValue
+            
+            if newValue == nil {
+                dy_invalidate(self.dy_state)
+            }
         }
     }
     
@@ -77,8 +177,9 @@ extension UIViewController : DYUIStateViewDelegate{
             guard let wrapper = self.dy_getAssociatedObject(&dynDYUIStateDelegate, 
                                                             policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC, 
                                                             initial: { 
-                                                                return WeakWrapper();
+                                                                return WeakWrapper()
             }) else {
+                DYLog.error("dy_stateDelegate wrapper alloc failed")
                 return nil
             }
             
@@ -91,27 +192,262 @@ extension UIViewController : DYUIStateViewDelegate{
                                                             initial: { 
                                                                 return WeakWrapper();
             }) else {
+                DYLog.error("dy_stateDelegate wrapper alloc failed")
                 return
             }
             
             wrapper.target = newValue
+            if newValue == nil {
+                dy_invalidate(self.dy_state)
+            }
         }
     }
     
+    var dy_stateView : DYUIStateView? {
+        get {
+            let stateView = self.dy_getAssociatedObject(&dynDYUIStateView, 
+                                                        policy: objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC) { () -> DYUIStateView in
+                                                            let view = DYUIStateView(frame:UIScreen.mainScreen().bounds)
+                                                            view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+                                                            view.hidden = true;
+                                                            
+                                                            let tapGesture = UITapGestureRecognizer.init(target: view, action: #selector(DYUIStateView.didTapContent(_:)))
+                                                            tapGesture.delegate = view;
+                                                            view.addGestureRecognizer(tapGesture)
+                                                            return view
+            }
+            
+            
+            return stateView
+        }
+    }
+    
+    //MARK: Public
+    public func reloadState(uistate:DYUIState) {
+        if !dy_canDisplay(uistate) {
+            return
+        }
+        
+        guard let view = self.dy_stateView else {
+            return
+        }
+        
+        self.dy_state = uistate
+        
+        if dy_shouldDisplay(uistate) {
+            
+            dy_willAppear(uistate)
+            
+            if view.superview != nil {
+                guard let superview = self.dy_superView(uistate) else {
+                    return
+                }
+                
+                superview.addSubview(view)
+                superview.sendSubviewToBack(view)
+            }
+            
+            view.prepareForReuse()
+            
+            let customView = dy_customView(uistate)
+            if customView == nil {
+                view.verticalSpace = dy_verticalSpace(uistate)
+                
+                //配置image
+                if let image = dy_image(uistate) {
+                    let imageTintColor = dy_imageTintColor(uistate)
+                    let renderingMode = imageTintColor != nil ? UIImageRenderingMode.AlwaysTemplate : UIImageRenderingMode.AlwaysOriginal
+                    view.imageView.image = image.imageWithRenderingMode(renderingMode)
+                    view.imageView.tintColor = imageTintColor
+                }
+                
+                //配置title
+                if let titleLabelString = dy_titleLabelString(uistate) {
+                    view.titleLabel.attributedText = titleLabelString
+                }
+                
+                //配置detail
+                if let detailLabelString = dy_detailLabelString(uistate) {
+                    view.detailLabel.attributedText = detailLabelString
+                }
+                
+                //配置button
+                if let buttonImage = dy_buttonImageForState(uistate, buttonState: UIControlState.Normal) {
+                    view.button.setImage(buttonImage, 
+                                         forState: UIControlState.Normal)
+                    view.button.setImage(dy_buttonImageForState(uistate, buttonState: UIControlState.Highlighted), 
+                                         forState: UIControlState.Highlighted)
+                } else if let buttonTitle = dy_buttonTitleForState(uistate, buttonState: UIControlState.Normal) {
+                    view.button.setAttributedTitle(buttonTitle, 
+                                                   forState: UIControlState.Normal)
+                    view.button.setAttributedTitle(dy_buttonTitleForState(uistate, buttonState: UIControlState.Highlighted), 
+                                                   forState: UIControlState.Highlighted)
+                    view.button.setBackgroundImage(dy_buttonImageForState(uistate, buttonState: UIControlState.Normal), 
+                                                   forState: UIControlState.Normal)
+                    view.button.setBackgroundImage(dy_buttonImageForState(uistate, buttonState: UIControlState.Highlighted), 
+                                                   forState: UIControlState.Highlighted)
+                }
+            } else {
+                view.customView = customView
+            }
+            
+            view.verticalOffset = dy_verticalOffset(uistate)
+            view.backgroundColor = dy_backgroundColor(uistate)
+            view.hidden = false
+            view.clipsToBounds = true
+            
+            view.userInteractionEnabled = dy_isTouchAllowed(uistate)
+            
+            view.setupConstraints()
+            view.layoutIfNeeded()
+            
+            dy_didAppear(uistate)
+        }
+        else if view.superview != nil {
+            dy_invalidate(uistate)
+        }
+    }
+    
+    private func dy_invalidate(uistate:DYUIState) {
+        dy_willDisappear(uistate)
+        if let view = self.dy_stateView {
+            view.prepareForReuse()
+            view.removeFromSuperview()
+        }
+        dy_didDisappear(uistate)
+    }
     
     //MARK: DYUIStateViewDelegate
     func didTapButton(view: DYUIStateView, sender: AnyObject) {
-        
+        DYLog.info("didTapButton")
+    }
+    
+    func didTapContentView(view: DYUIStateView, sender: AnyObject) {
+        DYLog.info("didTapContentView")
+    }
+    
+    func isTouchAllowed(view:DYUIStateView) -> Bool {
+        return dy_isTouchAllowed(self.dy_state)
+    }
+    
+    //MARK: Private DateSource gettter
+    private func dy_canDisplay(uistate:DYUIState) -> Bool {
+        return self.dy_stateDataSource != nil
+    }
+    
+    private func dy_superView(uistate:DYUIState) -> UIView? {
+        return self.dy_stateDataSource?.superViewForUIState(uistate)
+    }
+    
+    private func dy_titleLabelString(uistate:DYUIState) -> NSAttributedString? {
+        return self.dy_stateDataSource?.titleForUIState(uistate)
+    }
+    
+    private func dy_detailLabelString(uistate:DYUIState) -> NSAttributedString? {
+        return self.dy_stateDataSource?.descriptionForUIState(uistate)
+    }
+    
+    private func dy_image(uistate:DYUIState) -> UIImage? {
+        return self.dy_stateDataSource?.imageForUIState(uistate)
+    }
+    
+    private func dy_imageTintColor(uistate:DYUIState) -> UIColor? {
+        return self.dy_stateDataSource?.imageTintColorForUIState(uistate)
+    }
+    
+    private func dy_buttonTitleForState(uistate:DYUIState, buttonState:UIControlState) -> NSAttributedString? {
+        return self.dy_stateDataSource?.buttonTitleForUIState(uistate, buttonState: buttonState)
+    }
+    
+    private func dy_buttonImageForState(uistate:DYUIState, buttonState:UIControlState) -> UIImage? {
+        return self.dy_stateDataSource?.buttonImageForUIState(uistate, buttonState: buttonState)
+    }
+    
+    private func dy_buttonBackgroundImageForState(uistate:DYUIState, buttonState:UIControlState) -> UIImage? {
+        return self.dy_stateDataSource?.buttonBackgroundImageForUIState(uistate, buttonState: buttonState)
+    }
+    
+    private func dy_backgroundColor(uistate:DYUIState) -> UIColor {
+        guard let color = self.dy_stateDataSource?.backgroundColorForUIState(uistate)
+            else {
+                return UIColor.clearColor()
+        }
+        return color
+    }
+    
+    private func dy_customView(uistate:DYUIState) -> UIView? {
+        return self.dy_stateDataSource?.customViewForUIState(uistate)
+    }
+    
+    private func dy_verticalOffset(uistate:DYUIState) -> CGFloat {
+        guard let offset = self.dy_stateDataSource?.verticleOffsetForUIState(uistate)
+            else {
+                return 0
+        }
+        return offset
+    }
+    
+    private func dy_verticalSpace(uistate:DYUIState) -> CGFloat {
+        guard let space = self.dy_stateDataSource?.spaceHeightForUIState(uistate)
+            else {
+                return 0
+        }
+        return space
+    }
+    
+    //MARK: Private Delegate gettter
+    private func dy_shouldDisplay(uistate:DYUIState) -> Bool {
+        guard let display = self.dy_stateDelegate?.shouldDisplayForUIState(uistate)
+            else {
+                return true
+        }
+        return display
+    }
+    
+    private func dy_isTouchAllowed(uistate:DYUIState) -> Bool {
+        guard let allow = self.dy_stateDelegate?.shouldAllowTouchForUIState(uistate)
+            else {
+                return true
+        }
+        return allow
+    }
+    
+    private func dy_willAppear(uistate:DYUIState) {
+        self.dy_stateDelegate?.willAppearForUIState(uistate)
+    }
+    
+    private func dy_didAppear(uistate:DYUIState) {
+        self.dy_stateDelegate?.didAppearForUIState(uistate)
+    }
+    
+    private func dy_willDisappear(uistate:DYUIState) {
+        self.dy_stateDelegate?.willDisappearForUIState(uistate)
+    }
+    
+    private func dy_didDisappear(uistate:DYUIState) {
+        self.dy_stateDelegate?.didDisappearForUIState(uistate)
+    }
+    
+    private func dy_didTapContentView(sender:AnyObject, uistate:DYUIState) -> Void {
+        self.dy_stateDelegate?.didTapViewForUIState(uistate)
+    }
+    
+    private func dy_didTapDataButton(sender:AnyObject, uistate:DYUIState) -> Void {
+        self.dy_stateDelegate?.didTapButtonForUIState(uistate)
     }
 }
 
-
+@objc
 protocol DYUIStateViewDelegate : class {
     func didTapButton(view:DYUIStateView, sender:AnyObject) -> Void;
+    func didTapContentView(view:DYUIStateView, sender:AnyObject) -> Void;
+    func isTouchAllowed(view:DYUIStateView) -> Bool
+    optional
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool
 }
 
-class DYUIStateView: UIView {
-    override init(frame:CGRect) {
+public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
+    override public init(frame:CGRect) {
         super.init(frame: frame)
         
         if self.contentView.superview == nil {
@@ -119,7 +455,7 @@ class DYUIStateView: UIView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         if self.contentView.superview == nil {
@@ -248,6 +584,29 @@ class DYUIStateView: UIView {
     @objc
     private func didTapButton(sender:AnyObject) {
         delegate?.didTapButton(self, sender: sender)
+    }
+    
+    @objc
+    private func didTapContent(sender:AnyObject) {
+        delegate?.didTapContentView(self, sender: sender)
+    }
+    
+    //MARK: UIGestureRecognizerDelegate
+    public override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if self.isEqual(gestureRecognizer.view) {
+            return (delegate?.isTouchAllowed(self))!
+        }
+        return super.gestureRecognizerShouldBegin(gestureRecognizer)
+    }
+    
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        let tapGesture = self.tapGesture
+        if gestureRecognizer == tapGesture || otherGestureRecognizer == tapGesture {
+            return true
+        }
+        
+        let hasGestureRecognizer = delegate?.gestureRecognizer?(gestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer: otherGestureRecognizer)
+        return hasGestureRecognizer!
     }
     
     

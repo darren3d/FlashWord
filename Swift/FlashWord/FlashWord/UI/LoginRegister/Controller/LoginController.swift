@@ -123,8 +123,8 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
         //        
         btnLogin.rx_tap
             .subscribeNext{ [weak self, weak loginViewModel] in  
-                self?.showProgressView()
-                
+                //                self?.showProgressView()
+                self?.reloadState(DYUIState.Empty)
             }
             .addDisposableTo(disposeBag)
         
