@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
+class LoginController: DYViewController, UIViewControllerTransitioningDelegate, DYUIStateDateSource {
     @IBOutlet weak var textFieldEmail : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var textFieldPassword : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var btnLogin : DYSubmitButton!
@@ -20,6 +20,8 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dy_stateDataSource = self
+        
         self.view.backgroundColor = UIColor.flat(FlatColors.MidnightBlue)
         
         let loginViewModel = LoginViewModel()
@@ -153,5 +155,54 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate {
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return nil
+    }
+    
+    //MARK: DYUIState
+    func superViewForUIState(uistate:DYUIState)->UIView? {
+        return self.view
+    }
+    
+    func titleForUIState(uistate:DYUIState)->NSAttributedString? {
+        return NSAttributedString(string: "TestTestTestTestTestTest")
+    }
+    
+    func descriptionForUIState(uistate:DYUIState)->NSAttributedString? {
+        return NSAttributedString(string: "descriptiondescriptiondescriptiondescriptiondescription")
+    }
+    
+    func imageForUIState(uistate:DYUIState)->UIImage? {
+        return UIImage(named: "logo-40")
+    }
+    
+    func imageTintColorForUIState(uistate:DYUIState)->UIColor? {
+        return nil
+    }
+    
+    func buttonTitleForUIState(uistate:DYUIState, buttonState:UIControlState)->NSAttributedString? {
+        return NSAttributedString(string: "Retry")
+    }
+    
+    func buttonImageForUIState(uistate:DYUIState, buttonState:UIControlState)->UIImage? {
+        return nil
+    }
+    
+    func buttonBackgroundImageForUIState(uistate:DYUIState, buttonState:UIControlState)->UIImage? {
+        return nil
+    }
+    
+    func backgroundColorForUIState(uistate:DYUIState)->UIColor? {
+        return nil
+    }
+    
+    func customViewForUIState(uistate:DYUIState)->UIView? {
+        return nil
+    }
+    
+    func verticleOffsetForUIState(uistate:DYUIState) -> CGFloat {
+        return 0
+    }
+    
+    func spaceHeightForUIState(uistate:DYUIState) -> CGFloat {
+        return 0
     }
 }

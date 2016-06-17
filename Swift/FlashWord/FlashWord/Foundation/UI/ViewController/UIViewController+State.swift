@@ -223,7 +223,7 @@ extension UIViewController : DYUIStateViewDelegate {
     }
     
     //MARK: Public
-    public func reloadState(uistate:DYUIState) {
+    func reloadState(uistate:DYUIState) {
         if !dy_canDisplay(uistate) {
             return
         }
@@ -238,13 +238,13 @@ extension UIViewController : DYUIStateViewDelegate {
             
             dy_willAppear(uistate)
             
-            if view.superview != nil {
+            if view.superview == nil {
                 guard let superview = self.dy_superView(uistate) else {
                     return
                 }
                 
                 superview.addSubview(view)
-                superview.sendSubviewToBack(view)
+                superview.bringSubviewToFront(view)
             }
             
             view.prepareForReuse()
@@ -593,8 +593,8 @@ public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
     
     //MARK: UIGestureRecognizerDelegate
     public override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if self.isEqual(gestureRecognizer.view) {
-            return (delegate?.isTouchAllowed(self))!
+        if self.isEqual(gestureRecognizer.view) && delegate != nil{
+            return delegate!.isTouchAllowed(self)
         }
         return super.gestureRecognizerShouldBegin(gestureRecognizer)
     }
@@ -605,8 +605,8 @@ public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
             return true
         }
         
-        let hasGestureRecognizer = delegate?.gestureRecognizer?(gestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer: otherGestureRecognizer)
-        return hasGestureRecognizer!
+//        let hasGestureRecognizer = delegate?.gestureRecognizer?(gestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer: otherGestureRecognizer)
+        return false
     }
     
     
