@@ -9,18 +9,27 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 class LoginController: DYViewController, UIViewControllerTransitioningDelegate, DYUIStateDateSource {
     @IBOutlet weak var textFieldEmail : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var textFieldPassword : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var btnLogin : DYSubmitButton!
     
-    //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster
+    //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, PrediKit
     //FIXME: 使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dy_stateDataSource = self
+        
+        //        let testView  = DYUIStateView(frame: self.view.frame)
+        //        self.view.addSubview(testView)
+        //        testView.snp_makeConstraints { (make) in
+        //            make.edges.equalTo(self.view)
+        //        }
+        //        testView.backgroundColor = UIColor.blueColor()
+        //        
         
         self.view.backgroundColor = UIColor.flat(FlatColors.MidnightBlue)
         
@@ -126,7 +135,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         btnLogin.rx_tap
             .subscribeNext{ [weak self, weak loginViewModel] in  
                 //                self?.showProgressView()
-                self?.reloadState(DYUIState.Empty)
+                self?.dy_state = DYUIState.Empty
             }
             .addDisposableTo(disposeBag)
         
@@ -203,6 +212,6 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     }
     
     func spaceHeightForUIState(uistate:DYUIState) -> CGFloat {
-        return 0
+        return 20
     }
 }

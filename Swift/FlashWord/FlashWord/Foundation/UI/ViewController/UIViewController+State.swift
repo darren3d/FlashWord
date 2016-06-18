@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 public enum DYUIState : Int32 {
     case Init = 0
@@ -133,9 +134,13 @@ extension UIViewController : DYUIStateViewDelegate {
         }
         
         set {
-            self.dy_setAssociatedObject(&dynDYUIStateCurrentState, 
-                                        value: NSNumber(int:newValue.rawValue),
-                                        policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            if newValue != dy_state {
+                self.dy_setAssociatedObject(&dynDYUIStateCurrentState,
+                                            value: NSNumber(int:newValue.rawValue),
+                                            policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                
+                dy_reloadUIState()
+            }
         }
     }
     
@@ -223,7 +228,9 @@ extension UIViewController : DYUIStateViewDelegate {
     }
     
     //MARK: Public
-    func reloadState(uistate:DYUIState) {
+    func dy_reloadUIState() {
+        let uistate = self.dy_state
+        
         if !dy_canDisplay(uistate) {
             return
         }
@@ -231,8 +238,6 @@ extension UIViewController : DYUIStateViewDelegate {
         guard let view = self.dy_stateView else {
             return
         }
-        
-        self.dy_state = uistate
         
         if dy_shouldDisplay(uistate) {
             
@@ -300,6 +305,14 @@ extension UIViewController : DYUIStateViewDelegate {
             
             view.setupConstraints()
             view.layoutIfNeeded()
+            //            view.superview!.layoutIfNeeded()
+            
+            
+            
+            
+            
+            view.backgroundColor = UIColor.cyanColor()
+            view.contentView.backgroundColor = UIColor.blueColor()
             
             dy_didAppear(uistate)
         }
@@ -452,6 +465,11 @@ public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
         
         if self.contentView.superview == nil {
             self.addSubview(self.contentView)
+            
+            //            self.contentView.snp_makeConstraints(closure: { (make) in
+            //                make.center.equalTo(self)
+            //                make.size.equalTo(CGSize(width: 200, height: 200))
+            //            })
         }
     }
     
@@ -465,12 +483,10 @@ public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
     
     var delegate : DYUIStateViewDelegate? = nil
     
-    lazy var contentView : UIView = {
+    private lazy var contentView : UIView = {
         let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = UIColor.clearColor()
         contentView.userInteractionEnabled = true;
-        contentView.alpha = 0
+        //        contentView.alpha = 0
         return contentView
     }()
     
@@ -489,14 +505,14 @@ public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
     
     lazy var titleLabel : UILabel = {
         let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false;
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.backgroundColor = UIColor.clearColor()
-        titleLabel.font = UIFont.systemFontOfSize(27.0);
+        titleLabel.font = UIFont.systemFontOfSize(27.0)
         titleLabel.textColor = UIColor(white:0.6, alpha: 1)
-        titleLabel.textAlignment = NSTextAlignment.Center;
+        titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping;
         titleLabel.numberOfLines = 0;
-        titleLabel.accessibilityIdentifier = "state title";
+        titleLabel.accessibilityIdentifier = "state title"
         
         self.contentView.addSubview(titleLabel)
         return titleLabel
@@ -605,7 +621,7 @@ public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
             return true
         }
         
-//        let hasGestureRecognizer = delegate?.gestureRecognizer?(gestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer: otherGestureRecognizer)
+        //        let hasGestureRecognizer = delegate?.gestureRecognizer?(gestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer: otherGestureRecognizer)
         return false
     }
     
@@ -617,9 +633,9 @@ public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
     }
     
     func prepareForReuse() {
-        self.contentView.subviews.forEach { (subView) in
-            subView.removeFromSuperview()
-        }
+        //        self.contentView.subviews.forEach { (subView) in
+        //            subView.removeFromSuperview()
+        //        }
         
         //        self.titleLabel = nil
         //        self.detailLabel = nil
@@ -632,105 +648,105 @@ public class DYUIStateView: UIView, UIGestureRecognizerDelegate {
     
     
     func setupConstraints() {
+        //self的约束
+        guard let superView = self.superview else {
+            return
+        }
+        
+        self.snp_remakeConstraints { make in
+            make.edges.equalTo(superView)
+        }
+        
+        
         // contentView约束
         // 居中
-        let centerXConstraint = self.dy_equallyRelatedConstraintWithView(self.contentView, attribute: NSLayoutAttribute.CenterX)
-        let centerYConstraint = self.dy_equallyRelatedConstraintWithView(self.contentView, attribute: NSLayoutAttribute.CenterY)
-        self.addConstraint(centerXConstraint)
-        self.addConstraint(centerYConstraint)
-        
-        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|" ,
-            options: NSLayoutFormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["contentView": self.contentView]))
-        
-        if self.verticalOffset != 0 && self.constraints.count > 0 {
-            centerYConstraint.constant = self.verticalOffset
+        self.contentView.snp_remakeConstraints { make in
+            make.centerX.equalTo(self)
+            make.centerY.equalTo(self).offset(self.verticalOffset)
+            make.leading.equalTo(self).offset(20)
+            make.trailing.equalTo(self).offset(-20)
         }
         
-        if let customView = self.customView  {
-            customView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[customView]|" ,
-                options: NSLayoutFormatOptions(rawValue: 0),
-                metrics: nil,
-                views: ["customView": customView]))
+        
+        //        if let customView = self.customView  {
+        //            customView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[customView]|" ,
+        //                options: NSLayoutFormatOptions(rawValue: 0),
+        //                metrics: nil,
+        //                views: ["customView": customView]))
+        //            
+        //            customView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[customView]|" ,
+        //                options: NSLayoutFormatOptions(rawValue: 0),
+        //                metrics: nil,
+        //                views: ["customView": customView]))
+        //        } else {
+        //            var width = Float(self.frame.size.width)
+        //            width = width > 0 ? width : Float(UIScreen.mainScreen().bounds.size.width);
+        //            
+        //            let padding =  UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone ? 20.0 : roundf(width/16.0);
+        //            let verticalSpace = self.verticalSpace > 0 ? self.verticalSpace : 11.0;
+        //            
+        //            var subviewStrings = [String]();
+        //            var views = [String:UIView]();
+        //            let metrics = ["padding": padding];
+        //            
+        // Assign the image view's horizontal constraints
+        self.imageView.snp_remakeConstraints { make in
+            make.centerX.equalTo(self.contentView)
+            make.top.equalTo(self.contentView)
             
-            customView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[customView]|" ,
-                options: NSLayoutFormatOptions(rawValue: 0),
-                metrics: nil,
-                views: ["customView": customView]))
+            make.bottom.lessThanOrEqualTo(self.contentView)
+        }
+        
+        var topAlignView : UIView = self.imageView
+        // Assign the title label's horizontal constraints
+        if (canShowTitle()) {
+            self.titleLabel.hidden = false
+            self.titleLabel.snp_remakeConstraints { make in
+                make.leading.equalTo(self.contentView).offset(35)
+                make.trailing.equalTo(self.contentView).offset(-35)
+                make.top.equalTo(topAlignView.snp_bottom).offset(self.verticalSpace)
+                
+                make.bottom.lessThanOrEqualTo(self.contentView)
+            }
+            
+            topAlignView = self.titleLabel
         } else {
-            var width = Float(self.frame.size.width)
-            width = width > 0 ? width : Float(UIScreen.mainScreen().bounds.size.width);
-            
-            let padding =  UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone ? 20.0 : roundf(width/16.0);
-            let verticalSpace = self.verticalSpace > 0 ? self.verticalSpace : 11.0;
-            
-            var subviewStrings = [String]();
-            var views = [String:UIView]();
-            let metrics = ["padding": padding];
-            
-            // Assign the image view's horizontal constraints
-            if self.imageView.superview != nil {
-                subviewStrings.append("imageView")
+            self.titleLabel.hidden = true
+            self.titleLabel.snp_removeConstraints()
+        }
+        
+        // Assign the detail label's horizontal constraints
+        if (canShowDetail()) {
+            self.detailLabel.hidden = false
+            self.detailLabel.snp_remakeConstraints { make in
+                make.leading.equalTo(self.contentView).offset(15)
+                make.trailing.equalTo(self.contentView).offset(-15)
+                make.top.equalTo(topAlignView.snp_bottom).offset(self.verticalSpace)
                 
-                views["imageView"] = self.imageView;
-                self.contentView.addConstraint(self.contentView.dy_equallyRelatedConstraintWithView(self.imageView,
-                    attribute: NSLayoutAttribute.CenterX));
+                make.bottom.lessThanOrEqualTo(self.contentView)
             }
             
-            // Assign the title label's horizontal constraints
-            if (canShowTitle()) {
-                subviewStrings.append("titleLabel")
-                views["titleLabel"] = self.titleLabel;
-                self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[titleLabel(>=0)]-padding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
-            }
-                // or removes from its superview
-            else {
-                self.titleLabel.removeFromSuperview()
-            }
-            
-            // Assign the detail label's horizontal constraints
-            if (canShowDetail()) {
-                subviewStrings.append("detailLabel")
-                views["detailLabel"] = self.detailLabel;
-                self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[detailLabel(>=0)]-padding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
-            }
-                // or removes from its superview
-            else {
-                self.detailLabel.removeFromSuperview()
-            }
-            
-            // Assign the button's horizontal constraints
-            if (canShowButton()) {
-                subviewStrings.append("button")
-                views["button"] = self.button;
-                self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[button(>=0)]-padding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
-            }
-                // or removes from its superview
-            else {
-                self.button.removeFromSuperview()
-            }
-            
-            let verticalFormat = NSMutableString()
-            
-            // Build a dynamic string format for the vertical constraints, adding a margin between each element. Default is 11 pts.
-            for i in 0 ..< subviewStrings.count {
-                let string = subviewStrings[i];
-                verticalFormat.appendFormat("[%@]", string)
+            topAlignView = self.detailLabel
+        } else {
+            self.detailLabel.hidden = true
+            self.detailLabel.snp_removeConstraints()
+        }
+        
+        // Assign the button's horizontal constraints
+        if (canShowButton()) {
+            self.button.hidden = false
+            self.button.snp_remakeConstraints { make in
+                make.leading.equalTo(self.contentView).offset(60)
+                make.trailing.equalTo(self.contentView).offset(-60)
+                make.top.equalTo(topAlignView.snp_bottom).offset(self.verticalSpace)
                 
-                if (i < subviewStrings.count-1) {
-                    verticalFormat.appendFormat("-(%.f)-", verticalSpace)
-                }
+                make.bottom.lessThanOrEqualTo(self.contentView)
             }
-            
-            // Assign the vertical constraints to the content view
-            if (verticalFormat.length > 0) {
-                self.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(String(format: "V:|%@|", verticalFormat),
-                    options:NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views))
-            }
+        } else {
+            self.button.hidden = true
+            self.button.snp_removeConstraints()
         }
     }
-    
 }
 
 
