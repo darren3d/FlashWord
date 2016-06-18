@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3Qa-R2-AFX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3Qa-R2-AFX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -174,19 +174,35 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="onButtonSubmit:" destination="lYH-S6-VYf" eventType="touchUpInside" id="wC7-kr-zQo"/>
+                                    <action selector="onButtonLogin:" destination="lYH-S6-VYf" eventType="touchUpInside" id="exd-tR-dGp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RD-Kf-SVY">
+                                <rect key="frame" x="144" y="493" width="86" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="SWX-8q-2XX"/>
+                                    <constraint firstAttribute="height" constant="30" id="g5w-fm-sCj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="新用户注册">
+                                    <color key="titleColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onButtonRegister:" destination="lYH-S6-VYf" eventType="touchUpInside" id="ryx-Gs-JEy"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MLi-ND-dc8" firstAttribute="top" secondItem="MYU-db-anl" secondAttribute="bottom" constant="42" id="1wv-Eb-Uc8"/>
+                            <constraint firstItem="9RD-Kf-SVY" firstAttribute="centerX" secondItem="5Ln-jU-6oh" secondAttribute="centerX" id="99O-OE-BnK"/>
                             <constraint firstItem="MLi-ND-dc8" firstAttribute="centerY" secondItem="5Ln-jU-6oh" secondAttribute="centerY" id="9JU-vb-xld"/>
                             <constraint firstItem="WKi-hT-V5b" firstAttribute="top" secondItem="MLi-ND-dc8" secondAttribute="bottom" constant="78" id="ECJ-lh-oKS"/>
                             <constraint firstItem="WKi-hT-V5b" firstAttribute="centerY" secondItem="5Ln-jU-6oh" secondAttribute="centerY" id="MGx-RV-iSw"/>
                             <constraint firstItem="WKi-hT-V5b" firstAttribute="top" secondItem="MYU-db-anl" secondAttribute="bottom" constant="44" id="PQF-N2-bqo"/>
                             <constraint firstItem="WKi-hT-V5b" firstAttribute="centerX" secondItem="5Ln-jU-6oh" secondAttribute="centerX" id="RsA-Jg-0qd"/>
                             <constraint firstItem="MYU-db-anl" firstAttribute="centerX" secondItem="5Ln-jU-6oh" secondAttribute="centerX" id="lYR-jc-9dC"/>
+                            <constraint firstItem="9RD-Kf-SVY" firstAttribute="top" secondItem="WKi-hT-V5b" secondAttribute="bottom" constant="20" id="pB1-ce-a8G"/>
                             <constraint firstItem="MLi-ND-dc8" firstAttribute="centerX" secondItem="5Ln-jU-6oh" secondAttribute="centerX" id="tce-QT-4WI"/>
                         </constraints>
                         <variation key="default">
@@ -199,13 +215,120 @@
                     <navigationItem key="navigationItem" id="hT6-f7-YfF"/>
                     <connections>
                         <outlet property="btnLogin" destination="WKi-hT-V5b" id="FnJ-f3-3eJ"/>
+                        <outlet property="btnRegiser" destination="9RD-Kf-SVY" id="O3t-rK-yNk"/>
                         <outlet property="textFieldEmail" destination="MYU-db-anl" id="WcC-3g-eJn"/>
                         <outlet property="textFieldPassword" destination="MLi-ND-dc8" id="S7B-En-Bo8"/>
+                        <segue destination="FIC-G5-cVy" kind="show" id="eMC-pc-tzo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wa4-OX-dHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405.5" y="1113.5"/>
+            <point key="canvasLocation" x="431.5" y="1113.5"/>
+        </scene>
+        <!--Register Controller-->
+        <scene sceneID="Cv6-VF-1Qk">
+            <objects>
+                <viewController storyboardIdentifier="RegisterController" id="FIC-G5-cVy" customClass="RegisterController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tSD-a2-q88"/>
+                        <viewControllerLayoutGuide type="bottom" id="vdu-Te-reh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="370-2R-Dy6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSu-YU-eIx" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="102" y="227" width="170" height="43"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="FBh-OW-n9H"/>
+                                    <constraint firstAttribute="height" constant="43" id="zdr-s7-DsP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Arrival City"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Arrival City"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Arrival City"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10V-nW-s5L" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="102.5" y="312" width="170" height="43"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="EES-mA-Eg5"/>
+                                    <constraint firstAttribute="width" constant="170" id="hyo-dr-WCO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Arrival City"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Arrival City"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Arrival City"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="selectedLineHeight">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-1E-O0g" customClass="DYSubmitButton" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="112.5" y="433" width="150" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Qu1-Pb-ovK"/>
+                                    <constraint firstAttribute="height" constant="40" id="bbE-hv-meo"/>
+                                    <constraint firstAttribute="width" constant="150" id="ySU-67-c7J"/>
+                                </constraints>
+                                <state key="normal" title="注  册"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                        <color key="value" red="0.1058823529" green="0.81176470590000005" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                        <color key="value" red="0.1215686275" green="0.91764705879999997" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Qu1-Pb-ovK"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onButtonRegister:" destination="FIC-G5-cVy" eventType="touchUpInside" id="wry-d2-SgL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Ia-1E-O0g" firstAttribute="centerX" secondItem="370-2R-Dy6" secondAttribute="centerX" id="N5u-VQ-QQJ"/>
+                            <constraint firstItem="6Ia-1E-O0g" firstAttribute="top" secondItem="sSu-YU-eIx" secondAttribute="bottom" constant="44" id="OFb-yS-0x2"/>
+                            <constraint firstItem="10V-nW-s5L" firstAttribute="centerX" secondItem="370-2R-Dy6" secondAttribute="centerX" id="Yi9-qp-dr8"/>
+                            <constraint firstItem="10V-nW-s5L" firstAttribute="centerY" secondItem="370-2R-Dy6" secondAttribute="centerY" id="eRM-s1-IZE"/>
+                            <constraint firstItem="6Ia-1E-O0g" firstAttribute="centerY" secondItem="370-2R-Dy6" secondAttribute="centerY" id="mF0-WO-wsm"/>
+                            <constraint firstItem="6Ia-1E-O0g" firstAttribute="top" secondItem="10V-nW-s5L" secondAttribute="bottom" constant="78" id="pKe-L5-OOl"/>
+                            <constraint firstItem="sSu-YU-eIx" firstAttribute="centerX" secondItem="370-2R-Dy6" secondAttribute="centerX" id="pvh-ot-FtL"/>
+                            <constraint firstItem="10V-nW-s5L" firstAttribute="top" secondItem="sSu-YU-eIx" secondAttribute="bottom" constant="42" id="sfp-d2-y6x"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mF0-WO-wsm"/>
+                                <exclude reference="OFb-yS-0x2"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Nb-6b-yaa"/>
+                    <connections>
+                        <outlet property="btnLogin" destination="6Ia-1E-O0g" id="jzy-2v-pYt"/>
+                        <outlet property="textFieldEmail" destination="sSu-YU-eIx" id="7zJ-qT-DJx"/>
+                        <outlet property="textFieldPassword" destination="10V-nW-s5L" id="LgO-TV-Dzb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ShG-yP-8VQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="891.5" y="1113.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

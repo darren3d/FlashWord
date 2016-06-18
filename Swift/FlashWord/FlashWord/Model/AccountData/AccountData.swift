@@ -7,10 +7,12 @@
 //
 
 import Foundation
-import CoreData
+import AVOSCloud
 
-@objc(AccountData)
-class AccountData: NSManagedObject {
-    @NSManaged var sid: String?
-    @NSManaged var name: String?
+class AccountData: AVUser {
+    @NSManaged var age: Int32
+    
+    override static func parseClassName() -> String! {
+        return "_User"
+    }
 }

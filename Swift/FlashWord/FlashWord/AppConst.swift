@@ -7,7 +7,7 @@
 //
 
 import UIKit
-public typealias CommonCallback = (object:AnyObject?, error:NSError!)->Void
+public typealias CommonCallback = (AnyObject?, NSError?)->Void
 
 public enum Environment : Int8 {
     case Invalid = 0

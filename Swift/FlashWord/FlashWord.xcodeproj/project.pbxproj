@@ -38,6 +38,10 @@
 		6388D5EC1D108B090029C988 /* AnimationLayerCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5E91D108B090029C988 /* AnimationLayerCreator.swift */; };
 		6388D5ED1D108B090029C988 /* BusyNavigationBarOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5EA1D108B090029C988 /* BusyNavigationBarOptions.swift */; };
 		6388D5EE1D108B090029C988 /* UINavigationBar+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5EB1D108B090029C988 /* UINavigationBar+Animation.swift */; };
+		6388D5F01D15B19B0029C988 /* Account+Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5EF1D15B19B0029C988 /* Account+Business.swift */; };
+		6388D5F21D15CB030029C988 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5F11D15CB030029C988 /* RegisterController.swift */; };
+		6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5F31D15CD9B0029C988 /* LoginVM.swift */; };
+		6388D5F61D15CD9B0029C988 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5F41D15CD9B0029C988 /* RegisterVM.swift */; };
 		639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F31D09D7A800757F60 /* XCGLogger.swift */; };
 		639187F71D09EC1800757F60 /* DYLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F61D09EC1800757F60 /* DYLog.swift */; };
 		639187F91D09EE4200757F60 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F81D09EE4200757F60 /* AppConst.swift */; };
@@ -48,7 +52,6 @@
 		639188071D0A915800757F60 /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639188031D0A915800757F60 /* HSL.swift */; };
 		6391880A1D0A930500757F60 /* FlatUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639188091D0A930500757F60 /* FlatUIColors.swift */; };
 		844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */; };
-		844FBA411D0FBFFE00D6C2EA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA401D0FBFFE00D6C2EA /* LoginViewModel.swift */; };
 		844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */; };
 		844FBA6A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA461D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift */; };
 		844FBA6B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA471D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift */; };
@@ -163,6 +166,10 @@
 		6388D5E91D108B090029C988 /* AnimationLayerCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationLayerCreator.swift; sourceTree = "<group>"; };
 		6388D5EA1D108B090029C988 /* BusyNavigationBarOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusyNavigationBarOptions.swift; sourceTree = "<group>"; };
 		6388D5EB1D108B090029C988 /* UINavigationBar+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Animation.swift"; sourceTree = "<group>"; };
+		6388D5EF1D15B19B0029C988 /* Account+Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+Business.swift"; sourceTree = "<group>"; };
+		6388D5F11D15CB030029C988 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		6388D5F31D15CD9B0029C988 /* LoginVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		6388D5F41D15CD9B0029C988 /* RegisterVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		639187F31D09D7A800757F60 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		639187F61D09EC1800757F60 /* DYLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLog.swift; sourceTree = "<group>"; };
 		639187F81D09EE4200757F60 /* AppConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
@@ -173,7 +180,6 @@
 		639188031D0A915800757F60 /* HSL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSL.swift; sourceTree = "<group>"; };
 		639188091D0A930500757F60 /* FlatUIColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatUIColors.swift; sourceTree = "<group>"; };
 		844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DYViewModel.swift; path = FlashWord/Model/DYViewModel.swift; sourceTree = SOURCE_ROOT; };
-		844FBA401D0FBFFE00D6C2EA /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = FlashWord/Model/LoginViewModel.swift; sourceTree = SOURCE_ROOT; };
 		844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
 		844FBA461D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotate.swift; sourceTree = "<group>"; };
 		844FBA471D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotateMultiple.swift; sourceTree = "<group>"; };
@@ -282,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				632D04EA1D09CB4700F9744B /* AccountData.swift */,
+				6388D5EF1D15B19B0029C988 /* Account+Business.swift */,
 			);
 			path = AccountData;
 			sourceTree = "<group>";
@@ -434,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				6388D5D51D0DB3700029C988 /* LoginController.swift */,
+				6388D5F11D15CB030029C988 /* RegisterController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -441,8 +449,9 @@
 		6388D5D61D0DB3700029C988 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6388D5F31D15CD9B0029C988 /* LoginVM.swift */,
+				6388D5F41D15CD9B0029C988 /* RegisterVM.swift */,
 				844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */,
-				844FBA401D0FBFFE00D6C2EA /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -816,6 +825,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844FBA6D1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */,
+				6388D5F01D15B19B0029C988 /* Account+Business.swift in Sources */,
 				639187F91D09EE4200757F60 /* AppConst.swift in Sources */,
 				639188071D0A915800757F60 /* HSL.swift in Sources */,
 				844FBA721D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
@@ -826,6 +836,7 @@
 				639187FD1D09FB3E00757F60 /* DYUserDefaults.swift in Sources */,
 				844FBA7C1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBlank.swift in Sources */,
 				6388D5CD1D0DB1900029C988 /* DYViewController.swift in Sources */,
+				6388D5F61D15CD9B0029C988 /* RegisterVM.swift in Sources */,
 				639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */,
 				6388D5DD1D0DC45B0029C988 /* SkyFloatingLabelTextField.swift in Sources */,
 				844FBA7D1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
@@ -858,6 +869,7 @@
 				844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */,
 				844FBA841D0FE0F900D6C2EA /* NVActivityIndicatorAnimationPacman.swift in Sources */,
+				6388D5F21D15CB030029C988 /* RegisterController.swift in Sources */,
 				6388D5BB1D0DAD630029C988 /* CGRectUtility.swift in Sources */,
 				844FBA6E1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
 				844FBA8D1D0FE2B700D6C2EA /* ViewControllerUtility.swift in Sources */,
@@ -867,7 +879,6 @@
 				844FBA761D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
 				844FBA7F1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				6388D5ED1D108B090029C988 /* BusyNavigationBarOptions.swift in Sources */,
-				844FBA411D0FBFFE00D6C2EA /* LoginViewModel.swift in Sources */,
 				639188041D0A915800757F60 /* DynamicColor+Deriving.swift in Sources */,
 				844FBA751D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
 				639187F71D09EC1800757F60 /* DYLog.swift in Sources */,
@@ -882,6 +893,7 @@
 				6388D5C51D0DAEAC0029C988 /* SpinerLayer.swift in Sources */,
 				635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */,
 				844FBA7B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
+				6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */,
 				844FBA871D0FE0F900D6C2EA /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
 				844FBA701D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				844FBA771D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,

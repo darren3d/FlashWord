@@ -15,6 +15,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     @IBOutlet weak var textFieldEmail : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var textFieldPassword : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var btnLogin : DYSubmitButton!
+    @IBOutlet weak var btnRegiser : UIButton!
     
     //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, PrediKit
     //FIXME: 使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster
@@ -33,8 +34,8 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         
         self.view.backgroundColor = UIColor.flat(FlatColors.MidnightBlue)
         
-        let loginViewModel = LoginViewModel()
-        viewModel = LoginViewModel()
+        let loginViewModel = LoginVM()
+        viewModel = loginViewModel
         
         var colorNorm = UIColor.flat(FlatColors.MidnightBlue)
         var colorHighlighted = UIColor.flat(FlatColors.Shamrock)
@@ -46,13 +47,13 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         btnLogin.layer.cornerRadius = 20;
         self.view.bringSubviewToFront(self.btnLogin)
         
-        if AppConst.isLanguageFromLeft2Right {
-            textFieldEmail.iconRotationDegrees = 90
-            textFieldPassword.iconRotationDegrees = 90
-        } else { // In RTL languages the plane should point to the other side
-            textFieldEmail.iconRotationDegrees = 180
-            textFieldPassword.iconRotationDegrees = 180
-        }
+        //        if AppConst.isLanguageFromLeft2Right {
+        //            textFieldEmail.iconRotationDegrees = 180
+        //            textFieldPassword.iconRotationDegrees = 180
+        //        } else { // In RTL languages the plane should point to the other side
+        //            textFieldEmail.iconRotationDegrees = 90
+        //            textFieldPassword.iconRotationDegrees = 90
+        //        }
         
         colorNorm = UIColor.flat(FlatColors.JungleGreen)
         colorHighlighted = colorNorm
@@ -101,7 +102,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         textFieldEmail.rx_text
             .distinctUntilChanged()
             .subscribeNext {[weak self] email in
-                guard let loginViewModel =  self?.viewModel as? LoginViewModel else {
+                guard let loginViewModel =  self?.viewModel as? LoginVM else {
                     return
                 }
                 
@@ -111,7 +112,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         textFieldPassword.rx_text
             .distinctUntilChanged()
             .subscribeNext{ [weak self] password in
-                guard let loginViewModel =  self?.viewModel as? LoginViewModel else {
+                guard let loginViewModel =  self?.viewModel as? LoginVM else {
                     return
                 }
                 
@@ -131,13 +132,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         //        
         //        everythingValid.bindTo(btnLogin.rx_enabled)
         //            .addDisposableTo(disposeBag)
-        //        
-        btnLogin.rx_tap
-            .subscribeNext{ [weak self, weak loginViewModel] in  
-                //                self?.showProgressView()
-                self?.dy_state = DYUIState.Empty
-            }
-            .addDisposableTo(disposeBag)
+        //
         
         let tapBackground = UITapGestureRecognizer()
         tapBackground.rx_event
@@ -148,14 +143,6 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         view.addGestureRecognizer(tapBackground)
     }
     
-    //MARK: UI Action
-    @IBAction func onButtonSubmit(button: DYSubmitButton) {
-        //        button.animate(1, completion: { () -> () in
-        //            let secondVC = SecondViewController()
-        //            secondVC.transitioningDelegate = self
-        //            self.presentViewController(secondVC, animated: true, completion: nil)
-        //        })
-    }
     
     //MARK: UIViewControllerTransitioningDelegate
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -164,6 +151,49 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return nil
+    }
+    
+    //MARK: UI Action
+    @IBAction func onButtonLogin(sender : AnyObject) {
+        //        button.animate(1, completion: { () -> () in
+        //            let secondVC = SecondViewController()
+        //            secondVC.transitioningDelegate = self
+        //            self.presentViewController(secondVC, animated: true, completion: nil)
+        //        })
+        
+        //                self?.showProgressView()
+        DYLog.info("login next")
+        //                self?.dy_state = DYUIState.Empty
+        AccountData.login("nanjimeng_lgb@126.com", password: "111111", callback: { (user, error) in
+            guard let error = error else {
+                DYLog.error("login OK")
+                
+                guard let user = user as? AccountData else {
+                    return
+                }
+                
+                user.age = 13
+                user.saveInBackgroundWithBlock({ (succed, error) in
+                    if succed {
+                        DYLog.error("saveInBackgroundWithBlock")
+                    }
+                })
+                return
+            }
+            
+            switch error.code {
+            case 211:
+                DYLog.error("未注册")
+                DYLog.error("login Failed : \(error)")
+            default:
+                DYLog.error("login Failed : \(error)")
+            }
+            
+        })
+    }
+    
+    @IBAction func onButtonRegister(sender : AnyObject) {
+        
     }
     
     //MARK: DYUIState

@@ -39,7 +39,7 @@ public class DYDataCenter: NSObject {
         MagicalRecord.saveWithBlock({ (context:NSManagedObjectContext!) in
             
         }) { (saveDone:Bool, error:NSError!) in
-            completion?(object: nil, error: error)
+            completion?(nil, error)
         }
     }
     
