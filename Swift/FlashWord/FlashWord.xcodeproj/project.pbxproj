@@ -42,6 +42,11 @@
 		6388D5F21D15CB030029C988 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5F11D15CB030029C988 /* RegisterController.swift */; };
 		6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5F31D15CD9B0029C988 /* LoginVM.swift */; };
 		6388D5F61D15CD9B0029C988 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5F41D15CD9B0029C988 /* RegisterVM.swift */; };
+		6388D5F81D15D5EB0029C988 /* UIViewController+ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5F71D15D5EB0029C988 /* UIViewController+ProgressView.swift */; };
+		6388D5FD1D15D8440029C988 /* URLConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5FA1D15D8440029C988 /* URLConvertible.swift */; };
+		6388D5FE1D15D8440029C988 /* URLNavigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5FB1D15D8440029C988 /* URLNavigable.swift */; };
+		6388D5FF1D15D8440029C988 /* URLNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D5FC1D15D8440029C988 /* URLNavigator.swift */; };
+		6388D6011D15DC4A0029C988 /* DYURLNavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388D6001D15DC4A0029C988 /* DYURLNavigationMap.swift */; };
 		639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F31D09D7A800757F60 /* XCGLogger.swift */; };
 		639187F71D09EC1800757F60 /* DYLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F61D09EC1800757F60 /* DYLog.swift */; };
 		639187F91D09EE4200757F60 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639187F81D09EE4200757F60 /* AppConst.swift */; };
@@ -87,7 +92,7 @@
 		844FBA891D0FE0F900D6C2EA /* NVActivityIndicatorShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA651D0FE0F900D6C2EA /* NVActivityIndicatorShape.swift */; };
 		844FBA8A1D0FE0F900D6C2EA /* NVActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA671D0FE0F900D6C2EA /* NVActivityIndicatorView.swift */; };
 		844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA681D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift */; };
-		844FBA8D1D0FE2B700D6C2EA /* ViewControllerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA8C1D0FE2B700D6C2EA /* ViewControllerUtility.swift */; };
+		844FBA8D1D0FE2B700D6C2EA /* UIViewController+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA8C1D0FE2B700D6C2EA /* UIViewController+Utility.swift */; };
 		844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */; };
 		847D70371D1298EA0025B54A /* UIViewController+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D70361D1298EA0025B54A /* UIViewController+State.swift */; };
 		847D70391D12A4AD0025B54A /* ObjectUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D70381D12A4AD0025B54A /* ObjectUtility.swift */; };
@@ -170,6 +175,11 @@
 		6388D5F11D15CB030029C988 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		6388D5F31D15CD9B0029C988 /* LoginVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		6388D5F41D15CD9B0029C988 /* RegisterVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
+		6388D5F71D15D5EB0029C988 /* UIViewController+ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ProgressView.swift"; sourceTree = "<group>"; };
+		6388D5FA1D15D8440029C988 /* URLConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConvertible.swift; sourceTree = "<group>"; };
+		6388D5FB1D15D8440029C988 /* URLNavigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLNavigable.swift; sourceTree = "<group>"; };
+		6388D5FC1D15D8440029C988 /* URLNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLNavigator.swift; sourceTree = "<group>"; };
+		6388D6001D15DC4A0029C988 /* DYURLNavigationMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYURLNavigationMap.swift; sourceTree = "<group>"; };
 		639187F31D09D7A800757F60 /* XCGLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCGLogger.swift; sourceTree = "<group>"; };
 		639187F61D09EC1800757F60 /* DYLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLog.swift; sourceTree = "<group>"; };
 		639187F81D09EE4200757F60 /* AppConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
@@ -216,7 +226,7 @@
 		844FBA661D0FE0F900D6C2EA /* NVActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVActivityIndicatorView.h; sourceTree = "<group>"; };
 		844FBA671D0FE0F900D6C2EA /* NVActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorView.swift; sourceTree = "<group>"; };
 		844FBA681D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorViewable.swift; sourceTree = "<group>"; };
-		844FBA8C1D0FE2B700D6C2EA /* ViewControllerUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerUtility.swift; sourceTree = "<group>"; };
+		844FBA8C1D0FE2B700D6C2EA /* UIViewController+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utility.swift"; sourceTree = "<group>"; };
 		844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYProgressView.swift; sourceTree = "<group>"; };
 		847D70361D1298EA0025B54A /* UIViewController+State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+State.swift"; sourceTree = "<group>"; };
 		847D70381D12A4AD0025B54A /* ObjectUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectUtility.swift; sourceTree = "<group>"; };
@@ -414,7 +424,8 @@
 			children = (
 				6388D5CC1D0DB1900029C988 /* DYViewController.swift */,
 				6388D5CE1D0DB1AC0029C988 /* DYNavigationController.swift */,
-				844FBA8C1D0FE2B700D6C2EA /* ViewControllerUtility.swift */,
+				844FBA8C1D0FE2B700D6C2EA /* UIViewController+Utility.swift */,
+				6388D5F71D15D5EB0029C988 /* UIViewController+ProgressView.swift */,
 				847D70361D1298EA0025B54A /* UIViewController+State.swift */,
 			);
 			path = ViewController;
@@ -508,9 +519,21 @@
 			path = BusyNavigationBar;
 			sourceTree = "<group>";
 		};
+		6388D5F91D15D8440029C988 /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				6388D5FA1D15D8440029C988 /* URLConvertible.swift */,
+				6388D5FB1D15D8440029C988 /* URLNavigable.swift */,
+				6388D5FC1D15D8440029C988 /* URLNavigator.swift */,
+				6388D6001D15DC4A0029C988 /* DYURLNavigationMap.swift */,
+			);
+			path = Navigator;
+			sourceTree = "<group>";
+		};
 		639187F11D09D7A800757F60 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				6388D5F91D15D8440029C988 /* Navigator */,
 				6388D5C21D0DAEAC0029C988 /* UI */,
 				6388D5BF1D0DAE310029C988 /* TransionAnimator */,
 				6388D5B91D0DACFE0029C988 /* Utility */,
@@ -828,6 +851,7 @@
 				6388D5F01D15B19B0029C988 /* Account+Business.swift in Sources */,
 				639187F91D09EE4200757F60 /* AppConst.swift in Sources */,
 				639188071D0A915800757F60 /* HSL.swift in Sources */,
+				6388D5FD1D15D8440029C988 /* URLConvertible.swift in Sources */,
 				844FBA721D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */,
 				844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */,
@@ -842,6 +866,7 @@
 				844FBA7D1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				844FBA801D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				844FBA821D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
+				6388D5F81D15D5EB0029C988 /* UIViewController+ProgressView.swift in Sources */,
 				844FBA831D0FE0F900D6C2EA /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				639188061D0A915800757F60 /* DynamicColor.swift in Sources */,
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
@@ -872,7 +897,7 @@
 				6388D5F21D15CB030029C988 /* RegisterController.swift in Sources */,
 				6388D5BB1D0DAD630029C988 /* CGRectUtility.swift in Sources */,
 				844FBA6E1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
-				844FBA8D1D0FE2B700D6C2EA /* ViewControllerUtility.swift in Sources */,
+				844FBA8D1D0FE2B700D6C2EA /* UIViewController+Utility.swift in Sources */,
 				6388D5DF1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift in Sources */,
 				6388D5CA1D0DAFDC0029C988 /* NSTimerUtility.swift in Sources */,
 				6391880A1D0A930500757F60 /* FlatUIColors.swift in Sources */,
@@ -887,11 +912,14 @@
 				6388D5DE1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */,
 				844FBA781D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
+				6388D5FE1D15D8440029C988 /* URLNavigable.swift in Sources */,
 				635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */,
 				6388D5EE1D108B090029C988 /* UINavigationBar+Animation.swift in Sources */,
 				844FBA6A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
+				6388D6011D15DC4A0029C988 /* DYURLNavigationMap.swift in Sources */,
 				6388D5C51D0DAEAC0029C988 /* SpinerLayer.swift in Sources */,
 				635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */,
+				6388D5FF1D15D8440029C988 /* URLNavigator.swift in Sources */,
 				844FBA7B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */,
 				844FBA871D0FE0F900D6C2EA /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,

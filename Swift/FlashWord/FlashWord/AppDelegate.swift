@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        DYURLNavigationMap.initialize()
+        
         AccountData.registerSubclass()
         
         AVOSCloud.setApplicationId("GQcj3NGbF5O0qGTp7SMo3b2y-gzGzoHsz",

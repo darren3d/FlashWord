@@ -193,7 +193,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     }
     
     @IBAction func onButtonRegister(sender : AnyObject) {
-        
+        Navigator.pushURL("/register")
     }
     
     //MARK: DYUIState
@@ -243,5 +243,15 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     
     func spaceHeightForUIState(uistate:DYUIState) -> CGFloat {
         return 20
+    }
+    
+}
+
+extension LoginController : URLNavigable {
+    static func urlNavigableViewController(URL: URLConvertible, values: [String : AnyObject])  -> UIViewController? {
+        let loginViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewControllerWithIdentifier("LoginController")
+        
+        return loginViewController
     }
 }

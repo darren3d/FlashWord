@@ -93,3 +93,12 @@ class RegisterController: DYViewController {
         
     }
 }
+
+extension RegisterController : URLNavigable {
+    static func urlNavigableViewController(URL: URLConvertible, values: [String : AnyObject])  -> UIViewController? {
+        let registerController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewControllerWithIdentifier("RegisterController")
+        
+        return registerController
+    }
+}
