@@ -8,11 +8,19 @@
 
 import UIKit
 
-public enum DYProgressStatus {
+public enum DYProgressType {
     case None
     case Loading
     case Success
     case Fail
+    case TextOnly
+}
+
+public enum DYProgressStatus {
+    case Hidden
+    case FadeIn
+    case Shown
+    case FadeOut
 }
 
 public class DYLineProgressPara {
@@ -69,8 +77,8 @@ public class DYLineProgressPara {
 public class DYLineProgress {
     let para:DYLineProgressPara 
     
-    // add DYLineProgress to targetView
-    weak var targetView: UIView?
+    // add DYLineProgress to superView
+    weak var superView: UIView?
     
     //rootView of DYLineProgress, also background。superView of contentView
     var rootView = UIView()
@@ -79,10 +87,28 @@ public class DYLineProgress {
     var loaderView = UIView()
     var textLabel = UILabel()
     
-    var status : DYProgressStatus = DYProgressStatus.None
     var text : String? = nil
+    var loadingCount : Int64 = 0
+    var fadeOutTimer : NSTimer? {
+        willSet{
+            guard let oldTimer = fadeOutTimer else {
+                return
+            }
+            oldTimer.invalidate()
+        }
+    }
     
-    init(para:DYLineProgressPara? = nil) {
+    var status = DYProgressStatus.Hidden
+    var topType = DYProgressType.None
+    var loadingCache : [Int64:DYProgressType] = [Int64:DYProgressType]()
+    
+    init(superView:UIView? = nil, para:DYLineProgressPara? = nil) {
+        if superView == nil {
+            self.superView = DYLineProgress.appWindow()
+        } else {
+            self.superView = superView!
+        }
+        
         if para == nil {
             self.para = DYLineProgressPara() 
         } else {
@@ -121,14 +147,14 @@ public class DYLineProgress {
     
     @objc
     func orientationChanged(notification: NSNotification) {
-        if let targetView = self.targetView {
-            adjustFrameForBackgroundView(onView: targetView)
+        if let superView = self.superView {
+            adjustFrameForBackgroundView(onView: superView)
         } else {
             adjustFrameForBackgroundView(onView: nil)
         }
     }
     
-    func setupConstraints() {
+    func setupConstraints(type : DYProgressType) {
         //rootView添加约束
         guard let superview = rootView.superview 
             else {
@@ -145,7 +171,7 @@ public class DYLineProgress {
             make.width.lessThanOrEqualTo(para.maxContentViewWidth)
         }
         
-        let hasLoader = status != .None
+        let hasLoader = type != DYProgressType.TextOnly
         let hasText = text != nil && text!.characters.count > 0
         
         //loaderView添加约束
@@ -207,43 +233,94 @@ public class DYLineProgress {
     }
     
     
-    public func show(status:DYProgressStatus, text:String?, onView view:UIView?) {
-        if status == DYProgressStatus.None && (text == nil || text!.characters.count <= 0) {
+    public func show(type:DYProgressType, text:String?) {
+        guard let superView = self.superView else {
             return
         }
         
-        self.status = status
-        //        else if status == DYProgressStatus.None {
-        //            return
-        //        }
-        
-        
-        if view != targetView {
-            rootView.removeFromSuperview()
-            
-            let superView = view ?? DYLineProgress.appWindow()
-            superView?.addSubview(rootView)
+        if type == DYProgressType.None ||
+            (type == DYProgressType.TextOnly && (text == nil || text!.characters.count <= 0)) {
+            return
         }
         
-        targetView = view
+        if type == DYProgressType.Loading &&
+            (topType == DYProgressType.Success || topType == DYProgressType.Fail || topType == DYProgressType.TextOnly) {
+            return
+        }
+        topType = type
+        
+        if rootView.superview == nil {
+            superView.addSubview(rootView)
+        }
+        superView.bringSubviewToFront(rootView)
+        
         self.text = text
         textLabel.text = text
         
-        setupConstraints()
+        setupConstraints(type)
         rootView.layoutIfNeeded()
         
+        let duration = DYLineProgress.durationForText(text)
         var loader : DYLoader? = nil
-        switch status {
+        switch type {
         case .Loading: 
             break
-        case .Success: 
+        case .Success:
             loader = DYSucceedLoder(para: para)
-        case .Fail: 
+            self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
+            NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
+            break
+        case .Fail:
             loader = DYFailLoder(para: para)
+            self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
+            NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
+            break
+        case .TextOnly:
+            self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
+            NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
+            break
         default: break
         }
         
         loader?.show(loaderView, block: nil)
+    }
+    
+    public func hide(block: (() -> Void)? = nil) {
+        rootView.removeFromSuperview()
+        
+        
+    }
+    
+    private func reset () {
+        rootView.removeFromSuperview()
+        loadingCache = [Int64:DYProgressType]()
+        topType = DYProgressType.None
+        self.fadeOutTimer = nil
+    }
+    
+    @objc
+    private func fadeOut(sender:AnyObject) {
+        let duration = para.backgroundViewDismissAnimationDuration
+        Async.main { [weak self] in
+            UIView.animateWithDuration(duration, delay: 0.0, options: .CurveEaseOut, animations: {
+                self?.rootView.alpha = 0.0
+                self?.contentView.transform = CGAffineTransformMakeScale(0.9, 0.9)
+                }, completion: { _ in
+                    self?.reset()
+            })
+        }
+    }
+    
+    class private func durationForText(text:String?) -> NSTimeInterval {
+        let minD = 1.5
+        let maxD = 4.0
+        
+        guard let text = text else {
+            return minD
+        }
+        
+        let duration = NSTimeInterval(text.characters.count) * 0.1 + 1.0
+        return min(maxD, max(minD, duration))
     }
     
     //    // MARK: Show Statuses
@@ -345,21 +422,8 @@ public class DYLineProgress {
     //    
     //    // MARK: Hide Loader
     //    
-    //    
-    //    public func hide(block: (() -> Void)? = nil) {
-    //        guard let loader = currentLoader else { return }
-    //        
-    //        let duration = para.backgroundViewDismissAnimationDuration
-    //        Async.main { [weak self, weak loader] in
-    //            UIView.animateWithDuration(duration, delay: 0.0, options: .CurveEaseOut, animations: {
-    //                loader?.emptyView.alpha = 0.0
-    //                loader?.backgroundView.transform = CGAffineTransformMakeScale(0.9, 0.9)
-    //                }, completion: { _ in 
-    //                    self?.cleanup(loader)
-    //                    block?() }) 
-    //        }
-    //    }
-    //    
+    //
+    //
     //    private func cleanup(loader: DYLoader?) {
     //        loader?.emptyView.removeFromSuperview()
     //        currentLoader = nil
