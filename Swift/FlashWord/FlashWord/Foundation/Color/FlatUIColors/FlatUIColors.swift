@@ -254,4 +254,17 @@ public extension UIColor {
         let selected: UInt = UInt(colors[color]!)
         return selected.convertToUIColor()
     }
+    
+    class func dy_color(hex:UInt, alpha:CGFloat = 1.0) -> UIColor {
+        return UIColor(
+            red: CGFloat((hex & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((hex & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(hex & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
+    class func dy_color(red: UInt, green: UInt, blue: UInt, alpha: CGFloat) -> UIColor {
+        return UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: alpha)
+    }
 }

@@ -155,41 +155,44 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     
     //MARK: UI Action
     @IBAction func onButtonLogin(sender : AnyObject) {
-        //        button.animate(1, completion: { () -> () in
-        //            let secondVC = SecondViewController()
-        //            secondVC.transitioningDelegate = self
-        //            self.presentViewController(secondVC, animated: true, completion: nil)
-        //        })
+        let progressView = DYLineProgress()
+        progressView.show(DYProgressStatus.Fail, text: "始克己阿斯顿始克己阿斯顿始克己阿斯顿始克己阿斯顿始克己阿斯顿", onView: self.view)
         
-        //                self?.showProgressView()
-        DYLog.info("login next")
-        //                self?.dy_state = DYUIState.Empty
-        AccountData.login("nanjimeng_lgb@126.com", password: "111111", callback: { (user, error) in
-            guard let error = error else {
-                DYLog.error("login OK")
-                
-                guard let user = user as? AccountData else {
-                    return
-                }
-                
-                user.age = 13
-                user.saveInBackgroundWithBlock({ (succed, error) in
-                    if succed {
-                        DYLog.error("saveInBackgroundWithBlock")
-                    }
-                })
-                return
-            }
-            
-            switch error.code {
-            case 211:
-                DYLog.error("未注册")
-                DYLog.error("login Failed : \(error)")
-            default:
-                DYLog.error("login Failed : \(error)")
-            }
-            
-        })
+        //        //        button.animate(1, completion: { () -> () in
+        //        //            let secondVC = SecondViewController()
+        //        //            secondVC.transitioningDelegate = self
+        //        //            self.presentViewController(secondVC, animated: true, completion: nil)
+        //        //        })
+        //        
+        //        //                self?.showProgressView()
+        //        DYLog.info("login next")
+        //        //                self?.dy_state = DYUIState.Empty
+        //        AccountData.login("nanjimeng_lgb@126.com", password: "111111", callback: { (user, error) in
+        //            guard let error = error else {
+        //                DYLog.error("login OK")
+        //                
+        //                guard let user = user as? AccountData else {
+        //                    return
+        //                }
+        //                
+        //                user.age = 13
+        //                user.saveInBackgroundWithBlock({ (succed, error) in
+        //                    if succed {
+        //                        DYLog.error("saveInBackgroundWithBlock")
+        //                    }
+        //                })
+        //                return
+        //            }
+        //            
+        //            switch error.code {
+        //            case 211:
+        //                DYLog.error("未注册")
+        //                DYLog.error("login Failed : \(error)")
+        //            default:
+        //                DYLog.error("login Failed : \(error)")
+        //            }
+        //            
+        //        })
     }
     
     @IBAction func onButtonRegister(sender : AnyObject) {
