@@ -156,7 +156,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     //MARK: UI Action
     @IBAction func onButtonLogin(sender : AnyObject) {
         let progressView = DYLineProgress()
-        progressView.show(DYProgressStatus.Fail, text: "始克己阿斯顿始克己阿斯顿始克己阿斯顿始克己阿斯顿始克己阿斯顿", onView: self.view)
+        progressView.show(DYProgressStatus.None, text: "始克己阿斯顿始克己阿斯顿始克己阿斯顿始克己阿斯顿始克己阿斯顿", onView: self.view)
         
         //        //        button.animate(1, completion: { () -> () in
         //        //            let secondVC = SecondViewController()

@@ -145,31 +145,41 @@ public class DYLineProgress {
             make.width.lessThanOrEqualTo(para.maxContentViewWidth)
         }
         
-        let textLength : Int = text == nil ? 0 : text!.characters.count
+        let hasLoader = status != .None
+        let hasText = text != nil && text!.characters.count > 0
         
         //loaderView添加约束
-        loaderView.snp_remakeConstraints { (make) in
-            make.top.equalTo(contentView).offset(para.contentViewInsets.top)
-            make.width.equalTo(para.loaderViewSideLength)
-            make.height.equalTo(para.loaderViewSideLength)
-            
-            make.centerX.equalTo(contentView)
-            make.leading.greaterThanOrEqualTo(contentView).offset(para.contentViewInsets.left)
-            make.trailing.lessThanOrEqualTo(contentView).offset(-para.contentViewInsets.right)
-            
-            if textLength <= 0 {
-                make.bottom.equalTo(contentView).offset(-para.contentViewInsets.bottom)
+        if hasLoader {
+            loaderView.snp_remakeConstraints { (make) in
+                make.top.equalTo(contentView).offset(para.contentViewInsets.top)
+                make.width.equalTo(para.loaderViewSideLength)
+                make.height.equalTo(para.loaderViewSideLength)
+                
+                make.centerX.equalTo(contentView)
+                make.leading.greaterThanOrEqualTo(contentView).offset(para.contentViewInsets.left)
+                make.trailing.lessThanOrEqualTo(contentView).offset(-para.contentViewInsets.right)
+                
+                if !hasText {
+                    make.bottom.equalTo(contentView).offset(-para.contentViewInsets.bottom)
+                }
             }
+        } else {
+            loaderView.snp_removeConstraints()
         }
         
+        
         //textLabel添加约束
-        if textLength > 0 {
+        if hasText {
             textLabel.snp_remakeConstraints { (make) in
                 make.leading.equalTo(contentView).offset(para.contentViewInsets.left)
                 make.trailing.equalTo(contentView).offset(-para.contentViewInsets.right)
-                
-                make.top.equalTo(loaderView.snp_bottom).offset(6)
                 make.bottom.equalTo(contentView).offset(-para.contentViewInsets.bottom)
+                
+                if hasLoader {
+                    make.top.equalTo(loaderView.snp_bottom).offset(6)
+                } else {
+                    make.top.equalTo(contentView).offset(para.contentViewInsets.top)
+                }
             }
         } else {
             textLabel.snp_removeConstraints()
@@ -198,9 +208,10 @@ public class DYLineProgress {
     
     
     public func show(status:DYProgressStatus, text:String?, onView view:UIView?) {
-        if status == DYProgressStatus.None {
+        if status == DYProgressStatus.None && (text == nil || text!.characters.count <= 0) {
             return
         }
+        
         self.status = status
         //        else if status == DYProgressStatus.None {
         //            return
