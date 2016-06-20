@@ -17,7 +17,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     @IBOutlet weak var btnLogin : DYSubmitButton!
     @IBOutlet weak var btnRegiser : UIButton!
     
-    //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, PrediKit
+    //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, PrediKit,ARSLineProgress
     //FIXME: 使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster
     
     override func viewDidLoad() {
