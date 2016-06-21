@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc private protocol DYLoaderProtocol {
+@objc protocol DYLoaderProtocol {
     optional weak var superView: UIView? { get set }
     @objc func canShow(onView:UIView) -> Bool
     @objc func show(onView:UIView, block:(() -> Void)?)

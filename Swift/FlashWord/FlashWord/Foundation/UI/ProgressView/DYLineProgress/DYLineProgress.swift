@@ -41,7 +41,7 @@ public class DYLineProgressPara {
     public var circleRadiusMiddle: CGFloat = 30
     public var circleRadiusInner: CGFloat = 20
     public var circleLineWidth: CGFloat = 2
-    public var circleStartAngle: CGFloat = -CGFloat(M_PI_2)
+    public var circleStartAngle: CGFloat = -CGFloat(M_PI+M_PI_4)//-CGFloat(M_PI_2+M_PI)*0.5
     public var circleEndAngle: CGFloat = 0.0
     
     public var circleRotationDurationOuter: CFTimeInterval = 3.0
@@ -266,7 +266,7 @@ public class DYLineProgress {
         var loader : DYLoader? = nil
         switch type {
         case .Loading:
-//            loader = DYInfiniteLoader(para: para)
+            loader = DYInfiniteLoader(para: para)
             break
         case .Success:
             loader = DYSucceedLoder(para: para)
@@ -325,110 +325,4 @@ public class DYLineProgress {
         let duration = NSTimeInterval(text.characters.count) * 0.1 + 1.0
         return min(maxD, max(minD, duration))
     }
-    
-    //    // MARK: Show Statuses
-    //    public func showSuccess() {
-    //        if !statusShown { ARSStatus.show(.Success) }
-    //    }
-    //    
-    //    /**
-    //     Will interrupt the current .Infinite loader progress and show fail animation instead.
-    //     */
-    //    public func showFail() {
-    //        if !statusShown { ARSStatus.show(.Fail) }
-    //    }
-    //    
-    //    
-    //    // MARK: Show Infinite Loader
-    //    
-    //    
-    //    public func show() {
-    //        if !shown { ARSInfiniteLoader().showOnView(nil, completionBlock: nil) }
-    //    }
-    //    
-    //    public func showWithPresentCompetionBlock(block: () -> Void) {
-    //        if !shown { ARSInfiniteLoader().showOnView(nil, completionBlock: block) }
-    //    }
-    //    
-    //    public func showOnView(view: UIView) {
-    //        if !shown { ARSInfiniteLoader().showOnView(view, completionBlock: nil) }
-    //    }
-    //    
-    //    public func showOnView(view: UIView, completionBlock: () -> Void) {
-    //        if !shown { ARSInfiniteLoader().showOnView(view, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    
-    //    // MARK: Show Progress Loader
-    //    
-    //    
-    //    /**
-    //     Note: initialValue should be from 0 to 100
-    //     */
-    //    public func showWithProgress(initialValue value: CGFloat) {
-    //        if !shown { ARSProgressLoader().showWithValue(value, onView: nil, progress: nil, completionBlock: nil) }
-    //    }
-    //    
-    //    /**
-    //     Note: initialValue should be from 0 to 100
-    //     */
-    //    public func showWithProgress(initialValue value: CGFloat, onView: UIView) {
-    //        if !shown { ARSProgressLoader().showWithValue(value, onView: onView, progress: nil, completionBlock: nil) }
-    //    }
-    //    
-    //    /**
-    //     Note: initialValue should be from 0 to 100
-    //     */
-    //    public func showWithProgress(initialValue value: CGFloat, completionBlock: (() -> Void)?) {
-    //        if !shown { ARSProgressLoader().showWithValue(value, onView: nil, progress: nil, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    /**
-    //     Note: initialValue should be from 0 to 100
-    //     */
-    //    public func showWithProgress(initialValue value: CGFloat, onView: UIView, completionBlock: (() -> Void)?) {
-    //        if !shown { ARSProgressLoader().showWithValue(value, onView: onView, progress: nil, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    public func showWithProgressObject(progress: NSProgress) {
-    //        if !shown { ARSProgressLoader().showWithValue(0.0, onView: nil, progress: progress, completionBlock: nil) }
-    //    }
-    //    
-    //    public func showWithProgressObject(progress: NSProgress, completionBlock: (() -> Void)?) {
-    //        if !shown { ARSProgressLoader().showWithValue(0.0, onView: nil, progress: progress, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    public func showWithProgressObject(progress: NSProgress, onView: UIView) {
-    //        if !shown { ARSProgressLoader().showWithValue(0.0, onView: onView, progress: progress, completionBlock: nil) }
-    //    }
-    //    
-    //    public func showWithProgressObject(progress: NSProgress, onView: UIView, completionBlock: (() -> Void)?) {
-    //        if !shown { ARSProgressLoader().showWithValue(0.0, onView: onView, progress: progress, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    
-    //    // MARK: Update Progress Loader
-    //    
-    //    
-    //    public func updateWithProgress(value: CGFloat) {
-    //        ARSProgressLoader.weakSelf?.progressValue = value
-    //    }
-    //    
-    //    public func cancelPorgressWithFailAnimation(showFail: Bool) {
-    //        ARSProgressLoader.weakSelf?.cancelWithFailAnimation(showFail, completionBlock: nil)
-    //    }
-    //    
-    //    public func cancelPorgressWithFailAnimation(showFail: Bool, completionBlock: (() -> Void)?) {
-    //        ARSProgressLoader.weakSelf?.cancelWithFailAnimation(showFail, completionBlock: completionBlock)
-    //    }
-    //    
-    //    
-    //    // MARK: Hide Loader
-    //    
-    //
-    //
-    //    private func cleanup(loader: DYLoader?) {
-    //        loader?.emptyView.removeFromSuperview()
-    //        currentLoader = nil
-    //    }
 }
