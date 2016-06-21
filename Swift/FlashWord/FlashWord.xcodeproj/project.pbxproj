@@ -62,6 +62,7 @@
 		84301D011D18DEE200BB3C5D /* DYSucceedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D001D18DEE200BB3C5D /* DYSucceedLoader.swift */; };
 		84301D031D18DF1500BB3C5D /* DYFailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D021D18DF1500BB3C5D /* DYFailLoader.swift */; };
 		84301D071D18E95600BB3C5D /* DYInfiniteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D061D18E95600BB3C5D /* DYInfiniteLoader.swift */; };
+		84301D171D190EE800BB3C5D /* DYSatelliteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D161D190EE800BB3C5D /* DYSatelliteLoader.swift */; };
 		844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */; };
 		844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */; };
 		844FBA6A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA461D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift */; };
@@ -201,6 +202,7 @@
 		84301D001D18DEE200BB3C5D /* DYSucceedLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYSucceedLoader.swift; sourceTree = "<group>"; };
 		84301D021D18DF1500BB3C5D /* DYFailLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYFailLoader.swift; sourceTree = "<group>"; };
 		84301D061D18E95600BB3C5D /* DYInfiniteLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYInfiniteLoader.swift; sourceTree = "<group>"; };
+		84301D161D190EE800BB3C5D /* DYSatelliteLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYSatelliteLoader.swift; sourceTree = "<group>"; };
 		844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DYViewModel.swift; path = FlashWord/Model/DYViewModel.swift; sourceTree = SOURCE_ROOT; };
 		844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
 		844FBA461D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotate.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				84301D001D18DEE200BB3C5D /* DYSucceedLoader.swift */,
 				84301D021D18DF1500BB3C5D /* DYFailLoader.swift */,
 				84301D061D18E95600BB3C5D /* DYInfiniteLoader.swift */,
+				84301D161D190EE800BB3C5D /* DYSatelliteLoader.swift */,
 			);
 			path = DYLineProgress;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 				6388D5DE1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				84301D071D18E95600BB3C5D /* DYInfiniteLoader.swift in Sources */,
 				844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */,
+				84301D171D190EE800BB3C5D /* DYSatelliteLoader.swift in Sources */,
 				844FBA781D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
 				6388D5FE1D15D8440029C988 /* URLNavigable.swift in Sources */,
 				635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */,
