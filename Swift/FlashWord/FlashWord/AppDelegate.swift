@@ -52,5 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    //MARK: 初始化方便
+    override class func initialize() {
+        #if DEBUG
+            FontBlaster.debugEnabled = true
+        #endif
+        FontBlaster.blast()
+    }
 }
 

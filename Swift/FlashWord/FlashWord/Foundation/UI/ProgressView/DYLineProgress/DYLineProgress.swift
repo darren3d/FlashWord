@@ -8,12 +8,28 @@
 
 import UIKit
 
-public enum DYProgressType {
-    case None
-    case Loading
+public enum DYLoaderStatus {
     case Success
     case Fail
     case TextOnly
+}
+
+public enum DYLoaderType {
+    case None
+    case Loading
+    case Status(DYLoaderStatus)
+    
+    func hasLoader() -> Bool {
+        switch self {
+        case .None:
+            return false
+        case .Loading: 
+            return true
+        case .Status(let status):
+            return status  != .TextOnly
+        }
+        return false
+    }
 }
 
 public enum DYProgressStatus {
@@ -41,6 +57,8 @@ public class DYLineProgressPara {
     public var circleRadiusMiddle: CGFloat = 30
     public var circleRadiusInner: CGFloat = 20
     public var circleLineWidth: CGFloat = 2
+    public var circleStartAngle: CGFloat = -CGFloat(M_PI+M_PI_4)//-CGFloat(M_PI_2+M_PI)*0.5
+    public var circleEndAngle: CGFloat = 0.0
     
     public var circleRotationDurationOuter: CFTimeInterval = 3.0
     public var circleRotationDurationMiddle: CFTimeInterval = 1.5
@@ -99,8 +117,8 @@ public class DYLineProgress {
     }
     
     var status = DYProgressStatus.Hidden
-    var topType = DYProgressType.None
-    var loadingCache : [Int64:DYProgressType] = [Int64:DYProgressType]()
+    var topType = DYLoaderType.None
+    var loadingCache : [Int64:DYLoaderType] = [Int64:DYLoaderType]()
     
     init(superView:UIView? = nil, para:DYLineProgressPara? = nil) {
         if superView == nil {
@@ -154,7 +172,7 @@ public class DYLineProgress {
         }
     }
     
-    func setupConstraints(type : DYProgressType) {
+    func setupConstraints(type : DYLoaderType) {
         //rootView添加约束
         guard let superview = rootView.superview 
             else {
@@ -171,7 +189,7 @@ public class DYLineProgress {
             make.width.lessThanOrEqualTo(para.maxContentViewWidth)
         }
         
-        let hasLoader = type != DYProgressType.TextOnly
+        let hasLoader = type.hasLoader()
         let hasText = text != nil && text!.characters.count > 0
         
         //loaderView添加约束
@@ -202,7 +220,7 @@ public class DYLineProgress {
                 make.bottom.equalTo(contentView).offset(-para.contentViewInsets.bottom)
                 
                 if hasLoader {
-                    make.top.equalTo(loaderView.snp_bottom).offset(6)
+                    make.top.equalTo(loaderView.snp_bottom).offset(15)
                 } else {
                     make.top.equalTo(contentView).offset(para.contentViewInsets.top)
                 }
@@ -232,20 +250,24 @@ public class DYLineProgress {
         return targetWindow
     }
     
-    //MARK: public API
-    public func show(type:DYProgressType, text:String?) {
+    
+    public func show(type:DYLoaderType, text:String?) {
         guard let superView = self.superView else {
             return
         }
         
-        if type == DYProgressType.None ||
-            (type == DYProgressType.TextOnly && (text == nil || text!.characters.count <= 0)) {
+        switch type {
+        case .None:
             return
-        }
-        
-        if type == DYProgressType.Loading &&
-            (topType == DYProgressType.Success || topType == DYProgressType.Fail || topType == DYProgressType.TextOnly) {
-            return
+        case .Loading: 
+            if case let DYLoaderType.Status(status) = topType {
+                DYLog.info("DYLoaderType: .\(status)")
+                return
+            }
+        case .Status(let status):
+            if status  == .TextOnly && (text == nil || text!.characters.count <= 0) {
+                return
+            }
         }
         topType = type
         
@@ -257,7 +279,16 @@ public class DYLineProgress {
         superView.bringSubviewToFront(rootView)
         
         self.text = text
-        textLabel.text = text
+        
+        if text == nil || text!.characters.count <= 0 {
+            textLabel.attributedText = nil
+        } else  {
+            let attrs = TextAttributes()
+            attrs.lineSpacing = 3
+            attrs.alignment = NSTextAlignment.Center
+            textLabel.attributedText = NSAttributedString(string: text!, attributes: attrs)
+        }
+        
         
         setupConstraints(type)
         rootView.layoutIfNeeded()
@@ -267,25 +298,21 @@ public class DYLineProgress {
         switch type {
         case .Loading:
             loadingCount += 1
+            loader = DYInfiniteLoader(para: para)
             break
-        case .Success:
+        case .Status(let status):
             loadingCount += 1
-            loader = DYSucceedLoder(para: para)
+            if status == .Success {
+                loader = DYSucceedLoder(para: para)
+            } else if status == .Fail{
+                loader = DYFailLoder(para: para)
+            }
+            
             self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
             NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
             break
-        case .Fail:
-            loadingCount += 1
-            loader = DYFailLoder(para: para)
-            self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
-            NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
+        default:
             break
-        case .TextOnly:
-            loadingCount += 1
-            self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
-            NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
-            break
-        default: break
         }
         
         loader?.show(loaderView, block: nil)
@@ -308,9 +335,8 @@ public class DYLineProgress {
     
     private func reset() {
         rootView.removeFromSuperview()
-        loadingCount = 0
-        topType = DYProgressType.None
-        
+        loadingCache = [Int64:DYLoaderType]()
+        topType = DYLoaderType.None
         self.fadeOutTimer = nil
     }
     
@@ -351,302 +377,4 @@ public class DYLineProgress {
         let duration = NSTimeInterval(text.characters.count) * 0.1 + 1.0
         return min(maxD, max(minD, duration))
     }
-    
-    //    // MARK: Show Statuses
-    //    public func showSuccess() {
-    //        if !statusShown { ARSStatus.show(.Success) }
-    //    }
-    //    
-    //    /**
-    //     Will interrupt the current .Infinite loader progress and show fail animation instead.
-    //     */
-    //    public func showFail() {
-    //        if !statusShown { ARSStatus.show(.Fail) }
-    //    }
-    //    
-    //    
-    //    // MARK: Show Infinite Loader
-    //    
-    //    
-    //    public func show() {
-    //        if !shown { ARSInfiniteLoader().showOnView(nil, completionBlock: nil) }
-    //    }
-    //    
-    //    public func showWithPresentCompetionBlock(block: () -> Void) {
-    //        if !shown { ARSInfiniteLoader().showOnView(nil, completionBlock: block) }
-    //    }
-    //    
-    //    public func showOnView(view: UIView) {
-    //        if !shown { ARSInfiniteLoader().showOnView(view, completionBlock: nil) }
-    //    }
-    //    
-    //    public func showOnView(view: UIView, completionBlock: () -> Void) {
-    //        if !shown { ARSInfiniteLoader().showOnView(view, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    
-    //    // MARK: Show Progress Loader
-    //    
-    //    
-    //    /**
-    //     Note: initialValue should be from 0 to 100
-    //     */
-    //    public func showWithProgress(initialValue value: CGFloat) {
-    //        if !shown { ARSProgressLoader().showWithValue(value, onView: nil, progress: nil, completionBlock: nil) }
-    //    }
-    //    
-    //    /**
-    //     Note: initialValue should be from 0 to 100
-    //     */
-    //    public func showWithProgress(initialValue value: CGFloat, onView: UIView) {
-    //        if !shown { ARSProgressLoader().showWithValue(value, onView: onView, progress: nil, completionBlock: nil) }
-    //    }
-    //    
-    //    /**
-    //     Note: initialValue should be from 0 to 100
-    //     */
-    //    public func showWithProgress(initialValue value: CGFloat, completionBlock: (() -> Void)?) {
-    //        if !shown { ARSProgressLoader().showWithValue(value, onView: nil, progress: nil, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    /**
-    //     Note: initialValue should be from 0 to 100
-    //     */
-    //    public func showWithProgress(initialValue value: CGFloat, onView: UIView, completionBlock: (() -> Void)?) {
-    //        if !shown { ARSProgressLoader().showWithValue(value, onView: onView, progress: nil, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    public func showWithProgressObject(progress: NSProgress) {
-    //        if !shown { ARSProgressLoader().showWithValue(0.0, onView: nil, progress: progress, completionBlock: nil) }
-    //    }
-    //    
-    //    public func showWithProgressObject(progress: NSProgress, completionBlock: (() -> Void)?) {
-    //        if !shown { ARSProgressLoader().showWithValue(0.0, onView: nil, progress: progress, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    public func showWithProgressObject(progress: NSProgress, onView: UIView) {
-    //        if !shown { ARSProgressLoader().showWithValue(0.0, onView: onView, progress: progress, completionBlock: nil) }
-    //    }
-    //    
-    //    public func showWithProgressObject(progress: NSProgress, onView: UIView, completionBlock: (() -> Void)?) {
-    //        if !shown { ARSProgressLoader().showWithValue(0.0, onView: onView, progress: progress, completionBlock: completionBlock) }
-    //    }
-    //    
-    //    
-    //    // MARK: Update Progress Loader
-    //    
-    //    
-    //    public func updateWithProgress(value: CGFloat) {
-    //        ARSProgressLoader.weakSelf?.progressValue = value
-    //    }
-    //    
-    //    public func cancelPorgressWithFailAnimation(showFail: Bool) {
-    //        ARSProgressLoader.weakSelf?.cancelWithFailAnimation(showFail, completionBlock: nil)
-    //    }
-    //    
-    //    public func cancelPorgressWithFailAnimation(showFail: Bool, completionBlock: (() -> Void)?) {
-    //        ARSProgressLoader.weakSelf?.cancelWithFailAnimation(showFail, completionBlock: completionBlock)
-    //    }
-    //    
-    //    
-    //    // MARK: Hide Loader
-    //    
-    //
-    //
-    //    private func cleanup(loader: DYLoader?) {
-    //        loader?.emptyView.removeFromSuperview()
-    //        currentLoader = nil
-    //    }
-}
-
-
-@objc private protocol DYLoaderProtocol {
-    optional weak var superView: UIView? { get set }
-    @objc func canShow(onView:UIView) -> Bool
-    @objc func show(onView:UIView, block:(() -> Void)?)
-    @objc func hide(block: (() -> Void)?)
-}
-
-class DYLoader: DYLoaderProtocol {
-    @objc weak var superView: UIView?
-    let para:DYLineProgressPara
-    
-    init(para:DYLineProgressPara) {
-        self.para = para
-    }
-    
-    //MARK: DYLoader subclass overide methods
-    @objc func canShow(onView:UIView) -> Bool {
-        return superView == nil
-    }
-    
-    @objc func show(onView:UIView, block:(() -> Void)? = nil) {
-        superView = onView
-    }
-    
-    @objc func hide(block: (() -> Void)? = nil) {
-        superView = nil
-    }
-}
-
-private final class DYSucceedLoder: DYLoader {
-    var checkLayer : CAShapeLayer?
-    var circleLayer : CAShapeLayer?
-    
-    override init(para:DYLineProgressPara) {
-        super.init(para: para)
-    }
-    
-    override func show(onView:UIView, block:(() -> Void)? = nil) {
-        if !canShow(onView) {
-            return
-        }
-        
-        let superView = onView
-        
-        let backgroundViewBounds = superView.bounds
-        let backgroundLayer = superView.layer
-        let outerCircleHeight = CGRectGetHeight(backgroundViewBounds)
-        let outerCircleWidth = CGRectGetWidth(backgroundViewBounds)
-        
-        let checkmarkPath = UIBezierPath()
-        checkmarkPath.moveToPoint(CGPointMake(outerCircleWidth * 0.28, outerCircleHeight * 0.53))
-        checkmarkPath.addLineToPoint(CGPointMake(outerCircleWidth * 0.42, outerCircleHeight * 0.66))
-        checkmarkPath.addLineToPoint(CGPointMake(outerCircleWidth * 0.72, outerCircleHeight * 0.36))
-        checkmarkPath.lineCapStyle = .Square
-        
-        let checkmark = CAShapeLayer()
-        checkmark.path = checkmarkPath.CGPath
-        checkmark.fillColor = nil
-        checkmark.strokeColor = para.checkmarkColor
-        checkmark.lineWidth = para.checkmarkLineWidth
-        backgroundLayer.addSublayer(checkmark)
-        checkLayer = checkmark
-        
-        let successCircleArcCenter = CGPointMake(CGRectGetMidX(backgroundViewBounds), CGRectGetMidY(backgroundViewBounds))
-        let successCircle = CAShapeLayer()
-        successCircle.path = UIBezierPath(arcCenter: successCircleArcCenter,
-                                          radius: para.circleRadiusOuter,
-                                          startAngle: -CGFloat(M_PI_2),
-                                          endAngle: CGFloat(M_PI) / 180 * 270,
-                                          clockwise: true).CGPath
-        successCircle.fillColor = nil
-        successCircle.strokeColor = para.successCircleColor
-        successCircle.lineWidth = para.successCircleLineWidth
-        backgroundLayer.addSublayer(successCircle)
-        circleLayer = successCircle
-        
-        let animationCheckmark = CABasicAnimation(keyPath: "strokeEnd")
-        animationCheckmark.removedOnCompletion = true
-        animationCheckmark.fromValue = 0
-        animationCheckmark.toValue = 1
-        animationCheckmark.fillMode = kCAFillModeBoth
-        animationCheckmark.duration = para.checkmarkAnimationDrawDuration
-        animationCheckmark.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        checkmark.addAnimation(animationCheckmark, forKey: nil)
-        
-        let animationCircle = CABasicAnimation(keyPath: "strokeEnd")
-        animationCircle.removedOnCompletion = true
-        animationCircle.fromValue = 0
-        animationCircle.toValue = 1
-        animationCircle.fillMode = kCAFillModeBoth
-        animationCircle.duration = para.successCircleAnimationDrawDuration
-        animationCircle.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        successCircle.addAnimation(animationCircle, forKey: nil)
-        
-        super.show(onView, block: block)
-    }
-    
-    override func hide(block: (() -> Void)? = nil) {
-        checkLayer?.removeFromSuperlayer()
-        checkLayer = nil
-        
-        circleLayer?.removeFromSuperlayer()
-        circleLayer = nil
-        
-        super.hide(block)
-    }
-    
-}
-
-private final class DYFailLoder: DYLoader {
-    var crossLayer : CAShapeLayer?
-    var circleLayer : CAShapeLayer?
-    
-    override init(para:DYLineProgressPara) {
-        super.init(para: para)
-    }
-    
-    override func show(onView:UIView, block:(() -> Void)? = nil) {
-        if !canShow(onView) {
-            return
-        }
-        
-        let superView = onView
-        
-        let backgroundViewBounds = superView.bounds
-        let backgroundViewLayer = superView.layer
-        let outerCircleWidth = CGRectGetWidth(backgroundViewBounds)
-        let outerCircleHeight = CGRectGetHeight(backgroundViewBounds)
-        
-        let crossPath = UIBezierPath()
-        crossPath.moveToPoint(CGPointMake(outerCircleWidth * 0.67, outerCircleHeight * 0.32))
-        crossPath.addLineToPoint(CGPointMake(outerCircleWidth * 0.32, outerCircleHeight * 0.67))
-        crossPath.moveToPoint(CGPointMake(outerCircleWidth * 0.32, outerCircleHeight * 0.32))
-        crossPath.addLineToPoint(CGPointMake(outerCircleWidth * 0.67, outerCircleHeight * 0.67))
-        crossPath.lineCapStyle = .Square
-        
-        let cross = CAShapeLayer()
-        cross.path = crossPath.CGPath
-        cross.fillColor = nil
-        cross.strokeColor = para.failCrossColor
-        cross.lineWidth = para.failCrossLineWidth
-        cross.frame = backgroundViewBounds
-        backgroundViewLayer.addSublayer(cross)
-        crossLayer = cross
-        
-        let failCircleArcCenter = CGPointMake(CGRectGetMidX(backgroundViewBounds), CGRectGetMidY(backgroundViewBounds))
-        let failCircle = CAShapeLayer()
-        failCircle.path = UIBezierPath(arcCenter: failCircleArcCenter,
-                                       radius: para.circleRadiusOuter,
-                                       startAngle: -CGFloat(M_PI_2),
-                                       endAngle: CGFloat(M_PI) / 180 * 270,
-                                       clockwise: true).CGPath
-        failCircle.fillColor = nil
-        failCircle.strokeColor = para.failCircleColor
-        failCircle.lineWidth = para.failCircleLineWidth
-        backgroundViewLayer.addSublayer(failCircle)
-        circleLayer = failCircle
-        
-        let animationCross = CABasicAnimation(keyPath: "strokeEnd")
-        animationCross.removedOnCompletion = false
-        animationCross.fromValue = 0
-        animationCross.toValue = 1
-        animationCross.duration = para.failCrossAnimationDrawDuration
-        animationCross.fillMode = kCAFillModeBoth
-        animationCross.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        cross.addAnimation(animationCross, forKey: nil)
-        
-        let animationCircle = CABasicAnimation(keyPath: "opacity")
-        animationCircle.removedOnCompletion = true
-        animationCircle.fromValue = 0
-        animationCircle.toValue = 1
-        animationCircle.fillMode = kCAFillModeBoth
-        animationCircle.duration = para.failCircleAnimationDrawDuration
-        animationCircle.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        failCircle.addAnimation(animationCircle, forKey: nil)
-        
-        super.show(onView, block: block)
-    }
-    
-    override func hide(block: (() -> Void)? = nil) {
-        crossLayer?.removeFromSuperlayer()
-        crossLayer = nil
-        
-        circleLayer?.removeFromSuperlayer()
-        circleLayer = nil
-        
-        super.hide(block)
-    }
-    
 }
