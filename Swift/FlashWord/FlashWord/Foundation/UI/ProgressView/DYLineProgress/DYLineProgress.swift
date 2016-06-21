@@ -220,7 +220,7 @@ public class DYLineProgress {
                 make.bottom.equalTo(contentView).offset(-para.contentViewInsets.bottom)
                 
                 if hasLoader {
-                    make.top.equalTo(loaderView.snp_bottom).offset(6)
+                    make.top.equalTo(loaderView.snp_bottom).offset(15)
                 } else {
                     make.top.equalTo(contentView).offset(para.contentViewInsets.top)
                 }
@@ -277,7 +277,16 @@ public class DYLineProgress {
         superView.bringSubviewToFront(rootView)
         
         self.text = text
-        textLabel.text = text
+        
+        if text == nil || text!.characters.count <= 0 {
+            textLabel.attributedText = nil
+        } else  {
+            let attrs = TextAttributes()
+            attrs.lineSpacing = 3
+            attrs.alignment = NSTextAlignment.Center
+            textLabel.attributedText = NSAttributedString(string: text!, attributes: attrs)
+        }
+        
         
         setupConstraints(type)
         rootView.layoutIfNeeded()
