@@ -65,6 +65,7 @@
 		84301D171D190EE800BB3C5D /* DYSatelliteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D161D190EE800BB3C5D /* DYSatelliteLoader.swift */; };
 		84301D1A1D1935E600BB3C5D /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D191D1935E600BB3C5D /* TextAttributes.swift */; };
 		84301D1C1D19362A00BB3C5D /* DYStringUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */; };
+		84301D1F1D1940A900BB3C5D /* FontBlaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1E1D1940A900BB3C5D /* FontBlaster.swift */; };
 		844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */; };
 		844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */; };
 		844FBA6A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA461D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift */; };
@@ -207,6 +208,7 @@
 		84301D161D190EE800BB3C5D /* DYSatelliteLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYSatelliteLoader.swift; sourceTree = "<group>"; };
 		84301D191D1935E600BB3C5D /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYStringUtility.swift; sourceTree = "<group>"; };
+		84301D1E1D1940A900BB3C5D /* FontBlaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontBlaster.swift; sourceTree = "<group>"; };
 		844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DYViewModel.swift; path = FlashWord/Model/DYViewModel.swift; sourceTree = SOURCE_ROOT; };
 		844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
 		844FBA461D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotate.swift; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 		639187F11D09D7A800757F60 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				84301D1D1D1940A900BB3C5D /* Font */,
 				84301D181D1935E600BB3C5D /* String */,
 				840C8D121D179698009F2646 /* Async */,
 				6388D5F91D15D8440029C988 /* Navigator */,
@@ -637,6 +640,14 @@
 				84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */,
 			);
 			path = String;
+			sourceTree = "<group>";
+		};
+		84301D1D1D1940A900BB3C5D /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				84301D1E1D1940A900BB3C5D /* FontBlaster.swift */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		844FBA421D0FE0F900D6C2EA /* ProgressView */ = {
@@ -946,6 +957,7 @@
 				6388D5C11D0DAE310029C988 /* FadeTransitionAnimator.swift in Sources */,
 				844FBA711D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
+				84301D1F1D1940A900BB3C5D /* FontBlaster.swift in Sources */,
 				635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */,
 				844FBA841D0FE0F900D6C2EA /* NVActivityIndicatorAnimationPacman.swift in Sources */,
 				6388D5F21D15CB030029C988 /* RegisterController.swift in Sources */,
@@ -1137,7 +1149,18 @@
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = FlashWord/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D DEBUG=1\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"MagicalRecord\"",
+					"-framework",
+					"\"RxCocoa\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-framework",
+					"\"SnapKit\"",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D DEBUG=1\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

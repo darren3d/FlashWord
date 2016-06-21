@@ -325,7 +325,7 @@ public class URLNavigator {
         let URLString = URL.URLStringValue
         if let scheme = scheme where !URLString.containsString("://") {
             #if DEBUG
-                if !URLPatternString.hasPrefix("/") {
+                if !URLString.hasPrefix("/") {
                     NSLog("[Warning] URL pattern doesn't have leading slash(/): '\(URL)'")
                 }
             #endif
