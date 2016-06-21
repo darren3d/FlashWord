@@ -53,6 +53,10 @@ class DYTransitionAnimator : NSObject, UIViewControllerAnimatedTransitioning {
         }
         
         
+        toViewController.view.layer.shadowColor = UIColor.blackColor().CGColor
+        toViewController.view.layer.shadowOffset = CGSizeZero
+        toViewController.view.layer.shadowRadius = 20
+        toViewController.view.layer.shadowOpacity = 0.65
         toViewController.view.transform = toTransform
         UIView.animateWithDuration(duration,
                                    animations: { 
@@ -61,6 +65,11 @@ class DYTransitionAnimator : NSObject, UIViewControllerAnimatedTransitioning {
         }) { (finished) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
             fromViewController.view.transform = CGAffineTransformIdentity;
+            
+            toViewController.view.layer.shadowColor = nil
+            toViewController.view.layer.shadowOffset = CGSizeZero
+            toViewController.view.layer.shadowRadius = 0
+            toViewController.view.layer.shadowOpacity = 0
         }
     }
 }
