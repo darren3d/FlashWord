@@ -18,7 +18,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     @IBOutlet weak var btnRegiser : UIButton!
     
     //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, PrediKit,ARSLineProgress
-    //FIXME: 使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster
+    //FIXME: 使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, https://github.com/jathu/UIImageColors
     
     override func viewDidLoad() {
         super.viewDidLoad()
