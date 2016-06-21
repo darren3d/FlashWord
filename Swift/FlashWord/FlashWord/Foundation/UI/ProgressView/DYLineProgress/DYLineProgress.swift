@@ -8,12 +8,28 @@
 
 import UIKit
 
-public enum DYLoaderType {
-    case None
-    case Loading
+public enum DYLoaderStatus {
     case Success
     case Fail
     case TextOnly
+}
+
+public enum DYLoaderType {
+    case None
+    case Loading
+    case Status(DYLoaderStatus)
+    
+    func hasLoader() -> Bool {
+        switch self {
+        case .None:
+            return false
+        case .Loading: 
+            return true
+        case .Status(let status):
+            return status  != .TextOnly
+        }
+        return false
+    }
 }
 
 public enum DYProgressStatus {
@@ -173,7 +189,7 @@ public class DYLineProgress {
             make.width.lessThanOrEqualTo(para.maxContentViewWidth)
         }
         
-        let hasLoader = type != DYLoaderType.TextOnly
+        let hasLoader = type.hasLoader()
         let hasText = text != nil && text!.characters.count > 0
         
         //loaderView添加约束
@@ -240,14 +256,18 @@ public class DYLineProgress {
             return
         }
         
-        if type == DYLoaderType.None ||
-            (type == DYLoaderType.TextOnly && (text == nil || text!.characters.count <= 0)) {
+        switch type {
+        case .None:
             return
-        }
-        
-        if type == DYLoaderType.Loading &&
-            (topType == DYLoaderType.Success || topType == DYLoaderType.Fail || topType == DYLoaderType.TextOnly) {
-            return
+        case .Loading: 
+            if case let DYLoaderType.Status(status) = topType {
+                DYLog.info("DYLoaderType: .\(status)")
+                return
+            }
+        case .Status(let status):
+            if status  == .TextOnly && (text == nil || text!.characters.count <= 0) {
+                return
+            }
         }
         topType = type
         
@@ -268,21 +288,18 @@ public class DYLineProgress {
         case .Loading:
             loader = DYInfiniteLoader(para: para)
             break
-        case .Success:
-            loader = DYSucceedLoder(para: para)
+        case .Status(let status):
+            if status == .Success {
+                loader = DYSucceedLoder(para: para)
+            } else if status == .Fail{
+                loader = DYFailLoder(para: para)
+            }
+            
             self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
             NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
             break
-        case .Fail:
-            loader = DYFailLoder(para: para)
-            self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
-            NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
+        default:
             break
-        case .TextOnly:
-            self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
-            NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
-            break
-        default: break
         }
         
         loader?.show(loaderView, block: nil)
