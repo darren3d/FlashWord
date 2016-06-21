@@ -327,7 +327,7 @@ public class DYLineProgress {
             return
         } else {
             loadingCount -= 1
-            if loadingCount <= 0{
+            if loadingCount <= 0 && fadeOutTimer == nil {
                 fadeOut(nil)
             }
         }
