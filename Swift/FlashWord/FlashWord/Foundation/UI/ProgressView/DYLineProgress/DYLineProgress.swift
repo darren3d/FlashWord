@@ -232,7 +232,7 @@ public class DYLineProgress {
         return targetWindow
     }
     
-    
+    //MARK: public API
     public func show(type:DYProgressType, text:String?) {
         guard let superView = self.superView else {
             return
@@ -249,7 +249,9 @@ public class DYLineProgress {
         }
         topType = type
         
+        var isFirstShow = false
         if rootView.superview == nil {
+            isFirstShow = true
             superView.addSubview(rootView)
         }
         superView.bringSubviewToFront(rootView)
@@ -263,19 +265,23 @@ public class DYLineProgress {
         let duration = DYLineProgress.durationForText(text)
         var loader : DYLoader? = nil
         switch type {
-        case .Loading: 
+        case .Loading:
+            loadingCount += 1
             break
         case .Success:
+            loadingCount += 1
             loader = DYSucceedLoder(para: para)
             self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
             NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
             break
         case .Fail:
+            loadingCount += 1
             loader = DYFailLoder(para: para)
             self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
             NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
             break
         case .TextOnly:
+            loadingCount += 1
             self.fadeOutTimer = NSTimer(timeInterval: duration, target: self, selector: #selector(DYLineProgress.fadeOut(_:)), userInfo: nil, repeats: false)
             NSRunLoop.mainRunLoop().addTimer(self.fadeOutTimer!, forMode: NSRunLoopCommonModes)
             break
@@ -283,28 +289,51 @@ public class DYLineProgress {
         }
         
         loader?.show(loaderView, block: nil)
+        
+        if isFirstShow {
+            fadeIn()
+        }
     }
     
-    public func hide(block: (() -> Void)? = nil) {
-        rootView.removeFromSuperview()
-        
-        
+    public func dismissProgress() {
+        if loadingCount <= 0 {
+            return
+        } else {
+            loadingCount -= 1
+            if loadingCount <= 0{
+                fadeOut(nil)
+            }
+        }
     }
     
-    private func reset () {
+    private func reset() {
         rootView.removeFromSuperview()
-        loadingCache = [Int64:DYProgressType]()
+        loadingCount = 0
         topType = DYProgressType.None
+        
         self.fadeOutTimer = nil
     }
     
+    private func fadeIn() {
+        let duration = para.backgroundViewDismissAnimationDuration
+        self.rootView.alpha = 0.45
+        self.contentView.transform = CGAffineTransformMakeScale(0.75, 0.75)
+        Async.main { [weak self] in
+            UIView.animateWithDuration(duration, delay: 0.0, options: .CurveEaseOut, animations: {
+                self?.rootView.alpha = 1
+                self?.contentView.transform = CGAffineTransformIdentity
+                }, completion: { _ in
+            })
+        }
+    }
+    
     @objc
-    private func fadeOut(sender:AnyObject) {
+    private func fadeOut(sender:AnyObject?) {
         let duration = para.backgroundViewDismissAnimationDuration
         Async.main { [weak self] in
             UIView.animateWithDuration(duration, delay: 0.0, options: .CurveEaseOut, animations: {
                 self?.rootView.alpha = 0.0
-                self?.contentView.transform = CGAffineTransformMakeScale(0.9, 0.9)
+                self?.contentView.transform = CGAffineTransformMakeScale(1.5, 1.5)
                 }, completion: { _ in
                     self?.reset()
             })
