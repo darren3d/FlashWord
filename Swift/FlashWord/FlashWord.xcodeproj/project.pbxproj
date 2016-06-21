@@ -66,6 +66,8 @@
 		84301D1A1D1935E600BB3C5D /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D191D1935E600BB3C5D /* TextAttributes.swift */; };
 		84301D1C1D19362A00BB3C5D /* DYStringUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */; };
 		84301D1F1D1940A900BB3C5D /* FontBlaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1E1D1940A900BB3C5D /* FontBlaster.swift */; };
+		84301D211D1953EA00BB3C5D /* DYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D201D1953EA00BB3C5D /* DYTabBarController.swift */; };
+		84301D241D1959AE00BB3C5D /* DYTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D231D1959AE00BB3C5D /* DYTransitionAnimator.swift */; };
 		844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */; };
 		844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */; };
 		844FBA6A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA461D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift */; };
@@ -209,6 +211,8 @@
 		84301D191D1935E600BB3C5D /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYStringUtility.swift; sourceTree = "<group>"; };
 		84301D1E1D1940A900BB3C5D /* FontBlaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontBlaster.swift; sourceTree = "<group>"; };
+		84301D201D1953EA00BB3C5D /* DYTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarController.swift; sourceTree = "<group>"; };
+		84301D231D1959AE00BB3C5D /* DYTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTransitionAnimator.swift; sourceTree = "<group>"; };
 		844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DYViewModel.swift; path = FlashWord/Model/DYViewModel.swift; sourceTree = SOURCE_ROOT; };
 		844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
 		844FBA461D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallClipRotate.swift; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 		6388D5C21D0DAEAC0029C988 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				84301D221D19599700BB3C5D /* TrasitionAnimator */,
 				6388D5E71D108B090029C988 /* NavigationBar */,
 				844FBA421D0FE0F900D6C2EA /* ProgressView */,
 				6388D5CB1D0DB1620029C988 /* ViewController */,
@@ -444,6 +449,7 @@
 			children = (
 				6388D5CC1D0DB1900029C988 /* DYViewController.swift */,
 				6388D5CE1D0DB1AC0029C988 /* DYNavigationController.swift */,
+				84301D201D1953EA00BB3C5D /* DYTabBarController.swift */,
 				844FBA8C1D0FE2B700D6C2EA /* UIViewController+Utility.swift */,
 				6388D5F71D15D5EB0029C988 /* UIViewController+ProgressView.swift */,
 				847D70361D1298EA0025B54A /* UIViewController+State.swift */,
@@ -648,6 +654,14 @@
 				84301D1E1D1940A900BB3C5D /* FontBlaster.swift */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		84301D221D19599700BB3C5D /* TrasitionAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				84301D231D1959AE00BB3C5D /* DYTransitionAnimator.swift */,
+			);
+			path = TrasitionAnimator;
 			sourceTree = "<group>";
 		};
 		844FBA421D0FE0F900D6C2EA /* ProgressView */ = {
@@ -915,6 +929,7 @@
 				639188071D0A915800757F60 /* HSL.swift in Sources */,
 				6388D5FD1D15D8440029C988 /* URLConvertible.swift in Sources */,
 				844FBA721D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
+				84301D241D1959AE00BB3C5D /* DYTransitionAnimator.swift in Sources */,
 				844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */,
 				84301D031D18DF1500BB3C5D /* DYFailLoader.swift in Sources */,
 				844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */,
@@ -934,6 +949,7 @@
 				844FBA831D0FE0F900D6C2EA /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				639188061D0A915800757F60 /* DynamicColor.swift in Sources */,
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
+				84301D211D1953EA00BB3C5D /* DYTabBarController.swift in Sources */,
 				844FBA731D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
 				844FBA7A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
 				847D70391D12A4AD0025B54A /* ObjectUtility.swift in Sources */,
