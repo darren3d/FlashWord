@@ -19,6 +19,14 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     
     //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, PrediKit,ARSLineProgress
     //FIXME: 使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, https://github.com/jathu/UIImageColors
+    //https://github.com/ViccAlexander/Chameleon
+    
+    //https://github.com/PrideChung/FontAwesomeKit
+    ///ZCAnimatedLabel
+    //Yalantis/Preloader.Ophiuchus
+    //Automatic summarizer text in Swift
+    //https://github.com/hyperoslo/Hue
+    //https://github.com/hyperoslo/Sugar
     
     override func viewDidLoad() {
         super.viewDidLoad()
