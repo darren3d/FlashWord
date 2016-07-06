@@ -32,6 +32,10 @@ extension DefaultsKey {
 
 public class AppConst: NSObject {
     private static var kEnviroment = Environment.Invalid
+    //MARK: 单个像素对应的屏幕点数
+    public static let dotPerPixel : CGFloat = {
+        return 1.0/UIScreen.mainScreen().scale
+    }();
     
     //MARK: 当前环境
     public static var enviroment : Environment {

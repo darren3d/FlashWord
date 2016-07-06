@@ -120,7 +120,7 @@ public class SkyFloatingLabelTextField: UITextField {
     }
     
     /// A CGFloat value that determines the height for the bottom line when the control is in a selected state
-    @IBInspectable public var selectedLineHeight:CGFloat = 1.0 {
+    @IBInspectable public var selectedLineHeight:CGFloat = 0.5 {
         didSet {
             self.updateLineView()
             self.setNeedsDisplay()

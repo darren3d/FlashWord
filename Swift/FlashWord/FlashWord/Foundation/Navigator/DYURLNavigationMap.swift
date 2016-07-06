@@ -10,7 +10,7 @@ import UIKit
 
 class DYURLNavigationMap {
     
-    static func initialize() {
+    static func setup() {
         Navigator.scheme = "flashword"
         
         Navigator.map("/login", LoginController.self)
