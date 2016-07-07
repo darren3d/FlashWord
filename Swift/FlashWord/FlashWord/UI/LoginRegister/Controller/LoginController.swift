@@ -48,6 +48,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         setupBtnRegister()
         setupBtnForgetPassword()
         setupTextField()
+        setupRx()
         
         //        btnLogin.enabled = false
         
@@ -58,41 +59,6 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         //            textFieldEmail.iconRotationDegrees = 90
         //            textFieldPassword.iconRotationDegrees = 90
         //        }
-        
-        textFieldEmail.rx_text
-            .distinctUntilChanged()
-            .subscribeNext {[weak self] email in
-                guard let loginViewModel =  self?.viewModel as? LoginVM else {
-                    return
-                }
-                
-                loginViewModel.email = email
-            }.addDisposableTo(disposeBag)
-        
-        textFieldPassword.rx_text
-            .distinctUntilChanged()
-            .subscribeNext{ [weak self] password in
-                guard let loginViewModel =  self?.viewModel as? LoginVM else {
-                    return
-                }
-                
-                loginViewModel.password = password
-            }.addDisposableTo(disposeBag)
-        
-        let emailValid = textFieldEmail.rx_text
-            .map { $0.characters.count >= 6 && $0.containsString("@") }
-            .shareReplay(1)
-        
-        let passwordValid = textFieldPassword.rx_text
-            .map { $0.characters.count >= 8 }
-            .shareReplay(1)
-        
-        let everythingValid = Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
-            .shareReplay(1)
-        
-        everythingValid.bindTo(btnLogin.rx_enabled)
-            .addDisposableTo(disposeBag)
-        
         
         let tapBackground = UITapGestureRecognizer()
         tapBackground.rx_event
@@ -209,6 +175,47 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         textFieldPassword.title = "Password"
     }
     
+    func setupRx() {
+        textFieldEmail.rx_text
+            .distinctUntilChanged()
+            .subscribeNext {[weak self] email in
+                guard let loginViewModel =  self?.viewModel as? LoginVM else {
+                    return
+                }
+                
+                loginViewModel.email = email
+            }.addDisposableTo(disposeBag)
+        
+        textFieldPassword.rx_text
+            .distinctUntilChanged()
+            .subscribeNext{ [weak self] password in
+                guard let loginViewModel =  self?.viewModel as? LoginVM else {
+                    return
+                }
+                
+                loginViewModel.password = password
+            }.addDisposableTo(disposeBag)
+        
+        
+        let emailValid = self.rx_observe(Bool.self, "viewModel.isEmailValid", options: [.Initial, .New], retainSelf: false)
+            .map{
+                return $0 ?? false
+            }
+            .shareReplay(1)
+        
+        let passwordValid = self.rx_observe(Bool.self, "viewModel.isPasswordValid", options: [.Initial, .New], retainSelf: false)
+            .map{
+                return $0 ?? false
+            }
+            .shareReplay(1)
+        
+        let everythingValid = Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
+            .shareReplay(1)
+        
+        everythingValid.bindTo(btnLogin.rx_enabled)
+            .addDisposableTo(disposeBag)
+    }
+    
     //MARK: UIViewControllerTransitioningDelegate
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return FadeTransitionAnimator(transitionDuration: 0.5, startingAlpha: 0.8)
@@ -235,29 +242,33 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         //        DYLog.info("login next")
         //        //                self?.dy_state = DYUIState.Empty
         
-        AccountData.login("nanjimeng_lgb@126.com", password: "111111", callback: {[weak self] (user, error) in
+        let loginVM = viewModel as! LoginVM
+        loginVM.login({[weak self] (succeed, error) in
             
-            self?.progressView?.dismissProgress()
             guard let error = error else {
                 DYLog.info("login OK")
-                guard let _ = user as? AccountData else {
-                    DYLog.error("invalid account")
+                if !succeed {
+                    self?.progressView?.show(DYLoaderType.Status(DYLoaderStatus.Fail), text:"账号获取失败")
                     return
                 }
                 
+                self?.progressView?.dismissProgress()
                 //通知进入主界面
                 NSNotificationCenter.defaultCenter().postNotificationName(AppConst.kNotificationSwithToHomeTab, object: nil)
                 return
             }
             
+            var errorMsg = "登录失败"
             switch error.code {
             case 211:
+                errorMsg = "该账号未注册，请先注册"
                 DYLog.error("未注册")
                 DYLog.error("login Failed : \(error)")
             default:
                 DYLog.error("login Failed : \(error)")
             }
             
+            self?.progressView?.show(DYLoaderType.Status(DYLoaderStatus.Fail), text:errorMsg)
             })
     }
     

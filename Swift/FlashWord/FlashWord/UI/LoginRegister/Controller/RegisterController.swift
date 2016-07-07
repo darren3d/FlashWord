@@ -11,7 +11,8 @@ import UIKit
 class RegisterController: DYViewController {
     @IBOutlet weak var textFieldEmail : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var textFieldPassword : SkyFloatingLabelTextFieldWithIcon!
-    @IBOutlet weak var btnLogin : DYSubmitButton!
+    @IBOutlet weak var btnRegister : DYSubmitButton!
+    @IBOutlet weak var btnUserProtocol : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +28,13 @@ class RegisterController: DYViewController {
         
         var colorNorm = UIColor.flat(FlatColors.MidnightBlue)
         var colorHighlighted = UIColor.flat(FlatColors.Shamrock)
-        var colorDisable = UIColor.flat(FlatColors.SilverSand)
-        btnLogin.normalBackgroundColor = colorNorm
-        btnLogin.highlightedBackgroundColor = colorHighlighted
-        btnLogin.disableBackgroundColor = colorDisable
+        let colorDisable = UIColor.flat(FlatColors.SilverSand)
+        btnRegister.normalBackgroundColor = colorNorm
+        btnRegister.highlightedBackgroundColor = colorHighlighted
+        btnRegister.disableBackgroundColor = colorDisable
         
-        btnLogin.layer.cornerRadius = 20;
-        self.view.bringSubviewToFront(self.btnLogin)
+        btnRegister.layer.cornerRadius = 20;
+        self.view.bringSubviewToFront(self.btnRegister)
         
         //        if AppConst.isLanguageFromLeft2Right {
         //            textFieldEmail.iconRotationDegrees = 180
@@ -90,7 +91,7 @@ class RegisterController: DYViewController {
     
     //MARK: UI Action
     @IBAction private func onButtonRegister(sender: AnyObject) {
-        
+        //        AccountData.register(<#T##userName: String!##String!#>, password: <#T##String!#>, callback: <#T##AVBooleanResultBlock?##AVBooleanResultBlock?##(Bool, NSError!) -> Void#>)
     }
 }
 
