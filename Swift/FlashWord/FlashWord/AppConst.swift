@@ -31,6 +31,8 @@ extension DefaultsKey {
 
 
 public class AppConst: NSObject {
+    public static let kNotificationSwithToHomeTab = "com.flashword.note.switch.hometab"
+    
     private static var kEnviroment = Environment.Invalid
     //MARK: 单个像素对应的屏幕点数
     public static let dotPerPixel : CGFloat = {

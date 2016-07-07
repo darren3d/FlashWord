@@ -9,7 +9,8 @@
 import UIKit
 import RxSwift
 
-class DYViewController: UIViewController {
+
+class DYViewController : UIViewController {
     var viewModel : DYViewModel?
     
     var disposeBag : DisposeBag! = DisposeBag()

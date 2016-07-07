@@ -8,6 +8,6 @@
 
 import UIKit
 
-class RootTabBarController: UITabBarController {
+class RootTabBarController: DYTabBarController {
     
 }
