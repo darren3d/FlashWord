@@ -27,8 +27,10 @@ public enum DYLoaderType {
             return true
         case .Status(let status):
             return status  != .TextOnly
+        default:
+            return false
         }
-        return false
+        
     }
 }
 
@@ -46,8 +48,8 @@ public class DYLineProgressPara {
     public var contentViewInsets: UIEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
     public var contentViewCornerRadius: CGFloat = 13.0
     public var loaderViewSideLength: CGFloat = 80.0
-    public var backgroundViewPresentAnimationDuration: CFTimeInterval = 0.3
-    public var backgroundViewDismissAnimationDuration: CFTimeInterval = 0.3
+    public var backgroundViewPresentAnimationDuration: CFTimeInterval = 0.2
+    public var backgroundViewDismissAnimationDuration: CFTimeInterval = 0.2
     
     public var blurStyle: UIBlurEffectStyle = .Dark
     public var circleColorOuter: CGColor = UIColor.dy_color(130, green: 149, blue: 173, alpha: 1.0).CGColor
@@ -103,6 +105,7 @@ public class DYLineProgress {
     //superView of loaderView and textView
     var contentView:UIVisualEffectView
     var loaderView = UIView()
+    var loader : DYLoader?
     var textLabel = UILabel()
     
     var text : String? = nil
@@ -289,12 +292,15 @@ public class DYLineProgress {
             textLabel.attributedText = NSAttributedString(string: text!, attributes: attrs)
         }
         
+        //删除原来的loader
+        if loader != nil {
+            loader!.hide()
+        }
         
         setupConstraints(type)
         rootView.layoutIfNeeded()
         
         let duration = DYLineProgress.durationForText(text)
-        var loader : DYLoader? = nil
         switch type {
         case .Loading:
             loadingCount += 1
@@ -334,6 +340,9 @@ public class DYLineProgress {
     }
     
     private func reset() {
+        self.rootView.alpha = 0.0;
+        self.contentView.alpha = 0.0;
+        
         rootView.removeFromSuperview()
         loadingCache = [Int64:DYLoaderType]()
         topType = DYLoaderType.None
@@ -341,13 +350,23 @@ public class DYLineProgress {
     }
     
     private func fadeIn() {
+        if self.rootView.alpha == 1 && self.contentView.alpha == 1 {
+            return
+        }
+        
         let duration = para.backgroundViewDismissAnimationDuration
-        self.rootView.alpha = 0.45
+        //        self.rootView.alpha = 0.45
         self.contentView.transform = CGAffineTransformMakeScale(0.75, 0.75)
         Async.main { [weak self] in
-            UIView.animateWithDuration(duration, delay: 0.0, options: .CurveEaseOut, animations: {
-                self?.rootView.alpha = 1
-                self?.contentView.transform = CGAffineTransformIdentity
+            UIView.animateWithDuration(duration,
+                delay: 0.0,
+                options: [.AllowUserInteraction ,.CurveEaseOut, .BeginFromCurrentState],
+                animations: {
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    strongSelf.rootView.alpha = 1.0
+                    strongSelf.contentView.transform = CGAffineTransformIdentity
                 }, completion: { _ in
             })
         }
@@ -357,10 +376,24 @@ public class DYLineProgress {
     private func fadeOut(sender:AnyObject?) {
         let duration = para.backgroundViewDismissAnimationDuration
         Async.main { [weak self] in
-            UIView.animateWithDuration(duration, delay: 0.0, options: .CurveEaseOut, animations: {
-                self?.rootView.alpha = 0.0
-                self?.contentView.transform = CGAffineTransformMakeScale(1.5, 1.5)
+            UIView.animateWithDuration(duration,
+                delay: 0.0,
+                options: [.CurveEaseIn, .AllowUserInteraction],
+                animations: {
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    strongSelf.rootView.alpha = 0.0
+                    strongSelf.contentView.transform = CGAffineTransformMakeScale(1.5, 1.5)
                 }, completion: { _ in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    
+                    if strongSelf.rootView.alpha != 0.0 && strongSelf.contentView.alpha != 0.0 {
+                        return
+                    }
+                    
                     self?.reset()
             })
         }
