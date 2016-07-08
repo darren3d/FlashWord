@@ -95,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="lYH-S6-VYf" kind="relationship" relationship="rootViewController" id="zlm-5l-udc"/>
+                        <segue destination="Zij-oT-9Kc" kind="relationship" relationship="rootViewController" id="H2N-WL-980"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZG-wa-4Ee" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -111,27 +111,27 @@
                         <viewControllerLayoutGuide type="bottom" id="XTO-k4-NMP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5Ln-jU-6oh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYU-db-anl" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
-                                <rect key="frame" x="68" y="227" width="240" height="43"/>
+                                <rect key="frame" x="180" y="193" width="240" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Tay-Jh-yBB"/>
                                     <constraint firstAttribute="width" constant="240" id="Ysa-XG-tGr"/>
                                 </constraints>
                             </view>
-                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLi-ND-dc8" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
-                                <rect key="frame" x="67" y="312" width="240" height="43"/>
+                            <view tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MLi-ND-dc8" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="179" y="278" width="240" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="G6m-iF-mkq"/>
                                     <constraint firstAttribute="height" constant="43" id="xCk-bW-dvl"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKi-hT-V5b" customClass="DYSubmitButton" customModule="FlashWord" customModuleProvider="target">
-                                <rect key="frame" x="112" y="433" width="150" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKi-hT-V5b" customClass="DYSubmitButton" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="224" y="399" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="86J-df-xeK"/>
                                     <constraint firstAttribute="width" constant="150" id="JfM-df-6s4"/>
@@ -155,8 +155,8 @@
                                     <action selector="onButtonLogin:" destination="lYH-S6-VYf" eventType="touchUpInside" id="exd-tR-dGp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RD-Kf-SVY">
-                                <rect key="frame" x="67" y="493" width="240" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9RD-Kf-SVY">
+                                <rect key="frame" x="179" y="459" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="SWX-8q-2XX"/>
                                     <constraint firstAttribute="height" constant="30" id="g5w-fm-sCj"/>
@@ -169,8 +169,8 @@
                                     <action selector="onButtonRegister:" destination="lYH-S6-VYf" eventType="touchUpInside" id="ryx-Gs-JEy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cw-en-de5">
-                                <rect key="frame" x="241" y="365" width="86" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cw-en-de5">
+                                <rect key="frame" x="353" y="331" width="86" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="dmV-au-DfQ"/>
                                     <constraint firstAttribute="height" constant="30" id="koO-ql-1ef"/>
@@ -221,7 +221,166 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wa4-OX-dHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431.5" y="1113.5"/>
+            <point key="canvasLocation" x="668" y="1877"/>
+        </scene>
+        <!--Login Register Controller-->
+        <scene sceneID="B8q-GB-cmg">
+            <objects>
+                <viewController storyboardIdentifier="LoginRegisterController" id="Zij-oT-9Kc" customClass="LoginRegisterController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1LP-jv-rEI"/>
+                        <viewControllerLayoutGuide type="bottom" id="K55-6a-Mwa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CJX-vg-k29">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-bg" translatesAutoresizingMaskIntoConstraints="NO" id="FcF-4H-rfA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJD-2w-6qI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="JZL-KF-jTo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLC-Fc-ln5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+                                            <color key="backgroundColor" white="1" alpha="0.055364884393063585" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="222" id="ZYd-r9-dZk"/>
+                                            </constraints>
+                                        </view>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDd-Sy-Ggv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ck8-Gu-MAH">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="dark"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pDd-Sy-Ggv" firstAttribute="centerY" secondItem="JZL-KF-jTo" secondAttribute="centerY" id="FIz-OV-VkT"/>
+                                        <constraint firstItem="pDd-Sy-Ggv" firstAttribute="height" secondItem="JZL-KF-jTo" secondAttribute="height" id="Skh-KE-t9l"/>
+                                        <constraint firstItem="pDd-Sy-Ggv" firstAttribute="centerX" secondItem="JZL-KF-jTo" secondAttribute="centerX" id="XeL-1v-14C"/>
+                                        <constraint firstAttribute="trailing" secondItem="dLC-Fc-ln5" secondAttribute="trailing" id="lqt-Rp-WBG"/>
+                                        <constraint firstItem="pDd-Sy-Ggv" firstAttribute="width" secondItem="JZL-KF-jTo" secondAttribute="width" id="owg-Ta-mSF"/>
+                                        <constraint firstItem="dLC-Fc-ln5" firstAttribute="leading" secondItem="JZL-KF-jTo" secondAttribute="leading" id="xBp-LT-ciO"/>
+                                        <constraint firstItem="dLC-Fc-ln5" firstAttribute="top" secondItem="JZL-KF-jTo" secondAttribute="top" id="zRX-BD-Wkr"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Io3-hM-DqX" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="67" y="227" width="240" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="7Us-GC-a8C"/>
+                                    <constraint firstAttribute="width" constant="240" id="svR-yE-GxL"/>
+                                </constraints>
+                            </view>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAc-iN-Tx3" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="68" y="312" width="240" height="43"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="QgP-Wa-Xq4"/>
+                                    <constraint firstAttribute="height" constant="43" id="g8v-rE-Xg1"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgD-Zw-eXY" customClass="DYSubmitButton" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="113" y="433" width="150" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ewR-vT-vX7"/>
+                                    <constraint firstAttribute="width" constant="150" id="geF-Pk-06s"/>
+                                    <constraint firstAttribute="width" constant="30" id="mQj-Ea-4Po"/>
+                                </constraints>
+                                <state key="normal" title="登  录"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
+                                        <color key="value" red="0.98823529409999999" green="0.1647058824" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                        <color key="value" red="0.98823529409999999" green="0.1647058824" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="mQj-Ea-4Po"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="onButtonLogin:" destination="Zij-oT-9Kc" eventType="touchUpInside" id="4Eb-8U-tce"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZm-En-Mjm">
+                                <rect key="frame" x="68" y="493" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="egf-vf-RTA"/>
+                                    <constraint firstAttribute="height" constant="30" id="tCT-rh-jt7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="新用户注册">
+                                    <color key="titleColor" red="0.24534955620765686" green="0.52544945478439331" blue="0.84400981664657593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onButtonRegister:" destination="Zij-oT-9Kc" eventType="touchUpInside" id="0LG-Yg-8E9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPL-1u-3cu">
+                                <rect key="frame" x="242" y="365" width="86" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="0RF-3v-Jhi"/>
+                                    <constraint firstAttribute="height" constant="30" id="Jo1-ss-5GZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                <state key="normal" title="忘记密码">
+                                    <color key="titleColor" red="0.24534955620765686" green="0.52544945478439331" blue="0.84400981664657593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBtnForgetPassword:" destination="Zij-oT-9Kc" eventType="touchUpInside" id="vEZ-05-uHJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13160091638565063" green="0.1932809054851532" blue="0.24724599719047546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Io3-hM-DqX" firstAttribute="centerX" secondItem="CJX-vg-k29" secondAttribute="centerX" id="25R-H9-upl"/>
+                            <constraint firstItem="CPL-1u-3cu" firstAttribute="trailing" secondItem="cAc-iN-Tx3" secondAttribute="trailing" constant="20" id="7d1-00-G2Z"/>
+                            <constraint firstItem="WJD-2w-6qI" firstAttribute="centerX" secondItem="CJX-vg-k29" secondAttribute="centerX" id="EXu-IS-G14"/>
+                            <constraint firstItem="cAc-iN-Tx3" firstAttribute="top" secondItem="Io3-hM-DqX" secondAttribute="bottom" constant="42" id="GKu-p7-bVU"/>
+                            <constraint firstItem="CPL-1u-3cu" firstAttribute="top" secondItem="cAc-iN-Tx3" secondAttribute="bottom" constant="10" id="JOj-0Y-H6E"/>
+                            <constraint firstItem="FcF-4H-rfA" firstAttribute="centerX" secondItem="CJX-vg-k29" secondAttribute="centerX" id="M3R-HE-NdL"/>
+                            <constraint firstItem="fgD-Zw-eXY" firstAttribute="top" secondItem="Io3-hM-DqX" secondAttribute="bottom" constant="44" id="M4m-Qo-NiM"/>
+                            <constraint firstItem="FcF-4H-rfA" firstAttribute="height" secondItem="CJX-vg-k29" secondAttribute="height" id="N6S-T0-vfu"/>
+                            <constraint firstItem="NZm-En-Mjm" firstAttribute="centerX" secondItem="CJX-vg-k29" secondAttribute="centerX" id="S3Z-OZ-JTd"/>
+                            <constraint firstItem="cAc-iN-Tx3" firstAttribute="centerY" secondItem="CJX-vg-k29" secondAttribute="centerY" id="SNG-C9-vhC"/>
+                            <constraint firstItem="fgD-Zw-eXY" firstAttribute="centerY" secondItem="CJX-vg-k29" secondAttribute="centerY" id="SUP-MO-wCy"/>
+                            <constraint firstItem="FcF-4H-rfA" firstAttribute="width" secondItem="CJX-vg-k29" secondAttribute="width" id="WKE-z4-uh3"/>
+                            <constraint firstItem="WJD-2w-6qI" firstAttribute="centerY" secondItem="CJX-vg-k29" secondAttribute="centerY" id="ZpI-za-LLW"/>
+                            <constraint firstItem="cAc-iN-Tx3" firstAttribute="centerX" secondItem="CJX-vg-k29" secondAttribute="centerX" id="fGW-Yu-yMp"/>
+                            <constraint firstItem="FcF-4H-rfA" firstAttribute="centerY" secondItem="CJX-vg-k29" secondAttribute="centerY" id="fRi-OM-Ruu"/>
+                            <constraint firstItem="NZm-En-Mjm" firstAttribute="top" secondItem="fgD-Zw-eXY" secondAttribute="bottom" constant="20" id="fcx-22-Qsf"/>
+                            <constraint firstItem="WJD-2w-6qI" firstAttribute="height" secondItem="CJX-vg-k29" secondAttribute="height" id="goa-te-8F9"/>
+                            <constraint firstItem="fgD-Zw-eXY" firstAttribute="top" secondItem="cAc-iN-Tx3" secondAttribute="bottom" constant="78" id="i3V-MA-ofS"/>
+                            <constraint firstItem="WJD-2w-6qI" firstAttribute="width" secondItem="CJX-vg-k29" secondAttribute="width" id="lnb-m2-DaO"/>
+                            <constraint firstItem="fgD-Zw-eXY" firstAttribute="centerX" secondItem="CJX-vg-k29" secondAttribute="centerX" id="lzs-Vg-3ja"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="M4m-Qo-NiM"/>
+                                <exclude reference="SUP-MO-wCy"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="9MJ-YU-sYs"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bHM-3J-g90" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443.5" y="1113.5"/>
         </scene>
         <!--Register Controller-->
         <scene sceneID="dhz-cZ-rqv">
@@ -232,11 +391,11 @@
                         <viewControllerLayoutGuide type="bottom" id="gtl-mm-V5l"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="h85-oY-EJl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfo-Vc-IxG" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
-                                <rect key="frame" x="67" y="227" width="240" height="43"/>
+                            <view tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rfo-Vc-IxG" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
+                                <rect key="frame" x="179" y="193" width="240" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="oaB-8n-eIw"/>
@@ -244,7 +403,7 @@
                                 </constraints>
                             </view>
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEP-mu-h7u" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="312" width="240" height="43"/>
+                                <rect key="frame" x="180" y="278" width="240" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="cfd-jF-yi1"/>
@@ -252,7 +411,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bC4-Kf-reQ" customClass="DYSubmitButton" customModule="FlashWord" customModuleProvider="target">
-                                <rect key="frame" x="112.5" y="433" width="150" height="40"/>
+                                <rect key="frame" x="225" y="399" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="pmj-dZ-Myw"/>
                                     <constraint firstAttribute="height" constant="40" id="qP7-cZ-RSi"/>
@@ -277,7 +436,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsM-rb-ssC">
-                                <rect key="frame" x="67.5" y="493" width="240" height="30"/>
+                                <rect key="frame" x="180" y="459" width="240" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="duS-3y-sio"/>
                                     <constraint firstAttribute="width" constant="240" id="vDS-fn-fHW"/>
@@ -333,11 +492,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Qlt-LQ-ZAM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ysy-dt-lf8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-mZ-1ga" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="FlashWord" customModuleProvider="target">
-                                <rect key="frame" x="67" y="226" width="240" height="43"/>
+                                <rect key="frame" x="179" y="226" width="240" height="43"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Mx8-gs-7Kz"/>
@@ -466,6 +625,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="login-bg" width="658" height="370"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

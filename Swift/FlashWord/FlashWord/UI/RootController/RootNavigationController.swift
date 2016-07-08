@@ -39,7 +39,7 @@ class RootNavigationController: DYNavigationController {
     //MARK:导航到引导页
     func switchToGuide(animate : Bool) -> Void {
         let loginViewController = UIStoryboard(name: "GuideLogin", bundle: nil)
-            .instantiateViewControllerWithIdentifier("LoginController")
+            .instantiateViewControllerWithIdentifier("LoginRegisterController")
         setNavigationBarHidden(true, animated: false)
         setViewControllers([loginViewController], animated: animate)
     }
