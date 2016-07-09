@@ -30,9 +30,9 @@ class DYOriginalTable: NSObject {
                 tableViewRow.cell = tableView.dataSource!.tableView(tableView, cellForRowAtIndexPath: path)
                 assert(tableViewRow.cell != nil, "cannot be nil")
                 tableViewRow.originalIndexPath = path
-                originalSection.rows[ii] = tableViewRow
+                originalSection.rows.append(tableViewRow)
             }
-            self.sections[i] = originalSection
+            self.sections.append(originalSection)
         }
         self.insertIndexPaths = [NSIndexPath]()
         self.deleteIndexPaths = [NSIndexPath]()

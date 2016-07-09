@@ -42,7 +42,7 @@ class DYOriginalRow: NSObject {
     var batchOperation: Int32 = DYBatchOperation.None
     weak var cell: UITableViewCell?
     var originalIndexPath: NSIndexPath?
-    var height: CGFloat
+    var height: CGFloat =  CGFloat.max
     func update() {
         if !self.hidden {
             if self.batchOperation == DYBatchOperation.None {

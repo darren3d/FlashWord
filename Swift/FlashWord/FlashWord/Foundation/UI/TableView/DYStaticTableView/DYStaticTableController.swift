@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import RxSwift
 
 class DYStaticTableController: UITableViewController {
+    var viewModel : DYViewModel?
+    var disposeBag : DisposeBag! = DisposeBag()
+    
+    deinit {
+        disposeBag = nil
+    }
+    
     var hideSectionsWithHiddenRows = false
     var animateSectionHeaders = false
     var insertTableViewRowAnimation = UITableViewRowAnimation.Right
     var deleteTableViewRowAnimation = UITableViewRowAnimation.Left
     var reloadTableViewRowAnimation = UITableViewRowAnimation.Middle
-    lazy var originalTable: DYOriginalTable = {
-        let originalTable = DYOriginalTable(tableView: self.tableView)
-        return originalTable
-    }()
+    lazy var originalTable: DYOriginalTable? = nil
     
     override init(style: UITableViewStyle) {
         super.init(style: style)
@@ -33,10 +38,15 @@ class DYStaticTableController: UITableViewController {
         self.deleteTableViewRowAnimation = UITableViewRowAnimation.Left
         self.reloadTableViewRowAnimation = UITableViewRowAnimation.Middle
         
+        originalTable = DYOriginalTable(tableView: self.tableView)
     }
     
     func updateCell(cell: UITableViewCell) {
-        let row = self.originalTable.originalRowWithTableViewCell(cell)
+        guard let originalTable = originalTable else {
+            return
+        }
+        
+        let row = originalTable.originalRowWithTableViewCell(cell)
         row?.update()
     }
     
@@ -47,7 +57,11 @@ class DYStaticTableController: UITableViewController {
     }
     
     func cell(cell: UITableViewCell, setHidden hidden: Bool) {
-        let row = self.originalTable.originalRowWithTableViewCell(cell)
+        guard let originalTable = originalTable else {
+            return
+        }
+        
+        let row = originalTable.originalRowWithTableViewCell(cell)
         row?.hidden = hidden
     }
     
@@ -58,7 +72,11 @@ class DYStaticTableController: UITableViewController {
     }
     
     func cell(cell: UITableViewCell, setHeight height: CGFloat) {
-        let row = self.originalTable.originalRowWithTableViewCell(cell)
+        guard let originalTable = originalTable else {
+            return
+        }
+        
+        let row = originalTable.originalRowWithTableViewCell(cell)
         row?.height = height
     }
     
@@ -69,28 +87,36 @@ class DYStaticTableController: UITableViewController {
     }
     
     func cellIsHidden(cell: UITableViewCell) -> Bool {
-        guard let row = self.originalTable.originalRowWithTableViewCell(cell) else {
-            return true
+        guard let originalTable = originalTable else {
+            return false
+        }
+        
+        guard let row = originalTable.originalRowWithTableViewCell(cell) else {
+            return false
         }
         return row.hidden
     }
     
     func reloadDataAnimated(animated: Bool) {
-        self.originalTable.prepareUpdates()
+        guard let originalTable = originalTable else {
+            return
+        }
+        
+        originalTable.prepareUpdates()
         if !animated {
             self.tableView.reloadData()
         } else {
             if self.animateSectionHeaders {
-                for indexPath: NSIndexPath in self.originalTable.deleteIndexPaths {
+                for indexPath: NSIndexPath in originalTable.deleteIndexPaths {
                     let cell = self.tableView.cellForRowAtIndexPath(indexPath)
                     cell?.layer.zPosition = -2
                     self.tableView.headerViewForSection(indexPath.section)?.layer.zPosition = -1
                 }
             }
             self.tableView.beginUpdates()
-            self.tableView.reloadRowsAtIndexPaths(self.originalTable.updateIndexPaths, withRowAnimation: self.reloadTableViewRowAnimation)
-            self.tableView.insertRowsAtIndexPaths(self.originalTable.insertIndexPaths, withRowAnimation: self.insertTableViewRowAnimation)
-            self.tableView.deleteRowsAtIndexPaths(self.originalTable.deleteIndexPaths, withRowAnimation: self.deleteTableViewRowAnimation)
+            self.tableView.reloadRowsAtIndexPaths(originalTable.updateIndexPaths, withRowAnimation: self.reloadTableViewRowAnimation)
+            self.tableView.insertRowsAtIndexPaths(originalTable.insertIndexPaths, withRowAnimation: self.insertTableViewRowAnimation)
+            self.tableView.deleteRowsAtIndexPaths(originalTable.deleteIndexPaths, withRowAnimation: self.deleteTableViewRowAnimation)
             self.tableView.endUpdates()
             if !self.animateSectionHeaders {
                 self.tableView.reloadData()
@@ -99,30 +125,44 @@ class DYStaticTableController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        if self.originalTable == nil {
-        //            return super.tableView(tableView, numberOfRowsInSection: section)
-        //        }
-        return self.originalTable.sections[section].numberOfVissibleRows()
+        guard let originalTable = originalTable else {
+            return super.tableView(tableView, numberOfRowsInSection: section)
+        }
+        
+        return originalTable.sections[section].numberOfVissibleRows()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //        if self.originalTable == nil {
-        //            return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-        //        }
-        let or = self.originalTable.vissibleOriginalRowWithIndexPath(indexPath)
-        assert(or!.cell != nil, "CANNOT BE NULL")
+        guard let originalTable = originalTable else {
+            return super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        }
+        
+        let or = originalTable.vissibleOriginalRowWithIndexPath(indexPath)
+        assert(or!.cell != nil, "Cannot be nil")
         return or!.cell!
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //        if self.originalTable != nil {
-        //            var or = self.originalTable.vissibleOriginalRowWithIndexPath(indexPath)
-        //            if or.height != CGFLOAT_MAX {
-        //                return or.height
-        //            }
-        //            indexPath = or.originalIndexPath
-        //        }
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        guard let originalTable = originalTable
+            else {
+                return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+        
+        guard let originalRow = originalTable.vissibleOriginalRowWithIndexPath(indexPath)
+            else {
+                return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+        
+        if originalRow.height != CGFloat.max {
+            return originalRow.height
+        }
+        
+        guard let originalIndexPath = originalRow.originalIndexPath
+            else {
+                return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+        
+        return super.tableView(tableView, heightForRowAtIndexPath: originalIndexPath)
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -145,15 +185,16 @@ class DYStaticTableController: UITableViewController {
     }
     
     func headerFooterHeightForSection(section: Int, originalHeight height: CGFloat) -> CGFloat {
-        //        if self.originalTable == nil {
-        //            return height
-        //        }
+        guard let originalTable = originalTable else {
+            return height
+        }
+        
         if !self.hideSectionsWithHiddenRows {
             return height
         }
-        let os = self.originalTable.sections[section]
+        let os = originalTable.sections[section]
         if os.numberOfVissibleRows() == 0 {
-            return CGFloat.max
+            return CGFloat.min
         } else {
             return height
         }
