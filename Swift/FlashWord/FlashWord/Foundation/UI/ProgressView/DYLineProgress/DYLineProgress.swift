@@ -298,6 +298,7 @@ public class DYLineProgress {
         }
         
         setupConstraints(type)
+        rootView.setNeedsLayout()
         rootView.layoutIfNeeded()
         
         let duration = DYLineProgress.durationForText(text)

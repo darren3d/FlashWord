@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import SnapKit
 
-class RegisterController: DYViewController {
+class RegisterController: DYStaticTableController, UIViewControllerTransitioningDelegate {
+    @IBOutlet weak var imageViewHead : UIImageView!
+    
     @IBOutlet weak var textFieldEmail : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var textFieldPassword : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var btnRegister : DYSubmitButton!
@@ -20,78 +25,186 @@ class RegisterController: DYViewController {
         let loginViewModel = LoginVM()
         viewModel = loginViewModel
         
-        setupSubViews()
+        imageViewHead.layer.masksToBounds = true
+        imageViewHead.layer.cornerRadius = imageViewHead.bounds.size.width*0.5;
+        
+        setupBtnRegister()
+        setupBtnForgetPassword()
+        setupTextField()
+        setupRx()
+        
+        let tapBackground = UITapGestureRecognizer()
+        tapBackground.rx_event
+            .subscribeNext { [weak self] _ in
+                self?.view.endEditing(true)
+            }
+            .addDisposableTo(disposeBag)
+        view.addGestureRecognizer(tapBackground)
     }
     
-    private func setupSubViews() {
-        self.view.backgroundColor = UIColor.flat(FlatColors.MidnightBlue)
+    func setupBtnRegister() {
+        let blurColor = UIColor.flat(FlatColors.RoyalBlue)
+        let disableColor = UIColor.flat(FlatColors.SilverSand)
         
-        var colorNorm = UIColor.flat(FlatColors.MidnightBlue)
-        var colorHighlighted = UIColor.flat(FlatColors.Shamrock)
-        let colorDisable = UIColor.flat(FlatColors.SilverSand)
-        btnRegister.normalBackgroundColor = colorNorm
-        btnRegister.highlightedBackgroundColor = colorHighlighted
-        btnRegister.disableBackgroundColor = colorDisable
+        //SunsetOrange,SilverSand,JordyBlue
+        btnRegister.normalBackgroundColor = blurColor
+        btnRegister.highlightedBackgroundColor = blurColor.darkenColor(0.15)
+        btnRegister.disableBackgroundColor = disableColor
         
-        btnRegister.layer.cornerRadius = 20;
-        self.view.bringSubviewToFront(self.btnRegister)
+        btnRegister.layer.masksToBounds = true
+        btnRegister.layer.cornerRadius = 20
+        self.view.bringSubviewToFront(btnRegister)
+    }
+    
+    //    func setupBtnRegister() {
+    //        let blurColor = UIColor.flat(FlatColors.RoyalBlue)
+    //        let disableColor = UIColor.flat(FlatColors.SilverSand)
+    //
+    //        let fullString = "还没有账号? 立即 注册新账号" as NSString
+    //        let markString = "注册新账号" as NSString
+    //        let markRange = fullString.rangeOfString(markString as String)
+    //        let attrs = TextAttributes()
+    //            .font(UIFont.systemFontOfSize(13))
+    //            .foregroundColor(blurColor)
+    //        let attrString  = NSMutableAttributedString(string: fullString as String)
+    //        attrString.addAttributes(TextAttributes().foregroundColor(disableColor))
+    //        attrString.addAttributes(attrs, range: markRange)
+    //        btnRegiser.setAttributedTitle(attrString, forState: UIControlState.Normal)
+    //    }
+    
+    func setupBtnForgetPassword() {
         
-        //        if AppConst.isLanguageFromLeft2Right {
-        //            textFieldEmail.iconRotationDegrees = 180
-        //            textFieldPassword.iconRotationDegrees = 180
-        //        } else { // In RTL languages the plane should point to the other side
-        //            textFieldEmail.iconRotationDegrees = 90
-        //            textFieldPassword.iconRotationDegrees = 90
-        //        }
+    }
+    
+    func setupTextField() {
+        let blurColor = UIColor.flat(FlatColors.RoyalBlue)
+        let disableColor = UIColor.flat(FlatColors.SilverSand)
         
-        colorNorm = UIColor.flat(FlatColors.JungleGreen)
-        colorHighlighted = colorNorm
-        textFieldEmail.iconColor = colorNorm
-        textFieldEmail.selectedIconColor = colorHighlighted
-        textFieldEmail.iconFont = UIFont(name: "FontAwesome", size: 18)
+        textFieldEmail.iconColor = disableColor
+        textFieldEmail.selectedIconColor = disableColor
+        textFieldEmail.iconFont = UIFont(name: "FontAwesome", size: 20)
         textFieldEmail.iconText = "\u{f003}"
-        textFieldPassword.iconColor = colorNorm
-        textFieldPassword.selectedIconColor = colorHighlighted
-        textFieldPassword.iconFont = UIFont(name: "FontAwesome", size: 18)
-        textFieldPassword.iconText = "\u{f13e}"
-        //http://fontawesome.io/cheatsheet/
+        textFieldEmail.iconWidth = 30;
         
+        textFieldEmail.textColor = disableColor
+        textFieldEmail.titleColor = blurColor
+        textFieldEmail.selectedTitleColor = blurColor
+        textFieldEmail.tintColor = disableColor
+        textFieldEmail.lineColor = disableColor
+        textFieldEmail.selectedLineColor = blurColor
+        textFieldEmail.lineHeight = AppConst.dotPerPixel
+        textFieldEmail.selectedLineHeight = AppConst.dotPerPixel
         
-        //参考EGFloatingTextField动画和验证
-        colorNorm = UIColor.flat(FlatColors.BurntOrange)
-        colorHighlighted = colorNorm.darkerColor()
-        textFieldEmail.textColor = colorNorm
-        textFieldEmail.selectedTitleColor = colorHighlighted
-        textFieldEmail.tintColor = colorHighlighted
-        textFieldPassword.textColor = colorNorm
-        textFieldPassword.selectedTitleColor = colorHighlighted
-        textFieldPassword.tintColor = colorHighlighted
-        
-        textFieldEmail.lineColor = colorNorm
-        textFieldEmail.selectedLineColor = colorHighlighted
-        textFieldPassword.lineColor = colorNorm
-        textFieldPassword.selectedLineColor = colorHighlighted
-        
-        // Set custom fonts for the title, placeholder and textfield labels
         textFieldEmail.titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
         textFieldEmail.placeholderFont = UIFont(name: "AppleSDGothicNeo-Light", size: 18)
         textFieldEmail.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        textFieldEmail.placeholder     = "Email"
+        textFieldEmail.title           = "Email"
+        
+        
+        textFieldPassword.iconColor = disableColor
+        textFieldPassword.selectedIconColor = disableColor
+        textFieldPassword.iconFont = UIFont(name: "FontAwesome", size: 20)
+        textFieldPassword.iconText = "\u{f13e}"
+        textFieldPassword.iconWidth = 30;
+        
+        textFieldPassword.textColor = disableColor
+        textFieldPassword.titleColor = blurColor
+        textFieldPassword.selectedTitleColor = blurColor
+        textFieldPassword.tintColor = disableColor
+        textFieldPassword.lineColor = disableColor
+        textFieldPassword.selectedLineColor = blurColor
+        textFieldPassword.lineHeight = AppConst.dotPerPixel
+        textFieldPassword.selectedLineHeight = AppConst.dotPerPixel
+        
+        textFieldPassword.titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
+        textFieldPassword.placeholderFont = UIFont(name: "AppleSDGothicNeo-Light", size: 18)
+        textFieldPassword.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+        //        textFieldPassword.iconColor = colorNorm
+        //        textFieldPassword.selectedIconColor = colorHighlighted
+        //        textFieldPassword.iconFont = UIFont(name: "FontAwesome", size: 18)
+        //        textFieldPassword.iconText = "\u{f13e}"
+        //        //http://fontawesome.io/cheatsheet/
+        //
+        //
+        //        //参考EGFloatingTextField动画和验证
+        //        colorNorm = UIColor.flat(FlatColors.BurntOrange)
+        //        colorHighlighted = colorNorm.darkerColor()
+        //
+        //        textFieldPassword.textColor = colorNorm
+        //        textFieldPassword.selectedTitleColor = colorHighlighted
+        //        textFieldPassword.tintColor = colorHighlighted
+        //
+        //
+        //        textFieldPassword.lineColor = colorNorm
+        //        textFieldPassword.selectedLineColor = colorHighlighted
+        
+        // Set custom fonts for the title, placeholder and textfield labels
+        
         textFieldPassword.titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
         textFieldPassword.placeholderFont = UIFont(name: "AppleSDGothicNeo-Light", size: 18)
         textFieldPassword.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
         
-        textFieldEmail.placeholder     = NSLocalizedString("Email", tableName: "SkyFloatingLabelTextField", comment: "placeholder for the arrival city field")
-        textFieldEmail.selectedTitle   = NSLocalizedString("Email2", tableName: "SkyFloatingLabelTextField", comment: "title for the arrival city field")
-        textFieldEmail.title           = NSLocalizedString("Email1", tableName: "SkyFloatingLabelTextField", comment: "title for the arrival city field")
-        textFieldPassword.placeholder     = NSLocalizedString("Password", tableName: "SkyFloatingLabelTextField", comment: "placeholder for the arrival city field")
-        textFieldPassword.selectedTitle   = NSLocalizedString("Arrival City", tableName: "SkyFloatingLabelTextField", comment: "title for the arrival city field")
-        textFieldPassword.title           = NSLocalizedString("Arrival City", tableName: "SkyFloatingLabelTextField", comment: "title for the arrival city field")
+        textFieldPassword.placeholder = "Password"
+        textFieldPassword.title = "Password"
+    }
+    
+    func setupRx() {
+        textFieldEmail.rx_text
+            .distinctUntilChanged()
+            .subscribeNext {[weak self] email in
+                guard let loginViewModel =  self?.viewModel as? LoginVM else {
+                    return
+                }
+                
+                loginViewModel.email = email
+            }.addDisposableTo(disposeBag)
         
+        textFieldPassword.rx_text
+            .distinctUntilChanged()
+            .subscribeNext{ [weak self] password in
+                guard let loginViewModel =  self?.viewModel as? LoginVM else {
+                    return
+                }
+                
+                loginViewModel.password = password
+            }.addDisposableTo(disposeBag)
+        
+        
+        let emailValid = self.rx_observe(Bool.self, "viewModel.isEmailValid", options: [.Initial, .New], retainSelf: false)
+            .map{
+                return $0 ?? false
+            }
+            .shareReplay(1)
+        
+        let passwordValid = self.rx_observe(Bool.self, "viewModel.isPasswordValid", options: [.Initial, .New], retainSelf: false)
+            .map{
+                return $0 ?? false
+            }
+            .shareReplay(1)
+        
+        let everythingValid = Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
+            .shareReplay(1)
+        
+        everythingValid.bindTo(btnRegister.rx_enabled)
+            .addDisposableTo(disposeBag)
     }
     
     //MARK: UI Action
     @IBAction private func onButtonRegister(sender: AnyObject) {
         //        AccountData.register(<#T##userName: String!##String!#>, password: <#T##String!#>, callback: <#T##AVBooleanResultBlock?##AVBooleanResultBlock?##(Bool, NSError!) -> Void#>)
+    }
+    
+    @IBAction private func onButtonProtocol(sender: AnyObject) {
+    }
+    
+    //MARK: UIViewControllerTransitioningDelegate
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return FadeTransitionAnimator(transitionDuration: 0.5, startingAlpha: 0.8)
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
     }
 }
 

@@ -11,11 +11,12 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class LoginController: DYViewController, UIViewControllerTransitioningDelegate, DYUIStateDateSource {
+class LoginController: DYStaticTableController, UIViewControllerTransitioningDelegate, DYUIStateDateSource {
+    @IBOutlet weak var imageViewHead : UIImageView!
+    
     @IBOutlet weak var textFieldEmail : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var textFieldPassword : SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var btnLogin : DYSubmitButton!
-    @IBOutlet weak var btnRegiser : UIButton!
     @IBOutlet weak var btnForgetPassword : UIButton!
     
     //TODO:  使用StatefulViewController重试为空等结合EmptyDataSource，图片缓存用Nuke，字体加载用FontBlaster, PrediKit,ARSLineProgress
@@ -44,8 +45,10 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         let loginViewModel = LoginVM()
         viewModel = loginViewModel
         
+        imageViewHead.layer.masksToBounds = true
+        imageViewHead.layer.cornerRadius = imageViewHead.bounds.size.width*0.5;
+        
         setupBtnLogin()
-        setupBtnRegister()
         setupBtnForgetPassword()
         setupTextField()
         setupRx()
@@ -78,24 +81,9 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         btnLogin.highlightedBackgroundColor = blurColor.darkenColor(0.15)
         btnLogin.disableBackgroundColor = disableColor
         
+        btnLogin.layer.masksToBounds = true
         btnLogin.layer.cornerRadius = 20
         self.view.bringSubviewToFront(self.btnLogin)
-    }
-    
-    func setupBtnRegister() {
-        let blurColor = UIColor.flat(FlatColors.RoyalBlue)
-        let disableColor = UIColor.flat(FlatColors.SilverSand)
-        
-        let fullString = "还没有账号? 立即 注册新账号" as NSString
-        let markString = "注册新账号" as NSString
-        let markRange = fullString.rangeOfString(markString as String)
-        let attrs = TextAttributes()
-            .font(UIFont.systemFontOfSize(13))
-            .foregroundColor(blurColor)
-        let attrString  = NSMutableAttributedString(string: fullString as String)
-        attrString.addAttributes(TextAttributes().foregroundColor(disableColor))
-        attrString.addAttributes(attrs, range: markRange)
-        btnRegiser.setAttributedTitle(attrString, forState: UIControlState.Normal)
     }
     
     func setupBtnForgetPassword() {
@@ -108,7 +96,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         
         textFieldEmail.iconColor = disableColor
         textFieldEmail.selectedIconColor = disableColor
-        textFieldEmail.iconFont = UIFont(name: "FontAwesome", size: 18)
+        textFieldEmail.iconFont = UIFont(name: "FontAwesome", size: 20)
         textFieldEmail.iconText = "\u{f003}"
         textFieldEmail.iconWidth = 30;
         
@@ -130,7 +118,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
         
         textFieldPassword.iconColor = disableColor
         textFieldPassword.selectedIconColor = disableColor
-        textFieldPassword.iconFont = UIFont(name: "FontAwesome", size: 18)
+        textFieldPassword.iconFont = UIFont(name: "FontAwesome", size: 20)
         textFieldPassword.iconText = "\u{f13e}"
         textFieldPassword.iconWidth = 30;
         
@@ -229,7 +217,7 @@ class LoginController: DYViewController, UIViewControllerTransitioningDelegate, 
     
     //MARK: UI Action
     @IBAction func onButtonLogin(sender : AnyObject) {
-        progressView = DYLineProgress(superView: self.view)
+        progressView = DYLineProgress(superView: self.presentingViewController?.view)
         progressView!.show(DYLoaderType.Loading, text: "登录中...")
         
         //        //        button.animate(1, completion: { () -> () in
