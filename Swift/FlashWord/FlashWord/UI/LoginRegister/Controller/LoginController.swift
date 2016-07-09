@@ -87,7 +87,19 @@ class LoginController: DYStaticTableController, UIViewControllerTransitioningDel
     }
     
     func setupBtnForgetPassword() {
+        let blurColor = UIColor.flat(FlatColors.RoyalBlue)
+        let disableColor = UIColor.flat(FlatColors.SilverSand)
         
+        let fullString = "忘记密码? 试试重置密码" as NSString
+        let markString = "重置密码" as NSString
+        let markRange = fullString.rangeOfString(markString as String)
+        let attrs = TextAttributes()
+            .font(UIFont.systemFontOfSize(13))
+            .foregroundColor(blurColor)
+        let attrString  = NSMutableAttributedString(string: fullString as String)
+        attrString.addAttributes(TextAttributes().foregroundColor(disableColor))
+        attrString.addAttributes(attrs, range: markRange)
+        btnForgetPassword.setAttributedTitle(attrString, forState: UIControlState.Normal)
     }
     
     func setupTextField() {

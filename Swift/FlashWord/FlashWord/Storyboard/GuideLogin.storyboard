@@ -400,14 +400,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNv-Qa-1Ji">
-                                                    <rect key="frame" x="144" y="15" width="86" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNv-Qa-1Ji">
+                                                    <rect key="frame" x="87" y="15" width="200" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="7e5-ps-UN7"/>
-                                                        <constraint firstAttribute="width" constant="86" id="LZG-9O-gQf"/>
+                                                        <constraint firstAttribute="width" constant="200" id="LZG-9O-gQf"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                                     <state key="normal" title="忘记密码">
                                                         <color key="titleColor" red="0.24534955620765686" green="0.52544945478439331" blue="0.84400981664657593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -573,7 +572,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="Imq-Ya-qcd"/>
                                                         <constraint firstAttribute="width" constant="30" id="ddI-CP-9bA"/>
                                                     </constraints>
-                                                    <state key="normal" title="立 即 注 册"/>
+                                                    <state key="normal" title="立即注册"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
                                                             <color key="value" red="0.98823529409999999" green="0.1647058824" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
