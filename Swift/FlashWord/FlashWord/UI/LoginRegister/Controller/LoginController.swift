@@ -235,7 +235,7 @@ class LoginController: DYStaticTableController, UIViewControllerTransitioningDel
         //        //                self?.dy_state = DYUIState.Empty
         
         let loginVM = viewModel as! LoginVM
-        loginVM.login({[weak self] (succeed, error) in
+        loginVM.login{ [weak self] (succeed, error) in
             
             guard let error = error else {
                 DYLog.info("login OK")
@@ -261,7 +261,7 @@ class LoginController: DYStaticTableController, UIViewControllerTransitioningDel
             }
             
             self?.progressView?.show(DYLoaderType.Status(DYLoaderStatus.Fail), text:errorMsg)
-            })
+        }
     }
     
     @IBAction func onButtonRegister(sender : AnyObject) {

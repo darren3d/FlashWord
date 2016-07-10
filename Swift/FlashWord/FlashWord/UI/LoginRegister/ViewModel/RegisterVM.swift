@@ -51,17 +51,17 @@ class RegisterVM: DYViewModel {
                     return
                 }
                 
-                strongSelf.isEmailValid = email.characters.count >= 6 && email.containsString("@")
+                strongSelf.isEmailValid = email.characters.count >= 6 && email.containsString("@") && email.containsString(".")
                 
             }.addDisposableTo(disposeBag)
         
         self.rx_observe(String.self, "password", options: .New, retainSelf: false)
             .subscribeNext {[weak self] password in
-                guard let password = password else {
+                guard let strongSelf = self, let password = password else {
                     return
                 }
                 
-                self?.isPasswordValid = password.characters.count >= 6 && password.containsString("@")
+                strongSelf.isPasswordValid = password.characters.count >= 6
                 
             }.addDisposableTo(disposeBag)
     }

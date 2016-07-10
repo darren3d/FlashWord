@@ -180,7 +180,7 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         textFieldEmail.rx_text
             .distinctUntilChanged()
             .subscribeNext {[weak self] email in
-                guard let loginViewModel =  self?.viewModel as? LoginVM else {
+                guard let loginViewModel =  self?.viewModel as? RegisterVM else {
                     return
                 }
                 
@@ -190,7 +190,7 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         textFieldPassword.rx_text
             .distinctUntilChanged()
             .subscribeNext{ [weak self] password in
-                guard let loginViewModel =  self?.viewModel as? LoginVM else {
+                guard let loginViewModel =  self?.viewModel as? RegisterVM else {
                     return
                 }
                 
@@ -244,8 +244,41 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
             }.addDisposableTo(disposeBag)
     }
     
+    var progressView : DYLineProgress?
+    
     //MARK: UI Action
     @IBAction private func onButtonRegister(sender: AnyObject) {
+        progressView = DYLineProgress(superView: self.presentingViewController?.view)
+        progressView!.show(DYLoaderType.Loading, text: "登录中...")
+        
+        let registerVM = viewModel as! RegisterVM
+        registerVM.registr { [weak self] (succeed, error) in
+            guard let error = error else {
+                DYLog.info("register OK")
+                if !succeed {
+                    self?.progressView?.show(DYLoaderType.Status(DYLoaderStatus.Fail), text:"账号获取失败")
+                    return
+                }
+                
+                self?.progressView?.dismissProgress()
+                //通知进入主界面
+                NSNotificationCenter.defaultCenter().postNotificationName(AppConst.kNotificationSwithToHomeTab, object: nil)
+                return
+            }
+            
+            var errorMsg = "注册失败"
+            switch error.code {
+            case 211:
+                errorMsg = "该账号未注册，请先注册"
+                DYLog.error("未注册")
+                DYLog.error("login Failed : \(error)")
+            default:
+                DYLog.error("login Failed : \(error)")
+            }
+            
+            self?.progressView?.show(DYLoaderType.Status(DYLoaderStatus.Fail), text:errorMsg)
+        }
+        
         //        AccountData.register(<#T##userName: String!##String!#>, password: <#T##String!#>, callback: <#T##AVBooleanResultBlock?##AVBooleanResultBlock?##(Bool, NSError!) -> Void#>)
     }
     
