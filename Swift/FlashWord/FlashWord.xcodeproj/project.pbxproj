@@ -19,6 +19,7 @@
 		6349F2331D30433F002210E0 /* DYOriginalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2321D30433F002210E0 /* DYOriginalTable.swift */; };
 		6349F2351D304AA5002210E0 /* DYStaticTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2341D304AA5002210E0 /* DYStaticTableController.swift */; };
 		6349F23A1D31E1C2002210E0 /* DOAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2391D31E1C2002210E0 /* DOAlertController.swift */; };
+		6349F23C1D326899002210E0 /* DYGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F23B1D326899002210E0 /* DYGender.swift */; };
 		635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AD1D09A40500A81CAF /* AppDelegate.swift */; };
 		635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AF1D09A40500A81CAF /* FirstViewController.swift */; };
 		635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93B11D09A40500A81CAF /* SecondViewController.swift */; };
@@ -170,6 +171,7 @@
 		6349F2321D30433F002210E0 /* DYOriginalTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYOriginalTable.swift; sourceTree = "<group>"; };
 		6349F2341D304AA5002210E0 /* DYStaticTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYStaticTableController.swift; sourceTree = "<group>"; };
 		6349F2391D31E1C2002210E0 /* DOAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOAlertController.swift; sourceTree = "<group>"; };
+		6349F23B1D326899002210E0 /* DYGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYGender.swift; sourceTree = "<group>"; };
 		635B93AA1D09A40500A81CAF /* FlashWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635B93AD1D09A40500A81CAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635B93AF1D09A40500A81CAF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 			children = (
 				632D04EA1D09CB4700F9744B /* AccountData.swift */,
 				6388D5EF1D15B19B0029C988 /* Account+Business.swift */,
+				6349F23B1D326899002210E0 /* DYGender.swift */,
 			);
 			path = AccountData;
 			sourceTree = "<group>";
@@ -1022,6 +1025,7 @@
 				844FBA831D0FE0F900D6C2EA /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				639188061D0A915800757F60 /* DynamicColor.swift in Sources */,
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
+				6349F23C1D326899002210E0 /* DYGender.swift in Sources */,
 				84301D211D1953EA00BB3C5D /* DYTabBarController.swift in Sources */,
 				844FBA731D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
 				844FBA7A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,

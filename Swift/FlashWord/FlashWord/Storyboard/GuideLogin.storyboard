@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--First-->
@@ -206,22 +207,65 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRs-rk-c4d">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aj4-yJ-lVG">
+                                        <rect key="frame" x="0.0" y="20" width="60" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="WrB-Iw-2in"/>
+                                            <constraint firstAttribute="width" constant="60" id="wLC-o5-VUQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onBtnBack:" destination="Zij-oT-9Kc" eventType="touchUpInside" id="Qi9-rT-UZe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33u-jk-VbL">
+                                        <rect key="frame" x="315" y="20" width="60" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="0fZ-xa-ycU"/>
+                                            <constraint firstAttribute="width" constant="60" id="9hh-Kq-b1C"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onBtnPhoto:" destination="Zij-oT-9Kc" eventType="touchUpInside" id="OVL-KI-H8E"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aj4-yJ-lVG" firstAttribute="top" secondItem="rRs-rk-c4d" secondAttribute="top" constant="20" id="GOR-8m-6iB"/>
+                                    <constraint firstAttribute="trailing" secondItem="33u-jk-VbL" secondAttribute="trailing" id="KsG-MD-2bu"/>
+                                    <constraint firstAttribute="height" constant="64" id="SKy-KH-icK"/>
+                                    <constraint firstItem="aj4-yJ-lVG" firstAttribute="leading" secondItem="rRs-rk-c4d" secondAttribute="leading" id="XqW-yP-UNA"/>
+                                    <constraint firstItem="33u-jk-VbL" firstAttribute="top" secondItem="rRs-rk-c4d" secondAttribute="top" constant="20" id="b4m-Xk-jeH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.13160091638565063" green="0.1932809054851532" blue="0.24724599719047546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rRs-rk-c4d" firstAttribute="top" secondItem="CJX-vg-k29" secondAttribute="topMargin" id="78S-qB-5m8"/>
                             <constraint firstItem="WJD-2w-6qI" firstAttribute="centerX" secondItem="CJX-vg-k29" secondAttribute="centerX" id="EXu-IS-G14"/>
                             <constraint firstItem="FcF-4H-rfA" firstAttribute="centerX" secondItem="CJX-vg-k29" secondAttribute="centerX" id="M3R-HE-NdL"/>
                             <constraint firstItem="FcF-4H-rfA" firstAttribute="height" secondItem="CJX-vg-k29" secondAttribute="height" id="N6S-T0-vfu"/>
+                            <constraint firstItem="rRs-rk-c4d" firstAttribute="leading" secondItem="CJX-vg-k29" secondAttribute="leading" id="Ngh-GI-6PT"/>
                             <constraint firstItem="FcF-4H-rfA" firstAttribute="width" secondItem="CJX-vg-k29" secondAttribute="width" id="WKE-z4-uh3"/>
                             <constraint firstItem="WJD-2w-6qI" firstAttribute="centerY" secondItem="CJX-vg-k29" secondAttribute="centerY" id="ZpI-za-LLW"/>
                             <constraint firstItem="FcF-4H-rfA" firstAttribute="centerY" secondItem="CJX-vg-k29" secondAttribute="centerY" id="fRi-OM-Ruu"/>
                             <constraint firstItem="WJD-2w-6qI" firstAttribute="height" secondItem="CJX-vg-k29" secondAttribute="height" id="goa-te-8F9"/>
                             <constraint firstItem="WJD-2w-6qI" firstAttribute="width" secondItem="CJX-vg-k29" secondAttribute="width" id="lnb-m2-DaO"/>
+                            <constraint firstAttribute="trailing" secondItem="rRs-rk-c4d" secondAttribute="trailing" id="lpr-y1-pb3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9MJ-YU-sYs"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
+                        <outlet property="btnBack" destination="aj4-yJ-lVG" id="ikr-n3-8L1"/>
+                        <outlet property="btnPhoto" destination="33u-jk-VbL" id="IEt-Xe-QXG"/>
                         <outlet property="segmentControl" destination="FbF-eM-v74" id="peD-qg-V5X"/>
                     </connections>
                 </viewController>

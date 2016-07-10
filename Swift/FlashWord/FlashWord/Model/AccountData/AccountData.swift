@@ -11,6 +11,7 @@ import AVOSCloud
 
 class AccountData: AVUser {
     @NSManaged var age: Int32
+    @NSManaged var gender : DYGender
     
     override static func parseClassName() -> String! {
         return "_User"

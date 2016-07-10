@@ -9,14 +9,21 @@
 import UIKit
 
 class LoginRegisterController: DYViewController {
+    @IBOutlet weak var btnBack : UIButton!
+    @IBOutlet weak var btnPhoto : UIButton!
+    @IBOutlet var segmentControl : UISegmentedControl!
+    
     var pageController : UIPageViewController!
     var loginController : LoginController!
     var registerController : RegisterController!
     
-    @IBOutlet var segmentControl : UISegmentedControl!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        btnPhoto.hidden = true
+        
+        setupNavigationBar()
+        setupRx()
         
         //获取到嵌入的UIPageViewController
         pageController = self.childViewControllers.first as! UIPageViewController
@@ -31,6 +38,39 @@ class LoginRegisterController: DYViewController {
                                           direction: UIPageViewControllerNavigationDirection.Forward,
                                           animated: true,
                                           completion: nil)
+    }
+    
+    func setupNavigationBar() {
+        let disableColor = UIColor.flat(FlatColors.SilverSand)
+        btnBack.titleLabel?.font = UIFont(name: "FontAwesome", size: 22)
+        btnBack.setTitle("\u{f060}", forState: UIControlState.Normal)
+        btnBack.setTitleColor(disableColor, forState: UIControlState.Normal)
+        
+        btnPhoto.titleLabel?.font = UIFont(name: "FontAwesome", size: 22)
+        btnPhoto.setTitle("\u{f03e}", forState: UIControlState.Normal)
+        btnPhoto.setTitleColor(disableColor, forState: UIControlState.Normal)
+    }
+    
+    func setupRx() {
+        self.rx_observe(Int.self, "segmentControl.selectedSegmentIndex",
+            options: [.Initial, .New], retainSelf: false)
+            .map { (index) -> Bool in
+                guard let index = index
+                    else {
+                        return true
+                }
+                
+                return index != 1
+            }.bindTo(btnPhoto.rx_hidden)
+            .addDisposableTo(disposeBag)
+    }
+    
+    @IBAction func onBtnBack(sender : AnyObject) {
+        
+    }
+    
+    @IBAction func onBtnPhoto(sender : AnyObject) {
+        
     }
     
     @IBAction func onSegmentChanged(sender:AnyObject) {
@@ -86,8 +126,10 @@ extension LoginRegisterController: UIPageViewControllerDataSource, UIPageViewCon
         }
         
         if targetController == loginController {
+            btnPhoto.hidden = true
             segmentControl.selectedSegmentIndex = 0
         } else if targetController == registerController {
+            btnPhoto.hidden = false
             segmentControl.selectedSegmentIndex = 1
         }
     }

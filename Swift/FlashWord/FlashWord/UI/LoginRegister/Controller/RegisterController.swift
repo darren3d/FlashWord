@@ -24,8 +24,8 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginViewModel = LoginVM()
-        viewModel = loginViewModel
+        let registerViewModel = RegisterVM()
+        viewModel = registerViewModel
         
         self.tableView.delegate = self
         imageViewHead.layer.masksToBounds = true
@@ -215,6 +215,33 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         
         everythingValid.bindTo(btnRegister.rx_enabled)
             .addDisposableTo(disposeBag)
+        
+        //        guard let registerVM = viewModel as? RegisterVM
+        //            else {
+        //                return
+        //        }
+        
+        
+        
+        self.rx_observe(DYGender.self, "viewModel.gender", options: [.Initial, .New], retainSelf: false)
+            .subscribeNext { [weak self] (gender) in
+                guard let strongSelf = self else {
+                    return
+                }
+                
+                let gender = gender ?? DYGender.Unknown
+                switch gender {
+                case DYGender.Male:
+                    strongSelf.textFieldGender.iconText = "\u{f222}"
+                    strongSelf.textFieldGender.text = "男"
+                case DYGender.Female:
+                    strongSelf.textFieldGender.iconText = "\u{f221}"
+                    strongSelf.textFieldGender.text = "女"
+                default:
+                    strongSelf.textFieldGender.iconText = "\u{f224}"
+                    strongSelf.textFieldGender.text = "未知"
+                }
+            }.addDisposableTo(disposeBag)
     }
     
     //MARK: UI Action
@@ -239,7 +266,12 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         
         switch (indexPath.section, indexPath.row) {
         case (1, 2):
-            showGenderOptions()
+            self.view.endEditing(true)
+            
+            //由于cell选中态为None，runloop在点击后会sleep，所以用Async
+            Async.main(block: { [weak self] in
+                self?.showGenderOptions()
+                })
             break
         default:
             break
@@ -271,16 +303,26 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         alertController.buttonBgColorHighlighted[.Destructive] = UIColor(red:209/255, green:66/255, blue:51/255, alpha:1)
         
         // Create the actions.
-        let cancelAction = DOAlertAction(title: "取消", style: .Cancel) { action in
-            NSLog("The \"Custom\" alert action sheet's cancel action occured.")
+        let cancelAction = DOAlertAction(title: "取消", style: .Cancel)
+        { action in
         }
         
-        let otherAction = DOAlertAction(title: "男", style: .Default) { action in
-            NSLog("The \"Custom\" alert action sheet's other action occured.")
+        let otherAction = DOAlertAction(title: "男", style: .Default)
+        { [weak self] action in
+            guard let strongSelf = self, let registerVM = strongSelf.viewModel as? RegisterVM else {
+                return
+            }
+            
+            registerVM.gender = DYGender.Male
         }
         
-        let destructiveAction = DOAlertAction(title: "女", style: .Destructive) { action in
-            NSLog("The \"Custom\" alert action sheet's destructive action occured.")
+        let destructiveAction = DOAlertAction(title: "女", style: .Destructive)
+        { [weak self] action in
+            guard let strongSelf = self, let registerVM = strongSelf.viewModel as? RegisterVM else {
+                return
+            }
+            
+            registerVM.gender = DYGender.Female
         }
         
         // Add the actions.

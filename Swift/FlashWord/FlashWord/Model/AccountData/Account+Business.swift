@@ -19,11 +19,15 @@ extension AccountData {
         }
     }
     
-    static func register(userName: String!, password: String!, callback: AVBooleanResultBlock?) -> Void {
+    static func register(userName: String!, password: String!, gender: DYGender,
+                         callback: AVBooleanResultBlock?) -> Void {
         let user = AccountData()
         user.username = userName
         user.password = password
         user.email = userName
+        
+        user.gender = gender
+        
         user.signUpInBackgroundWithBlock { (suceed, error) in
             guard let callback = callback else {
                 return

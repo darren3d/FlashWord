@@ -26,6 +26,8 @@ class RegisterVM: DYViewModel {
         //        }
     }
     
+    dynamic var gender : DYGender = DYGender.Unknown
+    
     /**email是否合法*/
     dynamic var isEmailValid : Bool = false
     
@@ -62,5 +64,15 @@ class RegisterVM: DYViewModel {
                 self?.isPasswordValid = password.characters.count >= 6 && password.containsString("@")
                 
             }.addDisposableTo(disposeBag)
+    }
+    
+    func registr(callback: AVBooleanResultBlock?) {
+        AccountData.register(email, password: password, gender: gender) { (succeed, error) in
+            guard let callback = callback else {
+                return
+            }
+            
+            callback(succeed, error)
+        }
     }
 }
