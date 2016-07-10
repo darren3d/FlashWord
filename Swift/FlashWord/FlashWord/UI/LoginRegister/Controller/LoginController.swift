@@ -62,14 +62,6 @@ class LoginController: DYStaticTableController, UIViewControllerTransitioningDel
         //            textFieldEmail.iconRotationDegrees = 90
         //            textFieldPassword.iconRotationDegrees = 90
         //        }
-        
-        let tapBackground = UITapGestureRecognizer()
-        tapBackground.rx_event
-            .subscribeNext { [weak self] _ in
-                self?.view.endEditing(true)
-            }
-            .addDisposableTo(disposeBag)
-        view.addGestureRecognizer(tapBackground)
     }
     
     func setupBtnLogin() {

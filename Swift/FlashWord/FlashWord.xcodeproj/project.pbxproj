@@ -18,6 +18,7 @@
 		6349F2311D303D9A002210E0 /* DYOriginalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2301D303D9A002210E0 /* DYOriginalSection.swift */; };
 		6349F2331D30433F002210E0 /* DYOriginalTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2321D30433F002210E0 /* DYOriginalTable.swift */; };
 		6349F2351D304AA5002210E0 /* DYStaticTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2341D304AA5002210E0 /* DYStaticTableController.swift */; };
+		6349F23A1D31E1C2002210E0 /* DOAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2391D31E1C2002210E0 /* DOAlertController.swift */; };
 		635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AD1D09A40500A81CAF /* AppDelegate.swift */; };
 		635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AF1D09A40500A81CAF /* FirstViewController.swift */; };
 		635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93B11D09A40500A81CAF /* SecondViewController.swift */; };
@@ -168,6 +169,7 @@
 		6349F2301D303D9A002210E0 /* DYOriginalSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYOriginalSection.swift; sourceTree = "<group>"; };
 		6349F2321D30433F002210E0 /* DYOriginalTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYOriginalTable.swift; sourceTree = "<group>"; };
 		6349F2341D304AA5002210E0 /* DYStaticTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYStaticTableController.swift; sourceTree = "<group>"; };
+		6349F2391D31E1C2002210E0 /* DOAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOAlertController.swift; sourceTree = "<group>"; };
 		635B93AA1D09A40500A81CAF /* FlashWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635B93AD1D09A40500A81CAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635B93AF1D09A40500A81CAF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +366,14 @@
 			path = DYStaticTableView;
 			sourceTree = "<group>";
 		};
+		6349F2381D31E1C2002210E0 /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				6349F2391D31E1C2002210E0 /* DOAlertController.swift */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
 		635B93A11D09A40500A81CAF = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +464,7 @@
 		6388D5C21D0DAEAC0029C988 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6349F2381D31E1C2002210E0 /* AlertController */,
 				6349F22C1D303ABC002210E0 /* TableView */,
 				84301D221D19599700BB3C5D /* TrasitionAnimator */,
 				6388D5E71D108B090029C988 /* NavigationBar */,
@@ -1057,6 +1068,7 @@
 				639187F71D09EC1800757F60 /* DYLog.swift in Sources */,
 				63C6C1201D2D4CEF0090AC38 /* RootTabBarController.swift in Sources */,
 				844FBA6C1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
+				6349F23A1D31E1C2002210E0 /* DOAlertController.swift in Sources */,
 				6349F2261D2EB9CE002210E0 /* ResetPasswordController.swift in Sources */,
 				6388D5CF1D0DB1AC0029C988 /* DYNavigationController.swift in Sources */,
 				84301D011D18DEE200BB3C5D /* DYSucceedLoader.swift in Sources */,
