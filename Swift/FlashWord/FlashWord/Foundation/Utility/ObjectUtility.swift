@@ -9,17 +9,18 @@
 import Foundation
 
 extension NSObject {
-    public func dy_getAssociatedObject<T: AnyObject>(key: UnsafePointer<Void>, policy:objc_AssociationPolicy, initial: () -> T) -> T? {
+    public func dy_getAssociatedObject<T: AnyObject>(key: UnsafePointer<Void>, policy:objc_AssociationPolicy, initial: (() -> T)? = nil) -> T? {
         var value = objc_getAssociatedObject(self, key) as? T
-        if value == nil {
-            value = initial()
+        if value == nil && initial != nil  {
+            value = initial!()
             objc_setAssociatedObject(self, key, value, policy)
         }
         return value
     }
     
-    public func dy_setAssociatedObject<T: AnyObject>(key: UnsafePointer<Void>, value: T, policy:objc_AssociationPolicy) {
+    public func dy_setAssociatedObject<T: AnyObject>(key: UnsafePointer<Void>, value: T?, policy:objc_AssociationPolicy) -> T? {
         objc_setAssociatedObject(self, key, value, policy)
+        return value
     }
     
     // 通过string创建swift类，类必须用@objc标记
