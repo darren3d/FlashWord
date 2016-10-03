@@ -81,8 +81,8 @@ class DOAlertAnimation : NSObject, UIViewControllerAnimatedTransitioning {
     
     func presentAnimateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
-        var alertController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! DOAlertController
-        var containerView = transitionContext.containerView()
+        let alertController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! DOAlertController
+        let containerView = transitionContext.containerView()
         
         alertController.overlayView.alpha = 0.0
         if (alertController.isAlert()) {
@@ -92,7 +92,7 @@ class DOAlertAnimation : NSObject, UIViewControllerAnimatedTransitioning {
         } else {
             alertController.alertView.transform = CGAffineTransformMakeTranslation(0, alertController.alertView.frame.height)
         }
-        containerView!.addSubview(alertController.view)
+        containerView.addSubview(alertController.view)
         
         UIView.animateWithDuration(0.25,
                                    animations: {
@@ -120,7 +120,7 @@ class DOAlertAnimation : NSObject, UIViewControllerAnimatedTransitioning {
     
     func dismissAnimateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
-        var alertController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! DOAlertController
+        let alertController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! DOAlertController
         
         UIView.animateWithDuration(self.transitionDuration(transitionContext),
                                    animations: {
@@ -254,9 +254,9 @@ class DOAlertController : UIViewController, UITextFieldDelegate, UIViewControlle
         self.modalPresentationStyle = UIModalPresentationStyle.Custom
         
         // NotificationCenter
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleAlertActionEnabledDidChangeNotification:", name: DOAlertActionEnabledDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DOAlertController.handleAlertActionEnabledDidChangeNotification(_:)), name: DOAlertActionEnabledDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DOAlertController.handleKeyboardWillShowNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(DOAlertController.handleKeyboardWillHideNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         // Delegate
         self.transitioningDelegate = self
@@ -423,7 +423,7 @@ class DOAlertController : UIViewController, UITextFieldDelegate, UIViewControlle
         super.viewDidAppear(animated)
         
         if (!isAlert() && cancelButtonTag != 0) {
-            var tapGesture = UITapGestureRecognizer(target: self, action: "handleContainerViewTapGesture:")
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(DOAlertController.handleContainerViewTapGesture(_:)))
             containerView.addGestureRecognizer(tapGesture)
         }
     }
@@ -551,7 +551,7 @@ class DOAlertController : UIViewController, UITextFieldDelegate, UIViewControlle
                 if (!isAlert() && buttons.count > 1) {
                     buttonAreaPositionY += buttonMargin
                 }
-                var button = buttonAreaScrollView.viewWithTag(cancelButtonTag) as! UIButton
+                let button = buttonAreaScrollView.viewWithTag(cancelButtonTag) as! UIButton
                 let action = actions[cancelButtonTag - 1] as! DOAlertAction
                 button.titleLabel?.font = buttonFont[action.style]
                 button.setTitleColor(buttonTextColor[action.style], forState: .Normal)
@@ -641,7 +641,7 @@ class DOAlertController : UIViewController, UITextFieldDelegate, UIViewControlle
         let contextRef: CGContextRef = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(contextRef, color.CGColor)
         CGContextFillRect(contextRef, rect)
-        let img: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let img: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return img
     }
@@ -703,7 +703,7 @@ class DOAlertController : UIViewController, UITextFieldDelegate, UIViewControlle
         button.setTitle(action.title, forState: .Normal)
         button.enabled = action.enabled
         button.layer.cornerRadius = buttonCornerRadius
-        button.addTarget(self, action: Selector("buttonTapped:"), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(DOAlertController.buttonTapped(_:)), forControlEvents: .TouchUpInside)
         button.tag = buttons.count + 1
         buttons.append(button)
         buttonContainer.addSubview(button)
@@ -722,7 +722,7 @@ class DOAlertController : UIViewController, UITextFieldDelegate, UIViewControlle
             textFields = []
         }
         
-        var textField = UITextField()
+        let textField = UITextField()
         textField.frame.size = CGSizeMake(innerContentWidth, textFieldHeight)
         textField.borderStyle = UITextBorderStyle.None
         textField.backgroundColor = textFieldBgColor

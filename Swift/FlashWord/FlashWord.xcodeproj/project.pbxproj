@@ -25,8 +25,6 @@
 		635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93B11D09A40500A81CAF /* SecondViewController.swift */; };
 		635B93B71D09A40500A81CAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B61D09A40500A81CAF /* Assets.xcassets */; };
 		635B93BA1D09A40500A81CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B81D09A40500A81CAF /* LaunchScreen.storyboard */; };
-		635B93C51D09A40500A81CAF /* FlashWordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93C41D09A40500A81CAF /* FlashWordTests.swift */; };
-		635B93D01D09A40600A81CAF /* FlashWordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93CF1D09A40600A81CAF /* FlashWordUITests.swift */; };
 		6388D5B51D0C7A4F0029C988 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; };
 		6388D5B61D0C7AA70029C988 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; };
 		6388D5B71D0C7AA70029C988 /* AVOSCloud.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -123,23 +121,6 @@
 		F79FE96208CB634B4372980C /* Pods_FlashWord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA376F5E1793DFA7F9D953B /* Pods_FlashWord.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		635B93C11D09A40500A81CAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 635B93A21D09A40500A81CAF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 635B93A91D09A40500A81CAF;
-			remoteInfo = FlashWord;
-		};
-		635B93CC1D09A40500A81CAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 635B93A21D09A40500A81CAF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 635B93A91D09A40500A81CAF;
-			remoteInfo = FlashWord;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		6388D5B81D0C7AA80029C988 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -179,10 +160,8 @@
 		635B93B61D09A40500A81CAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		635B93B91D09A40500A81CAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		635B93BB1D09A40500A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		635B93C01D09A40500A81CAF /* FlashWordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashWordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		635B93C41D09A40500A81CAF /* FlashWordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashWordTests.swift; sourceTree = "<group>"; };
 		635B93C61D09A40500A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		635B93CB1D09A40500A81CAF /* FlashWordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashWordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		635B93CF1D09A40600A81CAF /* FlashWordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashWordUITests.swift; sourceTree = "<group>"; };
 		635B93D11D09A40600A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
@@ -293,20 +272,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		635B93BD1D09A40500A81CAF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		635B93C81D09A40500A81CAF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -393,8 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				635B93AA1D09A40500A81CAF /* FlashWord.app */,
-				635B93C01D09A40500A81CAF /* FlashWordTests.xctest */,
-				635B93CB1D09A40500A81CAF /* FlashWordUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -823,42 +786,6 @@
 			productReference = 635B93AA1D09A40500A81CAF /* FlashWord.app */;
 			productType = "com.apple.product-type.application";
 		};
-		635B93BF1D09A40500A81CAF /* FlashWordTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 635B93D71D09A40600A81CAF /* Build configuration list for PBXNativeTarget "FlashWordTests" */;
-			buildPhases = (
-				635B93BC1D09A40500A81CAF /* Sources */,
-				635B93BD1D09A40500A81CAF /* Frameworks */,
-				635B93BE1D09A40500A81CAF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				635B93C21D09A40500A81CAF /* PBXTargetDependency */,
-			);
-			name = FlashWordTests;
-			productName = FlashWordTests;
-			productReference = 635B93C01D09A40500A81CAF /* FlashWordTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		635B93CA1D09A40500A81CAF /* FlashWordUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 635B93DA1D09A40600A81CAF /* Build configuration list for PBXNativeTarget "FlashWordUITests" */;
-			buildPhases = (
-				635B93C71D09A40500A81CAF /* Sources */,
-				635B93C81D09A40500A81CAF /* Frameworks */,
-				635B93C91D09A40500A81CAF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				635B93CD1D09A40500A81CAF /* PBXTargetDependency */,
-			);
-			name = FlashWordUITests;
-			productName = FlashWordUITests;
-			productReference = 635B93CB1D09A40500A81CAF /* FlashWordUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -872,14 +799,6 @@
 					635B93A91D09A40500A81CAF = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = P3Q355LSDY;
-					};
-					635B93BF1D09A40500A81CAF = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = 635B93A91D09A40500A81CAF;
-					};
-					635B93CA1D09A40500A81CAF = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = 635B93A91D09A40500A81CAF;
 					};
 				};
 			};
@@ -897,8 +816,6 @@
 			projectRoot = "";
 			targets = (
 				635B93A91D09A40500A81CAF /* FlashWord */,
-				635B93BF1D09A40500A81CAF /* FlashWordTests */,
-				635B93CA1D09A40500A81CAF /* FlashWordUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -913,20 +830,6 @@
 				635B93BA1D09A40500A81CAF /* LaunchScreen.storyboard in Resources */,
 				6388D5E31D0DC9850029C988 /* fontawesome-webfont.ttf in Resources */,
 				635B93B71D09A40500A81CAF /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		635B93BE1D09A40500A81CAF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		635B93C91D09A40500A81CAF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,36 +1004,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		635B93BC1D09A40500A81CAF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				635B93C51D09A40500A81CAF /* FlashWordTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		635B93C71D09A40500A81CAF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				635B93D01D09A40600A81CAF /* FlashWordUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		635B93C21D09A40500A81CAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 635B93A91D09A40500A81CAF /* FlashWord */;
-			targetProxy = 635B93C11D09A40500A81CAF /* PBXContainerItemProxy */;
-		};
-		635B93CD1D09A40500A81CAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 635B93A91D09A40500A81CAF /* FlashWord */;
-			targetProxy = 635B93CC1D09A40500A81CAF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		635B93B81D09A40500A81CAF /* LaunchScreen.storyboard */ = {
@@ -1258,6 +1132,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D DEBUG=1\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1279,53 +1154,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		635B93D81D09A40600A81CAF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FlashWordTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWordTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlashWord.app/FlashWord";
-			};
-			name = Debug;
-		};
-		635B93D91D09A40600A81CAF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = FlashWordTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWordTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlashWord.app/FlashWord";
-			};
-			name = Release;
-		};
-		635B93DB1D09A40600A81CAF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = FlashWordUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWordUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = FlashWord;
-			};
-			name = Debug;
-		};
-		635B93DC1D09A40600A81CAF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = FlashWordUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWordUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = FlashWord;
 			};
 			name = Release;
 		};
@@ -1346,24 +1176,6 @@
 			buildConfigurations = (
 				635B93D51D09A40600A81CAF /* Debug */,
 				635B93D61D09A40600A81CAF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		635B93D71D09A40600A81CAF /* Build configuration list for PBXNativeTarget "FlashWordTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				635B93D81D09A40600A81CAF /* Debug */,
-				635B93D91D09A40600A81CAF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		635B93DA1D09A40600A81CAF /* Build configuration list for PBXNativeTarget "FlashWordUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				635B93DB1D09A40600A81CAF /* Debug */,
-				635B93DC1D09A40600A81CAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

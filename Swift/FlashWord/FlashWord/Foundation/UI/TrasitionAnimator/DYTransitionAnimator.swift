@@ -18,12 +18,13 @@ class DYTransitionAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         guard let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
-            let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
-            let containerView = transitionContext.containerView() else {
+            let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)
+             else {
                 DYLog.error("animateTransition: fromViewController ,toViewController or containerView is nil")
                 return
         }
         
+        let containerView = transitionContext.containerView()
         let duration = transitionDuration(transitionContext)
         containerView.addSubview(fromViewController.view);
         containerView.addSubview(toViewController.view);

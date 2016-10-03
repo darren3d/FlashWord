@@ -66,6 +66,6 @@ public class DYDataCenter: NSObject {
     lazy var dbPath : NSURL = {
         let dirUrl = self.dbDirectory
         let dbPath = dirUrl.URLByAppendingPathComponent(kDataCenterDBName)
-        return dbPath
+        return dbPath!
     }()
 }

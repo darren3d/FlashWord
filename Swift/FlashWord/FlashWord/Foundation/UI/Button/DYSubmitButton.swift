@@ -5,7 +5,7 @@ let PINK = UIColor(red:0.992157, green: 0.215686, blue: 0.403922, alpha: 1)
 let DARK_PINK = UIColor(red:0.798012, green: 0.171076, blue: 0.321758, alpha: 1)
 
 @IBDesignable
-public class DYSubmitButton : UIButton, UIViewControllerTransitioningDelegate {
+public class DYSubmitButton : UIButton, UIViewControllerTransitioningDelegate, CAAnimationDelegate {
     
     public var didEndFinishAnimation : (()->())? = nil
     
@@ -102,7 +102,7 @@ public class DYSubmitButton : UIButton, UIViewControllerTransitioningDelegate {
         startFinishAnimation(duration, completion: completion)
     }
     
-    public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         let a = anim as! CABasicAnimation
         if a.keyPath == "transform.scale" {
             didEndFinishAnimation?()
