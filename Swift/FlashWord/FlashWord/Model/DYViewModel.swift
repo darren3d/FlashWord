@@ -11,8 +11,16 @@ import RxSwift
 
 class DYViewModel: NSObject {
     var disposeBag : DisposeBag! = DisposeBag()
+    override init() {
+        super.init()
+        
+        setupObserver()
+    }
     
     deinit {
         disposeBag = nil
+    }
+    
+    func setupObserver() {
     }
 }

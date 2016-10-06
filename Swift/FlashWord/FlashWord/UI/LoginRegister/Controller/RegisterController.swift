@@ -252,7 +252,7 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         progressView!.show(DYLoaderType.Loading, text: "登录中...")
         
         let registerVM = viewModel as! RegisterVM
-        registerVM.registr { [weak self] (succeed, error) in
+        registerVM.register { [weak self] (succeed, error) in
             guard let error = error else {
                 DYLog.info("register OK")
                 if !succeed {

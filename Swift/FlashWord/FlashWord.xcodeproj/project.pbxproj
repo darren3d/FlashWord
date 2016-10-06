@@ -20,6 +20,7 @@
 		6349F2351D304AA5002210E0 /* DYStaticTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2341D304AA5002210E0 /* DYStaticTableController.swift */; };
 		6349F23A1D31E1C2002210E0 /* DOAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2391D31E1C2002210E0 /* DOAlertController.swift */; };
 		6349F23C1D326899002210E0 /* DYGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F23B1D326899002210E0 /* DYGender.swift */; };
+		635607F61DA67ECB00D558E0 /* LoginRegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */; };
 		635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AD1D09A40500A81CAF /* AppDelegate.swift */; };
 		635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AF1D09A40500A81CAF /* FirstViewController.swift */; };
 		635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93B11D09A40500A81CAF /* SecondViewController.swift */; };
@@ -153,6 +154,7 @@
 		6349F2341D304AA5002210E0 /* DYStaticTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYStaticTableController.swift; sourceTree = "<group>"; };
 		6349F2391D31E1C2002210E0 /* DOAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOAlertController.swift; sourceTree = "<group>"; };
 		6349F23B1D326899002210E0 /* DYGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYGender.swift; sourceTree = "<group>"; };
+		635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterVM.swift; sourceTree = "<group>"; };
 		635B93AA1D09A40500A81CAF /* FlashWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635B93AD1D09A40500A81CAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635B93AF1D09A40500A81CAF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 		6388D5D61D0DB3700029C988 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */,
 				6388D5F31D15CD9B0029C988 /* LoginVM.swift */,
 				6388D5F41D15CD9B0029C988 /* RegisterVM.swift */,
 				844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */,
@@ -996,6 +999,7 @@
 				6349F2311D303D9A002210E0 /* DYOriginalSection.swift in Sources */,
 				6349F2351D304AA5002210E0 /* DYStaticTableController.swift in Sources */,
 				6388D5FF1D15D8440029C988 /* URLNavigator.swift in Sources */,
+				635607F61DA67ECB00D558E0 /* LoginRegisterVM.swift in Sources */,
 				844FBA7B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */,
 				844FBA871D0FE0F900D6C2EA /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
