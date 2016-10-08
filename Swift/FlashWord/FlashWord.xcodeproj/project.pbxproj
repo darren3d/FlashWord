@@ -21,6 +21,9 @@
 		6349F23A1D31E1C2002210E0 /* DOAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2391D31E1C2002210E0 /* DOAlertController.swift */; };
 		6349F23C1D326899002210E0 /* DYGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F23B1D326899002210E0 /* DYGender.swift */; };
 		635607F61DA67ECB00D558E0 /* LoginRegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */; };
+		635607F91DA798D300D558E0 /* WordBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607F81DA798D300D558E0 /* WordBookController.swift */; };
+		635607FC1DA79B6000D558E0 /* LearnWordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FB1DA79B6000D558E0 /* LearnWordController.swift */; };
+		635607FF1DA79E1900D558E0 /* WordBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FE1DA79E1900D558E0 /* WordBookCell.swift */; };
 		635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AD1D09A40500A81CAF /* AppDelegate.swift */; };
 		635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AF1D09A40500A81CAF /* FirstViewController.swift */; };
 		635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93B11D09A40500A81CAF /* SecondViewController.swift */; };
@@ -155,6 +158,9 @@
 		6349F2391D31E1C2002210E0 /* DOAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOAlertController.swift; sourceTree = "<group>"; };
 		6349F23B1D326899002210E0 /* DYGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYGender.swift; sourceTree = "<group>"; };
 		635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterVM.swift; sourceTree = "<group>"; };
+		635607F81DA798D300D558E0 /* WordBookController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookController.swift; sourceTree = "<group>"; };
+		635607FB1DA79B6000D558E0 /* LearnWordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordController.swift; sourceTree = "<group>"; };
+		635607FE1DA79E1900D558E0 /* WordBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookCell.swift; sourceTree = "<group>"; };
 		635B93AA1D09A40500A81CAF /* FlashWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635B93AD1D09A40500A81CAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635B93AF1D09A40500A81CAF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +350,31 @@
 			path = AlertController;
 			sourceTree = "<group>";
 		};
+		635607F71DA7987E00D558E0 /* WordBookController */ = {
+			isa = PBXGroup;
+			children = (
+				635607FD1DA79E0000D558E0 /* Cell */,
+				635607F81DA798D300D558E0 /* WordBookController.swift */,
+			);
+			path = WordBookController;
+			sourceTree = "<group>";
+		};
+		635607FA1DA79B5600D558E0 /* LearnWordController */ = {
+			isa = PBXGroup;
+			children = (
+				635607FB1DA79B6000D558E0 /* LearnWordController.swift */,
+			);
+			path = LearnWordController;
+			sourceTree = "<group>";
+		};
+		635607FD1DA79E0000D558E0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				635607FE1DA79E1900D558E0 /* WordBookCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		635B93A11D09A40500A81CAF = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +508,8 @@
 		6388D5D01D0DB2CD0029C988 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				635607FA1DA79B5600D558E0 /* LearnWordController */,
+				635607F71DA7987E00D558E0 /* WordBookController */,
 				63C6C11C1D2D4C500090AC38 /* RootController */,
 				6388D5D11D0DB2CD0029C988 /* LoginRegister */,
 			);
@@ -956,6 +989,7 @@
 				844FBA861D0FE0F900D6C2EA /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
 				844FBA8A1D0FE0F900D6C2EA /* NVActivityIndicatorView.swift in Sources */,
 				6388D5C11D0DAE310029C988 /* FadeTransitionAnimator.swift in Sources */,
+				635607FF1DA79E1900D558E0 /* WordBookCell.swift in Sources */,
 				844FBA711D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				84301D1F1D1940A900BB3C5D /* FontBlaster.swift in Sources */,
@@ -982,6 +1016,7 @@
 				6349F2261D2EB9CE002210E0 /* ResetPasswordController.swift in Sources */,
 				6388D5CF1D0DB1AC0029C988 /* DYNavigationController.swift in Sources */,
 				84301D011D18DEE200BB3C5D /* DYSucceedLoader.swift in Sources */,
+				635607FC1DA79B6000D558E0 /* LearnWordController.swift in Sources */,
 				6388D5DE1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				84301D071D18E95600BB3C5D /* DYInfiniteLoader.swift in Sources */,
 				844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */,
@@ -990,6 +1025,7 @@
 				844FBA781D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
 				6388D5FE1D15D8440029C988 /* URLNavigable.swift in Sources */,
 				635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */,
+				635607F91DA798D300D558E0 /* WordBookController.swift in Sources */,
 				6388D5EE1D108B090029C988 /* UINavigationBar+Animation.swift in Sources */,
 				844FBA6A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				6388D6011D15DC4A0029C988 /* DYURLNavigationMap.swift in Sources */,

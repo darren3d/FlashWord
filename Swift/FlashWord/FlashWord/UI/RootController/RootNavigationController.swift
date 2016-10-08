@@ -20,7 +20,7 @@ class RootNavigationController: DYNavigationController {
         let appVersion = AppConst.appVersion
         //        if lastGuideVersion != appVersion {
         Defaults[.appGuideVersion] = appVersion
-        switchToGuide(false)
+//        switchToGuide(false)
         //        }
     }
     

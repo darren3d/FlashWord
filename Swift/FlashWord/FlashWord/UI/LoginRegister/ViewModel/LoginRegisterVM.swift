@@ -60,25 +60,33 @@ class LoginRegisterVM: DYViewModel {
             }.addDisposableTo(disposeBag)
     }
     
-    func accountCheck(callback: AVStringResultBlock) {
+    func accountCheck(callback: AVBooleanResultBlock) {
         let email = self.email.stringByReplacingOccurrencesOfString(" ", withString: "")
-        if email.characters.count <= 0 {
+        if email.characters.count <= 0 || !isEmailValid {
             return
         }
         
-        
         let exist = checkDict[email]
-        if exist != nil && exist! {
-            callback(email, NSError(domain: "FlashWord", code: 0, userInfo: nil))
+        if exist != nil {
+            callback(exist!, nil)
             return
         }
         
         let query = AccountData.query()
         query.whereKey("email", equalTo: email)
-        query.findObjectsInBackgroundWithBlock { (users, error) in
+        query.findObjectsInBackgroundWithBlock { [weak self] (users, error) in
+            guard var checkDict = self?.checkDict else {
+                return
+            }
+            
             if users.count > 0 {
                 DYLog.info("account \(email) exist")
-                callback(email, NSError(domain: "FlashWord", code: 0, userInfo: nil))
+                checkDict[email] = true
+                callback(true, nil)
+            } else {
+                DYLog.info("account \(email) not exist")
+                checkDict[email] = false
+                callback(false, nil)
             }
         }
     }
