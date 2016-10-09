@@ -36,6 +36,7 @@
                     <connections>
                         <segue destination="SrI-Ll-B2O" kind="relationship" relationship="viewControllers" id="8mr-12-xXy"/>
                         <segue destination="Ufc-Ik-VwU" kind="relationship" relationship="viewControllers" id="4LZ-xt-Z8O"/>
+                        <segue destination="ZQr-MT-mZz" kind="relationship" relationship="viewControllers" id="0To-K7-pYP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -64,7 +65,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZ4-04-wgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-502" y="-1714"/>
+            <point key="canvasLocation" x="-934" y="-1791"/>
         </scene>
         <!--Word Book Controller-->
         <scene sceneID="tlD-bK-kJu">
@@ -288,12 +289,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBz-yF-fhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-503" y="-886"/>
+            <point key="canvasLocation" x="-935" y="-1054"/>
         </scene>
         <!--背单词-->
         <scene sceneID="cVG-pk-6JD">
             <objects>
-                <navigationController storyboardIdentifier="ReciteNavigationController" id="Ufc-Ik-VwU" customClass="RootNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ReciteNavigationController" id="Ufc-Ik-VwU" customClass="DYNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="背单词" image="1_normal" selectedImage="1_highlighted" id="kEh-P6-Vev" customClass="DYTabBarItem" customModule="FlashWord" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="colorBackground">
@@ -312,7 +313,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htw-zl-aXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127" y="-1713"/>
+            <point key="canvasLocation" x="-188" y="-1791"/>
         </scene>
         <!--Learn Word Controller-->
         <scene sceneID="2Ee-VJ-Uge">
@@ -358,7 +359,77 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ji-tY-Sxy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127" y="-887"/>
+            <point key="canvasLocation" x="-190" y="-1053"/>
+        </scene>
+        <!--我的-->
+        <scene sceneID="qoJ-zu-F42">
+            <objects>
+                <navigationController storyboardIdentifier="PersonalNavigationController" id="ZQr-MT-mZz" customClass="DYNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" image="2_normal" selectedImage="2_highlighted" id="rN3-FN-oVI" customClass="DYTabBarItem" customModule="FlashWord" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="colorBackground">
+                                <color key="value" red="0.89411764709999997" green="0.43137254899999999" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="4bd-pD-FPu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SLs-v7-TCK" kind="relationship" relationship="rootViewController" id="yO7-au-YIm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tm6-uk-2nu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="-1791"/>
+        </scene>
+        <!--My Controller-->
+        <scene sceneID="oFd-Ym-Qmt">
+            <objects>
+                <viewController storyboardIdentifier="MyController" id="SLs-v7-TCK" customClass="MyController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Ko-N8-GHL"/>
+                        <viewControllerLayoutGuide type="bottom" id="bpv-U5-koP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0y1-pe-FFp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gtw-2b-3nl">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IQW-Eg-l6V">
+                                    <size key="itemSize" width="375" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CsE-CL-fhD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gtw-2b-3nl" firstAttribute="width" secondItem="0y1-pe-FFp" secondAttribute="width" id="86i-qG-G0Z"/>
+                            <constraint firstItem="Gtw-2b-3nl" firstAttribute="centerX" secondItem="0y1-pe-FFp" secondAttribute="centerX" id="P6J-x6-9xm"/>
+                            <constraint firstItem="Gtw-2b-3nl" firstAttribute="height" secondItem="0y1-pe-FFp" secondAttribute="height" id="sWn-qX-faf"/>
+                            <constraint firstItem="Gtw-2b-3nl" firstAttribute="centerY" secondItem="0y1-pe-FFp" secondAttribute="centerY" id="xZW-wN-xcP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ILg-59-ACp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIP-dr-THU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="-1054"/>
         </scene>
     </scenes>
     <resources>
@@ -366,5 +437,7 @@
         <image name="0_normal" width="26" height="24"/>
         <image name="1_highlighted" width="24" height="24"/>
         <image name="1_normal" width="24" height="24"/>
+        <image name="2_highlighted" width="26" height="24"/>
+        <image name="2_normal" width="26" height="24"/>
     </resources>
 </document>
