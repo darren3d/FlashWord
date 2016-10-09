@@ -9,5 +9,15 @@
 import UIKit
 
 class RootTabBarController: DYTabBarController {
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let viewControllers = tabViewControllers()
+        for tabChildController in viewControllers {
+            if let barItem = tabChildController.tabBarItem as? DYTabBarItem,
+                let naviController = tabChildController as? UINavigationController {
+                naviController.viewControllers[0].view.backgroundColor = barItem.colorBackground.colorWithAlphaComponent(0.2)
+            }
+        }
+    }
 }

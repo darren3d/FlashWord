@@ -11,7 +11,7 @@
             <objects>
                 <navigationController storyboardIdentifier="RootNavigationController" id="s0o-L8-hmV" customClass="RootNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="qNq-2p-JPl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="qNq-2p-JPl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -34,15 +34,39 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ybV-Jg-sZt" kind="relationship" relationship="viewControllers" id="Ha2-Or-2dN"/>
-                        <segue destination="si6-f0-bHJ" kind="relationship" relationship="viewControllers" id="e7d-Ty-tJ9"/>
+                        <segue destination="SrI-Ll-B2O" kind="relationship" relationship="viewControllers" id="8mr-12-xXy"/>
+                        <segue destination="Ufc-Ik-VwU" kind="relationship" relationship="viewControllers" id="4LZ-xt-Z8O"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188" y="-2651"/>
+            <point key="canvasLocation" x="-189" y="-2554"/>
         </scene>
         <!--单词本-->
+        <scene sceneID="hK2-kX-ojy">
+            <objects>
+                <navigationController storyboardIdentifier="WordBookNavigationController" id="SrI-Ll-B2O" customClass="DYNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="单词本" image="0_normal" selectedImage="0_highlighted" id="6Rd-Di-ovQ" customClass="DYTabBarItem" customModule="FlashWord" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="colorBackground">
+                                <color key="value" red="0.95686274510000002" green="0.52941176469999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="R35-Wy-Tmf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ybV-Jg-sZt" kind="relationship" relationship="rootViewController" id="MyV-dt-skO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NZ4-04-wgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-502" y="-1714"/>
+        </scene>
+        <!--Word Book Controller-->
         <scene sceneID="tlD-bK-kJu">
             <objects>
                 <viewController storyboardIdentifier="WordBookController" id="ybV-Jg-sZt" customClass="WordBookController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
@@ -235,10 +259,10 @@
                                             <outlet property="labelTitle" destination="WFY-W2-k1X" id="ljI-Ge-Og1"/>
                                             <outlet property="labelWordConut" destination="exI-Ta-La9" id="iF3-kE-vC0"/>
                                             <outlet property="viewMark" destination="Ybv-S7-1AE" id="hut-gd-OyW"/>
-                                            <outletCollection property="linesHori" destination="N4y-kA-Q5V" id="2M5-e7-SGo"/>
-                                            <outletCollection property="linesHori" destination="AKg-6f-Abi" id="wOD-tf-tMw"/>
-                                            <outletCollection property="linesVert" destination="G5H-Lo-CuS" id="y85-Uy-TKW"/>
-                                            <outletCollection property="linesVert" destination="a0c-Cq-Pnz" id="tTW-iA-gAb"/>
+                                            <outletCollection property="linesHori" destination="N4y-kA-Q5V" collectionClass="NSMutableArray" id="2M5-e7-SGo"/>
+                                            <outletCollection property="linesHori" destination="AKg-6f-Abi" collectionClass="NSMutableArray" id="wOD-tf-tMw"/>
+                                            <outletCollection property="linesVert" destination="G5H-Lo-CuS" collectionClass="NSMutableArray" id="y85-Uy-TKW"/>
+                                            <outletCollection property="linesVert" destination="a0c-Cq-Pnz" collectionClass="NSMutableArray" id="tTW-iA-gAb"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -256,7 +280,7 @@
                             <constraint firstItem="bSX-z4-evr" firstAttribute="height" secondItem="kja-z3-scV" secondAttribute="height" id="py3-Lj-ADQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="单词本" id="2f2-aw-spW"/>
+                    <navigationItem key="navigationItem" id="hUJ-Rg-Tmx"/>
                     <connections>
                         <outlet property="collectionLayout" destination="YbM-Fb-KGj" id="ta5-9H-dia"/>
                         <outlet property="collectionView" destination="bSX-z4-evr" id="MX7-I6-po0"/>
@@ -264,9 +288,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBz-yF-fhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-679.20000000000005" y="-1892.2038980509747"/>
+            <point key="canvasLocation" x="-503" y="-886"/>
         </scene>
         <!--背单词-->
+        <scene sceneID="cVG-pk-6JD">
+            <objects>
+                <navigationController storyboardIdentifier="ReciteNavigationController" id="Ufc-Ik-VwU" customClass="RootNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="背单词" image="1_normal" selectedImage="1_highlighted" id="kEh-P6-Vev" customClass="DYTabBarItem" customModule="FlashWord" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="colorBackground">
+                                <color key="value" red="0.41176470590000003" green="0.70196078429999997" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="h89-ON-C1T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="si6-f0-bHJ" kind="relationship" relationship="rootViewController" id="qSI-3W-NXD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htw-zl-aXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="127" y="-1713"/>
+        </scene>
+        <!--Learn Word Controller-->
         <scene sceneID="2Ee-VJ-Uge">
             <objects>
                 <viewController storyboardIdentifier="LearnWordController" id="si6-f0-bHJ" customClass="LearnWordController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
@@ -306,11 +354,17 @@
                             <constraint firstItem="y3R-Ee-Wsb" firstAttribute="width" secondItem="Vnw-T4-OZj" secondAttribute="width" id="zuB-qA-lPM"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="背单词" id="Qwr-ba-5Gy"/>
+                    <navigationItem key="navigationItem" id="EQe-R0-6dE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ji-tY-Sxy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153" y="-1892"/>
+            <point key="canvasLocation" x="127" y="-887"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="0_highlighted" width="26" height="24"/>
+        <image name="0_normal" width="26" height="24"/>
+        <image name="1_highlighted" width="24" height="24"/>
+        <image name="1_normal" width="24" height="24"/>
+    </resources>
 </document>
