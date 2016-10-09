@@ -13,8 +13,11 @@ class WordBookController: DYViewController {
     @IBOutlet weak var collectionLayout : UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        collectionView.contentInset = UIEdgeInsetsMake(0, 0, 55, 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 55, 0)
+        collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 120)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +29,7 @@ class WordBookController: DYViewController {
 
 extension WordBookController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2;
+        return 10;
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -34,22 +37,34 @@ extension WordBookController : UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        <#code#>
+        let aCell = collectionView.dequeueReusableCellWithReuseIdentifier("WordBookCell", forIndexPath: indexPath)
+        return aCell;
     }
     
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        <#code#>
+    func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        guard let cell = aCell as? WordBookCell else {
+            return
+        }
+        
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        <#code#>
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        <#code#>
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        
+//    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        let sectionCount = self.numberOfSectionsInCollectionView(collectionView);
+        if section != sectionCount - 1 {
+            return UIEdgeInsetsMake(10, 0, 0, 0)
+        } else {
+            return UIEdgeInsetsMake(10, 0, 10, 0)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        <#code#>
+        
     }
 }
