@@ -46,6 +46,7 @@ extension WordBookController : UICollectionViewDataSource, UICollectionViewDeleg
             return
         }
         
+        cell.setMarkColor(UIColor.flatColor(atIndex:indexPath.section))
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {

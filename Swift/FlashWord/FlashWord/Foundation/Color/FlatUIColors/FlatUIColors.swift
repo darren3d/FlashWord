@@ -134,7 +134,8 @@ public enum FlatColors {
     Cararra
 }
 
-var colors: Dictionary<FlatColors, UInt> = [
+private
+var kFlatColorDict: Dictionary<FlatColors, UInt> = [
     FlatColors.Turquoise: UInt(0x1abc9c),
     FlatColors.Emerald: UInt(0x2ecc71),
     FlatColors.PeterRiver: UInt(0x3498db),
@@ -251,7 +252,15 @@ var colors: Dictionary<FlatColors, UInt> = [
 
 public extension UIColor {
     class func flat(color: FlatColors) -> UIColor {
-        let selected: UInt = UInt(colors[color]!)
+        let selected: UInt = UInt(kFlatColorDict[color]!)
+        return selected.convertToUIColor()
+    }
+    
+    class func flatColor(atIndex index: Int) -> UIColor {
+        let count = kFlatColorDict.count
+        let ind = (index >= 0 ? index : 0) % count
+        let values = Array(kFlatColorDict.values)
+        let selected: UInt = UInt(values[ind])
         return selected.convertToUIColor()
     }
     
