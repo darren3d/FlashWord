@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6304C31A1DAA86A0000D9DA1 /* CollectionType+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3151DAA86A0000D9DA1 /* CollectionType+Safe.swift */; };
+		6304C31B1DAA86A0000D9DA1 /* DYColorTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3161DAA86A0000D9DA1 /* DYColorTab.swift */; };
+		6304C31C1DAA86A0000D9DA1 /* DYTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3171DAA86A0000D9DA1 /* DYTabBar.swift */; };
+		6304C31D1DAA86A0000D9DA1 /* DYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */; };
+		6304C31E1DAA86A0000D9DA1 /* DYTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */; };
+		6304C3211DAA9FEF000D9DA1 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3201DAA9FEF000D9DA1 /* MyController.swift */; };
 		632D04DE1D09C94400F9744B /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632D04DD1D09C94400F9744B /* MagicalRecord.framework */; };
 		632D04E01D09C94700F9744B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632D04DF1D09C94700F9744B /* RxCocoa.framework */; };
 		632D04E21D09C94A00F9744B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632D04E11D09C94A00F9744B /* RxSwift.framework */; };
@@ -79,7 +85,6 @@
 		84301D1A1D1935E600BB3C5D /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D191D1935E600BB3C5D /* TextAttributes.swift */; };
 		84301D1C1D19362A00BB3C5D /* DYStringUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */; };
 		84301D1F1D1940A900BB3C5D /* FontBlaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1E1D1940A900BB3C5D /* FontBlaster.swift */; };
-		84301D211D1953EA00BB3C5D /* DYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D201D1953EA00BB3C5D /* DYTabBarController.swift */; };
 		84301D241D1959AE00BB3C5D /* DYTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D231D1959AE00BB3C5D /* DYTransitionAnimator.swift */; };
 		844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */; };
 		844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */; };
@@ -143,6 +148,12 @@
 		0402EC8172EC4DD126065338 /* Pods-FlashWord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashWord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlashWord/Pods-FlashWord.debug.xcconfig"; sourceTree = "<group>"; };
 		1E932C9C1D7FDCFDEF1B98CF /* Pods-FlashWord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashWord.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlashWord/Pods-FlashWord.release.xcconfig"; sourceTree = "<group>"; };
 		2FA376F5E1793DFA7F9D953B /* Pods_FlashWord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlashWord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6304C3151DAA86A0000D9DA1 /* CollectionType+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectionType+Safe.swift"; sourceTree = "<group>"; };
+		6304C3161DAA86A0000D9DA1 /* DYColorTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYColorTab.swift; sourceTree = "<group>"; };
+		6304C3171DAA86A0000D9DA1 /* DYTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBar.swift; sourceTree = "<group>"; };
+		6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarController.swift; sourceTree = "<group>"; };
+		6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarItem.swift; sourceTree = "<group>"; };
+		6304C3201DAA9FEF000D9DA1 /* MyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
 		632D04DC1D09C7E600F9744B /* FlashWord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlashWord-Bridging-Header.h"; sourceTree = "<group>"; };
 		632D04DD1D09C94400F9744B /* MagicalRecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MagicalRecord.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FlashWord-bkvyrctegzunkvatsapkjdclplse/Build/Products/Debug-iphonesimulator/MagicalRecord/MagicalRecord.framework"; sourceTree = "<group>"; };
 		632D04DF1D09C94700F9744B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FlashWord-bkvyrctegzunkvatsapkjdclplse/Build/Products/Debug-iphonesimulator/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
@@ -220,7 +231,6 @@
 		84301D191D1935E600BB3C5D /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 		84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYStringUtility.swift; sourceTree = "<group>"; };
 		84301D1E1D1940A900BB3C5D /* FontBlaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontBlaster.swift; sourceTree = "<group>"; };
-		84301D201D1953EA00BB3C5D /* DYTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarController.swift; sourceTree = "<group>"; };
 		84301D231D1959AE00BB3C5D /* DYTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTransitionAnimator.swift; sourceTree = "<group>"; };
 		844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DYViewModel.swift; path = FlashWord/Model/DYViewModel.swift; sourceTree = SOURCE_ROOT; };
 		844FBA451D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NVActivityIndicatorAnimationBallBeat.swift; sourceTree = "<group>"; };
@@ -301,6 +311,26 @@
 				2FA376F5E1793DFA7F9D953B /* Pods_FlashWord.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6304C3141DAA86A0000D9DA1 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				6304C3151DAA86A0000D9DA1 /* CollectionType+Safe.swift */,
+				6304C3161DAA86A0000D9DA1 /* DYColorTab.swift */,
+				6304C3171DAA86A0000D9DA1 /* DYTabBar.swift */,
+				6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */,
+				6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		6304C31F1DAA9FEF000D9DA1 /* MyController */ = {
+			isa = PBXGroup;
+			children = (
+				6304C3201DAA9FEF000D9DA1 /* MyController.swift */,
+			);
+			path = MyController;
 			sourceTree = "<group>";
 		};
 		632D04E31D09C9BD00F9744B /* Model */ = {
@@ -495,9 +525,9 @@
 		6388D5CB1D0DB1620029C988 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6304C3141DAA86A0000D9DA1 /* TabBarController */,
 				6388D5CC1D0DB1900029C988 /* DYViewController.swift */,
 				6388D5CE1D0DB1AC0029C988 /* DYNavigationController.swift */,
-				84301D201D1953EA00BB3C5D /* DYTabBarController.swift */,
 				844FBA8C1D0FE2B700D6C2EA /* UIViewController+Utility.swift */,
 				6388D5F71D15D5EB0029C988 /* UIViewController+ProgressView.swift */,
 				847D70361D1298EA0025B54A /* UIViewController+State.swift */,
@@ -510,6 +540,7 @@
 			children = (
 				635607FA1DA79B5600D558E0 /* LearnWordController */,
 				635607F71DA7987E00D558E0 /* WordBookController */,
+				6304C31F1DAA9FEF000D9DA1 /* MyController */,
 				63C6C11C1D2D4C500090AC38 /* RootController */,
 				6388D5D11D0DB2CD0029C988 /* LoginRegister */,
 			);
@@ -938,9 +969,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				844FBA6D1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */,
+				6304C31E1DAA86A0000D9DA1 /* DYTabBarItem.swift in Sources */,
 				6388D5F01D15B19B0029C988 /* Account+Business.swift in Sources */,
 				639187F91D09EE4200757F60 /* AppConst.swift in Sources */,
 				639188071D0A915800757F60 /* HSL.swift in Sources */,
+				6304C31A1DAA86A0000D9DA1 /* CollectionType+Safe.swift in Sources */,
 				6388D5FD1D15D8440029C988 /* URLConvertible.swift in Sources */,
 				844FBA721D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				84301D241D1959AE00BB3C5D /* DYTransitionAnimator.swift in Sources */,
@@ -950,6 +983,7 @@
 				844FBA6B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */,
 				639187FD1D09FB3E00757F60 /* DYUserDefaults.swift in Sources */,
+				6304C31B1DAA86A0000D9DA1 /* DYColorTab.swift in Sources */,
 				844FBA7C1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBlank.swift in Sources */,
 				6388D5CD1D0DB1900029C988 /* DYViewController.swift in Sources */,
 				6388D5F61D15CD9B0029C988 /* RegisterVM.swift in Sources */,
@@ -965,7 +999,6 @@
 				639188061D0A915800757F60 /* DynamicColor.swift in Sources */,
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
 				6349F23C1D326899002210E0 /* DYGender.swift in Sources */,
-				84301D211D1953EA00BB3C5D /* DYTabBarController.swift in Sources */,
 				844FBA731D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
 				844FBA7A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
 				847D70391D12A4AD0025B54A /* ObjectUtility.swift in Sources */,
@@ -980,9 +1013,11 @@
 				639188051D0A915800757F60 /* DynamicColor+RGBA.swift in Sources */,
 				844FBA851D0FE0F900D6C2EA /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
 				847D70371D1298EA0025B54A /* UIViewController+State.swift in Sources */,
+				6304C31C1DAA86A0000D9DA1 /* DYTabBar.swift in Sources */,
 				844FBA7E1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
 				632D04EC1D09CB4700F9744B /* AccountData.swift in Sources */,
 				844FBA811D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
+				6304C31D1DAA86A0000D9DA1 /* DYTabBarController.swift in Sources */,
 				844FBA891D0FE0F900D6C2EA /* NVActivityIndicatorShape.swift in Sources */,
 				844FBA6F1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulse.swift in Sources */,
 				6349F22F1D303ADE002210E0 /* DYOriginalRow.swift in Sources */,
@@ -1003,6 +1038,7 @@
 				6388D5CA1D0DAFDC0029C988 /* NSTimerUtility.swift in Sources */,
 				6391880A1D0A930500757F60 /* FlatUIColors.swift in Sources */,
 				844FBA761D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
+				6304C3211DAA9FEF000D9DA1 /* MyController.swift in Sources */,
 				844FBA7F1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				6388D5ED1D108B090029C988 /* BusyNavigationBarOptions.swift in Sources */,
 				84301D1C1D19362A00BB3C5D /* DYStringUtility.swift in Sources */,

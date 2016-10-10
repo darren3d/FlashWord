@@ -25,7 +25,7 @@ class WordBookCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    public func setMarkColor(color:UIColor) {
+    func setMarkColor(color:UIColor) {
         viewMark.backgroundColor = color
     }
 }
