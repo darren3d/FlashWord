@@ -11,12 +11,14 @@ import UIKit
 class WordBookController: DYViewController {
     @IBOutlet weak var collectionView : UICollectionView!
     @IBOutlet weak var collectionLayout : UICollectionViewFlowLayout!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.automaticallyAdjustsScrollViewInsets = false
         
-        collectionView.contentInset = UIEdgeInsetsMake(0, 0, 55, 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 55, 0)
+        collectionView.contentInset = UIEdgeInsetsMake(64, 0, 50, 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 50, 0)
         collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 120)
     }
 

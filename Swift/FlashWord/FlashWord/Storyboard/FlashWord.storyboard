@@ -28,7 +28,8 @@
             <objects>
                 <tabBarController storyboardIdentifier="RootTabBarController" id="49e-Tb-3d3" customClass="RootTabBarController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6qH-7v-tQW"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,7 +68,7 @@
             </objects>
             <point key="canvasLocation" x="-934" y="-1791"/>
         </scene>
-        <!--Word Book Controller-->
+        <!--单词本-->
         <scene sceneID="tlD-bK-kJu">
             <objects>
                 <viewController storyboardIdentifier="WordBookController" id="ybV-Jg-sZt" customClass="WordBookController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
@@ -102,30 +103,30 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单词本" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFY-W2-k1X">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="0.298565858470069" green="0.298565858470069" blue="0.298565858470069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="800" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="32单词" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exI-Ta-La9">
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.2985658585" green="0.2985658585" blue="0.2985658585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W64-EK-mNQ">
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="平均用时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDY-0S-YOo">
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOr-uz-pQw">
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.95686274510000002" green="0.52941176469999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCe-Un-Wir">
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.95686274510000002" green="0.52941176469999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -154,17 +155,17 @@
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="学习次数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvb-MW-Zkt">
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjZ-GX-4LR">
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.95686274510000002" green="0.52941176469999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fP5-Dn-lmc">
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.95686274510000002" green="0.52941176469999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -187,17 +188,17 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="掌握程度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gU4-RK-7So">
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vds-AZ-eLp">
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.95686274510000002" green="0.52941176469999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRX-JG-GRa">
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.95686274510000002" green="0.52941176469999995" blue="0.035294117649999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -281,7 +282,7 @@
                             <constraint firstItem="bSX-z4-evr" firstAttribute="height" secondItem="kja-z3-scV" secondAttribute="height" id="py3-Lj-ADQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hUJ-Rg-Tmx"/>
+                    <navigationItem key="navigationItem" title="单词本" id="hUJ-Rg-Tmx"/>
                     <connections>
                         <outlet property="collectionLayout" destination="YbM-Fb-KGj" id="ta5-9H-dia"/>
                         <outlet property="collectionView" destination="bSX-z4-evr" id="MX7-I6-po0"/>
@@ -315,7 +316,7 @@
             </objects>
             <point key="canvasLocation" x="-188" y="-1791"/>
         </scene>
-        <!--Learn Word Controller-->
+        <!--背单词-->
         <scene sceneID="2Ee-VJ-Uge">
             <objects>
                 <viewController storyboardIdentifier="LearnWordController" id="si6-f0-bHJ" customClass="LearnWordController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
@@ -336,15 +337,57 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9ak-3o-fvl">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LearnWordCell" id="9ak-3o-fvl" customClass="LearnWordCell" customModule="FlashWord" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBC-v6-1Al">
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单词释义" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1k-PN-EWc">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="根据英文单词选择对应的中文释义" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKh-Z5-Psl">
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.43137254899999999" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="fKh-Z5-Psl" secondAttribute="bottom" priority="100" constant="10" id="9H9-wr-a1s"/>
+                                                        <constraint firstItem="fKh-Z5-Psl" firstAttribute="top" secondItem="w1k-PN-EWc" secondAttribute="bottom" constant="6" id="Axn-ma-3i1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="w1k-PN-EWc" secondAttribute="trailing" constant="10" id="Jrm-6H-UyA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="fKh-Z5-Psl" secondAttribute="trailing" constant="10" id="evd-fk-HI9"/>
+                                                        <constraint firstItem="w1k-PN-EWc" firstAttribute="leading" secondItem="OBC-v6-1Al" secondAttribute="leading" constant="10" id="fXE-7o-ECS"/>
+                                                        <constraint firstItem="w1k-PN-EWc" firstAttribute="top" secondItem="OBC-v6-1Al" secondAttribute="top" constant="10" id="sCr-qz-yGq"/>
+                                                        <constraint firstItem="fKh-Z5-Psl" firstAttribute="leading" secondItem="OBC-v6-1Al" secondAttribute="leading" constant="10" id="x3M-WK-xf4"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="OBC-v6-1Al" firstAttribute="top" secondItem="9ak-3o-fvl" secondAttribute="top" id="6ep-5j-9je"/>
+                                            <constraint firstItem="OBC-v6-1Al" firstAttribute="leading" secondItem="9ak-3o-fvl" secondAttribute="leading" id="FLK-KX-Ens"/>
+                                            <constraint firstAttribute="bottom" secondItem="OBC-v6-1Al" secondAttribute="bottom" id="GYc-rj-DVU"/>
+                                            <constraint firstAttribute="trailing" secondItem="OBC-v6-1Al" secondAttribute="trailing" id="Nn5-Mp-cVR"/>
+                                        </constraints>
+                                        <size key="customSize" width="375" height="66"/>
+                                        <connections>
+                                            <outlet property="labelDesc" destination="fKh-Z5-Psl" id="mU7-d1-Bh5"/>
+                                            <outlet property="labelTitle" destination="w1k-PN-EWc" id="6yc-Ny-5hp"/>
+                                            <outlet property="viewContent" destination="OBC-v6-1Al" id="SsR-oK-dvF"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="si6-f0-bHJ" id="3gR-dS-gXq"/>
+                                    <outlet property="delegate" destination="si6-f0-bHJ" id="a9r-CY-BcO"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -355,7 +398,11 @@
                             <constraint firstItem="y3R-Ee-Wsb" firstAttribute="width" secondItem="Vnw-T4-OZj" secondAttribute="width" id="zuB-qA-lPM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="EQe-R0-6dE"/>
+                    <navigationItem key="navigationItem" title="背单词" id="EQe-R0-6dE"/>
+                    <connections>
+                        <outlet property="collectionLayout" destination="1Fh-Kp-oSO" id="7ea-8U-Cse"/>
+                        <outlet property="collectionView" destination="y3R-Ee-Wsb" id="phR-ti-lja"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ji-tY-Sxy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -385,7 +432,7 @@
             </objects>
             <point key="canvasLocation" x="593" y="-1791"/>
         </scene>
-        <!--My Controller-->
+        <!--我的-->
         <scene sceneID="oFd-Ym-Qmt">
             <objects>
                 <viewController storyboardIdentifier="MyController" id="SLs-v7-TCK" customClass="MyController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
@@ -425,7 +472,7 @@
                             <constraint firstItem="Gtw-2b-3nl" firstAttribute="centerY" secondItem="0y1-pe-FFp" secondAttribute="centerY" id="xZW-wN-xcP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ILg-59-ACp"/>
+                    <navigationItem key="navigationItem" title="我的" id="ILg-59-ACp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIP-dr-THU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

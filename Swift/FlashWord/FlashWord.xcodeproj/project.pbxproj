@@ -35,6 +35,7 @@
 		635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93B11D09A40500A81CAF /* SecondViewController.swift */; };
 		635B93B71D09A40500A81CAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B61D09A40500A81CAF /* Assets.xcassets */; };
 		635B93BA1D09A40500A81CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B81D09A40500A81CAF /* LaunchScreen.storyboard */; };
+		6380AE801DAC2779003700A4 /* LearnWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE7F1DAC2779003700A4 /* LearnWordCell.swift */; };
 		6388D5B51D0C7A4F0029C988 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; };
 		6388D5B61D0C7AA70029C988 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; };
 		6388D5B71D0C7AA70029C988 /* AVOSCloud.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -183,6 +184,7 @@
 		635B93C61D09A40500A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		635B93CF1D09A40600A81CAF /* FlashWordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashWordUITests.swift; sourceTree = "<group>"; };
 		635B93D11D09A40600A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6380AE7F1DAC2779003700A4 /* LearnWordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordCell.swift; sourceTree = "<group>"; };
 		6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		6388D5BA1D0DAD630029C988 /* CGRectUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectUtility.swift; sourceTree = "<group>"; };
 		6388D5C01D0DAE310029C988 /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 		635607FA1DA79B5600D558E0 /* LearnWordController */ = {
 			isa = PBXGroup;
 			children = (
+				6380AE7E1DAC2764003700A4 /* Cell */,
 				635607FB1DA79B6000D558E0 /* LearnWordController.swift */,
 			);
 			path = LearnWordController;
@@ -462,6 +465,14 @@
 				635B93D11D09A40600A81CAF /* Info.plist */,
 			);
 			path = FlashWordUITests;
+			sourceTree = "<group>";
+		};
+		6380AE7E1DAC2764003700A4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6380AE7F1DAC2779003700A4 /* LearnWordCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		6388D5B31D0C7A4F0029C988 /* Library */ = {
@@ -992,6 +1003,7 @@
 				844FBA7D1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				63C6C11E1D2D4CD80090AC38 /* RootNavigationController.swift in Sources */,
 				844FBA801D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
+				6380AE801DAC2779003700A4 /* LearnWordCell.swift in Sources */,
 				84301D1A1D1935E600BB3C5D /* TextAttributes.swift in Sources */,
 				844FBA821D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				6388D5F81D15D5EB0029C988 /* UIViewController+ProgressView.swift in Sources */,
