@@ -17,9 +17,9 @@ class LearnWordController: DYViewController {
 
         self.automaticallyAdjustsScrollViewInsets = false
         
-        collectionView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 50, 0)
-        collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 120)
+        collectionView.contentInset = UIEdgeInsetsMake(64, 0, 50, 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 50, 0)
+        collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 66)
     }
 
     override func didReceiveMemoryWarning() {
