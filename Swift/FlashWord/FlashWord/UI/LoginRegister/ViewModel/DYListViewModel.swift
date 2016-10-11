@@ -62,5 +62,10 @@ extension DYListViewModel {
     
     //MARK: data 内部使用
     func reloadData(sortID : Int64, callback : DYCommonCallback?) {
+        guard let callback = callback else {
+            return
+        }
+        
+        callback(nil, nil)
     }
 }

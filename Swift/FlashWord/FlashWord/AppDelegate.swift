@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DYURLNavigationMap.setup()
         
         AccountData.registerSubclass()
+        LearnModeData.registerSubclass()
         
         AVOSCloud.setApplicationId("GQcj3NGbF5O0qGTp7SMo3b2y-gzGzoHsz",
                                    clientKey: "fgYwzTulc6JEQ8rvfgEOAeCM")

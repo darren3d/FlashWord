@@ -24,6 +24,7 @@ extension LearnMode {
     static let SentenceSpell = Int32(4)
 }
 
+@objc
 class LearnModeData: AVObject, AVSubclassing {
     @NSManaged var mode : LearnMode
     @NSManaged var title : String
