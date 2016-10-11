@@ -17,7 +17,7 @@ class LearnWordCellVM: DYViewModel {
     override func setupViewModel() {
         super.setupViewModel()
         
-        self.rx_observe(String.self, "data.title", options: [.Initial, .New], retainSelf: false)
+        self.rx_observe(String.self, "data.title", options: [.Initial, .New], retainSelf: true)
             .shareReplay(1)
             .takeUntil(self.rx_deallocated)
             .subscribeNext {[weak self] title in

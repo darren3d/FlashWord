@@ -21,7 +21,7 @@ class LearnWordCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.rx_observe(LearnWordCellVM.self, "self.viewModel", options: [.Initial, .New], retainSelf: false)
+        self.rx_observe(LearnWordCellVM.self, "viewModel", options: [.Initial, .New], retainSelf: true)
             .subscribeNext {[weak self] viewModel in
                 guard let strongSelf = self, let viewModel = viewModel else {
                     return
@@ -30,7 +30,7 @@ class LearnWordCell: UICollectionViewCell {
                 strongSelf.labelTitle.text = viewModel.title
             }.addDisposableTo(disposeBag)
         
-        self.rx_observe(String.self, "self.viewModel.title", options: [.Initial, .New], retainSelf: false)
+        self.rx_observe(String.self, "viewModel.title", options: [.Initial, .New], retainSelf: true)
             .subscribeNext {[weak self] title in
                 guard let strongSelf = self, let title = title else {
                     return
