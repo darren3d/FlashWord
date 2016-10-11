@@ -36,6 +36,11 @@
 		635B93B71D09A40500A81CAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B61D09A40500A81CAF /* Assets.xcassets */; };
 		635B93BA1D09A40500A81CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B81D09A40500A81CAF /* LaunchScreen.storyboard */; };
 		6380AE801DAC2779003700A4 /* LearnWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE7F1DAC2779003700A4 /* LearnWordCell.swift */; };
+		6380AE831DAC498E003700A4 /* LearnModeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE821DAC498E003700A4 /* LearnModeData.swift */; };
+		6380AE8E1DACE447003700A4 /* TripleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE8D1DACE447003700A4 /* TripleState.swift */; };
+		6380AE901DACEB44003700A4 /* LearnWordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE8F1DACEB44003700A4 /* LearnWordVM.swift */; };
+		6380AE921DACEF04003700A4 /* DYListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE911DACEF04003700A4 /* DYListViewModel.swift */; };
+		6380AE941DACF448003700A4 /* DYSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE931DACF448003700A4 /* DYSectionViewModel.swift */; };
 		6388D5B51D0C7A4F0029C988 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; };
 		6388D5B61D0C7AA70029C988 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; };
 		6388D5B71D0C7AA70029C988 /* AVOSCloud.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -185,6 +190,11 @@
 		635B93CF1D09A40600A81CAF /* FlashWordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashWordUITests.swift; sourceTree = "<group>"; };
 		635B93D11D09A40600A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6380AE7F1DAC2779003700A4 /* LearnWordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordCell.swift; sourceTree = "<group>"; };
+		6380AE821DAC498E003700A4 /* LearnModeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnModeData.swift; sourceTree = "<group>"; };
+		6380AE8D1DACE447003700A4 /* TripleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleState.swift; sourceTree = "<group>"; };
+		6380AE8F1DACEB44003700A4 /* LearnWordVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordVM.swift; sourceTree = "<group>"; };
+		6380AE911DACEF04003700A4 /* DYListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYListViewModel.swift; sourceTree = "<group>"; };
+		6380AE931DACF448003700A4 /* DYSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYSectionViewModel.swift; sourceTree = "<group>"; };
 		6388D5B41D0C7A4F0029C988 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		6388D5BA1D0DAD630029C988 /* CGRectUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectUtility.swift; sourceTree = "<group>"; };
 		6388D5C01D0DAE310029C988 /* FadeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -338,6 +348,8 @@
 		632D04E31D09C9BD00F9744B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6380AE8C1DACE3BC003700A4 /* Commen */,
+				6380AE811DAC497F003700A4 /* LearnModeData */,
 				632D04E81D09CB3400F9744B /* AccountData */,
 				632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */,
 				8492F19C1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld */,
@@ -396,6 +408,7 @@
 			children = (
 				6380AE7E1DAC2764003700A4 /* Cell */,
 				635607FB1DA79B6000D558E0 /* LearnWordController.swift */,
+				6380AE8F1DACEB44003700A4 /* LearnWordVM.swift */,
 			);
 			path = LearnWordController;
 			sourceTree = "<group>";
@@ -473,6 +486,22 @@
 				6380AE7F1DAC2779003700A4 /* LearnWordCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		6380AE811DAC497F003700A4 /* LearnModeData */ = {
+			isa = PBXGroup;
+			children = (
+				6380AE821DAC498E003700A4 /* LearnModeData.swift */,
+			);
+			path = LearnModeData;
+			sourceTree = "<group>";
+		};
+		6380AE8C1DACE3BC003700A4 /* Commen */ = {
+			isa = PBXGroup;
+			children = (
+				6380AE8D1DACE447003700A4 /* TripleState.swift */,
+			);
+			path = Commen;
 			sourceTree = "<group>";
 		};
 		6388D5B31D0C7A4F0029C988 /* Library */ = {
@@ -585,6 +614,8 @@
 				6388D5F31D15CD9B0029C988 /* LoginVM.swift */,
 				6388D5F41D15CD9B0029C988 /* RegisterVM.swift */,
 				844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */,
+				6380AE931DACF448003700A4 /* DYSectionViewModel.swift */,
+				6380AE911DACEF04003700A4 /* DYListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -980,6 +1011,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844FBA6D1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallGridBeat.swift in Sources */,
+				6380AE941DACF448003700A4 /* DYSectionViewModel.swift in Sources */,
 				6304C31E1DAA86A0000D9DA1 /* DYTabBarItem.swift in Sources */,
 				6388D5F01D15B19B0029C988 /* Account+Business.swift in Sources */,
 				639187F91D09EE4200757F60 /* AppConst.swift in Sources */,
@@ -989,10 +1021,12 @@
 				844FBA721D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				84301D241D1959AE00BB3C5D /* DYTransitionAnimator.swift in Sources */,
 				844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */,
+				6380AE831DAC498E003700A4 /* LearnModeData.swift in Sources */,
 				84301D031D18DF1500BB3C5D /* DYFailLoader.swift in Sources */,
 				844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */,
 				844FBA6B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */,
+				6380AE901DACEB44003700A4 /* LearnWordVM.swift in Sources */,
 				639187FD1D09FB3E00757F60 /* DYUserDefaults.swift in Sources */,
 				6304C31B1DAA86A0000D9DA1 /* DYColorTab.swift in Sources */,
 				844FBA7C1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBlank.swift in Sources */,
@@ -1068,9 +1102,11 @@
 				6388D5DE1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				84301D071D18E95600BB3C5D /* DYInfiniteLoader.swift in Sources */,
 				844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */,
+				6380AE921DACEF04003700A4 /* DYListViewModel.swift in Sources */,
 				6349F2331D30433F002210E0 /* DYOriginalTable.swift in Sources */,
 				84301D171D190EE800BB3C5D /* DYSatelliteLoader.swift in Sources */,
 				844FBA781D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
+				6380AE8E1DACE447003700A4 /* TripleState.swift in Sources */,
 				6388D5FE1D15D8440029C988 /* URLNavigable.swift in Sources */,
 				635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */,
 				635607F91DA798D300D558E0 /* WordBookController.swift in Sources */,

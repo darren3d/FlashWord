@@ -36,8 +36,8 @@ class LoginRegisterVM: DYViewModel {
     /**缓存的是否为注册用户*/
     private var checkDict : [String:Bool] =  [String:Bool]()
     
-    override func setupObserver() {
-        super.setupObserver()
+    override func setupViewModel() {
+        super.setupViewModel()
         
         self.rx_observe(String.self, "email", options: [.Initial, .New], retainSelf: false)
             .subscribeNext {[weak self] email in

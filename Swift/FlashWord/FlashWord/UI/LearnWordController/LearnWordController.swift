@@ -14,12 +14,23 @@ class LearnWordController: DYViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let viewModel = LearnWordVM(sections:[])
+        self.viewModel = viewModel
+        
         self.automaticallyAdjustsScrollViewInsets = false
         
         collectionView.contentInset = UIEdgeInsetsMake(64, 0, 50, 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 50, 0)
         collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 66)
+        
+        viewModel.updateData { (objs, error) in
+            if error == nil {
+                
+            } else {
+                
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
