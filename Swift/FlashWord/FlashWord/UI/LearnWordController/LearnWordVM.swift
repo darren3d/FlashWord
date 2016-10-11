@@ -65,10 +65,17 @@ extension LearnWordVM {
             return
         }
         
+        let section = indexPath.section
+        let item = indexPath.item
+        
+        let sectionVM = self.sectionAtIndex(section)
+        let itemVM = sectionVM?.itemAtIndex(item) as? LearnWordCellVM
+        
+        cell.viewModel = itemVM!
         cell.setContentBackgroundColor(UIColor.flatColor(atIndex:indexPath.section))
     }
     
-    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         let sectionCount = self.numberOfSectionsInCollectionView(collectionView);
         if section != sectionCount - 1 {
             return UIEdgeInsetsMake(10, 0, 0, 0)
