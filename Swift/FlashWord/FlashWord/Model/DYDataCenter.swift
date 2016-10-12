@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MagicalRecord
+//import MagicalRecord
 
 public class DYDataCenter: NSObject {
     //MARK: 单例
@@ -17,16 +17,16 @@ public class DYDataCenter: NSObject {
     
     //MARK: 设置构建数据库
     public func setup() {
-        let dbName = "com.flashword.data.\(AppConst.appVersion).\(AppConst.appVersionBuild).\(AppConst.enviroment.rawValue)"
-        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed(dbName)
-        
-        let path = NSPersistentStore.MR_urlForStoreName(dbName)
-        DYLog.info("DB Path: \(path.absoluteString) ")
+//        let dbName = "com.flashword.data.\(AppConst.appVersion).\(AppConst.appVersionBuild).\(AppConst.enviroment.rawValue)"
+//        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed(dbName)
+//        
+//        let path = NSPersistentStore.MR_urlForStoreName(dbName)
+//        DYLog.info("DB Path: \(path.absoluteString) ")
     }
     
     //MARK: app退出时清理数据库
     public func cleanUp () {
-        MagicalRecord.cleanUp()
+//        MagicalRecord.cleanUp()
     }
     
     //MARK: 同步清除所有数据
@@ -36,11 +36,11 @@ public class DYDataCenter: NSObject {
     
     //MARK: 异步清除所有数据
     public func clearWithBlock(completion:CommonCallback?) {
-        MagicalRecord.saveWithBlock({ (context:NSManagedObjectContext!) in
-            
-        }) { (saveDone:Bool, error:NSError!) in
-            completion?(nil, error)
-        }
+//        MagicalRecord.saveWithBlock({ (context:NSManagedObjectContext!) in
+//            
+//        }) { (saveDone:Bool, error:NSError!) in
+//            completion?(nil, error)
+//        }
     }
     
     private static let kDataCenterDBName = "com.flashword.sqlite"

@@ -1,0 +1,5 @@
+#Only build iOS: carthage update --platform iOS
+
+github "ReactiveCocoa/ReactiveCocoa"  ~> 4.2.2
+
+github "SnapKit/SnapKit" == 0.22.0
