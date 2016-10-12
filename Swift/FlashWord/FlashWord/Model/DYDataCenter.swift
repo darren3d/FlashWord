@@ -17,6 +17,14 @@ public class DYDataCenter: NSObject {
     
     //MARK: 设置构建数据库
     public func setup() {
+        AccountData.registerSubclass()
+        
+        WordData.registerSubclass()
+        WordBookData.registerSubclass()
+        SentenceData.registerSubclass()
+        
+        LearnModeData.registerSubclass()
+        
 //        let dbName = "com.flashword.data.\(AppConst.appVersion).\(AppConst.appVersionBuild).\(AppConst.enviroment.rawValue)"
 //        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed(dbName)
 //        

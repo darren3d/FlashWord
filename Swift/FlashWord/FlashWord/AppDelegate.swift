@@ -18,14 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         DYURLNavigationMap.setup()
         
-        AccountData.registerSubclass()
-        LearnModeData.registerSubclass()
+        DYDataCenter.center.setup()
         
         AVOSCloud.setApplicationId("GQcj3NGbF5O0qGTp7SMo3b2y-gzGzoHsz",
                                    clientKey: "fgYwzTulc6JEQ8rvfgEOAeCM")
         AVOSCloud.setAllLogsEnabled(true)
         
-        DYDataCenter.center.setup()
+        
         return true
     }
     
