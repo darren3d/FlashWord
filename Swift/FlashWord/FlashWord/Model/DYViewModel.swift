@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import RxSwift
+import ReactiveCocoa
 
 public typealias DYCommonCallback = (AnyObject?, NSError?) -> Void
 
-class DYViewModel: NSObject {
-    var tag : String = ""
-    var data : AnyObject?
-    
-    var disposeBag : DisposeBag! = DisposeBag()
+@objc
+class DYViewModel : NSObject {
+    dynamic var tag : String = ""
+    dynamic var data : AnyObject?
     
     init(data:AnyObject?) {
         self.data = data
@@ -30,7 +29,6 @@ class DYViewModel: NSObject {
     }
     
     deinit {
-        disposeBag = nil
     }
 
     /**一般用RAC将data的数据映射到viewmodel对应字段，但对于某些data中存在1对1等关系数据时候，

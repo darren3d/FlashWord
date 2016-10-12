@@ -7,16 +7,12 @@
 //
 
 import UIKit
-import RxSwift
-
+import ReactiveCocoa
 
 class DYViewController : UIViewController {
     var viewModel : DYViewModel?
     
-    var disposeBag : DisposeBag! = DisposeBag()
-    
     deinit {
-        disposeBag = nil
     }
     
     override func viewDidLoad() {

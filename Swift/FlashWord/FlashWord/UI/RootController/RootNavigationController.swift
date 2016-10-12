@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RxSwift
+import ReactiveCocoa
 
 extension DefaultsKeys {
     static let appGuideVersion = DefaultsKey<String>("app.guide.last.version")
@@ -27,13 +27,14 @@ class RootNavigationController: DYNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let note = NSNotificationCenter.defaultCenter().rx_notification(AppConst.kNotificationSwithToHomeTab)
-        note.subscribeNext { [weak self] (note) in
-            guard let sSelf = self else {
-                return
-            }
-            sSelf.switchToRootTab(true)
-            }.addDisposableTo(disposeBag)
+        NSNotificationCenter.defaultCenter()
+            .rac_notifications(AppConst.kNotificationSwithToHomeTab, object: nil)
+            .startWithNext({ [weak self] (note) in
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.switchToRootTab(true)
+            })
     }
     
     //MARK:导航到引导页

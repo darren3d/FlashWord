@@ -13,9 +13,10 @@
 		6304C31D1DAA86A0000D9DA1 /* DYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */; };
 		6304C31E1DAA86A0000D9DA1 /* DYTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */; };
 		6304C3211DAA9FEF000D9DA1 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3201DAA9FEF000D9DA1 /* MyController.swift */; };
+		6306B0811DAE060400FDCDA1 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6306B0801DAE060400FDCDA1 /* ReactiveCocoa.framework */; };
+		6306B0831DAE060800FDCDA1 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6306B0821DAE060800FDCDA1 /* Result.framework */; };
+		6306B0851DAE060C00FDCDA1 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6306B0841DAE060C00FDCDA1 /* SnapKit.framework */; };
 		632D04DE1D09C94400F9744B /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632D04DD1D09C94400F9744B /* MagicalRecord.framework */; };
-		632D04E01D09C94700F9744B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632D04DF1D09C94700F9744B /* RxCocoa.framework */; };
-		632D04E21D09C94A00F9744B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632D04E11D09C94A00F9744B /* RxSwift.framework */; };
 		632D04EC1D09CB4700F9744B /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632D04EA1D09CB4700F9744B /* AccountData.swift */; };
 		632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */; };
 		6349F2261D2EB9CE002210E0 /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2251D2EB9CE002210E0 /* ResetPasswordController.swift */; };
@@ -162,10 +163,11 @@
 		6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarController.swift; sourceTree = "<group>"; };
 		6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarItem.swift; sourceTree = "<group>"; };
 		6304C3201DAA9FEF000D9DA1 /* MyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
+		6306B0801DAE060400FDCDA1 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FlashWord-dcieotxwmubljgfnrzlswcchkycy/Build/Products/Debug-iphonesimulator/ReactiveCocoa/ReactiveCocoa.framework"; sourceTree = "<group>"; };
+		6306B0821DAE060800FDCDA1 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FlashWord-dcieotxwmubljgfnrzlswcchkycy/Build/Products/Debug-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
+		6306B0841DAE060C00FDCDA1 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FlashWord-dcieotxwmubljgfnrzlswcchkycy/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
 		632D04DC1D09C7E600F9744B /* FlashWord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlashWord-Bridging-Header.h"; sourceTree = "<group>"; };
 		632D04DD1D09C94400F9744B /* MagicalRecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MagicalRecord.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FlashWord-bkvyrctegzunkvatsapkjdclplse/Build/Products/Debug-iphonesimulator/MagicalRecord/MagicalRecord.framework"; sourceTree = "<group>"; };
-		632D04DF1D09C94700F9744B /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FlashWord-bkvyrctegzunkvatsapkjdclplse/Build/Products/Debug-iphonesimulator/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
-		632D04E11D09C94A00F9744B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/FlashWord-bkvyrctegzunkvatsapkjdclplse/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
 		632D04EA1D09CB4700F9744B /* AccountData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYDataCenter.swift; sourceTree = "<group>"; };
 		6349F2251D2EB9CE002210E0 /* ResetPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
@@ -297,8 +299,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				632D04E21D09C94A00F9744B /* RxSwift.framework in Frameworks */,
-				632D04E01D09C94700F9744B /* RxCocoa.framework in Frameworks */,
+				6306B0851DAE060C00FDCDA1 /* SnapKit.framework in Frameworks */,
+				6306B0831DAE060800FDCDA1 /* Result.framework in Frameworks */,
+				6306B0811DAE060400FDCDA1 /* ReactiveCocoa.framework in Frameworks */,
 				632D04DE1D09C94400F9744B /* MagicalRecord.framework in Frameworks */,
 				F79FE96208CB634B4372980C /* Pods_FlashWord.framework in Frameworks */,
 				6388D5B51D0C7A4F0029C988 /* AVOSCloud.framework in Frameworks */,
@@ -321,8 +324,9 @@
 		141048315BBF40519FC5B823 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				632D04E11D09C94A00F9744B /* RxSwift.framework */,
-				632D04DF1D09C94700F9744B /* RxCocoa.framework */,
+				6306B0841DAE060C00FDCDA1 /* SnapKit.framework */,
+				6306B0821DAE060800FDCDA1 /* Result.framework */,
+				6306B0801DAE060400FDCDA1 /* ReactiveCocoa.framework */,
 				632D04DD1D09C94400F9744B /* MagicalRecord.framework */,
 				2FA376F5E1793DFA7F9D953B /* Pods_FlashWord.framework */,
 			);
@@ -1254,10 +1258,6 @@
 					"$(inherited)",
 					"-framework",
 					"\"MagicalRecord\"",
-					"-framework",
-					"\"RxCocoa\"",
-					"-framework",
-					"\"RxSwift\"",
 					"-framework",
 					"\"SnapKit\"",
 				);

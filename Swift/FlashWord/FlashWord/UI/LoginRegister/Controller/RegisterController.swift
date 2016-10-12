@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import ReactiveCocoa
 import SnapKit
 
 class RegisterController: DYStaticTableController, UIViewControllerTransitioningDelegate {
@@ -34,7 +33,7 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         setupBtnRegister()
         setupBtnForgetPassword()
         setupTextField()
-        setupRx()
+        setupReactive()
         
         //        //该手势和tableview的cell点击相冲突
         //        let tapBackground = UITapGestureRecognizer()
@@ -42,7 +41,7 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         //            .subscribeNext { [weak self] _ in
         //                self?.view.endEditing(true)
         //            }
-        //            .addDisposableTo(disposeBag)
+        //            
         //        view.addGestureRecognizer(tapBackground)
     }
     
@@ -176,72 +175,74 @@ class RegisterController: DYStaticTableController, UIViewControllerTransitioning
         textFieldGender.title           = ""
     }
     
-    func setupRx() {
-        textFieldEmail.rx_text
+    func setupReactive() {
+        textFieldEmail.rac_textSignal()
             .distinctUntilChanged()
             .subscribeNext {[weak self] email in
-                guard let loginViewModel =  self?.viewModel as? RegisterVM else {
-                    return
+                guard let loginViewModel =  self?.viewModel as? RegisterVM,
+                    let email = email as? String else {
+                        return
                 }
                 
                 loginViewModel.email = email
-            }.addDisposableTo(disposeBag)
+            }
         
-        textFieldPassword.rx_text
+        textFieldPassword.rac_textSignal()
             .distinctUntilChanged()
             .subscribeNext{ [weak self] password in
-                guard let loginViewModel =  self?.viewModel as? RegisterVM else {
-                    return
+                guard let loginViewModel =  self?.viewModel as? RegisterVM,
+                    let password = password as? String else {
+                        return
                 }
                 
                 loginViewModel.password = password
-            }.addDisposableTo(disposeBag)
+            }
         
         
-        let emailValid = self.rx_observe(Bool.self, "viewModel.isEmailValid", options: [.Initial, .New], retainSelf: false)
+        let emailValid = self.rac_valuesForKeyPath("viewModel.isEmailValid", observer: self)
             .map{
                 return $0 ?? false
             }
-            .shareReplay(1)
+            
         
-        let passwordValid = self.rx_observe(Bool.self, "viewModel.isPasswordValid", options: [.Initial, .New], retainSelf: false)
+        let passwordValid = self.rac_valuesForKeyPath("viewModel.isPasswordValid", observer: self)
             .map{
                 return $0 ?? false
             }
-            .shareReplay(1)
+            
         
-        let everythingValid = Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
-            .shareReplay(1)
-        
-        everythingValid.bindTo(btnRegister.rx_enabled)
-            .addDisposableTo(disposeBag)
-        
-        //        guard let registerVM = viewModel as? RegisterVM
-        //            else {
-        //                return
-        //        }
-        
-        
-        
-        self.rx_observe(DYGender.self, "viewModel.gender", options: [.Initial, .New], retainSelf: false)
-            .subscribeNext { [weak self] (gender) in
-                guard let strongSelf = self else {
-                    return
+        RACSignal.combineLatest([emailValid, passwordValid])
+            .subscribeNext { [weak self] (tuple) in
+                guard let strongSelf = self,
+                    let tuple = tuple as? RACTuple,
+                    let emailValid = tuple[0] as? Bool,
+                    let passwordValid = tuple[1] as? Bool else {
+                        return
                 }
                 
-                let gender = gender ?? DYGender.Unknown
-                switch gender {
-                case DYGender.Male:
-                    strongSelf.textFieldGender.iconText = "\u{f222}"
-                    strongSelf.textFieldGender.text = "男"
-                case DYGender.Female:
-                    strongSelf.textFieldGender.iconText = "\u{f221}"
-                    strongSelf.textFieldGender.text = "女"
-                default:
-                    strongSelf.textFieldGender.iconText = "\u{f224}"
-                    strongSelf.textFieldGender.text = "未知"
-                }
-            }.addDisposableTo(disposeBag)
+                strongSelf.btnRegister.enabled  = emailValid && passwordValid
+        }
+        
+        self.rac_valuesForKeyPath("viewModel.gender", observer: self)
+            .subscribeNext { [weak self] (gender) in
+//                guard let strongSelf = self,
+//                 let gender = gender as Int32 else {
+//                    return
+//                }
+//                
+////                let gender = gender ?? DYGender.Unknown
+//                switch gender {
+//                case DYGender.Male:
+//                    strongSelf.textFieldGender.iconText = "\u{f222}"
+//                    strongSelf.textFieldGender.text = "男"
+//                case DYGender.Female:
+//                    strongSelf.textFieldGender.iconText = "\u{f221}"
+//                    strongSelf.textFieldGender.text = "女"
+//                default:
+//                    strongSelf.textFieldGender.iconText = "\u{f224}"
+//                    strongSelf.textFieldGender.text = "未知"
+//                }
+            }
     }
     
     var progressView : DYLineProgress?

@@ -7,14 +7,11 @@
 //
 
 import UIKit
-import RxSwift
 
 class DYStaticTableController: UITableViewController {
     var viewModel : DYViewModel?
-    var disposeBag : DisposeBag! = DisposeBag()
     
     deinit {
-        disposeBag = nil
     }
     
     var hideSectionsWithHiddenRows = false

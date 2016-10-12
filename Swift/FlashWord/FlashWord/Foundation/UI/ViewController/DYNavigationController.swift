@@ -7,15 +7,11 @@
 //
 
 import UIKit
-import RxSwift
 
 class DYNavigationController: UINavigationController, UIGestureRecognizerDelegate, UINavigationControllerDelegate {
     var ignorePushViewController : Bool = false
     
-    var disposeBag : DisposeBag! = DisposeBag()
-    
     deinit {
-        disposeBag = nil
     }
     
     override func awakeFromNib() {

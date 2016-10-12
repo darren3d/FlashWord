@@ -23,7 +23,7 @@ class LoginRegisterController: DYViewController {
         btnPhoto.hidden = true
         
         setupNavigationBar()
-        setupRx()
+        setupReactive()
         
         //获取到嵌入的UIPageViewController
         pageController = self.childViewControllers.first as! UIPageViewController
@@ -51,18 +51,17 @@ class LoginRegisterController: DYViewController {
         btnPhoto.setTitleColor(disableColor, forState: UIControlState.Normal)
     }
     
-    func setupRx() {
-        self.rx_observe(Int.self, "segmentControl.selectedSegmentIndex",
-            options: [.Initial, .New], retainSelf: false)
-            .map { (index) -> Bool in
-                guard let index = index
+    func setupReactive() {
+        self.rac_valuesForKeyPath("segmentControl.selectedSegmentIndex", observer: self)
+            .subscribeNext({ [weak self] (index) in
+                guard let index = index as? Int
                     else {
-                        return true
+                        self?.btnPhoto.hidden = true
+                        return;
                 }
                 
-                return index != 1
-            }.bindTo(btnPhoto.rx_hidden)
-            .addDisposableTo(disposeBag)
+                self?.btnPhoto.hidden = index != 1
+            })
     }
     
     @IBAction func onBtnBack(sender : AnyObject) {

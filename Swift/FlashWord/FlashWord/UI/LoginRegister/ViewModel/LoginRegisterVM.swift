@@ -39,25 +39,24 @@ class LoginRegisterVM: DYViewModel {
     override func setupViewModel() {
         super.setupViewModel()
         
-        self.rx_observe(String.self, "email", options: [.Initial, .New], retainSelf: false)
+        self.rac_valuesForKeyPath("email", observer: self)
             .subscribeNext {[weak self] email in
-                guard let strongSelf = self, let email = email else {
+                guard let strongSelf = self, let email = email as? String else {
                     return
                 }
                 
                 strongSelf.isEmailValid = email.characters.count >= 6 && email.containsString("@") && email.containsString(".")
-                
-            }.addDisposableTo(disposeBag)
+            }
         
-        self.rx_observe(String.self, "password", options: .New, retainSelf: false)
+        self.rac_valuesForKeyPath("password", observer: self)
             .subscribeNext {[weak self] password in
-                guard let strongSelf = self, let password = password else {
+                guard let strongSelf = self, let password = password as? String else {
                     return
                 }
                 
                 strongSelf.isPasswordValid = password.characters.count >= 6
                 
-            }.addDisposableTo(disposeBag)
+            }
     }
     
     func accountCheck(callback: AVBooleanResultBlock) {

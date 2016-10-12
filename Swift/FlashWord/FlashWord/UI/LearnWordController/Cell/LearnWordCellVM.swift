@@ -7,34 +7,34 @@
 //
 
 import UIKit
-import RxSwift
+import ReactiveCocoa
 
+@objc
 class LearnWordCellVM: DYViewModel {
-    var title : String = ""
-    var desc : String = ""
-    
+    dynamic var title : String = ""
+    dynamic var desc : String = ""
     
     override func setupViewModel() {
         super.setupViewModel()
         
-        self.rx_observe(String.self, "data.title", options: [.Initial, .New], retainSelf: true)
-            .shareReplay(1)
-            .takeUntil(self.rx_deallocated)
+        self.rac_valuesForKeyPath("data.title", observer: self)
             .subscribeNext {[weak self] title in
-                guard let strongSelf = self, let title = title else {
+                guard let strongSelf = self, let title = title as? String else {
                     return
                 }
-                
                 strongSelf.title = title
-            }.addDisposableTo(disposeBag)
-//        
-//        self.rx_observe(String.self, "data.title", options: [.Initial, .New], retainSelf: false)
-//            .subscribeNext {[weak self] title in
-//                guard let strongSelf = self, let title = title else {
-//                    return
-//                }
-//                
-//                strongSelf.title = title
-//            }.addDisposableTo(disposeBag)
+            }
+        
+        self.rac_valuesForKeyPath("data.desc", observer: self)
+            .subscribeNext {[weak self] desc in
+                guard let strongSelf = self, let desc = desc as? String else {
+                    return
+                }
+                strongSelf.desc = desc
+        }
+    }
+    
+    override var description: String {
+        return "title: \(title)\ndesc:\(desc)\n"
     }
 }

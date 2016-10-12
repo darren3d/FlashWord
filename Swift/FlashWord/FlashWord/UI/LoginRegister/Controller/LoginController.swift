@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import ReactiveCocoa
 import SnapKit
 
 class LoginController: DYStaticTableController, UIViewControllerTransitioningDelegate, DYUIStateDateSource {
@@ -51,7 +50,7 @@ class LoginController: DYStaticTableController, UIViewControllerTransitioningDel
         setupBtnLogin()
         setupBtnForgetPassword()
         setupTextField()
-        setupRx()
+        setupReactive()
         
         //        btnLogin.enabled = false
         
@@ -167,45 +166,51 @@ class LoginController: DYStaticTableController, UIViewControllerTransitioningDel
         textFieldPassword.title = "Password"
     }
     
-    func setupRx() {
-        textFieldEmail.rx_text
+    func setupReactive() {
+        textFieldEmail.rac_textSignal()
             .distinctUntilChanged()
             .subscribeNext {[weak self] email in
-                guard let loginViewModel =  self?.viewModel as? LoginVM else {
+                guard let loginViewModel =  self?.viewModel as? LoginVM,
+                let email = email as? String else {
                     return
                 }
                 
                 loginViewModel.email = email
-            }.addDisposableTo(disposeBag)
+            }
         
-        textFieldPassword.rx_text
+        textFieldPassword.rac_textSignal()
             .distinctUntilChanged()
             .subscribeNext{ [weak self] password in
-                guard let loginViewModel =  self?.viewModel as? LoginVM else {
+                guard let loginViewModel =  self?.viewModel as? LoginVM,
+                let password = password as? String else {
                     return
                 }
                 
                 loginViewModel.password = password
-            }.addDisposableTo(disposeBag)
+            }
         
         
-        let emailValid = self.rx_observe(Bool.self, "viewModel.isEmailValid", options: [.Initial, .New], retainSelf: false)
+        let emailValid = self.rac_valuesForKeyPath("viewModel.isEmailValid", observer: self)
             .map{
                 return $0 ?? false
             }
-            .shareReplay(1)
         
-        let passwordValid = self.rx_observe(Bool.self, "viewModel.isPasswordValid", options: [.Initial, .New], retainSelf: false)
+        let passwordValid = self.rac_valuesForKeyPath("viewModel.isPasswordValid", observer: self)
             .map{
                 return $0 ?? false
             }
-            .shareReplay(1)
         
-        let everythingValid = Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
-            .shareReplay(1)
-        
-        everythingValid.bindTo(btnLogin.rx_enabled)
-            .addDisposableTo(disposeBag)
+        RACSignal.combineLatest([emailValid, passwordValid])
+            .subscribeNext { [weak self] (tuple) in
+                guard let strongSelf = self,
+                    let tuple = tuple as? RACTuple,
+                    let emailValid = tuple[0] as? Bool,
+                    let passwordValid = tuple[1] as? Bool else {
+                    return
+                }
+                
+                strongSelf.btnLogin.enabled  = emailValid && passwordValid
+        }
     }
     
     //MARK: UIViewControllerTransitioningDelegate
