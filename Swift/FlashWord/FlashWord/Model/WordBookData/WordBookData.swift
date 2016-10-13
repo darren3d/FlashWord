@@ -15,6 +15,7 @@ class WordBookData: AVObject, AVSubclassing {
     @NSManaged var desc : String
     @NSManaged var creator : AccountData
     @NSManaged var words : AVRelation
+    @NSManaged var tests : AVRelation
     
     static func parseClassName() -> String! {
         return "WordBookData"
