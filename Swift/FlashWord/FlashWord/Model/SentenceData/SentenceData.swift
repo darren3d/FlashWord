@@ -12,8 +12,7 @@ import AVOSCloud
 @objc
 class SentenceData: AVObject, AVSubclassing {
     @NSManaged var sentence: String
-    @NSManaged var word : String
-    
+    @NSManaged var desc : String
     static func parseClassName() -> String! {
         return "SentenceData"
     }
