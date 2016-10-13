@@ -20,8 +20,10 @@ public class DYDataCenter: NSObject {
         AccountData.registerSubclass()
         
         WordData.registerSubclass()
-        WordBookData.registerSubclass()
         SentenceData.registerSubclass()
+        WordBookData.registerSubclass()
+        WordQuestionData.registerSubclass()
+        WordTestData.registerSubclass()
         
         LearnModeData.registerSubclass()
         

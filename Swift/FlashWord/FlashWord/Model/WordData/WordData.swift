@@ -26,9 +26,6 @@ class WordData: AVObject, AVSubclassing {
     //过去式，过去某一刻做的什么事,短暂性的动作
     @NSManaged var pastForm  : String
     
-    //例句
-    @NSManaged var sentence : AVRelation
-    
     static func parseClassName() -> String! {
         return "WordData"
     }

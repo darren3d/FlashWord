@@ -21,3 +21,23 @@ class WordBookData: AVObject, AVSubclassing {
         return "WordBookData"
     }
 }
+
+
+extension WordBookData {
+    /**进行中的测试*/
+    func currentWordTest(cachePolicy:AVCachePolicy = AVCachePolicy.CacheOnly, block: AVObjectResultBlock!) {
+        let query = tests.query()
+        query.cachePolicy = cachePolicy
+        query.whereKeyDoesNotExist("timeEnd")
+        query.getFirstObjectInBackgroundWithBlock(block)
+    }
+    
+    /**添加一个新的test*/
+    func addWordTest(words:[WordData], modes:[LearnModeData], block: AVObjectResultBlock!) {
+        let test = WordTestData()
+        test.addObjectsFromArray(words, forKey: "words")
+        test.addObjectsFromArray(modes, forKey: "modes")
+        
+        
+    }
+}
