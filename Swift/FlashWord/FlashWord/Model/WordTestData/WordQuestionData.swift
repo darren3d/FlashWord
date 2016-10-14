@@ -30,6 +30,7 @@ class WordQuestionData: AVObject, AVSubclassing {
         return "WordQuestionData"
     }
     
+    /**生成question并保存云端*/
     static func createQuestion(word:WordData, mode: LearnModeData, optionWords:[WordData])
         -> SignalProducer<WordQuestionData!, NSError> {
         let producer = SignalProducer<WordQuestionData!, NSError>{ (observer, dispose) in

@@ -33,6 +33,10 @@ class WordBookController: DYViewController {
     }
     
     func onBarBtnRight(sender:AnyObject!) {
+        WordService.service.translate("word")
+        
+        return
+        
         let queryWord = WordData.query()
         queryWord.cachePolicy = AVCachePolicy.CacheElseNetwork
         queryWord.findObjectsInBackgroundWithBlock {[weak self] (words, error) in

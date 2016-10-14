@@ -93,7 +93,12 @@
 		63C6C11E1D2D4CD80090AC38 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6C11D1D2D4CD80090AC38 /* RootNavigationController.swift */; };
 		63C6C1201D2D4CEF0090AC38 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6C11F1D2D4CEF0090AC38 /* RootTabBarController.swift */; };
 		63C6C1221D2D56820090AC38 /* GuideLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C6C1211D2D56820090AC38 /* GuideLogin.storyboard */; };
+		63ECC42D1DB137C200C1342E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ECC42A1DB1325300C1342E /* Alamofire.framework */; };
+		63ECC4321DB1475400C1342E /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4311DB1475400C1342E /* String+Utility.swift */; };
+		63ECC4341DB147A400C1342E /* String+Html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4331DB147A400C1342E /* String+Html.swift */; };
 		63F4FF6C1DB0BBA4008AAE4C /* RAC+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */; };
+		63F4FF701DB1113D008AAE4C /* WordQuestionData+Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */; };
+		63F4FF731DB11796008AAE4C /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF721DB11796008AAE4C /* WordService.swift */; };
 		840C8D141D179698009F2646 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C8D131D179698009F2646 /* Async.swift */; };
 		840C8D171D179876009F2646 /* DYLineProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C8D161D179876009F2646 /* DYLineProgress.swift */; };
 		84301CFF1D18DE8300BB3C5D /* DYLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301CFE1D18DE8300BB3C5D /* DYLoader.swift */; };
@@ -102,7 +107,7 @@
 		84301D071D18E95600BB3C5D /* DYInfiniteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D061D18E95600BB3C5D /* DYInfiniteLoader.swift */; };
 		84301D171D190EE800BB3C5D /* DYSatelliteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D161D190EE800BB3C5D /* DYSatelliteLoader.swift */; };
 		84301D1A1D1935E600BB3C5D /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D191D1935E600BB3C5D /* TextAttributes.swift */; };
-		84301D1C1D19362A00BB3C5D /* DYStringUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */; };
+		84301D1C1D19362A00BB3C5D /* AttributedString+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1B1D19362A00BB3C5D /* AttributedString+Utility.swift */; };
 		84301D1F1D1940A900BB3C5D /* FontBlaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D1E1D1940A900BB3C5D /* FontBlaster.swift */; };
 		84301D241D1959AE00BB3C5D /* DYTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301D231D1959AE00BB3C5D /* DYTransitionAnimator.swift */; };
 		844FBA3F1D0FBFE700D6C2EA /* DYViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */; };
@@ -255,7 +260,12 @@
 		63C6C11D1D2D4CD80090AC38 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		63C6C11F1D2D4CEF0090AC38 /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		63C6C1211D2D56820090AC38 /* GuideLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GuideLogin.storyboard; sourceTree = "<group>"; };
+		63ECC42A1DB1325300C1342E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		63ECC4311DB1475400C1342E /* String+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
+		63ECC4331DB147A400C1342E /* String+Html.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Html.swift"; sourceTree = "<group>"; };
 		63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RAC+Utility.swift"; sourceTree = "<group>"; };
+		63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordQuestionData+Business.swift"; sourceTree = "<group>"; };
+		63F4FF721DB11796008AAE4C /* WordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 		840C8D131D179698009F2646 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		840C8D161D179876009F2646 /* DYLineProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLineProgress.swift; sourceTree = "<group>"; };
 		84301CFE1D18DE8300BB3C5D /* DYLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLoader.swift; sourceTree = "<group>"; };
@@ -264,7 +274,7 @@
 		84301D061D18E95600BB3C5D /* DYInfiniteLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYInfiniteLoader.swift; sourceTree = "<group>"; };
 		84301D161D190EE800BB3C5D /* DYSatelliteLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYSatelliteLoader.swift; sourceTree = "<group>"; };
 		84301D191D1935E600BB3C5D /* TextAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
-		84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYStringUtility.swift; sourceTree = "<group>"; };
+		84301D1B1D19362A00BB3C5D /* AttributedString+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedString+Utility.swift"; sourceTree = "<group>"; };
 		84301D1E1D1940A900BB3C5D /* FontBlaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontBlaster.swift; sourceTree = "<group>"; };
 		84301D231D1959AE00BB3C5D /* DYTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTransitionAnimator.swift; sourceTree = "<group>"; };
 		844FBA3E1D0FBFE700D6C2EA /* DYViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DYViewModel.swift; path = FlashWord/Model/DYViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -316,6 +326,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63ECC42D1DB137C200C1342E /* Alamofire.framework in Frameworks */,
 				6388D5B51D0C7A4F0029C988 /* AVOSCloud.framework in Frameworks */,
 				63496FB01DAE2A1900F2457A /* ReactiveCocoa.framework in Frameworks */,
 				63496FB21DAE2A2600F2457A /* Result.framework in Frameworks */,
@@ -329,6 +340,7 @@
 		141048315BBF40519FC5B823 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63ECC42A1DB1325300C1342E /* Alamofire.framework */,
 				63496FB31DAE2A5600F2457A /* SnapKit.framework */,
 				63496FB11DAE2A2600F2457A /* Result.framework */,
 				63496FAF1DAE2A1800F2457A /* ReactiveCocoa.framework */,
@@ -359,6 +371,7 @@
 		632D04E31D09C9BD00F9744B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				63F4FF711DB11780008AAE4C /* WordService */,
 				6386498D1DAF3721008A9719 /* WordTestData */,
 				638649851DAE3569008A9719 /* SentenceData */,
 				638649821DAE349B008A9719 /* WordData */,
@@ -551,6 +564,7 @@
 			children = (
 				6386498E1DAF372B008A9719 /* WordTestData.swift */,
 				638649901DAF3758008A9719 /* WordQuestionData.swift */,
+				63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */,
 				633FDCEF1DAF6BC6006F09AD /* WordAnswerData.swift */,
 			);
 			path = WordTestData;
@@ -819,6 +833,14 @@
 			path = RootController;
 			sourceTree = "<group>";
 		};
+		63F4FF711DB11780008AAE4C /* WordService */ = {
+			isa = PBXGroup;
+			children = (
+				63F4FF721DB11796008AAE4C /* WordService.swift */,
+			);
+			path = WordService;
+			sourceTree = "<group>";
+		};
 		840C8D121D179698009F2646 /* Async */ = {
 			isa = PBXGroup;
 			children = (
@@ -843,8 +865,10 @@
 		84301D181D1935E600BB3C5D /* String */ = {
 			isa = PBXGroup;
 			children = (
+				63ECC4331DB147A400C1342E /* String+Html.swift */,
+				63ECC4311DB1475400C1342E /* String+Utility.swift */,
 				84301D191D1935E600BB3C5D /* TextAttributes.swift */,
-				84301D1B1D19362A00BB3C5D /* DYStringUtility.swift */,
+				84301D1B1D19362A00BB3C5D /* AttributedString+Utility.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -1008,6 +1032,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -1061,6 +1086,7 @@
 				6388D5F61D15CD9B0029C988 /* RegisterVM.swift in Sources */,
 				639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */,
 				6388D5DD1D0DC45B0029C988 /* SkyFloatingLabelTextField.swift in Sources */,
+				63F4FF731DB11796008AAE4C /* WordService.swift in Sources */,
 				6380AE981DAD22F3003700A4 /* DYListViewModel+UI.swift in Sources */,
 				844FBA7D1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				63C6C11E1D2D4CD80090AC38 /* RootNavigationController.swift in Sources */,
@@ -1069,6 +1095,7 @@
 				84301D1A1D1935E600BB3C5D /* TextAttributes.swift in Sources */,
 				638649891DAE5519008A9719 /* WordBookLearnData.swift in Sources */,
 				844FBA821D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
+				63F4FF701DB1113D008AAE4C /* WordQuestionData+Business.swift in Sources */,
 				6388D5F81D15D5EB0029C988 /* UIViewController+ProgressView.swift in Sources */,
 				844FBA831D0FE0F900D6C2EA /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				639188061D0A915800757F60 /* DynamicColor.swift in Sources */,
@@ -1094,6 +1121,7 @@
 				632D04EC1D09CB4700F9744B /* AccountData.swift in Sources */,
 				844FBA811D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				633FDCF41DAF7794006F09AD /* DYDataBase.swift in Sources */,
+				63ECC4341DB147A400C1342E /* String+Html.swift in Sources */,
 				6304C31D1DAA86A0000D9DA1 /* DYTabBarController.swift in Sources */,
 				638649841DAE34AF008A9719 /* WordData.swift in Sources */,
 				844FBA891D0FE0F900D6C2EA /* NVActivityIndicatorShape.swift in Sources */,
@@ -1124,7 +1152,7 @@
 				844FBA7F1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				6386498F1DAF372B008A9719 /* WordTestData.swift in Sources */,
 				6388D5ED1D108B090029C988 /* BusyNavigationBarOptions.swift in Sources */,
-				84301D1C1D19362A00BB3C5D /* DYStringUtility.swift in Sources */,
+				84301D1C1D19362A00BB3C5D /* AttributedString+Utility.swift in Sources */,
 				638649811DAE3420008A9719 /* WordBookData.swift in Sources */,
 				639188041D0A915800757F60 /* DynamicColor+Deriving.swift in Sources */,
 				84301CFF1D18DE8300BB3C5D /* DYLoader.swift in Sources */,
@@ -1163,6 +1191,7 @@
 				633FDCF61DAF953F006F09AD /* Array+Utility.swift in Sources */,
 				6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */,
 				844FBA871D0FE0F900D6C2EA /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
+				63ECC4321DB1475400C1342E /* String+Utility.swift in Sources */,
 				844FBA701D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				844FBA771D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 			);

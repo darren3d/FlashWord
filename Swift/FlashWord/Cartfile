@@ -1,5 +1,7 @@
-#Only build iOS: carthage update --platform iOS
+#See CartfileHelp
 
 github "ReactiveCocoa/ReactiveCocoa"  ~> 4.2.2
 
 github "SnapKit/SnapKit" == 0.22.0
+
+github "Alamofire/Alamofire" ~> 3.0

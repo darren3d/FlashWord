@@ -1,0 +1,21 @@
+#1.构建和编译
+
+#仅仅构建iOS:
+#carthage update --platform iOS --verbose
+
+#只更新不编译：
+#carthage update --no-build
+
+#只编译特定依赖的 iOS 版:
+carthage build --platform iOS RxSwift
+
+#删除一个依赖的时候不需要重新 update，
+#只要删除 Cartfile.resolved 中相应的行，和 Carthage 中的目录即可
+#
+如果经常用的库没有提供编译好的 Framework，可以 fork 一个自己提供，然后就不用每次都编译了
+
+
+#2.集成到项目
+#a.通过+号或拖动到"Link Binary With Libraries"
+#b.在Run Script中添加相应路径
+#两者缺一不可，否则运行时会出现库找不到
