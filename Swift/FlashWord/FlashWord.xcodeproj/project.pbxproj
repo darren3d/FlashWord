@@ -96,6 +96,14 @@
 		63ECC42D1DB137C200C1342E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ECC42A1DB1325300C1342E /* Alamofire.framework */; };
 		63ECC4321DB1475400C1342E /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4311DB1475400C1342E /* String+Utility.swift */; };
 		63ECC4341DB147A400C1342E /* String+Html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4331DB147A400C1342E /* String+Html.swift */; };
+		63ECC4521DB1657D00C1342E /* TOWebViewControllerLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63ECC4371DB1657D00C1342E /* TOWebViewControllerLocalizable.strings */; };
+		63ECC4531DB1657D00C1342E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63ECC43C1DB1657D00C1342E /* Info.plist */; };
+		63ECC4541DB1657D00C1342E /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4421DB1657D00C1342E /* NJKWebViewProgress.m */; };
+		63ECC4551DB1657D00C1342E /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4441DB1657D00C1342E /* NJKWebViewProgressView.m */; };
+		63ECC4561DB1657D00C1342E /* TOActivityChrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4481DB1657D00C1342E /* TOActivityChrome.m */; };
+		63ECC4571DB1657D00C1342E /* TOActivitySafari.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC44A1DB1657D00C1342E /* TOActivitySafari.m */; };
+		63ECC4581DB1657D00C1342E /* TOWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC44C1DB1657D00C1342E /* TOWebViewController.m */; };
+		63ECC4591DB1657D00C1342E /* UIImage+TOWebViewControllerIcons.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC44E1DB1657D00C1342E /* UIImage+TOWebViewControllerIcons.m */; };
 		63F4FF6C1DB0BBA4008AAE4C /* RAC+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */; };
 		63F4FF701DB1113D008AAE4C /* WordQuestionData+Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */; };
 		63F4FF731DB11796008AAE4C /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF721DB11796008AAE4C /* WordService.swift */; };
@@ -263,6 +271,32 @@
 		63ECC42A1DB1325300C1342E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		63ECC4311DB1475400C1342E /* String+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
 		63ECC4331DB147A400C1342E /* String+Html.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Html.swift"; sourceTree = "<group>"; };
+		63ECC4381DB1657D00C1342E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC4391DB1657D00C1342E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC43A1DB1657D00C1342E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC43B1DB1657D00C1342E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC43C1DB1657D00C1342E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63ECC43D1DB1657D00C1342E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC43E1DB1657D00C1342E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC43F1DB1657D00C1342E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC4411DB1657D00C1342E /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		63ECC4421DB1657D00C1342E /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		63ECC4431DB1657D00C1342E /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		63ECC4441DB1657D00C1342E /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		63ECC4451DB1657D00C1342E /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC4461DB1657D00C1342E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC4471DB1657D00C1342E /* TOActivityChrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOActivityChrome.h; sourceTree = "<group>"; };
+		63ECC4481DB1657D00C1342E /* TOActivityChrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOActivityChrome.m; sourceTree = "<group>"; };
+		63ECC4491DB1657D00C1342E /* TOActivitySafari.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOActivitySafari.h; sourceTree = "<group>"; };
+		63ECC44A1DB1657D00C1342E /* TOActivitySafari.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOActivitySafari.m; sourceTree = "<group>"; };
+		63ECC44B1DB1657D00C1342E /* TOWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOWebViewController.h; sourceTree = "<group>"; };
+		63ECC44C1DB1657D00C1342E /* TOWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOWebViewController.m; sourceTree = "<group>"; };
+		63ECC44D1DB1657D00C1342E /* UIImage+TOWebViewControllerIcons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TOWebViewControllerIcons.h"; sourceTree = "<group>"; };
+		63ECC44E1DB1657D00C1342E /* UIImage+TOWebViewControllerIcons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TOWebViewControllerIcons.m"; sourceTree = "<group>"; };
+		63ECC44F1DB1657D00C1342E /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/TOWebViewControllerLocalizable.strings; sourceTree = "<group>"; };
+		63ECC4501DB1657D00C1342E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TOWebViewControllerLocalizable.strings"; sourceTree = "<group>"; };
+		63ECC4511DB1657D00C1342E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TOWebViewControllerLocalizable.strings"; sourceTree = "<group>"; };
+		63ECC45A1DB165EE00C1342E /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RAC+Utility.swift"; sourceTree = "<group>"; };
 		63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordQuestionData+Business.swift"; sourceTree = "<group>"; };
 		63F4FF721DB11796008AAE4C /* WordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
@@ -485,6 +519,7 @@
 				632D04DC1D09C7E600F9744B /* FlashWord-Bridging-Header.h */,
 				639187F81D09EE4200757F60 /* AppConst.swift */,
 				6388D5B31D0C7A4F0029C988 /* Library */,
+				63ECC45A1DB165EE00C1342E /* Bridging-Header.h */,
 			);
 			path = FlashWord;
 			sourceTree = "<group>";
@@ -634,6 +669,7 @@
 		6388D5CB1D0DB1620029C988 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				63ECC4351DB1657D00C1342E /* WebViewController */,
 				6304C3141DAA86A0000D9DA1 /* TabBarController */,
 				6388D5CC1D0DB1900029C988 /* DYViewController.swift */,
 				6388D5CE1D0DB1AC0029C988 /* DYNavigationController.swift */,
@@ -833,6 +869,43 @@
 			path = RootController;
 			sourceTree = "<group>";
 		};
+		63ECC4351DB1657D00C1342E /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				63ECC4361DB1657D00C1342E /* TOWebViewController */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		63ECC4361DB1657D00C1342E /* TOWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				63ECC4371DB1657D00C1342E /* TOWebViewControllerLocalizable.strings */,
+				63ECC43C1DB1657D00C1342E /* Info.plist */,
+				63ECC4401DB1657D00C1342E /* NJKWebViewProgress */,
+				63ECC4471DB1657D00C1342E /* TOActivityChrome.h */,
+				63ECC4481DB1657D00C1342E /* TOActivityChrome.m */,
+				63ECC4491DB1657D00C1342E /* TOActivitySafari.h */,
+				63ECC44A1DB1657D00C1342E /* TOActivitySafari.m */,
+				63ECC44B1DB1657D00C1342E /* TOWebViewController.h */,
+				63ECC44C1DB1657D00C1342E /* TOWebViewController.m */,
+				63ECC44D1DB1657D00C1342E /* UIImage+TOWebViewControllerIcons.h */,
+				63ECC44E1DB1657D00C1342E /* UIImage+TOWebViewControllerIcons.m */,
+			);
+			path = TOWebViewController;
+			sourceTree = "<group>";
+		};
+		63ECC4401DB1657D00C1342E /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				63ECC4411DB1657D00C1342E /* NJKWebViewProgress.h */,
+				63ECC4421DB1657D00C1342E /* NJKWebViewProgress.m */,
+				63ECC4431DB1657D00C1342E /* NJKWebViewProgressView.h */,
+				63ECC4441DB1657D00C1342E /* NJKWebViewProgressView.m */,
+			);
+			path = NJKWebViewProgress;
+			sourceTree = "<group>";
+		};
 		63F4FF711DB11780008AAE4C /* WordService */ = {
 			isa = PBXGroup;
 			children = (
@@ -996,6 +1069,17 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				es,
+				fr,
+				it,
+				ja,
+				ko,
+				pl,
+				ru,
+				uk,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 635B93A11D09A40500A81CAF;
 			productRefGroup = 635B93AB1D09A40500A81CAF /* Products */;
@@ -1012,11 +1096,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63ECC4521DB1657D00C1342E /* TOWebViewControllerLocalizable.strings in Resources */,
 				63C6C11B1D2D4BC80090AC38 /* FlashWord.storyboard in Resources */,
 				63C6C1221D2D56820090AC38 /* GuideLogin.storyboard in Resources */,
 				635B93BA1D09A40500A81CAF /* LaunchScreen.storyboard in Resources */,
 				6388D5E31D0DC9850029C988 /* fontawesome-webfont.ttf in Resources */,
 				635B93B71D09A40500A81CAF /* Assets.xcassets in Resources */,
+				63ECC4531DB1657D00C1342E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,6 +1162,7 @@
 				6380AE831DAC498E003700A4 /* LearnModeData.swift in Sources */,
 				84301D031D18DF1500BB3C5D /* DYFailLoader.swift in Sources */,
 				844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */,
+				63ECC4571DB1657D00C1342E /* TOActivitySafari.m in Sources */,
 				844FBA6B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */,
 				6380AE901DACEB44003700A4 /* LearnWordVM.swift in Sources */,
@@ -1099,6 +1186,7 @@
 				6388D5F81D15D5EB0029C988 /* UIViewController+ProgressView.swift in Sources */,
 				844FBA831D0FE0F900D6C2EA /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				639188061D0A915800757F60 /* DynamicColor.swift in Sources */,
+				63ECC4541DB1657D00C1342E /* NJKWebViewProgress.m in Sources */,
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
 				6349F23C1D326899002210E0 /* DYGender.swift in Sources */,
 				638649911DAF3758008A9719 /* WordQuestionData.swift in Sources */,
@@ -1133,6 +1221,7 @@
 				635607FF1DA79E1900D558E0 /* WordBookCell.swift in Sources */,
 				844FBA711D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
+				63ECC4591DB1657D00C1342E /* UIImage+TOWebViewControllerIcons.m in Sources */,
 				84301D1F1D1940A900BB3C5D /* FontBlaster.swift in Sources */,
 				635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */,
 				844FBA841D0FE0F900D6C2EA /* NVActivityIndicatorAnimationPacman.swift in Sources */,
@@ -1166,6 +1255,7 @@
 				84301D011D18DEE200BB3C5D /* DYSucceedLoader.swift in Sources */,
 				635607FC1DA79B6000D558E0 /* LearnWordController.swift in Sources */,
 				6388D5DE1D0DC45B0029C988 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
+				63ECC4551DB1657D00C1342E /* NJKWebViewProgressView.m in Sources */,
 				84301D071D18E95600BB3C5D /* DYInfiniteLoader.swift in Sources */,
 				844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */,
 				633FDCF81DAF9877006F09AD /* DYRandom.swift in Sources */,
@@ -1178,6 +1268,7 @@
 				635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */,
 				635607F91DA798D300D558E0 /* WordBookController.swift in Sources */,
 				6388D5EE1D108B090029C988 /* UINavigationBar+Animation.swift in Sources */,
+				63ECC4581DB1657D00C1342E /* TOWebViewController.m in Sources */,
 				844FBA6A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				6388D6011D15DC4A0029C988 /* DYURLNavigationMap.swift in Sources */,
 				6388D5C51D0DAEAC0029C988 /* SpinerLayer.swift in Sources */,
@@ -1190,6 +1281,7 @@
 				844FBA7B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				633FDCF61DAF953F006F09AD /* Array+Utility.swift in Sources */,
 				6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */,
+				63ECC4561DB1657D00C1342E /* TOActivityChrome.m in Sources */,
 				844FBA871D0FE0F900D6C2EA /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
 				63ECC4321DB1475400C1342E /* String+Utility.swift in Sources */,
 				844FBA701D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
@@ -1206,6 +1298,25 @@
 				635B93B91D09A40500A81CAF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		63ECC4371DB1657D00C1342E /* TOWebViewControllerLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63ECC4381DB1657D00C1342E /* de */,
+				63ECC4391DB1657D00C1342E /* en */,
+				63ECC43A1DB1657D00C1342E /* es */,
+				63ECC43B1DB1657D00C1342E /* fr */,
+				63ECC43D1DB1657D00C1342E /* it */,
+				63ECC43E1DB1657D00C1342E /* ja */,
+				63ECC43F1DB1657D00C1342E /* ko */,
+				63ECC4451DB1657D00C1342E /* pl */,
+				63ECC4461DB1657D00C1342E /* ru */,
+				63ECC44F1DB1657D00C1342E /* uk */,
+				63ECC4501DB1657D00C1342E /* zh-Hans */,
+				63ECC4511DB1657D00C1342E /* zh-Hant */,
+			);
+			name = TOWebViewControllerLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1316,6 +1427,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D DEBUG=1\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlashWord/Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1339,6 +1451,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flashword.FlashWord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FlashWord/Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
