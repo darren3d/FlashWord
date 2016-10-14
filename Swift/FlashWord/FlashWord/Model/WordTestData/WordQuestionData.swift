@@ -22,7 +22,8 @@ class WordQuestionData: AVObject, AVSubclassing {
         super.init()
         self.word = word
         self.mode = mode
-        self.optionWords = optionWords
+        self.optionWords = []
+        self.addUniqueObjectsFromArray(optionWords, forKey: "optionWords")
     }
     
     static func parseClassName() -> String! {

@@ -42,6 +42,9 @@ class WordTestData: AVObject, AVSubclassing {
     
     private override init() {
         super.init()
+        
+        self.words = []
+        self.modes = []
     }
     
     static func createTest(words:[WordData], modes:[LearnModeData], para:WordTestPara)
@@ -79,8 +82,8 @@ class WordTestData: AVObject, AVSubclassing {
                         if error == nil {
                             if succeed {
                                 let test = WordTestData()
-                                test.words = words
-                                test.modes = modes
+                                test.addUniqueObjectsFromArray(words, forKey: "words")
+                                test.addUniqueObjectsFromArray(modes, forKey: "modes")
                                 test.para = para
                                 
                                 for quest in localQuestions {
