@@ -35,5 +35,6 @@ class WordService: NSObject {
     //http://fanyi.baidu.com/gettts?lan=en&text=word&source=web
     //百度翻译数据都存在tplData中
     //百度翻译页面调用的api
+    //http://fanyi.baidu.com/?aldtype=16047&tpltype=sigma#en/zh/word
     //http://fanyi.baidu.com/v2transapi?from=en&to=zh&query=word
 }
