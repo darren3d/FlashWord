@@ -20,6 +20,7 @@
 		633FDCF41DAF7794006F09AD /* DYDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633FDCF31DAF7794006F09AD /* DYDataBase.swift */; };
 		633FDCF61DAF953F006F09AD /* Array+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633FDCF51DAF953F006F09AD /* Array+Utility.swift */; };
 		633FDCF81DAF9877006F09AD /* DYRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633FDCF71DAF9877006F09AD /* DYRandom.swift */; };
+		633FDD0B1DB08445006F09AD /* RAC+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633FDD0A1DB08445006F09AD /* RAC+Utility.swift */; };
 		63496FB01DAE2A1900F2457A /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63496FAF1DAE2A1800F2457A /* ReactiveCocoa.framework */; };
 		63496FB21DAE2A2600F2457A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63496FB11DAE2A2600F2457A /* Result.framework */; };
 		63496FB41DAE2A5600F2457A /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63496FB31DAE2A5600F2457A /* SnapKit.framework */; };
@@ -176,6 +177,7 @@
 		633FDCF31DAF7794006F09AD /* DYDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYDataBase.swift; sourceTree = "<group>"; };
 		633FDCF51DAF953F006F09AD /* Array+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utility.swift"; sourceTree = "<group>"; };
 		633FDCF71DAF9877006F09AD /* DYRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYRandom.swift; sourceTree = "<group>"; };
+		633FDD0A1DB08445006F09AD /* RAC+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RAC+Utility.swift"; sourceTree = "<group>"; };
 		63496FAF1DAE2A1800F2457A /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		63496FB11DAE2A2600F2457A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		63496FB31DAE2A5600F2457A /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				847D70381D12A4AD0025B54A /* ObjectUtility.swift */,
 				633FDCF51DAF953F006F09AD /* Array+Utility.swift */,
 				633FDCF71DAF9877006F09AD /* DYRandom.swift */,
+				633FDD0A1DB08445006F09AD /* RAC+Utility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 				6388D5DF1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift in Sources */,
 				6388D5CA1D0DAFDC0029C988 /* NSTimerUtility.swift in Sources */,
 				6391880A1D0A930500757F60 /* FlatUIColors.swift in Sources */,
+				633FDD0B1DB08445006F09AD /* RAC+Utility.swift in Sources */,
 				638649871DAE3573008A9719 /* SentenceData.swift in Sources */,
 				844FBA761D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
 				6304C3211DAA9FEF000D9DA1 /* MyController.swift in Sources */,
