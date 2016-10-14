@@ -32,12 +32,12 @@ extension WordBookData {
         query.getFirstObjectInBackgroundWithBlock(block)
     }
     
-    /**添加一个新的test*/
-    func addWordTest(words:[WordData], modes:[LearnModeData], block: AVObjectResultBlock!) {
-        let test = WordTestData()
-        test.addObjectsFromArray(words, forKey: "words")
-        test.addObjectsFromArray(modes, forKey: "modes")
-        
-        
-    }
+//    /**添加一个新的test*/
+//    func addWordTest(words:[WordData], modes:[LearnModeData], block: AVObjectResultBlock!) {
+//        let test = WordTestData()
+//        test.addObjectsFromArray(words, forKey: "words")
+//        test.addObjectsFromArray(modes, forKey: "modes")
+//        
+//        
+//    }
 }

@@ -44,6 +44,17 @@ extension RACSignal {
 }
 
 
+extension SignalProducer {
+    public static func singleValue(value: Value) -> SignalProducer<Value, NSError> {
+        let produce = SignalProducer<Value, NSError>{(observer, dispose) in
+            observer.sendNext(value)
+            observer.sendCompleted()
+        }
+        return produce
+    }
+}
+
+
 // a struct that replaces the RAC macro
 struct RAC  {
     var target : NSObject!
@@ -62,8 +73,11 @@ struct RAC  {
     }
 }
 
-infix operator <= {}
 func <= (rac: RAC, signal: RACSignal) {
+    rac.assignSignal(signal)
+}
+
+func >= (signal: RACSignal, rac: RAC) {
     rac.assignSignal(signal)
 }
 

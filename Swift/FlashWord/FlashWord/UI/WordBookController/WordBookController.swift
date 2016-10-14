@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVOSCloud
+import ReactiveCocoa
 
 class WordBookController: DYViewController {
     @IBOutlet weak var collectionView : UICollectionView!
@@ -20,11 +22,89 @@ class WordBookController: DYViewController {
         collectionView.contentInset = UIEdgeInsetsMake(64, 0, 50, 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 50, 0)
         collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 120)
+        
+        let barRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(onBarBtnRight(_:)))
+        self.navigationItem.rightBarButtonItem = barRight
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func onBarBtnRight(sender:AnyObject!) {
+        let queryWord = WordData.query()
+        queryWord.cachePolicy = AVCachePolicy.CacheElseNetwork
+        queryWord.findObjectsInBackgroundWithBlock {[weak self] (words, error) in
+            guard let _ = self else {
+                return
+            }
+            
+            if error != nil {
+                DYLog.error(error.localizedDescription)
+                return
+            }
+            
+            let queryMode = LearnModeData.query()
+            queryMode.orderByAscending("mode")
+            queryMode.cachePolicy = AVCachePolicy.CacheElseNetwork
+            queryMode.findObjectsInBackgroundWithBlock {[weak self] (modes, error) in
+                guard let _ = self else {
+                    return
+                }
+                
+                if error != nil {
+                    DYLog.error(error.localizedDescription)
+                    return
+                }
+                
+                if words.count < 4 || modes.count <= 0 {
+                    return
+                }
+                
+                let words = words as! [WordData]
+                let optionWords = Array(words[1...3])
+                let word = words[0]
+                
+                var modes = modes as! [LearnModeData]
+                let mode0 = modes[0]
+		
+                modes = Array(modes[0...0])
+                let para = WordTestPara()
+                let key = String(mode0.mode)
+                para.countPerMode[key] = 1
+                
+                let produce = WordTestData.createTest(words, modes: modes, para: para)
+                produce.start(Observer<WordTestData!, NSError>(
+                    failed: { error in
+                        DYLog.info("failed:\(error.localizedDescription)")
+                    },
+                    completed: {
+                        DYLog.info("completed")
+                    },
+                    interrupted: {
+                        DYLog.info("interrupted")
+                    },
+                    next: { questin in
+                        DYLog.info("next")
+                    }))
+                
+//                let produce = WordQuestionData.createQuestion(word, mode: mode, optionWords: optionWords)
+//                produce.start(Observer<WordQuestionData!, NSError>(
+//                    failed: { error in
+//                        DYLog.info("failed:\(error.localizedDescription)")
+//                    },
+//                    completed: {
+//                        DYLog.info("completed")
+//                    },
+//                    interrupted: {
+//                        DYLog.info("interrupted")
+//                    },
+//                    next: { questin in
+//                        DYLog.info("next")
+//                    }))
+            }
+        }
     }
 }
 

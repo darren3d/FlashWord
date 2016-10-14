@@ -29,8 +29,15 @@ extension DefaultsKey {
     }
 }
 
+public struct AppError {
+    public static let errorDomain = "dy.flash.word"
+    public static let invalidPara = Int(1000)
+}
+
 
 public class AppConst: NSObject {
+    
+    
     public static let kNotificationSwithToHomeTab = "com.flashword.note.switch.hometab"
     
     private static var kEnviroment = Environment.Invalid
