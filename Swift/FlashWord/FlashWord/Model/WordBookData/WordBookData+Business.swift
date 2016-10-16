@@ -43,4 +43,36 @@ extension WordBookData {
         }
         return producer
     }
+    
+    func addWords(words: [String]) -> SignalProducer<Bool, NSError> {
+        return SignalProducer<String, NSError>(values: words)
+            .flatMap(FlattenStrategy.Concat) { (word) -> SignalProducer<(String, WordData?), NSError> in
+                return WordData.addWordData(word)
+            }.collect()
+             .flatMap(FlattenStrategy.Concat) {[weak self] (wordDatas) -> SignalProducer<Bool, NSError> in
+                let producer = SignalProducer<Bool, NSError>{[weak self] (observer, dispose) in
+                    guard let stongSelf = self else {
+                        observer.sendNext(false)
+                        observer.sendCompleted()
+                        return
+                    }
+                    
+                    for (_, wordData) in wordDatas {
+                        if wordData != nil {
+                            stongSelf.words.addObject(wordData!)
+                        }
+                    }
+                    
+                    stongSelf.saveInBackgroundWithBlock({ (succeed, error) in
+                        if error == nil {
+                            observer.sendNext(succeed)
+                            observer.sendCompleted()
+                        } else {
+                            observer.sendFailed(error)
+                        }
+                    })
+                }
+                return producer
+             }
+    }
 }
