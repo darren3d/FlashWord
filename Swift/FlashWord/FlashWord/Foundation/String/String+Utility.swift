@@ -340,6 +340,8 @@ private func localeNumberFormatter(locale: NSLocale) -> NSNumberFormatter {
 
 //MARK - MD5
 extension String {
+    //后续改用https://github.com/Flying-Einstein/Encryptions
+    /**注意MD5是散列算法，多个值对应一个结果。AES则是1个值对应多个结果*/
     public func MD5() -> String {
         return hex_md5(self)
     }

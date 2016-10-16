@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import ReactiveCocoa
 import Alamofire
+import SwiftyJSON
 
 class WordService: NSObject {
     //MARK: 单例
@@ -16,25 +18,25 @@ class WordService: NSObject {
         super.init()
     }
     
-    func translate(word : String) {
-        Alamofire.request(.GET, "http://fanyi.baidu.com/?aldtype=16047&tpltype=sigma#en/zh/word")
-            .responseData { response in
-                DYLog.info("Request: \(response.request)")
-                DYLog.info("Success: \(response.result.isSuccess)")
-            
-            if let data = response.result.value, let utf8Text = String(data: data, encoding: NSUTF8StringEncoding) {
-                DYLog.info("Data: \(utf8Text)")
+    func readVocabulary() {
+        let documentPath = NSBundle.mainBundle().pathForResource("class_4.xlsx", ofType: nil)
+        let spreadsheet = BRAOfficeDocumentPackage.open(documentPath)
+        
+        guard let worksheet = spreadsheet.workbook.worksheets[0] as? BRAWorksheet else {
+            DYLog.error("Xlsx: No Work Sheet")
+            return
+        }
+        
+        var words : [String] = []
+        for row in worksheet.rows {
+            let row = row as! BRARow
+            if row.cells.count > 0 {
+                let cell = row.cells[0] as! BRACell
+                let word = cell.stringValue()
+                if word != nil && word.length > 0 {
+                    words.append(word)
+                }
             }
         }
     }
-    
-    //百度翻译下载发音
-    //英式发音
-    //http://fanyi.baidu.com/gettts?lan=en&text=word&source=web
-    //美式发音
-    //http://fanyi.baidu.com/gettts?lan=en&text=word&source=web
-    //百度翻译数据都存在tplData中
-    //百度翻译页面调用的api
-    //http://fanyi.baidu.com/?aldtype=16047&tpltype=sigma#en/zh/word
-    //http://fanyi.baidu.com/v2transapi?from=en&to=zh&query=word
 }

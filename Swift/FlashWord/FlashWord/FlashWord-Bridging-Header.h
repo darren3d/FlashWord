@@ -10,5 +10,5 @@
 #define FlashWord_Bridging_Header
 #define MR_SHORTHAND
 #import <CoreData+MagicalRecord.h>
-
+#import ""
 #endif /* Header_h */

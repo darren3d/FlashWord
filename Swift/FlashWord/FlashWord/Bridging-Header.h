@@ -9,6 +9,6 @@
 #ifndef Bridging_Header_h
 #define Bridging_Header_h
 #import "TOWebviewController.h"
-
+#import "XlsxReaderWriter-swift-bridge.h"
 
 #endif /* Bridging_Header_h */

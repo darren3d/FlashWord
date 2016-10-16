@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVOSCloud
 import ReactiveCocoa
 
 extension DefaultsKeys {
@@ -22,6 +23,10 @@ class RootNavigationController: DYNavigationController {
         Defaults[.appGuideVersion] = appVersion
 //        switchToGuide(false)
         //        }
+        if let _ = AccountData.currentUser() {
+        } else {
+            switchToGuide(false)
+        }
     }
     
     override func viewDidLoad() {

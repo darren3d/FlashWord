@@ -14,7 +14,7 @@ import ReactiveCocoa
 class WordQuestionData: AVObject, AVSubclassing {
     @NSManaged var mode : LearnModeData
     @NSManaged var word : WordData
-    @NSManaged var sentence : SentenceData?
+    @NSManaged var sentence : WordSentenceData?
     @NSManaged var optionWords : [WordData]
     @NSManaged var answers : [WordAnswerData]
     
@@ -73,7 +73,7 @@ class WordQuestionData: AVObject, AVSubclassing {
                             return
                     }
                     
-                    question.sentence = relationData.sentence
+//                    question.sentence = relationData.sentence
                     observer.sendNext(question)
                     observer.sendCompleted()
                 })

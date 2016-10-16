@@ -33,8 +33,24 @@ class WordBookController: DYViewController {
     }
     
     func onBarBtnRight(sender:AnyObject!) {
-        WordService.service.translate("word")
-        
+        let produce = WordData.addWordData("word")
+        produce.start(Observer<(String, WordData?), NSError>(
+                    failed: { error in
+                        DYLog.info("failed:\(error.localizedDescription)")
+                    },
+                    completed: {
+                        DYLog.info("completed")
+                    },
+                    interrupted: {
+                        DYLog.info("interrupted")
+                    },
+                    next: { (word, wordData) in
+                        if wordData == nil {
+                            DYLog.info("word : \(word)  dict: 0")
+                        } else {
+                            DYLog.info("word : \(word)  dict: \(wordData!.desc.count)")
+                        }
+                    }))
         return
         
         let queryWord = WordData.query()
