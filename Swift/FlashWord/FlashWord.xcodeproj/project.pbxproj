@@ -151,6 +151,7 @@
 		63ECC4EF1DB2899300C1342E /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4E71DB2899300C1342E /* SSZipArchive.m */; };
 		63ECC4F01DB2899300C1342E /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4EA1DB2899300C1342E /* XMLDictionary.m */; };
 		63ECC4F21DB289E100C1342E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ECC4F11DB289E100C1342E /* libz.tbd */; };
+		63F0BCBC1DB3F56400B8703E /* WordBookData+Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F0BCBB1DB3F56400B8703E /* WordBookData+Business.swift */; };
 		63F4FF6C1DB0BBA4008AAE4C /* RAC+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */; };
 		63F4FF701DB1113D008AAE4C /* WordQuestionData+Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */; };
 		63F4FF731DB11796008AAE4C /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF721DB11796008AAE4C /* WordService.swift */; };
@@ -439,6 +440,7 @@
 		63ECC4E91DB2899300C1342E /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		63ECC4EA1DB2899300C1342E /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		63ECC4F11DB289E100C1342E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		63F0BCBB1DB3F56400B8703E /* WordBookData+Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordBookData+Business.swift"; sourceTree = "<group>"; };
 		63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RAC+Utility.swift"; sourceTree = "<group>"; };
 		63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordQuestionData+Business.swift"; sourceTree = "<group>"; };
 		63F4FF721DB11796008AAE4C /* WordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 			isa = PBXGroup;
 			children = (
 				638649801DAE3420008A9719 /* WordBookData.swift */,
+				63F0BCBB1DB3F56400B8703E /* WordBookData+Business.swift */,
 				638649881DAE5519008A9719 /* WordBookLearnData.swift */,
 			);
 			path = WordBookData;
@@ -1506,6 +1509,7 @@
 				84301D1A1D1935E600BB3C5D /* TextAttributes.swift in Sources */,
 				638649891DAE5519008A9719 /* WordBookLearnData.swift in Sources */,
 				844FBA821D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
+				63F0BCBC1DB3F56400B8703E /* WordBookData+Business.swift in Sources */,
 				63F4FF701DB1113D008AAE4C /* WordQuestionData+Business.swift in Sources */,
 				63ECC4BB1DB288E400C1342E /* BRACalcChain.m in Sources */,
 				6388D5F81D15D5EB0029C988 /* UIViewController+ProgressView.swift in Sources */,

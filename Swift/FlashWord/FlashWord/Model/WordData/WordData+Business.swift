@@ -75,16 +75,17 @@ extension WordData {
         return producer
     }
         
-    //添加word单词到WordData表，注意该函数不检测是否已经添加
+    //添加word单词到WordData表
+    //该函数先检测服务器是否已经添加，有直接返回，没有则查询翻译后添加到服务器
     static func addWordData(word : String) -> SignalProducer<(String, WordData?), NSError> {
-        let producer = SignalProducer<String, NSError>(values: [word])
+        let producer = SignalProducer<String, NSError>(value: word)
         .flatMap(FlattenStrategy.Concat) { word -> SignalProducer<(String, WordData?), NSError> in
             //查询服务器
             return WordData.word(word)
          }.flatMap(FlattenStrategy.Concat) { (word, wordData) -> SignalProducer<(String, WordData?), NSError> in
             if wordData != nil {
                 //服务器存在
-                return SignalProducer<(String, WordData?), NSError>(values: [(word, wordData)])
+                return SignalProducer<(String, WordData?), NSError>(value: (word, wordData))
             } else {
                 //服务器不存在，
                 return WordData.forceAddWordData(word)

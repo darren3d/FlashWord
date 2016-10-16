@@ -32,6 +32,7 @@ extension DefaultsKey {
 public struct AppError {
     public static let errorDomain = "dy.flash.word"
     public static let invalidPara = Int(1000)
+    public static let needLogin = Int(1001)
 }
 
 
