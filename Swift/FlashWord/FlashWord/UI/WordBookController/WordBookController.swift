@@ -33,6 +33,27 @@ class WordBookController: DYViewController {
     }
     
     func onBarBtnRight(sender:AnyObject!) {
+        MyWordBookData.addMyWordBook("生词本", desc: "一些不熟悉的单词集合")
+        .start(Observer<MyWordBookData?, NSError>(
+            failed: { error in
+                DYLog.info("failed:\(error.localizedDescription)")
+            },
+            completed: {
+                DYLog.info("completed")
+            },
+            interrupted: {
+                DYLog.info("interrupted")
+            },
+            next: { myBook in
+                if myBook == nil {
+                    DYLog.info("myBook : empty")
+                } else {
+                    DYLog.info("myBook : myBook")
+                }
+            }
+            ))
+        return
+        
         let produce = WordData.addWordData("word")
         produce.start(Observer<(String, WordData?), NSError>(
                     failed: { error in

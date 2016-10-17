@@ -22,6 +22,7 @@ public class DYDataCenter: NSObject {
         WordData.registerSubclass()
         WordSentenceData.registerSubclass()
         WordBookData.registerSubclass()
+        MyWordBookData.registerSubclass()
         WordQuestionData.registerSubclass()
         WordTestData.registerSubclass()
         WordTestPara.registerSubclass()

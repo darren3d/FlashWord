@@ -12,14 +12,13 @@ import ReactiveCocoa
 
 extension WordBookData {
 
-    //添加word单词到WordData表
-    //该函数先检测服务器是否已经添加，有直接返回，没有则查询翻译后添加到服务器
-    static func addWordBook(name: String, desc: String, words: [String]) -> SignalProducer<(String, WordBookData?), NSError> {
+    //添加word单词到WordData表，不检测服务器是否已经添加
+    static func addWordBook(name: String, desc: String) -> SignalProducer<(String, WordBookData?), NSError> {
         let creator = AccountData.currentUser()
         if creator == nil {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
         }
-        if name.length <= 0 || desc.length <= 0 || words.count <= 0 {
+        if name.length <= 0 || desc.length <= 0 {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"参数不合法"]))
         }
         
@@ -27,6 +26,7 @@ extension WordBookData {
             let book = WordBookData()
             book.name = name
             book.desc = desc
+            book.creator = creator
             book.saveInBackgroundWithBlock({ (succeed, error) in
                 if error == nil {
                     if succeed {
@@ -74,5 +74,114 @@ extension WordBookData {
                 }
                 return producer
              }
+    }
+}
+
+extension MyWordBookData {
+    /**进行中的测试*/
+    func currentWordTest(cachePolicy:AVCachePolicy = AVCachePolicy.CacheOnly, block: AVObjectResultBlock!) {
+        let query = tests.query()
+        query.cachePolicy = cachePolicy
+        query.whereKeyDoesNotExist("timeEnd")
+        query.getFirstObjectInBackgroundWithBlock(block)
+    }
+    
+    //    /**添加一个新的test*/
+    //    func addWordTest(words:[WordData], modes:[LearnModeData], block: AVObjectResultBlock!) {
+    //        let test = WordTestData()
+    //        test.addObjectsFromArray(words, forKey: "words")
+    //        test.addObjectsFromArray(modes, forKey: "modes")
+    //
+    //        
+    //    }
+    
+    static func addMyWordBook(name: String, desc: String) -> SignalProducer<MyWordBookData?, NSError> {
+        let creator = AccountData.currentUser()
+        if creator == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        if name.length <= 0 || desc.length <= 0 {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"参数不合法"]))
+        }
+        
+        let producer = WordBookData.addWordBook(name, desc: desc)
+        .flatMap(FlattenStrategy.Concat) { (_, book) -> SignalProducer<MyWordBookData?, NSError> in
+            if let book = book {
+                return MyWordBookData.addMyWordBook(book)
+            } else {
+                return SignalProducer.empty
+            }
+        }
+        return producer
+    }
+    
+    static func addMyWordBook(book: WordBookData) -> SignalProducer<MyWordBookData?,NSError> {
+        let learner = AccountData.currentUser()
+        if learner == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        
+        return SignalProducer<WordBookData, NSError>(value:book)
+        .flatMap(FlattenStrategy.Concat) { (book) -> SignalProducer<MyWordBookData?, NSError> in
+            MyWordBookData.myWordBook(book)
+        }.flatMap(FlattenStrategy.Concat) { (myBook) -> SignalProducer<MyWordBookData?, NSError> in
+            if let myBook = myBook {
+                return SignalProducer<MyWordBookData?, NSError>(value:myBook)
+            } else {
+                let producer = SignalProducer<MyWordBookData?, NSError> { (observer, dispose) in
+                    let myBookData = MyWordBookData()
+                    myBookData.book = book
+                    myBookData.learner = learner
+                    myBookData.saveInBackgroundWithBlock({ (succeed, error) in
+                        if error == nil {
+                            if succeed {
+                                observer.sendNext(myBookData)
+                                observer.sendCompleted()
+                            } else {
+                                observer.sendNext(nil)
+                                observer.sendCompleted()
+                            }
+                        } else {
+                            observer.sendFailed(error)
+                        }
+                    })
+                }
+                return producer;
+            }
+        }
+        
+    }
+    
+    //通过book查询mybook
+    static func myWordBook(book: WordBookData) -> SignalProducer<MyWordBookData?,NSError> {
+        let learner = AccountData.currentUser()
+        if learner == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        
+        let producer = SignalProducer<MyWordBookData?, NSError> {(observer, dispose) in
+            let query = MyWordBookData.query()
+            query.whereKey("book", equalTo: book)
+            query.whereKey("learner", equalTo: learner)
+            query.getFirstObjectInBackgroundWithBlock { (myBook, error) in
+                if error == nil {
+                    if let myBook = myBook as? MyWordBookData {
+                        observer.sendNext(myBook)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendNext(nil)
+                        observer.sendCompleted()
+                    }
+                } else {
+                    if error.code == kAVErrorObjectNotFound {
+                        observer.sendNext(nil)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendFailed(error)
+                    }
+                }
+            }
+        }
+        return producer
     }
 }
