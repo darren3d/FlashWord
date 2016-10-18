@@ -286,11 +286,149 @@
                     <connections>
                         <outlet property="collectionLayout" destination="YbM-Fb-KGj" id="ta5-9H-dia"/>
                         <outlet property="collectionView" destination="bSX-z4-evr" id="MX7-I6-po0"/>
+                        <segue destination="SP4-Fx-5BM" kind="show" id="Osg-pP-UIP"/>
+                        <segue destination="k84-WP-YjO" kind="show" id="1nm-Cw-yli"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBz-yF-fhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-935" y="-1054"/>
+        </scene>
+        <!--添加单词本-->
+        <scene sceneID="7ju-kl-Dgq">
+            <objects>
+                <viewController storyboardIdentifier="AddWordBookController" id="SP4-Fx-5BM" customClass="AddWordBookController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Plr-Gs-HSY"/>
+                        <viewControllerLayoutGuide type="bottom" id="pRt-i1-hcL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HGT-D2-VPv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-DT-zel">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Bm-hQ-7U9">
+                                    <size key="itemSize" width="375" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SP4-Fx-5BM" id="HKC-3Y-BmZ"/>
+                                    <outlet property="delegate" destination="SP4-Fx-5BM" id="HbR-EW-tZk"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W0Z-DT-zel" firstAttribute="centerX" secondItem="HGT-D2-VPv" secondAttribute="centerX" id="RYW-IE-iZr"/>
+                            <constraint firstItem="W0Z-DT-zel" firstAttribute="width" secondItem="HGT-D2-VPv" secondAttribute="width" id="XmI-2u-DOl"/>
+                            <constraint firstItem="W0Z-DT-zel" firstAttribute="centerY" secondItem="HGT-D2-VPv" secondAttribute="centerY" id="aRe-ry-LZg"/>
+                            <constraint firstItem="W0Z-DT-zel" firstAttribute="height" secondItem="HGT-D2-VPv" secondAttribute="height" id="rb1-ph-MVr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="添加单词本" id="2XE-w7-3EV"/>
+                    <connections>
+                        <outlet property="collectionLayout" destination="1Bm-hQ-7U9" id="twz-fV-tSP"/>
+                        <outlet property="collectionView" destination="W0Z-DT-zel" id="jl5-mJ-ioV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J2W-jU-4lb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1311" y="-294"/>
+        </scene>
+        <!--单词本详情-->
+        <scene sceneID="g7o-kd-W9n">
+            <objects>
+                <viewController storyboardIdentifier="WordBookDetailController" id="k84-WP-YjO" customClass="WordBookDetailController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="75b-k3-H3b"/>
+                        <viewControllerLayoutGuide type="bottom" id="8kz-UO-P8H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vdK-rf-vkt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q3r-UO-7aF">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ucY-Xd-IvY">
+                                    <size key="itemSize" width="375" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="k84-WP-YjO" id="nQe-72-lXa"/>
+                                    <outlet property="delegate" destination="k84-WP-YjO" id="y4d-CE-CfV"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q3r-UO-7aF" firstAttribute="height" secondItem="vdK-rf-vkt" secondAttribute="height" id="MKd-NE-rmV"/>
+                            <constraint firstItem="Q3r-UO-7aF" firstAttribute="centerX" secondItem="vdK-rf-vkt" secondAttribute="centerX" id="sTw-AY-BkD"/>
+                            <constraint firstItem="Q3r-UO-7aF" firstAttribute="width" secondItem="vdK-rf-vkt" secondAttribute="width" id="vUu-Km-koV"/>
+                            <constraint firstItem="Q3r-UO-7aF" firstAttribute="centerY" secondItem="vdK-rf-vkt" secondAttribute="centerY" id="xVX-7d-eq1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="单词本详情" id="S5q-mN-O3a"/>
+                    <connections>
+                        <outlet property="collectionLayout" destination="ucY-Xd-IvY" id="PVl-wK-spz"/>
+                        <outlet property="collectionView" destination="Q3r-UO-7aF" id="XRk-0k-Uy7"/>
+                        <segue destination="OuA-Gb-Giu" kind="show" id="KV8-f7-vPx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J0Y-cV-Nqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-598" y="-295"/>
+        </scene>
+        <!--添加单词-->
+        <scene sceneID="0tF-Ym-kop">
+            <objects>
+                <viewController storyboardIdentifier="AddWordController" id="OuA-Gb-Giu" customClass="AddWordController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tgy-bM-lB8"/>
+                        <viewControllerLayoutGuide type="bottom" id="YUN-qg-hMb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZvZ-W7-DfN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="caE-tT-U3o">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wik-0h-rXn">
+                                    <size key="itemSize" width="375" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OuA-Gb-Giu" id="4dh-81-KPV"/>
+                                    <outlet property="delegate" destination="OuA-Gb-Giu" id="IpR-Sj-PAS"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="caE-tT-U3o" firstAttribute="centerX" secondItem="ZvZ-W7-DfN" secondAttribute="centerX" id="IWb-5I-mZL"/>
+                            <constraint firstItem="caE-tT-U3o" firstAttribute="width" secondItem="ZvZ-W7-DfN" secondAttribute="width" id="M9A-kc-okz"/>
+                            <constraint firstItem="caE-tT-U3o" firstAttribute="height" secondItem="ZvZ-W7-DfN" secondAttribute="height" id="ZVv-D6-beR"/>
+                            <constraint firstItem="caE-tT-U3o" firstAttribute="centerY" secondItem="ZvZ-W7-DfN" secondAttribute="centerY" id="fWe-Ir-d0q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="添加单词" id="6eJ-Qd-ueO"/>
+                    <connections>
+                        <outlet property="collectionLayout" destination="wik-0h-rXn" id="EBQ-K0-FJw"/>
+                        <outlet property="collectionView" destination="caE-tT-U3o" id="KHv-tD-OxU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DXH-Nf-NjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-599" y="421"/>
         </scene>
         <!--背单词-->
         <scene sceneID="cVG-pk-6JD">

@@ -32,6 +32,7 @@
 		6349F2351D304AA5002210E0 /* DYStaticTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2341D304AA5002210E0 /* DYStaticTableController.swift */; };
 		6349F23A1D31E1C2002210E0 /* DOAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F2391D31E1C2002210E0 /* DOAlertController.swift */; };
 		6349F23C1D326899002210E0 /* DYGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6349F23B1D326899002210E0 /* DYGender.swift */; };
+		634E44EF1DB4C83B00B1A9B4 /* AddWordBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634E44EE1DB4C83B00B1A9B4 /* AddWordBookController.swift */; };
 		635607F61DA67ECB00D558E0 /* LoginRegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */; };
 		635607F91DA798D300D558E0 /* WordBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607F81DA798D300D558E0 /* WordBookController.swift */; };
 		635607FC1DA79B6000D558E0 /* LearnWordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FB1DA79B6000D558E0 /* LearnWordController.swift */; };
@@ -94,6 +95,9 @@
 		63C6C11E1D2D4CD80090AC38 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6C11D1D2D4CD80090AC38 /* RootNavigationController.swift */; };
 		63C6C1201D2D4CEF0090AC38 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6C11F1D2D4CEF0090AC38 /* RootTabBarController.swift */; };
 		63C6C1221D2D56820090AC38 /* GuideLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C6C1211D2D56820090AC38 /* GuideLogin.storyboard */; };
+		63E2ABAD1DB51A1C00CF818B /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E2ABAC1DB51A1C00CF818B /* Eureka.framework */; };
+		63E2ABB51DB6654D00CF818B /* AddWordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E2ABB41DB6654D00CF818B /* AddWordController.swift */; };
+		63E2ABB81DB6660000CF818B /* WordBookDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E2ABB71DB6660000CF818B /* WordBookDetailController.swift */; };
 		63ECC42D1DB137C200C1342E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ECC42A1DB1325300C1342E /* Alamofire.framework */; };
 		63ECC4321DB1475400C1342E /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4311DB1475400C1342E /* String+Utility.swift */; };
 		63ECC4341DB147A400C1342E /* String+Html.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC4331DB147A400C1342E /* String+Html.swift */; };
@@ -250,6 +254,7 @@
 		6349F2341D304AA5002210E0 /* DYStaticTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYStaticTableController.swift; sourceTree = "<group>"; };
 		6349F2391D31E1C2002210E0 /* DOAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DOAlertController.swift; sourceTree = "<group>"; };
 		6349F23B1D326899002210E0 /* DYGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYGender.swift; sourceTree = "<group>"; };
+		634E44EE1DB4C83B00B1A9B4 /* AddWordBookController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWordBookController.swift; sourceTree = "<group>"; };
 		635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterVM.swift; sourceTree = "<group>"; };
 		635607F81DA798D300D558E0 /* WordBookController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookController.swift; sourceTree = "<group>"; };
 		635607FB1DA79B6000D558E0 /* LearnWordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordController.swift; sourceTree = "<group>"; };
@@ -317,6 +322,9 @@
 		63C6C11D1D2D4CD80090AC38 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		63C6C11F1D2D4CEF0090AC38 /* RootTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		63C6C1211D2D56820090AC38 /* GuideLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GuideLogin.storyboard; sourceTree = "<group>"; };
+		63E2ABAC1DB51A1C00CF818B /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
+		63E2ABB41DB6654D00CF818B /* AddWordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWordController.swift; sourceTree = "<group>"; };
+		63E2ABB71DB6660000CF818B /* WordBookDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookDetailController.swift; sourceTree = "<group>"; };
 		63ECC42A1DB1325300C1342E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		63ECC4311DB1475400C1342E /* String+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
 		63ECC4331DB147A400C1342E /* String+Html.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Html.swift"; sourceTree = "<group>"; };
@@ -504,6 +512,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E2ABAD1DB51A1C00CF818B /* Eureka.framework in Frameworks */,
 				633231CE1DB30F920041295A /* SwiftyJSON.framework in Frameworks */,
 				63ECC4F21DB289E100C1342E /* libz.tbd in Frameworks */,
 				63ECC42D1DB137C200C1342E /* Alamofire.framework in Frameworks */,
@@ -520,6 +529,7 @@
 		141048315BBF40519FC5B823 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63E2ABAC1DB51A1C00CF818B /* Eureka.framework */,
 				633231CD1DB30F920041295A /* SwiftyJSON.framework */,
 				63ECC4F11DB289E100C1342E /* libz.tbd */,
 				63ECC42A1DB1325300C1342E /* Alamofire.framework */,
@@ -602,6 +612,14 @@
 				6349F2391D31E1C2002210E0 /* DOAlertController.swift */,
 			);
 			path = AlertController;
+			sourceTree = "<group>";
+		};
+		634E44ED1DB4C83B00B1A9B4 /* AddWordBookController */ = {
+			isa = PBXGroup;
+			children = (
+				634E44EE1DB4C83B00B1A9B4 /* AddWordBookController.swift */,
+			);
+			path = AddWordBookController;
 			sourceTree = "<group>";
 		};
 		635607F71DA7987E00D558E0 /* WordBookController */ = {
@@ -832,6 +850,9 @@
 		6388D5D01D0DB2CD0029C988 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				63E2ABB61DB6660000CF818B /* WordBookDetailController */,
+				63E2ABB31DB6654D00CF818B /* AddWordController */,
+				634E44ED1DB4C83B00B1A9B4 /* AddWordBookController */,
 				635607FA1DA79B5600D558E0 /* LearnWordController */,
 				635607F71DA7987E00D558E0 /* WordBookController */,
 				6304C31F1DAA9FEF000D9DA1 /* MyController */,
@@ -1018,6 +1039,22 @@
 				63C6C11F1D2D4CEF0090AC38 /* RootTabBarController.swift */,
 			);
 			path = RootController;
+			sourceTree = "<group>";
+		};
+		63E2ABB31DB6654D00CF818B /* AddWordController */ = {
+			isa = PBXGroup;
+			children = (
+				63E2ABB41DB6654D00CF818B /* AddWordController.swift */,
+			);
+			path = AddWordController;
+			sourceTree = "<group>";
+		};
+		63E2ABB61DB6660000CF818B /* WordBookDetailController */ = {
+			isa = PBXGroup;
+			children = (
+				63E2ABB71DB6660000CF818B /* WordBookDetailController.swift */,
+			);
+			path = WordBookDetailController;
 			sourceTree = "<group>";
 		};
 		63ECC4351DB1657D00C1342E /* WebViewController */ = {
@@ -1435,6 +1472,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -1574,10 +1612,12 @@
 				844FBA6E1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallGridPulse.swift in Sources */,
 				844FBA8D1D0FE2B700D6C2EA /* UIViewController+Utility.swift in Sources */,
 				63ECC4C81DB288E400C1342E /* BRAImage.m in Sources */,
+				63E2ABB81DB6660000CF818B /* WordBookDetailController.swift in Sources */,
 				63ECC4D81DB288E400C1342E /* BRAOpenXmlElement.m in Sources */,
 				6388D5DF1D0DC45B0029C988 /* UITextField+SkyFloatingLabel.swift in Sources */,
 				6388D5CA1D0DAFDC0029C988 /* NSTimerUtility.swift in Sources */,
 				63ECC4C71DB288E400C1342E /* BRADrawing.m in Sources */,
+				63E2ABB51DB6654D00CF818B /* AddWordController.swift in Sources */,
 				63ECC4C61DB288E400C1342E /* BRAContentTypesOverride.m in Sources */,
 				6391880A1D0A930500757F60 /* FlatUIColors.swift in Sources */,
 				63F4FF6C1DB0BBA4008AAE4C /* RAC+Utility.swift in Sources */,
@@ -1647,6 +1687,7 @@
 				63ECC4D91DB288E400C1342E /* BRAOpenXmlSubElement.m in Sources */,
 				63ECC4BF1DB288E400C1342E /* BRACellFormat.m in Sources */,
 				844FBA771D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
+				634E44EF1DB4C83B00B1A9B4 /* AddWordBookController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

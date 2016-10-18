@@ -1,9 +1,12 @@
 #See CartfileHelp
 
-github "ReactiveCocoa/ReactiveCocoa"  ~> 4.2.2
+#github "ReactiveCocoa/ReactiveCocoa"  ~> 4.2.2
 
-github "SnapKit/SnapKit" == 0.22.0
+#github "SnapKit/SnapKit" == 0.22.0
 
-github "Alamofire/Alamofire" ~> 3.0
+#github "Alamofire/Alamofire" ~> 3.0
 
-github "SwiftyJSON/SwiftyJSON" "swift2"
+#github "SwiftyJSON/SwiftyJSON" "swift2"
+
+github "xmartlabs/Eureka" ~> 1.7
+#github "ytakzk/Fusuma" == 0.6.0
