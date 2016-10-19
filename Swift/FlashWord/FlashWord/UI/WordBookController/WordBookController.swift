@@ -13,18 +13,32 @@ import ReactiveCocoa
 class WordBookController: DYViewController {
     @IBOutlet weak var collectionView : UICollectionView!
     @IBOutlet weak var collectionLayout : UICollectionViewFlowLayout!
+    var segment: LUNSegmentedControl {
+        let segment = LUNSegmentedControl(frame:CGRect(x:0, y:8, width: 140, height: 28))
+        segment.applyCornerRadiusToSelectorView = true
+        segment.backgroundColor = UIColor(hex: 0x333333).colorWithAlphaComponent(0.75)
+        segment.cornerRadius = 14
+        segment.textColor = UIColor(hex: 0x999999)
+        segment.selectedStateTextColor = UIColor.whiteColor()
+        segment.selectorViewColor = UIColor.clearColor()
+        segment.transitionStyle = LUNSegmentedControlTransitionStyle.Fade
+        segment.dataSource = self
+        segment.delegate = self
+        return segment
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
         
-        collectionView.contentInset = UIEdgeInsetsMake(64, 0, 50, 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 50, 0)
-        collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 120)
+        collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         
         let barRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(onBarBtnRight(_:)))
         self.navigationItem.rightBarButtonItem = barRight
+        
+        self.navigationItem.titleView = self.segment
     }
 
     override func didReceiveMemoryWarning() {
@@ -147,12 +161,20 @@ class WordBookController: DYViewController {
             }
         }
     }
+    
+    func notifyScrollChangeIndex() {
+        let pageWidth = collectionView.bounds.size.width
+        let pageIndex = Int(floor((collectionView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
+        if pageIndex >= 0 && pageIndex <= 1 {
+            self.segment.setCurrentState(pageIndex, animated: true)
+        }
+    }
 }
 
-
+//MARK: - UICollectionViewDataSource+UICollectionViewDelegate
 extension WordBookController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 10;
+        return 2;
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -160,24 +182,22 @@ extension WordBookController : UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let aCell = collectionView.dequeueReusableCellWithReuseIdentifier("WordBookCell", forIndexPath: indexPath)
+        let aCell = collectionView.dequeueReusableCellWithReuseIdentifier("WordBookPageCell", forIndexPath: indexPath)
         return aCell;
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        guard let cell = aCell as? WordBookCell else {
+        guard let cell = aCell as? WordBookPageCell else {
             return
         }
-        
-        cell.setMarkColor(UIColor.flatColor(atIndex:indexPath.section))
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
     }
     
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        
-//    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return self.view.bounds.size
+    }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         let sectionCount = self.numberOfSectionsInCollectionView(collectionView);
@@ -190,5 +210,55 @@ extension WordBookController : UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        notifyScrollChangeIndex()
+    }
+    
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        notifyScrollChangeIndex()
+    }
+}
+
+
+//MARK: - LUNSegmentedControlDataSource+LUNSegmentedControlDelegate
+extension WordBookController : LUNSegmentedControlDataSource, LUNSegmentedControlDelegate {
+    func numberOfStatesInSegmentedControl(segmentedControl: LUNSegmentedControl!) -> Int {
+        return 2
+    }
+    
+    func segmentedControl(segmentedControl: LUNSegmentedControl!, attributedTitleForStateAtIndex index: Int) -> NSAttributedString! {
+        switch index {
+        case 0:
+            return NSAttributedString(string: "我的", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)])
+        default:
+            return NSAttributedString(string: "在线", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)])
+        }
+
+    }
+    
+    func segmentedControl(segmentedControl: LUNSegmentedControl!, attributedTitleForSelectedStateAtIndex index: Int) -> NSAttributedString! {
+        switch index {
+        case 0:
+            return NSAttributedString(string: "我的", attributes: [NSFontAttributeName:UIFont.boldSystemFontOfSize(14)])
+        default:
+            return NSAttributedString(string: "在线", attributes: [NSFontAttributeName:UIFont.boldSystemFontOfSize(14)])
+        }
+    }
+    
+    func segmentedControl(segmentedControl: LUNSegmentedControl!, gradientColorsForStateAtIndex index: Int) -> [UIColor]! {
+        switch index {
+        case 0:
+            return [UIColor.flat(FlatColors.BurntOrange), UIColor.flat(FlatColors.AliceBlue)]
+        default:
+            return [UIColor.flat(FlatColors.ChestnuteRose), UIColor.flat(FlatColors.DarkSeaGreen)]
+        }
+    }
+    
+    func segmentedControl(segmentedControl: LUNSegmentedControl!, didChangeStateFromStateAtIndex fromIndex: Int, toStateAtIndex toIndex: Int) {
+        collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: toIndex),
+                                               atScrollPosition: UICollectionViewScrollPosition.Left,
+                                               animated: true)
     }
 }
