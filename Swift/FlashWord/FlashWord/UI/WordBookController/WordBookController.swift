@@ -14,7 +14,7 @@ class WordBookController: DYViewController {
     @IBOutlet weak var collectionView : UICollectionView!
     @IBOutlet weak var collectionLayout : UICollectionViewFlowLayout!
     var segment: LUNSegmentedControl {
-        let segment = LUNSegmentedControl(frame:CGRect(x:0, y:8, width: 140, height: 28))
+        let segment = LUNSegmentedControl(frame:CGRect(x:0, y:8, width: 180, height: 28))
         segment.applyCornerRadiusToSelectorView = true
         segment.backgroundColor = UIColor(hex: 0x333333).colorWithAlphaComponent(0.75)
         segment.cornerRadius = 14
@@ -231,9 +231,9 @@ extension WordBookController : LUNSegmentedControlDataSource, LUNSegmentedContro
     func segmentedControl(segmentedControl: LUNSegmentedControl!, attributedTitleForStateAtIndex index: Int) -> NSAttributedString! {
         switch index {
         case 0:
-            return NSAttributedString(string: "我的", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)])
+            return NSAttributedString(string: "我的词库", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)])
         default:
-            return NSAttributedString(string: "在线", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)])
+            return NSAttributedString(string: "在线词库", attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)])
         }
 
     }
@@ -241,9 +241,9 @@ extension WordBookController : LUNSegmentedControlDataSource, LUNSegmentedContro
     func segmentedControl(segmentedControl: LUNSegmentedControl!, attributedTitleForSelectedStateAtIndex index: Int) -> NSAttributedString! {
         switch index {
         case 0:
-            return NSAttributedString(string: "我的", attributes: [NSFontAttributeName:UIFont.boldSystemFontOfSize(14)])
+            return NSAttributedString(string: "我的词库", attributes: [NSFontAttributeName:UIFont.boldSystemFontOfSize(14)])
         default:
-            return NSAttributedString(string: "在线", attributes: [NSFontAttributeName:UIFont.boldSystemFontOfSize(14)])
+            return NSAttributedString(string: "在线词库", attributes: [NSFontAttributeName:UIFont.boldSystemFontOfSize(14)])
         }
     }
     

@@ -90,7 +90,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WordBookPageCell" id="rC4-aM-LRY" customClass="WordBookPageCell" customModule="FlashWord" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-57" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="-56.5" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
