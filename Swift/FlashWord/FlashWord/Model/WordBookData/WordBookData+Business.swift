@@ -18,7 +18,7 @@ extension WordBookData {
         if creator == nil {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
         }
-        if name.length <= 0 || desc.length <= 0 {
+        if name.length <= 0 {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"参数不合法"]))
         }
         
@@ -100,7 +100,7 @@ extension MyWordBookData {
         if creator == nil {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
         }
-        if name.length <= 0 || desc.length <= 0 {
+        if name.length <= 0 {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"参数不合法"]))
         }
         
@@ -181,6 +181,88 @@ extension MyWordBookData {
                     }
                 }
             }
+        }
+        return producer
+    }
+    
+    //查询我的生词本，不存在则自动创建
+    static func myNewWordBook(policy: AVCachePolicy = AVCachePolicy.CacheElseNetwork) -> SignalProducer<MyWordBookData?,NSError> {
+        let learner = AccountData.currentUser()
+        if learner == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        
+        let producer = SignalProducer<MyWordBookData?, NSError> {(observer, dispose) in
+            let query = MyWordBookData.query()
+            query.cachePolicy = policy
+            query.whereKey("type", equalTo: MyWordBookData.NewWord)
+            query.whereKey("learner", equalTo: learner)
+            query.getFirstObjectInBackgroundWithBlock { (myBook, error) in
+                if error == nil {
+                    if let myBook = myBook as? MyWordBookData {
+                        observer.sendNext(myBook)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendNext(nil)
+                        observer.sendCompleted()
+                    }
+                } else {
+                    if error.code == kAVErrorObjectNotFound {
+                        observer.sendNext(nil)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendFailed(error)
+                    }
+                }
+            }
+        }
+        
+        if policy == AVCachePolicy.CacheOnly || policy == AVCachePolicy.IgnoreCache {
+            return producer
+        } else {
+            return producer.flatMap(FlattenStrategy.Concat) { (myWordBook) -> SignalProducer<MyWordBookData?, NSError> in
+                if let myWordBook = myWordBook {
+                    return SignalProducer<MyWordBookData?, NSError>(value:myWordBook)
+                } else {
+                    return MyWordBookData.addMyWordBook("生词本", desc: "")
+                }
+            }
+        }
+    }
+    
+    //查询我的单词本，除了生词本以外
+    static func myWordBooks(policy policy: AVCachePolicy, skip: Int, limit: Int = AppConst.kDataLoadLimit) -> SignalProducer<[MyWordBookData],NSError> {
+        let learner = AccountData.currentUser()
+        if learner == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        
+        let producer = SignalProducer<[MyWordBookData], NSError> {(observer, dispose) in
+                let query = MyWordBookData.query()
+                query.cachePolicy = policy
+                query.whereKey("type", notEqualTo: MyWordBookData.NewWord)
+                query.whereKey("learner", equalTo: learner)
+                query.orderByDescending("createdAt")
+                query.skip = skip
+                query.limit = limit
+                query.findObjectsInBackgroundWithBlock { (myBooks, error) in
+                    if error == nil {
+                        if let myBooks = myBooks as? [MyWordBookData] {
+                            observer.sendNext(myBooks)
+                            observer.sendCompleted()
+                        } else {
+                            observer.sendNext([])
+                            observer.sendCompleted()
+                        }
+                    } else {
+                        if error.code == kAVErrorObjectNotFound {
+                            observer.sendNext([])
+                            observer.sendCompleted()
+                        } else {
+                            observer.sendFailed(error)
+                        }
+                    }
+                }
         }
         return producer
     }

@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import AVOSCloud
+
+protocol DYListViewModelDelegate {
+    func vm_updateData(policy policy: AVCachePolicy, callback : DYCommonCallback?)
+    func vm_loadMoreData(callback : DYCommonCallback?)
+    //MARK: data 内部使用
+    func vm_reloadData(sortID sortID : Int64, callback : DYCommonCallback?)
+}
 
 class DYListViewModel: DYViewModel {
+    var hasNoMoreData : Bool = false
+    
     var sections : [DYSectionViewModel] = []
     
     init(sections:[DYSectionViewModel], data:AnyObject? = nil) {
@@ -50,18 +60,18 @@ class DYListViewModel: DYViewModel {
     }
 }
 
-extension DYListViewModel {
+extension DYListViewModel : DYListViewModelDelegate{
     //MARK: data 外部使用
     /**下拉刷新*/
-    func updateData(callback : DYCommonCallback?) {
+    func vm_updateData(policy policy: AVCachePolicy, callback : DYCommonCallback?) {
     }
     
     /**上拉加载更多*/
-    func loadMoreData(callback : DYCommonCallback?) {
+    func vm_loadMoreData(callback : DYCommonCallback?) {
     }
     
-    //MARK: data 内部使用
-    func reloadData(sortID : Int64, callback : DYCommonCallback?) {
+    //MARK: data 内部使用，将data转成sections
+    func vm_reloadData(sortID sortID : Int64, callback : DYCommonCallback?) {
         guard let callback = callback else {
             return
         }

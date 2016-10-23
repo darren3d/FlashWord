@@ -11,7 +11,7 @@ import AVOSCloud
 
 class LearnWordVM: DYListViewModel {
     
-    override func reloadData(sortID: Int64, callback: DYCommonCallback?) {
+    override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) {
         var sections = [DYSectionViewModel]();
         //没有调用registerSubclass，该处会失败
         if let datas = self.data as? [LearnModeData] {
@@ -23,13 +23,13 @@ class LearnWordVM: DYListViewModel {
         }
         self.sections = sections
         
-        super.reloadData(sortID, callback: callback)
+        super.vm_reloadData(sortID: sortID, callback: callback)
     }
     
-    override func updateData(callback: DYCommonCallback?) {
+    override func vm_updateData(policy policy: AVCachePolicy, callback: DYCommonCallback?) {
         let queryMode = LearnModeData.query()
         queryMode.orderByAscending("mode")
-        queryMode.cachePolicy = AVCachePolicy.CacheThenNetwork
+        queryMode.cachePolicy = policy
         queryMode.findObjectsInBackgroundWithBlock {[weak self] (modes, error) in
             guard let strongSelf = self else {
                 return
@@ -42,13 +42,13 @@ class LearnWordVM: DYListViewModel {
             }
             
             //刷新数据
-            strongSelf.reloadData(Int64(-1), callback: nil)
+            strongSelf.vm_reloadData(sortID: Int64(-1), callback: nil)
             
             callback?(modes, error)
         }
     }
     
-    override func loadMoreData(callback: DYCommonCallback?) {
+    override func vm_loadMoreData(callback: DYCommonCallback?) {
         
     }
 }

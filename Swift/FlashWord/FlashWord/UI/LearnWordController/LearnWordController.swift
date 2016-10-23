@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVOSCloud
 
 class LearnWordController: DYViewController {
     @IBOutlet weak var collectionView : UICollectionView!
@@ -25,8 +26,7 @@ class LearnWordController: DYViewController {
         collectionView.contentInset = UIEdgeInsetsMake(64, 0, 50, 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 50, 0)
         collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 66)
-        
-        viewModel.updateData {[weak self] (objs, error) in
+        viewModel.vm_updateData(policy: AVCachePolicy.NetworkElseCache) {[weak self] (objs, error) in
             guard let strongSelf = self else {
                 return
             }
