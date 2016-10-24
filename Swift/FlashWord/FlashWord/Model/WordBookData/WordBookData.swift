@@ -23,7 +23,10 @@ class WordBookData: AVObject, AVSubclassing {
 
 @objc
 class MyWordBookData: AVObject, AVSubclassing {
-    static let NewWord = "word.book.type.new.word"
+     struct BookType {
+        static let Default = ""
+        static let NewWord = "word.book.type.new.word"
+    }
     @NSManaged var book : WordBookData
     @NSManaged var learner : AccountData
     @NSManaged var tests : AVRelation

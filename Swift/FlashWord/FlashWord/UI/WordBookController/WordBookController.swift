@@ -27,6 +27,9 @@ class WordBookController: DYViewController {
         return segment
     }
     
+    var myWordBooksVM : WordBookListVM!
+    var onlineWordBooksVM :WordBookListVM!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +42,9 @@ class WordBookController: DYViewController {
         self.navigationItem.rightBarButtonItem = barRight
         
         self.navigationItem.titleView = self.segment
+        
+        myWordBooksVM = MyWordBookListVM.listVM(WordBookListType.My)
+        onlineWordBooksVM = MyWordBookListVM.listVM(WordBookListType.Online)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,25 +53,25 @@ class WordBookController: DYViewController {
     }
     
     func onBarBtnRight(sender:AnyObject!) {
-        MyWordBookData.addMyWordBook("生词本", desc: "一些不熟悉的单词集合")
-        .start(Observer<MyWordBookData?, NSError>(
-            failed: { error in
-                DYLog.info("failed:\(error.localizedDescription)")
-            },
-            completed: {
-                DYLog.info("completed")
-            },
-            interrupted: {
-                DYLog.info("interrupted")
-            },
-            next: { myBook in
-                if myBook == nil {
-                    DYLog.info("myBook : empty")
-                } else {
-                    DYLog.info("myBook : myBook")
-                }
-            }
-            ))
+//        MyWordBookData.addMyWordBook("生词本", desc: "一些不熟悉的单词集合")
+//        .start(Observer<MyWordBookData?, NSError>(
+//            failed: { error in
+//                DYLog.info("failed:\(error.localizedDescription)")
+//            },
+//            completed: {
+//                DYLog.info("completed")
+//            },
+//            interrupted: {
+//                DYLog.info("interrupted")
+//            },
+//            next: { myBook in
+//                if myBook == nil {
+//                    DYLog.info("myBook : empty")
+//                } else {
+//                    DYLog.info("myBook : myBook")
+//                }
+//            }
+//            ))
         return
         
         let produce = WordData.addWordData("word")
@@ -189,6 +195,11 @@ extension WordBookController : UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         guard let cell = aCell as? WordBookPageCell else {
             return
+        }
+        if indexPath.section == 0 {
+            cell.cellViewModel = myWordBooksVM
+        } else {
+            cell.cellViewModel = onlineWordBooksVM
         }
     }
     

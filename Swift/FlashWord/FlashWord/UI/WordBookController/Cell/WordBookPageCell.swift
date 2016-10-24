@@ -7,10 +7,29 @@
 //
 
 import UIKit
+import AVOSCloud
+import ReactiveCocoa
 
 class WordBookPageCell: UICollectionViewCell {
     @IBOutlet weak var collectionView : UICollectionView!
     @IBOutlet weak var collectionLayout : UICollectionViewFlowLayout!
+    
+    var listVM : MyWordBookListVM!
+    override var cellViewModel: DYViewModel? {
+        get {
+            return listVM
+        }
+        set {
+            if let listVM = newValue as? MyWordBookListVM {
+                listVM.vm_scrollView = collectionView
+                self.listVM = listVM
+                
+                self.collectionView.dataSource = listVM
+                self.collectionView.delegate = listVM
+                self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib();
@@ -19,58 +38,14 @@ class WordBookPageCell: UICollectionViewCell {
         collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 50, 0)
         collectionView.backgroundColor = UIColor.flat(FlatColors.Nephritis).colorWithAlphaComponent(0.2)
         
-        dy_setupRefresher()
+        ui_setupRefresher()
     }
 }
-
-extension WordBookPageCell : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 10;
-    }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1;
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let aCell = collectionView.dequeueReusableCellWithReuseIdentifier("WordBookCell", forIndexPath: indexPath)
-        return aCell;
-    }
-    
-    func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        guard let cell = aCell as? WordBookCell else {
-            return
-        }
-        
-        cell.setMarkColor(UIColor.flatColor(atIndex:indexPath.section))
-    }
-    
-    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: self.bounds.width, height: 120)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let sectionCount = self.numberOfSectionsInCollectionView(collectionView);
-        if section != sectionCount - 1 {
-            return UIEdgeInsetsMake(10, 0, 0, 0)
-        } else {
-            return UIEdgeInsetsMake(10, 0, 10, 0)
-        }
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-    }
-}
-
 
 extension WordBookPageCell {
-    func dy_setupRefresher() {
-        self.collectionView.dy_setupHeader(target: self, selector: #selector(dy_updateData))
-        self.collectionView.dy_setupFooter(target: self, selector: #selector(dy_loadMoreData))
+    func ui_setupRefresher() {
+        self.collectionView.dy_setupHeader(target: self, selector: #selector(ui_updateData))
+        self.collectionView.dy_setupFooter(target: self, selector: #selector(ui_loadMoreData))
         let colors = [UIColor.flat(FlatColors.Nephritis),
                       UIColor.flat(FlatColors.Flamingo),
                       UIColor.flat(FlatColors.PeterRiver),
@@ -83,13 +58,16 @@ extension WordBookPageCell {
         footer.setBallColors(colors)
     }
     
-    func dy_reloadData(sordID : Int) {
+    func ui_updateData() {
+        listVM.vm_updateData(policy: AVCachePolicy.NetworkElseCache) { (obj, error) in
+
+        }
     }
     
-    func dy_updateData() {
-    }
     
-    
-    func dy_loadMoreData() {
+    func ui_loadMoreData() {
+//        listVM.vm_loadMoreData { (obj, error) in
+//            <#code#>
+//        }
     }
 }

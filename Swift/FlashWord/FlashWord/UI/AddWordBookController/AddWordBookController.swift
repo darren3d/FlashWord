@@ -33,7 +33,7 @@ class AddWordBookController: DYViewController {
     }
     
     func onBarBtnRight(sender:AnyObject!) {
-        MyWordBookData.addMyWordBook("生词本", desc: "一些不熟悉的单词集合")
+        MyWordBookData.addMyWordBook("生词本", desc: "一些不熟悉的单词集合", type: MyWordBookData.BookType.Default)
         .start(Observer<MyWordBookData?, NSError>(
             failed: { error in
                 DYLog.info("failed:\(error.localizedDescription)")

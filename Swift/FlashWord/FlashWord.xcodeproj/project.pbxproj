@@ -13,6 +13,9 @@
 		6304C31D1DAA86A0000D9DA1 /* DYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */; };
 		6304C31E1DAA86A0000D9DA1 /* DYTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */; };
 		6304C3211DAA9FEF000D9DA1 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3201DAA9FEF000D9DA1 /* MyController.swift */; };
+		6326562A1DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */; };
+		6326562C1DBDEF67009CC611 /* UIView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562B1DBDEF67009CC611 /* UIView+Utility.swift */; };
+		6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */; };
 		632D04EC1D09CB4700F9744B /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632D04EA1D09CB4700F9744B /* AccountData.swift */; };
 		632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */; };
 		633231CE1DB30F920041295A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633231CD1DB30F920041295A /* SwiftyJSON.framework */; };
@@ -249,6 +252,9 @@
 		6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarController.swift; sourceTree = "<group>"; };
 		6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarItem.swift; sourceTree = "<group>"; };
 		6304C3201DAA9FEF000D9DA1 /* MyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
+		632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utility.swift"; sourceTree = "<group>"; };
+		6326562B1DBDEF67009CC611 /* UIView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utility.swift"; sourceTree = "<group>"; };
+		6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordBookListVM+UI.swift"; sourceTree = "<group>"; };
 		632D04DC1D09C7E600F9744B /* FlashWord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlashWord-Bridging-Header.h"; sourceTree = "<group>"; };
 		632D04EA1D09CB4700F9744B /* AccountData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYDataCenter.swift; sourceTree = "<group>"; };
@@ -751,6 +757,7 @@
 			isa = PBXGroup;
 			children = (
 				635A25251DBD13FA00DC5E43 /* WordBookListVM.swift */,
+				6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */,
 				635A25291DBD3F0F00DC5E43 /* WordBookCellVM.swift */,
 			);
 			path = ViewModel;
@@ -896,6 +903,8 @@
 				633FDCF51DAF953F006F09AD /* Array+Utility.swift */,
 				633FDCF71DAF9877006F09AD /* DYRandom.swift */,
 				63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */,
+				632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */,
+				6326562B1DBDEF67009CC611 /* UIView+Utility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1679,6 +1688,7 @@
 				6380AE981DAD22F3003700A4 /* DYListViewModel+UI.swift in Sources */,
 				844FBA7D1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				63C6C11E1D2D4CD80090AC38 /* RootNavigationController.swift in Sources */,
+				6326562C1DBDEF67009CC611 /* UIView+Utility.swift in Sources */,
 				844FBA801D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				6380AE801DAC2779003700A4 /* LearnWordCell.swift in Sources */,
 				84301D1A1D1935E600BB3C5D /* TextAttributes.swift in Sources */,
@@ -1690,6 +1700,7 @@
 				6388D5F81D15D5EB0029C988 /* UIViewController+ProgressView.swift in Sources */,
 				844FBA831D0FE0F900D6C2EA /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				639188061D0A915800757F60 /* DynamicColor.swift in Sources */,
+				6326562A1DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift in Sources */,
 				63ECC4541DB1657D00C1342E /* NJKWebViewProgress.m in Sources */,
 				632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */,
 				6349F23C1D326899002210E0 /* DYGender.swift in Sources */,
@@ -1831,6 +1842,7 @@
 				63ECC4321DB1475400C1342E /* String+Utility.swift in Sources */,
 				844FBA701D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				63ECC4D91DB288E400C1342E /* BRAOpenXmlSubElement.m in Sources */,
+				6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */,
 				63ECC4BF1DB288E400C1342E /* BRACellFormat.m in Sources */,
 				844FBA771D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				634E44EF1DB4C83B00B1A9B4 /* AddWordBookController.swift in Sources */,

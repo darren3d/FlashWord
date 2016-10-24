@@ -23,6 +23,7 @@ extension NSObject {
         return value
     }
     
+    //http://blog.csdn.net/woaifen3344/article/details/49179887
     // 通过string创建swift类，类必须用@objc标记
     class func swiftClassFromString(className: String) -> AnyClass! {
         // get the project name
@@ -37,6 +38,12 @@ extension NSObject {
         let cls : AnyClass? = NSClassFromString(classStringName)
         assert(cls != nil, "class not found, please check className \(className)")
         return cls
+    }
+    
+    class func SimpleStringFromClass(aClass: AnyClass) -> String {
+        let classString = NSStringFromClass(aClass)
+        let comps = classString.componentsSeparatedByString(".")
+        return comps.last!
     }
 }
 

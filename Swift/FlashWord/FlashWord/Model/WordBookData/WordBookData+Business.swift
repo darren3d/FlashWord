@@ -95,7 +95,7 @@ extension MyWordBookData {
     //        
     //    }
     
-    static func addMyWordBook(name: String, desc: String) -> SignalProducer<MyWordBookData?, NSError> {
+    static func addMyWordBook(name: String, desc: String, type: String) -> SignalProducer<MyWordBookData?, NSError> {
         let creator = AccountData.currentUser()
         if creator == nil {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
@@ -107,7 +107,7 @@ extension MyWordBookData {
         let producer = WordBookData.addWordBook(name, desc: desc)
         .flatMap(FlattenStrategy.Concat) { (_, book) -> SignalProducer<MyWordBookData?, NSError> in
             if let book = book {
-                return MyWordBookData.addMyWordBook(book)
+                return MyWordBookData.addMyWordBook(book, type: type)
             } else {
                 return SignalProducer.empty
             }
@@ -115,15 +115,15 @@ extension MyWordBookData {
         return producer
     }
     
-    static func addMyWordBook(book: WordBookData) -> SignalProducer<MyWordBookData?,NSError> {
+    static func addMyWordBook(book: WordBookData, type: String) -> SignalProducer<MyWordBookData?,NSError> {
         let learner = AccountData.currentUser()
         if learner == nil {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
         }
         
-        return SignalProducer<WordBookData, NSError>(value:book)
-        .flatMap(FlattenStrategy.Concat) { (book) -> SignalProducer<MyWordBookData?, NSError> in
-            MyWordBookData.myWordBook(book)
+        return SignalProducer<(WordBookData, String), NSError>(value:(book, type))
+        .flatMap(FlattenStrategy.Concat) { (book, type) -> SignalProducer<MyWordBookData?, NSError> in
+            return MyWordBookData.myWordBook(book, type: type)
         }.flatMap(FlattenStrategy.Concat) { (myBook) -> SignalProducer<MyWordBookData?, NSError> in
             if let myBook = myBook {
                 return SignalProducer<MyWordBookData?, NSError>(value:myBook)
@@ -132,6 +132,7 @@ extension MyWordBookData {
                     let myBookData = MyWordBookData()
                     myBookData.book = book
                     myBookData.learner = learner
+                    myBookData.type = type
                     myBookData.saveInBackgroundWithBlock({ (succeed, error) in
                         if error == nil {
                             if succeed {
@@ -153,7 +154,7 @@ extension MyWordBookData {
     }
     
     //通过book查询mybook
-    static func myWordBook(book: WordBookData) -> SignalProducer<MyWordBookData?,NSError> {
+    static func myWordBook(book: WordBookData, type: String) -> SignalProducer<MyWordBookData?,NSError> {
         let learner = AccountData.currentUser()
         if learner == nil {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
@@ -163,6 +164,7 @@ extension MyWordBookData {
             let query = MyWordBookData.query()
             query.whereKey("book", equalTo: book)
             query.whereKey("learner", equalTo: learner)
+            query.whereKey("type", equalTo: type)
             query.getFirstObjectInBackgroundWithBlock { (myBook, error) in
                 if error == nil {
                     if let myBook = myBook as? MyWordBookData {
@@ -195,7 +197,7 @@ extension MyWordBookData {
         let producer = SignalProducer<MyWordBookData?, NSError> {(observer, dispose) in
             let query = MyWordBookData.query()
             query.cachePolicy = policy
-            query.whereKey("type", equalTo: MyWordBookData.NewWord)
+            query.whereKey("type", equalTo: MyWordBookData.BookType.NewWord)
             query.whereKey("learner", equalTo: learner)
             query.getFirstObjectInBackgroundWithBlock { (myBook, error) in
                 if error == nil {
@@ -224,7 +226,7 @@ extension MyWordBookData {
                 if let myWordBook = myWordBook {
                     return SignalProducer<MyWordBookData?, NSError>(value:myWordBook)
                 } else {
-                    return MyWordBookData.addMyWordBook("生词本", desc: "")
+                    return MyWordBookData.addMyWordBook("生词本", desc: "", type: MyWordBookData.BookType.NewWord)
                 }
             }
         }
@@ -240,7 +242,7 @@ extension MyWordBookData {
         let producer = SignalProducer<[MyWordBookData], NSError> {(observer, dispose) in
                 let query = MyWordBookData.query()
                 query.cachePolicy = policy
-                query.whereKey("type", notEqualTo: MyWordBookData.NewWord)
+                query.whereKey("type", notEqualTo: MyWordBookData.BookType.NewWord)
                 query.whereKey("learner", equalTo: learner)
                 query.orderByDescending("createdAt")
                 query.skip = skip

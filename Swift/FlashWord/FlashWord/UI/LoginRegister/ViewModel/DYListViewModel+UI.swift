@@ -30,6 +30,7 @@ extension DYListViewModel : DYCollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        NSException.raise(NSInternalInconsistencyException, format:"subclass must override this method: cellForItemAtIndexPath", arguments:getVaList(["nil"]))
         return UICollectionViewCell();
     }
     
@@ -41,13 +42,28 @@ extension DYListViewModel : DYCollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        guard let sectionVM = self.sectionAtIndex(indexPath.section) else {
+            return
+        }
+        guard let itemVM = sectionVM.itemAtIndex(indexPath.item) else {
+            return
+        }
+        cell.cellWillDisplay()
+        cell.cellViewModel = itemVM
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        cell.cellDidEndDisplay()
     }
-//    
+    
 //    //MARK: Layout Delegate
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        guard let sectionVM = self.sectionAtIndex(indexPath.section) else {
+//            return CGSizeZero
+//        }
+//        guard let itemVM = sectionVM.itemAtIndex(indexPath.item) else {
+//            return CGSizeZero
+//        }
 //        return CGSizeZero
 //    }
 //    

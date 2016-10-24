@@ -27,14 +27,15 @@ class WordBookListVM: DYListViewModel {
             return nil
         }
     }
-
+    
+    
 }
 
 class MyWordBookListVM: WordBookListVM {
     private var myNewWordBook : MyWordBookData?
     private var myWordBooks : [MyWordBookData] = []
     
-    override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) {
+    override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool{
         var sections: [DYSectionViewModel] = []
         for myBook in myWordBooks {
             let item = WordBookCellVM(data: myBook)
@@ -42,10 +43,15 @@ class MyWordBookListVM: WordBookListVM {
             sections.append(section)
         }
         self.sections = sections
-        callback?(nil, nil)
+        
+        return super.vm_reloadData(sortID: sortID, callback: callback)
     }
     
-    override func vm_updateData(policy policy: AVCachePolicy, callback: DYCommonCallback?) {
+    override func vm_updateData(policy policy: AVCachePolicy, callback: DYCommonCallback?) -> Bool{
+        if !super.vm_updateData(policy: policy, callback: callback) {
+            return false
+        }
+        
         let limit = AppConst.kDataLoadLimit
         let producerMyNewBook = MyWordBookData.myNewWordBook(policy)
         let producerMyBooks = MyWordBookData.myWordBooks(policy: policy, skip: 0, limit: limit)
@@ -71,9 +77,15 @@ class MyWordBookListVM: WordBookListVM {
                     self?.vm_reloadData(sortID: Int64(-1), callback: callback)
                 }
             ))
+        
+        return true
     }
     
-    override func vm_loadMoreData(callback: DYCommonCallback?) {
+    override func vm_loadMoreData(callback: DYCommonCallback?) -> Bool{
+        if !super.vm_loadMoreData(callback) {
+            return false
+        }
+        
         let skip = myWordBooks.count
         let limit = AppConst.kDataLoadLimit
         let producerMyBooks = MyWordBookData.myWordBooks(policy: AVCachePolicy.NetworkElseCache, skip: skip, limit: limit)
@@ -97,6 +109,8 @@ class MyWordBookListVM: WordBookListVM {
                 self?.vm_reloadData(sortID: Int64(1), callback: callback)
             }
             ))
+        
+        return true
     }
 }
 
