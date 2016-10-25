@@ -37,7 +37,8 @@ public struct AppError {
 
 
 public class AppConst: NSObject {
-    public static let kDataLoadLimit = 20
+    public static let kNormDataLoadLimit = 20
+    public static let kBigDataLoadLimit = 80
     
     public static let kNotificationSwithToHomeTab = "com.flashword.note.switch.hometab"
     

@@ -16,6 +16,10 @@
 		6326562A1DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */; };
 		6326562C1DBDEF67009CC611 /* UIView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562B1DBDEF67009CC611 /* UIView+Utility.swift */; };
 		6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */; };
+		632656331DBF25B0009CC611 /* WordBookDetailVM+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656311DBF25B0009CC611 /* WordBookDetailVM+UI.swift */; };
+		632656341DBF25B0009CC611 /* WordBookDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656321DBF25B0009CC611 /* WordBookDetailVM.swift */; };
+		632656361DBF2C1C009CC611 /* WordDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656351DBF2C1C009CC611 /* WordDataCell.swift */; };
+		632656381DBF3703009CC611 /* WordDataCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656371DBF3703009CC611 /* WordDataCellVM.swift */; };
 		632D04EC1D09CB4700F9744B /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632D04EA1D09CB4700F9744B /* AccountData.swift */; };
 		632D04EE1D09CE9D00F9744B /* DYDataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */; };
 		633231CE1DB30F920041295A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633231CD1DB30F920041295A /* SwiftyJSON.framework */; };
@@ -255,6 +259,10 @@
 		632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utility.swift"; sourceTree = "<group>"; };
 		6326562B1DBDEF67009CC611 /* UIView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utility.swift"; sourceTree = "<group>"; };
 		6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordBookListVM+UI.swift"; sourceTree = "<group>"; };
+		632656311DBF25B0009CC611 /* WordBookDetailVM+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordBookDetailVM+UI.swift"; sourceTree = "<group>"; };
+		632656321DBF25B0009CC611 /* WordBookDetailVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookDetailVM.swift; sourceTree = "<group>"; };
+		632656351DBF2C1C009CC611 /* WordDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDataCell.swift; sourceTree = "<group>"; };
+		632656371DBF3703009CC611 /* WordDataCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDataCellVM.swift; sourceTree = "<group>"; };
 		632D04DC1D09C7E600F9744B /* FlashWord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlashWord-Bridging-Header.h"; sourceTree = "<group>"; };
 		632D04EA1D09CB4700F9744B /* AccountData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYDataCenter.swift; sourceTree = "<group>"; };
@@ -597,6 +605,24 @@
 				6304C3201DAA9FEF000D9DA1 /* MyController.swift */,
 			);
 			path = MyController;
+			sourceTree = "<group>";
+		};
+		6326562F1DBF25B0009CC611 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				632656351DBF2C1C009CC611 /* WordDataCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		632656301DBF25B0009CC611 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				632656321DBF25B0009CC611 /* WordBookDetailVM.swift */,
+				632656311DBF25B0009CC611 /* WordBookDetailVM+UI.swift */,
+				632656371DBF3703009CC611 /* WordDataCellVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		632D04E31D09C9BD00F9744B /* Model */ = {
@@ -1171,6 +1197,8 @@
 		63E2ABB61DB6660000CF818B /* WordBookDetailController */ = {
 			isa = PBXGroup;
 			children = (
+				6326562F1DBF25B0009CC611 /* Cell */,
+				632656301DBF25B0009CC611 /* ViewModel */,
 				63E2ABB71DB6660000CF818B /* WordBookDetailController.swift */,
 			);
 			path = WordBookDetailController;
@@ -1667,6 +1695,7 @@
 				844FBA6B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */,
 				635A25281DBD3EF500DC5E43 /* DYListCellVM.swift in Sources */,
+				632656331DBF25B0009CC611 /* WordBookDetailVM+UI.swift in Sources */,
 				6380AE901DACEB44003700A4 /* LearnWordVM.swift in Sources */,
 				639187FD1D09FB3E00757F60 /* DYUserDefaults.swift in Sources */,
 				6336F4291DBCEDEE009B1A70 /* DYRefreshBallHeader.swift in Sources */,
@@ -1799,6 +1828,7 @@
 				63E2ABC41DB74CD800CF818B /* LUNSegmentedControl.m in Sources */,
 				63E2ABBA1DB74A5100CF818B /* WordBookPageCell.swift in Sources */,
 				6349F23A1D31E1C2002210E0 /* DOAlertController.swift in Sources */,
+				632656381DBF3703009CC611 /* WordDataCellVM.swift in Sources */,
 				6349F2261D2EB9CE002210E0 /* ResetPasswordController.swift in Sources */,
 				63ECC4CD1DB288E400C1342E /* BRARelationship.m in Sources */,
 				6388D5CF1D0DB1AC0029C988 /* DYNavigationController.swift in Sources */,
@@ -1812,6 +1842,7 @@
 				63ECC4D51DB288E400C1342E /* BRAWorksheet.m in Sources */,
 				844FBA8B1D0FE0F900D6C2EA /* NVActivityIndicatorViewable.swift in Sources */,
 				633FDCF81DAF9877006F09AD /* DYRandom.swift in Sources */,
+				632656341DBF25B0009CC611 /* WordBookDetailVM.swift in Sources */,
 				6380AE921DACEF04003700A4 /* DYListViewModel.swift in Sources */,
 				6349F2331D30433F002210E0 /* DYOriginalTable.swift in Sources */,
 				84301D171D190EE800BB3C5D /* DYSatelliteLoader.swift in Sources */,
@@ -1834,6 +1865,7 @@
 				635607F61DA67ECB00D558E0 /* LoginRegisterVM.swift in Sources */,
 				844FBA7B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZagDeflect.swift in Sources */,
 				63ECC4C01DB288E400C1342E /* BRACellRange.m in Sources */,
+				632656361DBF2C1C009CC611 /* WordDataCell.swift in Sources */,
 				633FDCF61DAF953F006F09AD /* Array+Utility.swift in Sources */,
 				63ECC4B91DB288E400C1342E /* NSDictionary+OpenXMLDictionaryParser.m in Sources */,
 				6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */,

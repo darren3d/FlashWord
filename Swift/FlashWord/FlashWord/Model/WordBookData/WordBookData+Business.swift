@@ -39,7 +39,7 @@ extension WordBookData {
         return producer
     }
 
-    //添加word单词到WordData表，不检测服务器是否已经添加
+    //添加单词本，不检测服务器是否已经添加
     static func addWordBook(name: String, desc: String) -> SignalProducer<(String, WordBookData?), NSError> {
         let creator = AccountData.currentUser()
         if creator == nil {
@@ -98,6 +98,7 @@ extension WordBookData {
                         stongSelf.incrementKey("countWord", byAmount: count)
                     }
                     
+                    stongSelf.fetchWhenSave = true
                     stongSelf.saveInBackgroundWithBlock({[weak self] (succeed, error) in
                         if error == nil {
                             for (_, wordData) in wordDatas {
@@ -115,6 +116,63 @@ extension WordBookData {
                 }
                 return producer
              }
+    }
+    
+    private func wordDatas(policy policy: AVCachePolicy, skip: Int, limit: Int = AppConst.kNormDataLoadLimit) -> SignalProducer<[WordData],NSError> {
+        let producer = SignalProducer<[WordData], NSError> {[weak self] (observer, dispose) in
+            guard let sSelf = self else {
+                observer.sendCompleted()
+                return
+            }
+            
+            let query = sSelf.words.query()
+            query.cachePolicy = policy
+            query.orderByDescending("word")
+            query.skip = skip
+            query.limit = limit
+            query.findObjectsInBackgroundWithBlock { (words, error) in
+                if error == nil {
+                    if let words = words as? [WordData] {
+                        observer.sendNext(words)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendNext([])
+                        observer.sendCompleted()
+                    }
+                } else {
+                    if error.code == kAVErrorObjectNotFound {
+                        observer.sendNext([])
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendFailed(error)
+                    }
+                }
+            }
+        }
+        return producer
+    }
+    
+    func updateWordDatas(policy policy: AVCachePolicy, limit: Int = AppConst.kBigDataLoadLimit) -> SignalProducer<[WordData], NSError> {
+        //FIXME：NOTE：考虑map操作符是否换别的
+        let producer = self.wordDatas(policy: policy, skip: 0, limit: limit)
+            .map {[weak self] (words) -> [WordData] in
+                self?.hasNoMoreWord = limit > words.count
+                self?.wordDatas = words
+                return words
+        }
+        return producer
+    }
+    
+    func loadMoreWordDatas(policy policy: AVCachePolicy, limit: Int = AppConst.kBigDataLoadLimit) -> SignalProducer<[WordData], NSError> {
+        //FIXME：NOTE：考虑map操作符是否换别的
+        let skip = self.wordDatas.count
+        let producer = self.wordDatas(policy: policy, skip: skip, limit: limit)
+            .map {[weak self] (words) -> [WordData] in
+                self?.hasNoMoreWord = limit > words.count
+                self?.wordDatas.appendContentsOf(words)
+                return words
+        }
+        return producer
     }
 }
 
@@ -275,7 +333,7 @@ extension MyWordBookData {
     }
     
     //查询我的单词本，除了生词本以外
-    static func myWordBooks(policy policy: AVCachePolicy, skip: Int, limit: Int = AppConst.kDataLoadLimit) -> SignalProducer<[MyWordBookData],NSError> {
+    static func myWordBooks(policy policy: AVCachePolicy, skip: Int, limit: Int = AppConst.kNormDataLoadLimit) -> SignalProducer<[MyWordBookData],NSError> {
         let learner = AccountData.currentUser()
         if learner == nil {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))

@@ -9,8 +9,9 @@
 import UIKit
 import ReactiveCocoa
 
+@objc
 class DYViewController : UIViewController {
-    var viewModel : DYViewModel?
+    dynamic var viewModel : DYViewModel?
     
     deinit {
     }

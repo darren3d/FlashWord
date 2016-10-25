@@ -11,7 +11,7 @@
             <objects>
                 <navigationController storyboardIdentifier="RootNavigationController" id="s0o-L8-hmV" customClass="RootNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="qNq-2p-JPl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="qNq-2p-JPl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -373,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2W-jU-4lb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1311" y="-294"/>
+            <point key="canvasLocation" x="-546" y="-296"/>
         </scene>
         <!--单词本详情-->
         <scene sceneID="g7o-kd-W9n">
@@ -395,7 +395,50 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WordDataCell" id="dj1-gW-Slx" customClass="WordDataCell" customModule="FlashWord" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="800" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="单词" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-5a-NSK">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.2985658585" green="0.2985658585" blue="0.2985658585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D28-lP-0V0">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="释义" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNV-vl-8XQ">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="D28-lP-0V0" firstAttribute="leading" secondItem="JsG-5a-NSK" secondAttribute="trailing" constant="10" id="9xA-tE-pqf"/>
+                                            <constraint firstItem="D28-lP-0V0" firstAttribute="centerY" secondItem="JsG-5a-NSK" secondAttribute="centerY" id="B8k-lh-32J"/>
+                                            <constraint firstItem="JsG-5a-NSK" firstAttribute="leading" secondItem="dj1-gW-Slx" secondAttribute="leading" constant="10" id="CIG-gq-uB0"/>
+                                            <constraint firstItem="TNV-vl-8XQ" firstAttribute="leading" secondItem="dj1-gW-Slx" secondAttribute="leading" constant="10" id="CJS-Ev-hz1"/>
+                                            <constraint firstItem="TNV-vl-8XQ" firstAttribute="top" secondItem="JsG-5a-NSK" secondAttribute="bottom" constant="6" id="Trw-SJ-dLb"/>
+                                            <constraint firstAttribute="bottom" secondItem="TNV-vl-8XQ" secondAttribute="bottom" priority="200" constant="10" id="XcV-na-gZV"/>
+                                            <constraint firstAttribute="trailing" secondItem="D28-lP-0V0" secondAttribute="trailing" constant="10" id="YEs-gC-nkb"/>
+                                            <constraint firstItem="JsG-5a-NSK" firstAttribute="top" secondItem="dj1-gW-Slx" secondAttribute="top" constant="10" id="gm3-MA-qis"/>
+                                            <constraint firstAttribute="trailing" secondItem="TNV-vl-8XQ" secondAttribute="trailing" constant="10" id="iu8-vj-woq"/>
+                                        </constraints>
+                                        <size key="customSize" width="375" height="63"/>
+                                        <connections>
+                                            <outlet property="labelMean" destination="TNV-vl-8XQ" id="FR4-Sg-V6Z"/>
+                                            <outlet property="labelPhonation" destination="D28-lP-0V0" id="cpt-eI-TMe"/>
+                                            <outlet property="labelWord" destination="JsG-5a-NSK" id="vWO-Bj-uMu"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="k84-WP-YjO" id="nQe-72-lXa"/>
                                     <outlet property="delegate" destination="k84-WP-YjO" id="y4d-CE-CfV"/>
@@ -419,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J0Y-cV-Nqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-598" y="-295"/>
+            <point key="canvasLocation" x="-1298.4000000000001" y="-296.40179910044981"/>
         </scene>
         <!--添加单词-->
         <scene sceneID="0tF-Ym-kop">
@@ -478,7 +521,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="h89-ON-C1T">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="h89-ON-C1T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -594,7 +637,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="4bd-pD-FPu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="4bd-pD-FPu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

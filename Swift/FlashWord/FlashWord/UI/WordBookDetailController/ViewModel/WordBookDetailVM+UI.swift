@@ -1,5 +1,5 @@
 //
-//  WordBookListVM+UI.swift
+//  WordBookDetailVM+UI.swift
 //  FlashWord
 //
 //  Created by darrenyao on 2016/10/24.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension WordBookListVM {
+extension WordBookDetailVM {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return MyWordBookCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
     }
@@ -37,7 +37,7 @@ extension WordBookListVM {
     }
 }
 
-extension MyWordBookListVM {
+extension WordBookDetailVM {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         guard let sectionVM = self.sectionAtIndex(indexPath.section) else {
             return

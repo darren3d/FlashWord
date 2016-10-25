@@ -54,8 +54,8 @@ class LearnWordVM: DYListViewModel {
         return true
     }
     
-    override func vm_loadMoreData(callback: DYCommonCallback?) -> Bool{
-        return super.vm_loadMoreData(callback)
+    override func vm_loadMoreData(policy policy: AVCachePolicy, callback: DYCommonCallback?) -> Bool{
+        return super.vm_loadMoreData(policy: policy, callback: callback)
     }
 }
 

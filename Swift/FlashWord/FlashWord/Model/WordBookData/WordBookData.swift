@@ -20,7 +20,7 @@ class WordBookData: AVObject, AVSubclassing {
     @NSManaged var countWord : Int
     //非持久化，用于存储获取的单词
     dynamic var wordDatas : [WordData] = []
-    
+    dynamic var hasNoMoreWord : Bool = false
     
     static func parseClassName() -> String! {
         return "WordBookData"

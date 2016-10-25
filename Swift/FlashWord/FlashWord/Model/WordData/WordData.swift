@@ -40,15 +40,38 @@ class WordData: AVObject, AVSubclassing {
     //FIX: 找英式发音和美式发音不同的单词
     //英式发音
     func soundUrlEn() -> String {
-        return "http://fanyi.baidu.com/gettts?lan=en&text=\(self)&source=web"
+        return "http://fanyi.baidu.com/gettts?lan=en&text=\(word)&source=web"
     }
     //美式发音
     func soundUrlAm() -> String {
-        return "http://fanyi.baidu.com/gettts?lan=en&text=\(self)&source=web"
+        return "http://fanyi.baidu.com/gettts?lan=en&text=\(word)&source=web"
     }
     
     static func parseClassName() -> String! {
         return "WordData"
+    }
+    
+    func allMeans(typeSeparator: String = "  ", meanSeparator: String = " ") -> String {
+        var allMean = ""
+        let count = desc.count
+        for index in 0..<count {
+            let item = desc[index]
+            guard let type = item["type"] as? String,
+            let means = item["means"] as? [String] else {
+                continue
+            }
+            
+            allMean.appendContentsOf(type)
+            if means.count > 0 {
+                allMean.appendContentsOf(meanSeparator)
+                allMean.appendContentsOf(means.joinWithSeparator(meanSeparator))
+            }
+            
+            if index < count-1 {
+                allMean.appendContentsOf(typeSeparator)
+            }
+        }
+        return allMean
     }
 }
 

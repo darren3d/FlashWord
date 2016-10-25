@@ -27,8 +27,6 @@ class WordBookListVM: DYListViewModel {
             return nil
         }
     }
-    
-    
 }
 
 class MyWordBookListVM: WordBookListVM {
@@ -58,7 +56,7 @@ class MyWordBookListVM: WordBookListVM {
             return false
         }
         
-        let limit = AppConst.kDataLoadLimit
+        let limit = AppConst.kNormDataLoadLimit
         let producerMyNewBook = MyWordBookData.myNewWordBook(policy)
         let producerMyBooks = MyWordBookData.myWordBooks(policy: policy, skip: 0, limit: limit)
         let producerZip = producerMyNewBook.zipWith(producerMyBooks)
@@ -87,14 +85,14 @@ class MyWordBookListVM: WordBookListVM {
         return true
     }
     
-    override func vm_loadMoreData(callback: DYCommonCallback?) -> Bool{
-        if !super.vm_loadMoreData(callback) {
+    override func vm_loadMoreData(policy policy: AVCachePolicy, callback: DYCommonCallback?) -> Bool{
+        if !super.vm_loadMoreData(policy: policy, callback: callback) {
             return false
         }
         
         let skip = myWordBooks.count
-        let limit = AppConst.kDataLoadLimit
-        let producerMyBooks = MyWordBookData.myWordBooks(policy: AVCachePolicy.NetworkElseCache, skip: skip, limit: limit)
+        let limit = AppConst.kNormDataLoadLimit
+        let producerMyBooks = MyWordBookData.myWordBooks(policy: policy, skip: skip, limit: limit)
         producerMyBooks.start(Observer<([MyWordBookData]), NSError>(
             failed: {[weak self] error in
                 DYLog.info("failed:\(error.localizedDescription)")
