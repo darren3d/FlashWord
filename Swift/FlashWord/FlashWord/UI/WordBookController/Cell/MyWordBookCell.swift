@@ -43,6 +43,19 @@ class MyWordBookCell: UICollectionViewCell {
     
     func setupReactive() {
         RAC(target: self, keyPath: "labelTitle.text", nilValue: "匿名") <= RACObserve(target: self, keyPath: "viewModel.name")
+        RAC(target: self, keyPath: "labelWordConut.text", nilValue: "") <= RACObserve(target: self, keyPath: "viewModel.countWord")
+            .map { (count) -> AnyObject! in
+                if let count = count as? Int {
+                    if count > 0 {
+                        return "\(count)单词"
+                    }
+                }
+                return ""
+             }
+
+//        RACObserve(target: self, keyPath: "viewModel.countWord").mapAs { (count: NSNumber) -> NSString in
+//            ""
+//        }
     }
     
     func setMarkColor(color:UIColor) {
