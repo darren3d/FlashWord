@@ -147,5 +147,7 @@ class DYRefreshFooter: DYRefreshComponent {
         }
     }
     
-    
+    func setTitle(title: String) {
+        
+    }
 }

@@ -10,6 +10,8 @@ import UIKit
 import AVOSCloud
 
 protocol DYListViewModelDelegate {
+    /**显示footer需要的最小数目*/
+    func vm_minSectionCount() -> Int;
     func vm_updateData(policy policy: AVCachePolicy, callback : DYCommonCallback?) -> Bool
     func vm_loadMoreData(callback : DYCommonCallback?) -> Bool
     //MARK: data 内部使用
@@ -121,6 +123,11 @@ extension DYListViewModel : DYListViewModelDelegate{
         }
     }
     
+    /**显示footer需要的最小数目*/
+    func vm_minSectionCount() -> Int {
+        return 4
+    }
+    
     //MARK: data 外部使用
     /**下拉刷新*/
     func vm_updateData(policy policy: AVCachePolicy, callback : DYCommonCallback?) -> Bool {
@@ -173,8 +180,15 @@ extension DYListViewModel : DYListViewModelDelegate{
         
         //避免下拉只有少量数据，不满屏，下拉也要监测是否加载完
         if hasNoMoreData {
+            scrollView.dy_footer?.hidden = false
             scrollView.dy_footer?.endRefreshingWithNoMoreData()
+            let countSection = countOfSections()
+            if countSection < self.vm_minSectionCount() {
+//                scrollView.dy_footer?.setTitle(" ")
+                scrollView.dy_footer?.hidden = true
+            }
         } else {
+            scrollView.dy_footer?.hidden = false
             scrollView.dy_footer?.endRefreshing()
         }
         

@@ -83,5 +83,6 @@ extension UIScrollView {
         footer.backgroundColor = self.backgroundColor
         
         self.dy_footer = footer
+        footer.hidden = true
     }
 }

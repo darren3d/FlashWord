@@ -130,6 +130,10 @@ class DYRefreshBallFooter: DYRefreshFooter {
         self.labelStatus.text = self.stateTitles[self.state];
     }
     
+    override func setTitle(title: String) {
+        self.labelStatus.text = title;
+    }
+    
     func setBallColors(colors: [UIColor]) {
         ballView.setBallColors(colors)
     }
