@@ -52,6 +52,7 @@
 		635607F91DA798D300D558E0 /* WordBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607F81DA798D300D558E0 /* WordBookController.swift */; };
 		635607FC1DA79B6000D558E0 /* LearnWordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FB1DA79B6000D558E0 /* LearnWordController.swift */; };
 		635607FF1DA79E1900D558E0 /* MyWordBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FE1DA79E1900D558E0 /* MyWordBookCell.swift */; };
+		6356DC331DBF9F6D0075AF77 /* AVObject+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6356DC321DBF9F6D0075AF77 /* AVObject+Utility.swift */; };
 		635A25261DBD13FA00DC5E43 /* WordBookListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25251DBD13FA00DC5E43 /* WordBookListVM.swift */; };
 		635A25281DBD3EF500DC5E43 /* DYListCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25271DBD3EF500DC5E43 /* DYListCellVM.swift */; };
 		635A252A1DBD3F0F00DC5E43 /* MyWordBookCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25291DBD3F0F00DC5E43 /* MyWordBookCellVM.swift */; };
@@ -296,6 +297,7 @@
 		635607F81DA798D300D558E0 /* WordBookController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookController.swift; sourceTree = "<group>"; };
 		635607FB1DA79B6000D558E0 /* LearnWordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordController.swift; sourceTree = "<group>"; };
 		635607FE1DA79E1900D558E0 /* MyWordBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWordBookCell.swift; sourceTree = "<group>"; };
+		6356DC321DBF9F6D0075AF77 /* AVObject+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVObject+Utility.swift"; sourceTree = "<group>"; };
 		635A25251DBD13FA00DC5E43 /* WordBookListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookListVM.swift; sourceTree = "<group>"; };
 		635A25271DBD3EF500DC5E43 /* DYListCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYListCellVM.swift; sourceTree = "<group>"; };
 		635A25291DBD3F0F00DC5E43 /* MyWordBookCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWordBookCellVM.swift; sourceTree = "<group>"; };
@@ -931,6 +933,7 @@
 				63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */,
 				632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */,
 				6326562B1DBDEF67009CC611 /* UIView+Utility.swift */,
+				6356DC321DBF9F6D0075AF77 /* AVObject+Utility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -994,11 +997,11 @@
 		6388D5D01D0DB2CD0029C988 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				635607F71DA7987E00D558E0 /* WordBookController */,
 				63E2ABB61DB6660000CF818B /* WordBookDetailController */,
 				63E2ABB31DB6654D00CF818B /* AddWordController */,
 				634E44ED1DB4C83B00B1A9B4 /* AddWordBookController */,
 				635607FA1DA79B5600D558E0 /* LearnWordController */,
-				635607F71DA7987E00D558E0 /* WordBookController */,
 				6304C31F1DAA9FEF000D9DA1 /* MyController */,
 				63C6C11C1D2D4C500090AC38 /* RootController */,
 				6388D5D11D0DB2CD0029C988 /* LoginRegister */,
@@ -1739,6 +1742,7 @@
 				6336F42A1DBCEDEE009B1A70 /* DYWaveView.swift in Sources */,
 				638649911DAF3758008A9719 /* WordQuestionData.swift in Sources */,
 				844FBA731D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
+				6356DC331DBF9F6D0075AF77 /* AVObject+Utility.swift in Sources */,
 				844FBA7A1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
 				847D70391D12A4AD0025B54A /* ObjectUtility.swift in Sources */,
 				6388D5EC1D108B090029C988 /* AnimationLayerCreator.swift in Sources */,

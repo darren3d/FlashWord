@@ -63,17 +63,20 @@ class DYRefreshFooter: DYRefreshComponent {
         let oldScrollView = self.scrollView
         super.willMoveToSuperview(newSuperview)
         
-        guard let newScrollView = self.scrollView else {
-            if (self.hidden == false && oldScrollView != nil) {
-                oldScrollView!.contentInset.bottom -= self.frame.size.height;
+        if newSuperview != nil  {
+            if let oldScrollView = oldScrollView {
+                if (self.hidden == false) {
+                    oldScrollView.contentInset.bottom += self.frame.size.height;
+                }
+                self.frame.origin.y = oldScrollView.contentSize.height;
             }
-            return
+        } else {
+            if let oldScrollView = oldScrollView {
+                if (self.hidden == false) {
+                    oldScrollView.contentInset.bottom -= self.frame.size.height;
+                }
+            }
         }
-        
-        if (self.hidden == false) {
-            newScrollView.contentInset.bottom += self.frame.size.height;
-        }
-        self.frame.origin.y = newScrollView.contentSize.height;
     }
     
     func endRefreshingWithNoMoreData() {

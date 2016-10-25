@@ -10,21 +10,21 @@ import UIKit
 
 extension WordBookDetailVM {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return MyWordBookCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
+        return WordDataCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
     }
     
     override func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         super.collectionView(collectionView, willDisplayCell: aCell, forItemAtIndexPath: indexPath)
-        
-        guard let cell = aCell as? MyWordBookCell else {
-            return
-        }
-        
-        cell.setMarkColor(UIColor.flatColor(atIndex:indexPath.section))
+//        
+//        guard let cell = aCell as? MyWordBookCell else {
+//            return
+//        }
+//        
+        aCell.backgroundColor = UIColor.flatColor(atIndex:indexPath.section)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 120)
+        return CGSize(width: collectionView.bounds.width, height: 63)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {

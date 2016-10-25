@@ -21,6 +21,8 @@ class WordBookDetailController: DYViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         
         let viewModel = WordBookDetailVM(myBookID: myBookID)
+        viewModel.vm_scrollView = collectionView
+        viewModel.vm_viewController = self
         self.viewModel = viewModel
         
         collectionView.contentInset = UIEdgeInsetsMake(64, 0, 50, 0)
@@ -28,6 +30,8 @@ class WordBookDetailController: DYViewController {
         collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 120)
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
+        
+        ui_setupRefresher()
         
         let barRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(onBarBtnRight(_:)))
         self.navigationItem.rightBarButtonItem = barRight
@@ -147,6 +151,40 @@ class WordBookDetailController: DYViewController {
 //                    }))
 //            }
 //        }
+    }
+}
+
+extension WordBookDetailController {
+    func ui_setupRefresher() {
+        self.collectionView.dy_setupHeader(target: self, selector: #selector(ui_updateData))
+        self.collectionView.dy_setupFooter(target: self, selector: #selector(ui_loadMoreData))
+        let colors = [UIColor.flat(FlatColors.Nephritis),
+                      UIColor.flat(FlatColors.Flamingo),
+                      UIColor.flat(FlatColors.PeterRiver),
+                      UIColor.flat(FlatColors.California)]
+        
+        let header = self.collectionView.dy_header as! DYRefreshBallHeader
+        header.setBallColors(colors)
+        
+        let footer = self.collectionView.dy_footer as! DYRefreshBallFooter
+        footer.setBallColors(colors)
+    }
+    
+    func ui_updateData() {
+        guard let bookDetailVM = self.viewModel as? WordBookDetailVM else {
+            return
+        }
+        
+        bookDetailVM.vm_updateData(policy: AVCachePolicy.NetworkElseCache) { (obj, error) in
+            
+        }
+    }
+    
+    
+    func ui_loadMoreData() {
+        //        listVM.vm_loadMoreData { (obj, error) in
+        //            <#code#>
+        //        }
     }
 }
 

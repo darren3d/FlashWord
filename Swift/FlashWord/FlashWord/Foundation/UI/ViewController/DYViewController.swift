@@ -12,6 +12,7 @@ import ReactiveCocoa
 @objc
 class DYViewController : UIViewController {
     dynamic var viewModel : DYViewModel?
+    dynamic var isFirstAppear : Bool = true
     
     deinit {
     }
@@ -22,20 +23,29 @@ class DYViewController : UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (isFirstAppear) {
+            self.viewFirstWillAppear();
+        }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if (isFirstAppear) {
+            self.viewFirstDidAppear();
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.isFirstAppear = false
+            }
+        }
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func viewFirstWillAppear() {
+    }
     
+    func viewFirstDidAppear() {
+    }
 }

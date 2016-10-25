@@ -36,17 +36,33 @@ class WordBookDetailVM: DYListViewModel {
     }
     
     override func vm_updateData(policy policy: AVCachePolicy, callback: DYCommonCallback?) -> Bool{
-        guard let bookData = bookData else {
-            return false
-        }
-        
         if !super.vm_updateData(policy: policy, callback: callback) {
             return false
         }
         
         let limit = AppConst.kBigDataLoadLimit
-        let producer = bookData.updateWordDatas(policy: policy, limit: limit)
-        producer.start(Observer<[WordData], NSError>(
+        
+        var producer = SignalProducer<(MyWordBookData?, WordBookData?), NSError>(value: (myBookData, bookData))
+        if myBookData == nil || bookData == nil {
+            producer = MyWordBookData.dataWithID(objectID: self.myBookID, cachePolicy: policy, includeKeys: ["book"])
+                .map({ (data) -> (MyWordBookData?, WordBookData?) in
+                    guard let data = data as? MyWordBookData
+                        else {
+                            return (nil, nil)
+                    }
+                    return (data, data.book)
+                })
+        }
+        producer.flatMap(FlattenStrategy.Concat) {[weak self] (myBookData, bookData) -> SignalProducer<[WordData], NSError> in
+            guard let _ = myBookData,
+                let bookData = bookData else {
+                    return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"数据有误，请稍后重试或删除后重新添加"]))
+            }
+            self?.myBookData = myBookData
+            self?.bookData = bookData
+            
+            return bookData.updateWordDatas(policy: policy, limit: limit)
+        }.start(Observer<[WordData], NSError>(
                 failed: {[weak self] error in
                     DYLog.info("failed:\(error.localizedDescription)")
                     guard let _ = self, let callback = callback else {

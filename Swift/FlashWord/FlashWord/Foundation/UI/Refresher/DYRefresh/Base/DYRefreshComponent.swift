@@ -20,29 +20,18 @@ enum DYRefreshState : Int {
 }
 
 class DYRefreshComponent: UIView {
-    weak var scrollView : UIScrollView? {
-        willSet {
-            if newValue == scrollView {
-                return
-            }
-            removeKVOObservers()
-        }
-        didSet {
-            if oldValue == scrollView {
-                return
-            }
-            
-            guard let scrollView = scrollView else {
-                scrollViewOriginalInset = UIEdgeInsetsZero
-                return
-            }
-            
-            scrollView.alwaysBounceVertical = true
-            scrollViewOriginalInset = scrollView.contentInset
-            addKVOObservers()
-        }
+    private var hasAddKVOObserver = false
+    private var panGesture : UIPanGestureRecognizer?
+    
+    deinit {
+        removeKVOObservers()
     }
     
+    weak var scrollView : UIScrollView? {
+        didSet {
+            DYLog.info("teset")
+        }
+    }
     var scrollViewOriginalInset : UIEdgeInsets = UIEdgeInsetsZero
     
     var state : DYRefreshState = DYRefreshState.Idle {
@@ -90,46 +79,58 @@ class DYRefreshComponent: UIView {
     override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
         let scrollView = newSuperview as? UIScrollView
-        self.scrollView = scrollView
-        if newSuperview != nil {
-            self.frame.size.width = newSuperview!.frame.size.width
-            self.frame.origin.x = 0
-        }
-    }
-    
-    //MARK: KVO监听
-    func addKVOObservers() {
-        guard let scrollView = self.scrollView else {
+        if newSuperview != nil && scrollView == nil{
             return
         }
         
-        let options = NSKeyValueObservingOptions.New.union(NSKeyValueObservingOptions.Old)//|NSKeyValueObservingOptions.Old;
-        scrollView.addObserver(self,
-                               forKeyPath: "contentOffset",
-                               options: options,
-                               context: nil)
-        scrollView.addObserver(self,
-                               forKeyPath: "contentSize",
-                               options: options,
-                               context: nil)
+        removeKVOObservers()
         
-        let panGesture = scrollView.panGestureRecognizer
-        panGesture.addObserver(self,
-                               forKeyPath: "state",
-                               options: options,
-                               context: nil)
+        if let scrollView = scrollView {
+            self.frame.size.width = scrollView.frame.size.width
+            self.frame.origin.x = 0
+            
+            scrollView.alwaysBounceVertical = true
+            scrollViewOriginalInset = scrollView.contentInset
+            
+            addKVOObservers()
+        }
+    }
+
+    //MARK: KVO监听
+    func addKVOObservers() {
+        if hasAddKVOObserver {
+            return
+        }
+        hasAddKVOObserver = true
+        
+        let options = NSKeyValueObservingOptions.New.union(NSKeyValueObservingOptions.Old)//|NSKeyValueObservingOptions.Old;
+        self.scrollView?.addObserver(self,
+                                     forKeyPath: "contentOffset",
+                                     options: options,
+                                     context: nil)
+        self.scrollView?.addObserver(self,
+                                     forKeyPath: "contentSize",
+                                     options: options,
+                                     context: nil)
+        
+        self.panGesture = self.scrollView?.panGestureRecognizer
+        self.panGesture?.addObserver(self,
+                                     forKeyPath: "state",
+                                     options: options,
+                                     context: nil)
     }
     
     func removeKVOObservers() {
-        guard let scrollView = self.scrollView else {
+        if !hasAddKVOObserver {
             return
         }
+        hasAddKVOObserver = false
         
-        scrollView.removeObserver(self, forKeyPath: "contentOffset")
-        scrollView.removeObserver(self, forKeyPath: "contentSize")
+        self.superview?.removeObserver(self, forKeyPath: "contentOffset")
+        self.superview?.removeObserver(self, forKeyPath: "contentSize")
         
-        let panGesture = scrollView.panGestureRecognizer
-        panGesture.removeObserver(self, forKeyPath: "state");
+        self.panGesture?.removeObserver(self, forKeyPath: "state");
+        self.panGesture = nil
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {

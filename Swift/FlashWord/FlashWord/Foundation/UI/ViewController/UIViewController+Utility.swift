@@ -9,8 +9,13 @@
 import UIKit
 
 extension UIViewController {
-    public class func topViewController() -> UIViewController? {
+    public class func rootViewController() -> UIViewController? {
         let rootViewController = UIApplication.sharedApplication().windows.first?.rootViewController
+        return rootViewController
+    }
+    
+    public class func topViewController() -> UIViewController? {
+        let rootViewController = self.rootViewController()
         return self.topViewController(rootViewController)
     }
     
