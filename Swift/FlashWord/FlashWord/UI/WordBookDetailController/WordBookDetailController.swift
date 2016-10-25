@@ -165,7 +165,7 @@ extension WordBookDetailController : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        guard let cell = aCell as? WordBookCell else {
+        guard let cell = aCell as? MyWordBookCell else {
             return
         }
         

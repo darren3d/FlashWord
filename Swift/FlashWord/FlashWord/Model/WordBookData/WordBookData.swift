@@ -16,6 +16,12 @@ class WordBookData: AVObject, AVSubclassing {
     @NSManaged var creator : AccountData
     @NSManaged var words : AVRelation
     
+    //暂时存储单词数，非实时准确
+    @NSManaged var countWord : Int
+    //非持久化，用于存储获取的单词
+    dynamic var wordDatas : [WordData] = []
+    
+    
     static func parseClassName() -> String! {
         return "WordBookData"
     }
@@ -31,6 +37,10 @@ class MyWordBookData: AVObject, AVSubclassing {
     @NSManaged var learner : AccountData
     @NSManaged var tests : AVRelation
     @NSManaged var type : String
+    
+    @NSManaged var timeAvg : Int
+    @NSManaged var countLearn : Int
+    @NSManaged var masterDegree : Float
     
     static func parseClassName() -> String! {
         return "MyWordBookData"

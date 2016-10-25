@@ -10,13 +10,13 @@ import UIKit
 
 extension WordBookListVM {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return WordBookCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
+        return MyWordBookCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
     }
     
     override func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         super.collectionView(collectionView, willDisplayCell: aCell, forItemAtIndexPath: indexPath)
         
-        guard let cell = aCell as? WordBookCell else {
+        guard let cell = aCell as? MyWordBookCell else {
             return
         }
         

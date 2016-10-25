@@ -25,4 +25,10 @@ extension Array {
         }
         return result
     }
+    
+//    //MARK - 返回去重后的数组
+//    func unique<TT:Element where Element: Hashable>() -> [TT] {
+//        let set = Set<TT>(self)
+//        return Array(set)
+//    }
 }

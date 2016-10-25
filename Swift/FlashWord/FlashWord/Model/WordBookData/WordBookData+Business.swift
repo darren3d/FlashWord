@@ -11,6 +11,33 @@ import AVOSCloud
 import ReactiveCocoa
 
 extension WordBookData {
+    func updateCount() -> SignalProducer<Int, NSError> {
+        let producer = SignalProducer<Int, NSError> {[weak self] (observer, dispose) in
+            guard let sSelf = self else {
+                observer.sendCompleted()
+                return
+            }
+            
+            let query = sSelf.words.query()
+            query.cachePolicy = AVCachePolicy.NetworkOnly
+            query.countObjectsInBackgroundWithBlock({[weak self] (count, error) in
+                if error == nil {
+                    if let sSelf = self {
+                        if sSelf.countWord != count {
+                            sSelf.countWord = count
+                            sSelf.saveInBackground()
+                        }
+                    }
+                    
+                    observer.sendNext(count)
+                    observer.sendCompleted()
+                } else {
+                    observer.sendFailed(error)
+                }
+            })
+        }
+        return producer
+    }
 
     //添加word单词到WordData表，不检测服务器是否已经添加
     static func addWordBook(name: String, desc: String) -> SignalProducer<(String, WordBookData?), NSError> {
@@ -45,7 +72,10 @@ extension WordBookData {
     }
     
     func addWords(words: [String]) -> SignalProducer<Bool, NSError> {
-        return SignalProducer<String, NSError>(values: words)
+        //数组去重
+        let  uniWords = Array(Set(words))
+        
+        return SignalProducer<String, NSError>(values: uniWords)
             .flatMap(FlattenStrategy.Concat) { (word) -> SignalProducer<(String, WordData?), NSError> in
                 return WordData.addWordData(word)
             }.collect()
@@ -57,14 +87,25 @@ extension WordBookData {
                         return
                     }
                     
+                    var count = 0
                     for (_, wordData) in wordDatas {
-                        if wordData != nil {
-                            stongSelf.words.addObject(wordData!)
+                        if let wordData = wordData {
+                            count += 1
+                            stongSelf.words.addObject(wordData)
                         }
                     }
+                    if count > 0 {
+                        stongSelf.incrementKey("countWord", byAmount: count)
+                    }
                     
-                    stongSelf.saveInBackgroundWithBlock({ (succeed, error) in
+                    stongSelf.saveInBackgroundWithBlock({[weak self] (succeed, error) in
                         if error == nil {
+                            for (_, wordData) in wordDatas {
+                                if let wordData = wordData {
+                                    self?.wordDatas.append(wordData)
+                                }
+                            }
+                            
                             observer.sendNext(succeed)
                             observer.sendCompleted()
                         } else {
@@ -199,6 +240,7 @@ extension MyWordBookData {
             query.cachePolicy = policy
             query.whereKey("type", equalTo: MyWordBookData.BookType.NewWord)
             query.whereKey("learner", equalTo: learner)
+            query.includeKey("book")
             query.getFirstObjectInBackgroundWithBlock { (myBook, error) in
                 if error == nil {
                     if let myBook = myBook as? MyWordBookData {
@@ -244,6 +286,7 @@ extension MyWordBookData {
                 query.cachePolicy = policy
                 query.whereKey("type", notEqualTo: MyWordBookData.BookType.NewWord)
                 query.whereKey("learner", equalTo: learner)
+                query.includeKey("book")
                 query.orderByDescending("createdAt")
                 query.skip = skip
                 query.limit = limit

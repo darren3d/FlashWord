@@ -47,10 +47,10 @@
 		635607F61DA67ECB00D558E0 /* LoginRegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */; };
 		635607F91DA798D300D558E0 /* WordBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607F81DA798D300D558E0 /* WordBookController.swift */; };
 		635607FC1DA79B6000D558E0 /* LearnWordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FB1DA79B6000D558E0 /* LearnWordController.swift */; };
-		635607FF1DA79E1900D558E0 /* WordBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FE1DA79E1900D558E0 /* WordBookCell.swift */; };
+		635607FF1DA79E1900D558E0 /* MyWordBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FE1DA79E1900D558E0 /* MyWordBookCell.swift */; };
 		635A25261DBD13FA00DC5E43 /* WordBookListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25251DBD13FA00DC5E43 /* WordBookListVM.swift */; };
 		635A25281DBD3EF500DC5E43 /* DYListCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25271DBD3EF500DC5E43 /* DYListCellVM.swift */; };
-		635A252A1DBD3F0F00DC5E43 /* WordBookCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25291DBD3F0F00DC5E43 /* WordBookCellVM.swift */; };
+		635A252A1DBD3F0F00DC5E43 /* MyWordBookCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25291DBD3F0F00DC5E43 /* MyWordBookCellVM.swift */; };
 		635B93AE1D09A40500A81CAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AD1D09A40500A81CAF /* AppDelegate.swift */; };
 		635B93B01D09A40500A81CAF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93AF1D09A40500A81CAF /* FirstViewController.swift */; };
 		635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93B11D09A40500A81CAF /* SecondViewController.swift */; };
@@ -287,10 +287,10 @@
 		635607F51DA67ECB00D558E0 /* LoginRegisterVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterVM.swift; sourceTree = "<group>"; };
 		635607F81DA798D300D558E0 /* WordBookController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookController.swift; sourceTree = "<group>"; };
 		635607FB1DA79B6000D558E0 /* LearnWordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordController.swift; sourceTree = "<group>"; };
-		635607FE1DA79E1900D558E0 /* WordBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookCell.swift; sourceTree = "<group>"; };
+		635607FE1DA79E1900D558E0 /* MyWordBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWordBookCell.swift; sourceTree = "<group>"; };
 		635A25251DBD13FA00DC5E43 /* WordBookListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookListVM.swift; sourceTree = "<group>"; };
 		635A25271DBD3EF500DC5E43 /* DYListCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYListCellVM.swift; sourceTree = "<group>"; };
-		635A25291DBD3F0F00DC5E43 /* WordBookCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookCellVM.swift; sourceTree = "<group>"; };
+		635A25291DBD3F0F00DC5E43 /* MyWordBookCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWordBookCellVM.swift; sourceTree = "<group>"; };
 		635B93AA1D09A40500A81CAF /* FlashWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635B93AD1D09A40500A81CAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635B93AF1D09A40500A81CAF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -747,7 +747,7 @@
 		635607FD1DA79E0000D558E0 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				635607FE1DA79E1900D558E0 /* WordBookCell.swift */,
+				635607FE1DA79E1900D558E0 /* MyWordBookCell.swift */,
 				63E2ABB91DB74A5100CF818B /* WordBookPageCell.swift */,
 			);
 			path = Cell;
@@ -758,7 +758,7 @@
 			children = (
 				635A25251DBD13FA00DC5E43 /* WordBookListVM.swift */,
 				6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */,
-				635A25291DBD3F0F00DC5E43 /* WordBookCellVM.swift */,
+				635A25291DBD3F0F00DC5E43 /* MyWordBookCellVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1652,7 +1652,7 @@
 				6380AE961DAD1F7F003700A4 /* LearnWordCellVM.swift in Sources */,
 				639188071D0A915800757F60 /* HSL.swift in Sources */,
 				6304C31A1DAA86A0000D9DA1 /* CollectionType+Safe.swift in Sources */,
-				635A252A1DBD3F0F00DC5E43 /* WordBookCellVM.swift in Sources */,
+				635A252A1DBD3F0F00DC5E43 /* MyWordBookCellVM.swift in Sources */,
 				6388D5FD1D15D8440029C988 /* URLConvertible.swift in Sources */,
 				844FBA721D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				84301D241D1959AE00BB3C5D /* DYTransitionAnimator.swift in Sources */,
@@ -1748,7 +1748,7 @@
 				63ECC4D21DB288E400C1342E /* BRAStyles.m in Sources */,
 				844FBA8A1D0FE0F900D6C2EA /* NVActivityIndicatorView.swift in Sources */,
 				6388D5C11D0DAE310029C988 /* FadeTransitionAnimator.swift in Sources */,
-				635607FF1DA79E1900D558E0 /* WordBookCell.swift in Sources */,
+				635607FF1DA79E1900D558E0 /* MyWordBookCell.swift in Sources */,
 				844FBA711D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				844FBA691D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				63ECC4591DB1657D00C1342E /* UIImage+TOWebViewControllerIcons.m in Sources */,

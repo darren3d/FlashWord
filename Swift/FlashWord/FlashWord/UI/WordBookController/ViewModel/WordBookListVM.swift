@@ -38,7 +38,7 @@ class MyWordBookListVM: WordBookListVM {
     override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool{
         var sections: [DYSectionViewModel] = []
         for myBook in myWordBooks {
-            let item = WordBookCellVM(data: myBook)
+            let item = MyWordBookCellVM(data: myBook)
             let section = DYSectionViewModel(items: [item])
             sections.append(section)
         }

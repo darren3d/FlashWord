@@ -1,5 +1,5 @@
 //
-//  WordBookCell.swift
+//  MyWordBookCell.swift
 //  FlashWord
 //
 //  Created by darrenyao on 2016/10/7.
@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
-class WordBookCell: UICollectionViewCell {
+@objc
+class MyWordBookCell: UICollectionViewCell {
     @IBOutlet weak var viewMark : UIView!
     
     @IBOutlet weak var labelTitle : UILabel!
@@ -21,8 +23,26 @@ class WordBookCell: UICollectionViewCell {
     @IBOutlet var linesVert : [UIView]!
     @IBOutlet var linesHori : [UIView]!
     
+    dynamic var viewModel : MyWordBookCellVM?
+    override var cellViewModel: DYViewModel? {
+        get {
+            return viewModel
+        }
+        set {
+            if let vm = newValue as? MyWordBookCellVM {
+                self.viewModel = vm
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setupReactive()
+    }
+    
+    func setupReactive() {
+        RAC(target: self, keyPath: "labelTitle.text", nilValue: "匿名") <= RACObserve(target: self, keyPath: "viewModel.name")
     }
     
     func setMarkColor(color:UIColor) {
