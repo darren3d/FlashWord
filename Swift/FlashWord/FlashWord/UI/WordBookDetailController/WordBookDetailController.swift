@@ -37,6 +37,18 @@ class WordBookDetailController: DYViewController {
         self.navigationItem.rightBarButtonItem = barRight
     }
     
+    override func viewFirstWillAppear() {
+        super.viewFirstWillAppear()
+        
+        ui_updateData(policy: AVCachePolicy.CacheOnly)
+    }
+    
+    override func viewFirstDidAppear() {
+        super.viewFirstDidAppear()
+        
+        collectionView.dy_header?.beginRefreshing()
+    }
+    
     func onBarBtnRight(sender:AnyObject!) {
 //        MyWordBookData.addMyWordBook("生词本", desc: "一些不熟悉的单词集合", type: MyWordBookData.BookType.NewWord)
 //        .start(Observer<MyWordBookData?, NSError>(
@@ -156,8 +168,8 @@ class WordBookDetailController: DYViewController {
 
 extension WordBookDetailController {
     func ui_setupRefresher() {
-        self.collectionView.dy_setupHeader(target: self, selector: #selector(ui_updateData))
-        self.collectionView.dy_setupFooter(target: self, selector: #selector(ui_loadMoreData))
+        self.collectionView.dy_setupHeader(target: self, selector: #selector(ui_updateData as Void -> Void))
+        self.collectionView.dy_setupFooter(target: self, selector: #selector(ui_loadMoreData as Void -> Void))
         let colors = [UIColor.flat(FlatColors.Nephritis),
                       UIColor.flat(FlatColors.Flamingo),
                       UIColor.flat(FlatColors.PeterRiver),
@@ -171,17 +183,25 @@ extension WordBookDetailController {
     }
     
     func ui_updateData() {
+        ui_updateData(policy: AVCachePolicy.NetworkElseCache)
+    }
+    
+    func ui_updateData(policy policy: AVCachePolicy) {
         guard let bookDetailVM = self.viewModel as? WordBookDetailVM else {
             return
         }
         
-        bookDetailVM.vm_updateData(policy: AVCachePolicy.NetworkElseCache) { (obj, error) in
+        bookDetailVM.vm_updateData(policy: policy) { (obj, error) in
             
         }
     }
     
     
     func ui_loadMoreData() {
+        ui_loadMoreData(policy: AVCachePolicy.NetworkElseCache)
+    }
+    
+    func ui_loadMoreData(policy policy: AVCachePolicy) {
         //        listVM.vm_loadMoreData { (obj, error) in
         //            <#code#>
         //        }

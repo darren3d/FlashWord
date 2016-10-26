@@ -44,8 +44,8 @@ class WordBookPageCell: UICollectionViewCell {
 
 extension WordBookPageCell {
     func ui_setupRefresher() {
-        self.collectionView.dy_setupHeader(target: self, selector: #selector(ui_updateData))
-        self.collectionView.dy_setupFooter(target: self, selector: #selector(ui_loadMoreData))
+        self.collectionView.dy_setupHeader(target: self, selector: #selector(ui_updateData as Void -> Void))
+        self.collectionView.dy_setupFooter(target: self, selector: #selector(ui_loadMoreData as Void -> Void))
         let colors = [UIColor.flat(FlatColors.Nephritis),
                       UIColor.flat(FlatColors.Flamingo),
                       UIColor.flat(FlatColors.PeterRiver),
@@ -59,15 +59,22 @@ extension WordBookPageCell {
     }
     
     func ui_updateData() {
-        listVM.vm_updateData(policy: AVCachePolicy.NetworkElseCache) { (obj, error) in
-
+        ui_updateData(policy: AVCachePolicy.NetworkElseCache)
+    }
+    
+    func ui_updateData(policy policy: AVCachePolicy) {
+        listVM.vm_updateData(policy: policy) { (obj, error) in
+            
         }
     }
     
-    
     func ui_loadMoreData() {
-//        listVM.vm_loadMoreData { (obj, error) in
-//            <#code#>
-//        }
+        ui_loadMoreData(policy: AVCachePolicy.NetworkElseCache)
+    }
+    
+    func ui_loadMoreData(policy policy: AVCachePolicy) {
+        listVM.vm_loadMoreData(policy: policy) { (obj, error) in
+            
+        }
     }
 }
