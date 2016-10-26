@@ -11,4 +11,5 @@
 #import "TOWebviewController.h"
 #import "XlsxReaderWriter-swift-bridge.h"
 #import "LUNSegmentedControl.h"
+#import <MagicalRecord/MagicalRecord.h>
 #endif /* Bridging_Header_h */

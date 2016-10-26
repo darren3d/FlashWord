@@ -13,6 +13,7 @@
 		6304C31D1DAA86A0000D9DA1 /* DYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */; };
 		6304C31E1DAA86A0000D9DA1 /* DYTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */; };
 		6304C3211DAA9FEF000D9DA1 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3201DAA9FEF000D9DA1 /* MyController.swift */; };
+		63258ACA1DC0979A00B180A1 /* vocabulary.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 63258AC91DC0979A00B180A1 /* vocabulary.xlsx */; };
 		6326562A1DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */; };
 		6326562C1DBDEF67009CC611 /* UIView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562B1DBDEF67009CC611 /* UIView+Utility.swift */; };
 		6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */; };
@@ -53,6 +54,9 @@
 		635607FC1DA79B6000D558E0 /* LearnWordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FB1DA79B6000D558E0 /* LearnWordController.swift */; };
 		635607FF1DA79E1900D558E0 /* MyWordBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635607FE1DA79E1900D558E0 /* MyWordBookCell.swift */; };
 		6356DC331DBF9F6D0075AF77 /* AVObject+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6356DC321DBF9F6D0075AF77 /* AVObject+Utility.swift */; };
+		6356DC351DC07DE80075AF77 /* MagicalRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6356DC341DC07DE80075AF77 /* MagicalRecord.framework */; };
+		6356DC3C1DC080E30075AF77 /* FlashWord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6356DC3A1DC080E30075AF77 /* FlashWord.xcdatamodeld */; };
+		6356DC3F1DC081BA0075AF77 /* WordCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6356DC3E1DC081BA0075AF77 /* WordCD.swift */; };
 		635A25261DBD13FA00DC5E43 /* WordBookListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25251DBD13FA00DC5E43 /* WordBookListVM.swift */; };
 		635A25281DBD3EF500DC5E43 /* DYListCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25271DBD3EF500DC5E43 /* DYListCellVM.swift */; };
 		635A252A1DBD3F0F00DC5E43 /* MyWordBookCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635A25291DBD3F0F00DC5E43 /* MyWordBookCellVM.swift */; };
@@ -233,7 +237,6 @@
 		844FBA8F1D102F2000D6C2EA /* DYProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */; };
 		847D70371D1298EA0025B54A /* UIViewController+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D70361D1298EA0025B54A /* UIViewController+State.swift */; };
 		847D70391D12A4AD0025B54A /* ObjectUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D70381D12A4AD0025B54A /* ObjectUtility.swift */; };
-		8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8492F19C1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -257,6 +260,7 @@
 		6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarController.swift; sourceTree = "<group>"; };
 		6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarItem.swift; sourceTree = "<group>"; };
 		6304C3201DAA9FEF000D9DA1 /* MyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
+		63258AC91DC0979A00B180A1 /* vocabulary.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = vocabulary.xlsx; sourceTree = "<group>"; };
 		632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utility.swift"; sourceTree = "<group>"; };
 		6326562B1DBDEF67009CC611 /* UIView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utility.swift"; sourceTree = "<group>"; };
 		6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordBookListVM+UI.swift"; sourceTree = "<group>"; };
@@ -264,7 +268,6 @@
 		632656321DBF25B0009CC611 /* WordBookDetailVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookDetailVM.swift; sourceTree = "<group>"; };
 		632656351DBF2C1C009CC611 /* WordDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDataCell.swift; sourceTree = "<group>"; };
 		632656371DBF3703009CC611 /* WordDataCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDataCellVM.swift; sourceTree = "<group>"; };
-		632D04DC1D09C7E600F9744B /* FlashWord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlashWord-Bridging-Header.h"; sourceTree = "<group>"; };
 		632D04EA1D09CB4700F9744B /* AccountData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYDataCenter.swift; sourceTree = "<group>"; };
 		633231CD1DB30F920041295A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -298,6 +301,9 @@
 		635607FB1DA79B6000D558E0 /* LearnWordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordController.swift; sourceTree = "<group>"; };
 		635607FE1DA79E1900D558E0 /* MyWordBookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWordBookCell.swift; sourceTree = "<group>"; };
 		6356DC321DBF9F6D0075AF77 /* AVObject+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVObject+Utility.swift"; sourceTree = "<group>"; };
+		6356DC341DC07DE80075AF77 /* MagicalRecord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MagicalRecord.framework; path = Carthage/Build/iOS/MagicalRecord.framework; sourceTree = "<group>"; };
+		6356DC3B1DC080E30075AF77 /* FlashWord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashWord.xcdatamodel; sourceTree = "<group>"; };
+		6356DC3E1DC081BA0075AF77 /* WordCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCD.swift; sourceTree = "<group>"; };
 		635A25251DBD13FA00DC5E43 /* WordBookListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBookListVM.swift; sourceTree = "<group>"; };
 		635A25271DBD3EF500DC5E43 /* DYListCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYListCellVM.swift; sourceTree = "<group>"; };
 		635A25291DBD3F0F00DC5E43 /* MyWordBookCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWordBookCellVM.swift; sourceTree = "<group>"; };
@@ -553,7 +559,6 @@
 		844FBA8E1D102F2000D6C2EA /* DYProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYProgressView.swift; sourceTree = "<group>"; };
 		847D70361D1298EA0025B54A /* UIViewController+State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+State.swift"; sourceTree = "<group>"; };
 		847D70381D12A4AD0025B54A /* ObjectUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectUtility.swift; sourceTree = "<group>"; };
-		8492F19D1D0EA2EE00EA95EE /* FlashWord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashWord.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +566,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6356DC351DC07DE80075AF77 /* MagicalRecord.framework in Frameworks */,
 				63E2ABAD1DB51A1C00CF818B /* Eureka.framework in Frameworks */,
 				633231CE1DB30F920041295A /* SwiftyJSON.framework in Frameworks */,
 				63ECC4F21DB289E100C1342E /* libz.tbd in Frameworks */,
@@ -578,6 +584,7 @@
 		141048315BBF40519FC5B823 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6356DC341DC07DE80075AF77 /* MagicalRecord.framework */,
 				63E2ABAC1DB51A1C00CF818B /* Eureka.framework */,
 				633231CD1DB30F920041295A /* SwiftyJSON.framework */,
 				63ECC4F11DB289E100C1342E /* libz.tbd */,
@@ -630,6 +637,7 @@
 		632D04E31D09C9BD00F9744B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6356DC391DC080E30075AF77 /* CoreData */,
 				63F4FF711DB11780008AAE4C /* WordService */,
 				6386498D1DAF3721008A9719 /* WordTestData */,
 				638649851DAE3569008A9719 /* SentenceData */,
@@ -639,7 +647,6 @@
 				6380AE811DAC497F003700A4 /* LearnModeData */,
 				632D04E81D09CB3400F9744B /* AccountData */,
 				632D04ED1D09CE9D00F9744B /* DYDataCenter.swift */,
-				8492F19C1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -781,6 +788,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		6356DC391DC080E30075AF77 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6356DC3D1DC0819D0075AF77 /* WordCD */,
+				6356DC3A1DC080E30075AF77 /* FlashWord.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		6356DC3D1DC0819D0075AF77 /* WordCD */ = {
+			isa = PBXGroup;
+			children = (
+				6356DC3E1DC081BA0075AF77 /* WordCD.swift */,
+			);
+			path = WordCD;
+			sourceTree = "<group>";
+		};
 		635A25241DBD13AA00DC5E43 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,7 +848,6 @@
 				635B93B61D09A40500A81CAF /* Assets.xcassets */,
 				635B93B81D09A40500A81CAF /* LaunchScreen.storyboard */,
 				635B93BB1D09A40500A81CAF /* Info.plist */,
-				632D04DC1D09C7E600F9744B /* FlashWord-Bridging-Header.h */,
 				639187F81D09EE4200757F60 /* AppConst.swift */,
 				6388D5B31D0C7A4F0029C988 /* Library */,
 				63ECC45A1DB165EE00C1342E /* Bridging-Header.h */,
@@ -1268,6 +1291,7 @@
 		63ECC45B1DB2737400C1342E /* Word */ = {
 			isa = PBXGroup;
 			children = (
+				63258AC91DC0979A00B180A1 /* vocabulary.xlsx */,
 				63ECC45C1DB2737400C1342E /* class_4.xlsx */,
 			);
 			path = Word;
@@ -1626,6 +1650,7 @@
 				6388D5E31D0DC9850029C988 /* fontawesome-webfont.ttf in Resources */,
 				635B93B71D09A40500A81CAF /* Assets.xcassets in Resources */,
 				63ECC4531DB1657D00C1342E /* Info.plist in Resources */,
+				63258ACA1DC0979A00B180A1 /* vocabulary.xlsx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1644,6 +1669,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MagicalRecord.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -1696,7 +1722,6 @@
 				6336F4231DBCEDEE009B1A70 /* DYRefreshFooter.swift in Sources */,
 				63ECC4571DB1657D00C1342E /* TOActivitySafari.m in Sources */,
 				844FBA6B1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
-				8492F19E1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld in Sources */,
 				635A25281DBD3EF500DC5E43 /* DYListCellVM.swift in Sources */,
 				632656331DBF25B0009CC611 /* WordBookDetailVM+UI.swift in Sources */,
 				6380AE901DACEB44003700A4 /* LearnWordVM.swift in Sources */,
@@ -1765,6 +1790,7 @@
 				6336F4281DBCEDEE009B1A70 /* DYBallView.swift in Sources */,
 				63ECC4341DB147A400C1342E /* String+Html.swift in Sources */,
 				63ECC4B51DB288E400C1342E /* NativeColor+HTML.m in Sources */,
+				6356DC3F1DC081BA0075AF77 /* WordCD.swift in Sources */,
 				6336F4221DBCEDEE009B1A70 /* DYRefreshComponent.swift in Sources */,
 				6304C31D1DAA86A0000D9DA1 /* DYTabBarController.swift in Sources */,
 				6336F4261DBCEDEE009B1A70 /* UIScrollView+DYRefresh.swift in Sources */,
@@ -1871,6 +1897,7 @@
 				63ECC4C01DB288E400C1342E /* BRACellRange.m in Sources */,
 				632656361DBF2C1C009CC611 /* WordDataCell.swift in Sources */,
 				633FDCF61DAF953F006F09AD /* Array+Utility.swift in Sources */,
+				6356DC3C1DC080E30075AF77 /* FlashWord.xcdatamodeld in Sources */,
 				63ECC4B91DB288E400C1342E /* NSDictionary+OpenXMLDictionaryParser.m in Sources */,
 				6388D5F51D15CD9B0029C988 /* LoginVM.swift in Sources */,
 				63ECC4561DB1657D00C1342E /* TOActivityChrome.m in Sources */,
@@ -2085,12 +2112,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8492F19C1D0EA2EE00EA95EE /* FlashWord.xcdatamodeld */ = {
+		6356DC3A1DC080E30075AF77 /* FlashWord.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8492F19D1D0EA2EE00EA95EE /* FlashWord.xcdatamodel */,
+				6356DC3B1DC080E30075AF77 /* FlashWord.xcdatamodel */,
 			);
-			currentVersion = 8492F19D1D0EA2EE00EA95EE /* FlashWord.xcdatamodel */;
+			currentVersion = 6356DC3B1DC080E30075AF77 /* FlashWord.xcdatamodel */;
 			path = FlashWord.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

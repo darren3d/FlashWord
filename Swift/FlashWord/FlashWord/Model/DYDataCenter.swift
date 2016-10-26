@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import MagicalRecord
 
 public class DYDataCenter: NSObject {
     //MARK: 单例
@@ -17,6 +16,7 @@ public class DYDataCenter: NSObject {
     
     //MARK: 设置构建数据库
     public func setup() {
+        //AVSCloud
         AccountData.registerSubclass()
         
         WordData.registerSubclass()
@@ -29,16 +29,17 @@ public class DYDataCenter: NSObject {
         
         LearnModeData.registerSubclass()
         
-//        let dbName = "com.flashword.data.\(AppConst.appVersion).\(AppConst.appVersionBuild).\(AppConst.enviroment.rawValue)"
-//        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed(dbName)
-//        
-//        let path = NSPersistentStore.MR_urlForStoreName(dbName)
-//        DYLog.info("DB Path: \(path.absoluteString) ")
+        //CoreData
+        let dbName = "com.flashword.data.\(AppConst.appVersion).\(AppConst.appVersionBuild).\(AppConst.enviroment.rawValue)"
+        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed(dbName)
+        
+        let path = NSPersistentStore.MR_urlForStoreName(dbName)
+        DYLog.info("DB Path: \(path!.absoluteString) ")
     }
     
     //MARK: app退出时清理数据库
     public func cleanUp () {
-//        MagicalRecord.cleanUp()
+        MagicalRecord.cleanUp()
     }
     
     //MARK: 同步清除所有数据

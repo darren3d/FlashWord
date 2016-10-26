@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DYURLNavigationMap.setup()
         
         DYDataCenter.center.setup()
+        WordCD.checkWordCD()
         
         AVOSCloud.setApplicationId("GQcj3NGbF5O0qGTp7SMo3b2y-gzGzoHsz",
                                    clientKey: "fgYwzTulc6JEQ8rvfgEOAeCM")
