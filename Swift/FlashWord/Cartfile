@@ -1,6 +1,8 @@
 #See CartfileHelp
 
-github "MagicalPanda/MagicalRecord"
+github "CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout"
+
+#github "MagicalPanda/MagicalRecord"
 
 #github "ReactiveCocoa/ReactiveCocoa"  ~> 4.2.2
 
@@ -10,5 +12,5 @@ github "MagicalPanda/MagicalRecord"
 
 #github "SwiftyJSON/SwiftyJSON" "swift2"
 
-github "xmartlabs/Eureka" ~> 1.7
+#github "xmartlabs/Eureka" ~> 1.7
 #github "ytakzk/Fusuma" == 0.6.0

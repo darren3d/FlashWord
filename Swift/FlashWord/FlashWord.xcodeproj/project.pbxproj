@@ -20,6 +20,7 @@
 		63258AD61DC0C50F00B180A1 /* SearchWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258AD51DC0C50F00B180A1 /* SearchWordCell.swift */; };
 		63258AD81DC0C55D00B180A1 /* SearchWordCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258AD71DC0C55D00B180A1 /* SearchWordCellVM.swift */; };
 		63258ADB1DC0EEBC00B180A1 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258ADA1DC0EEBC00B180A1 /* SearchData.swift */; };
+		63258ADD1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63258ADC1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework */; };
 		6326562A1DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */; };
 		6326562C1DBDEF67009CC611 /* UIView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562B1DBDEF67009CC611 /* UIView+Utility.swift */; };
 		6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */; };
@@ -272,6 +273,7 @@
 		63258AD51DC0C50F00B180A1 /* SearchWordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWordCell.swift; sourceTree = "<group>"; };
 		63258AD71DC0C55D00B180A1 /* SearchWordCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWordCellVM.swift; sourceTree = "<group>"; };
 		63258ADA1DC0EEBC00B180A1 /* SearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
+		63258ADC1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSStickyHeaderFlowLayout.framework; path = Carthage/Build/iOS/CSStickyHeaderFlowLayout.framework; sourceTree = "<group>"; };
 		632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utility.swift"; sourceTree = "<group>"; };
 		6326562B1DBDEF67009CC611 /* UIView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utility.swift"; sourceTree = "<group>"; };
 		6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordBookListVM+UI.swift"; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63258ADD1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework in Frameworks */,
 				6356DC351DC07DE80075AF77 /* MagicalRecord.framework in Frameworks */,
 				63E2ABAD1DB51A1C00CF818B /* Eureka.framework in Frameworks */,
 				633231CE1DB30F920041295A /* SwiftyJSON.framework in Frameworks */,
@@ -594,6 +597,7 @@
 		141048315BBF40519FC5B823 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63258ADC1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework */,
 				6356DC341DC07DE80075AF77 /* MagicalRecord.framework */,
 				63E2ABAC1DB51A1C00CF818B /* Eureka.framework */,
 				633231CD1DB30F920041295A /* SwiftyJSON.framework */,
@@ -1709,6 +1713,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MagicalRecord.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CSStickyHeaderFlowLayout.framework",
 			);
 			name = "Run Script";
 			outputPaths = (

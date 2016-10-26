@@ -12,4 +12,5 @@
 #import "XlsxReaderWriter-swift-bridge.h"
 #import "LUNSegmentedControl.h"
 #import <MagicalRecord/MagicalRecord.h>
+#import <CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.h>
 #endif /* Bridging_Header_h */

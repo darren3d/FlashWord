@@ -14,6 +14,14 @@ class SearchWordHistoryVM: DYListViewModel {
 
 
 extension SearchWordHistoryVM {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 6
+    }
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return SearchWordCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
     }
