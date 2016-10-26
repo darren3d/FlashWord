@@ -8,6 +8,7 @@
 
 import UIKit
 
+//注意自定义Tabbar不会响应系统的hidesBottomBarWhenPushed
 class DYTabBar: UITabBar {
     private var colorTab : UIView? = nil
     

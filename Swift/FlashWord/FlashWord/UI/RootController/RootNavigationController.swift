@@ -17,6 +17,8 @@ extension DefaultsKeys {
 class RootNavigationController: DYNavigationController {
     
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
         let lastGuideVersion = Defaults[.appGuideVersion]
         let appVersion = AppConst.appVersion
         //        if lastGuideVersion != appVersion {

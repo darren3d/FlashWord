@@ -12,7 +12,7 @@
                 <navigationController storyboardIdentifier="RootNavigationController" id="s0o-L8-hmV" customClass="RootNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="qNq-2p-JPl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="qNq-2p-JPl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -90,7 +90,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WordBookPageCell" id="rC4-aM-LRY" customClass="WordBookPageCell" customModule="FlashWord" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-56.5" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="-57" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -378,7 +378,7 @@
         <!--单词本详情-->
         <scene sceneID="g7o-kd-W9n">
             <objects>
-                <viewController storyboardIdentifier="WordBookDetailController" id="k84-WP-YjO" customClass="WordBookDetailController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WordBookDetailController" hidesBottomBarWhenPushed="YES" id="k84-WP-YjO" customClass="WordBookDetailController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="75b-k3-H3b"/>
                         <viewControllerLayoutGuide type="bottom" id="8kz-UO-P8H"/>
@@ -520,7 +520,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="h89-ON-C1T">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="h89-ON-C1T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -635,7 +635,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="4bd-pD-FPu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="4bd-pD-FPu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -228,9 +228,13 @@ public class URLNavigator {
     public func push(viewController: UIViewController,
                      from: UINavigationController? = nil,
                      animated: Bool = true) -> UIViewController? {
-        guard let navigationController = from ?? UIViewController.topViewController()?.navigationController else {
+        guard let navigationController = from ?? UIViewController.rootViewController() as? UINavigationController else {
             return nil
         }
+//        guard let navigationController = from ?? UIViewController.topViewController()?.navigationController else {
+//            return nil
+//        }
+        viewController.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(viewController, animated: animated)
         return viewController
     }

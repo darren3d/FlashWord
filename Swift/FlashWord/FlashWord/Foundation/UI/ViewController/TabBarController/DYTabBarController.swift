@@ -39,7 +39,10 @@ class DYTabBarController: UITabBarController {
         
         self.automaticallyAdjustsScrollViewInsets = false;
         
+        //注意自定义Tabbar不会响应系统的hidesBottomBarWhenPushed
         let tabBar = DYTabBar(frame: self.tabBar.frame)
+        tabBar.barStyle = self.tabBar.barStyle
+        tabBar.translucent = self.tabBar.translucent
         self.setValue(tabBar, forKey: "tabBar")
         
         self.view.insertSubview(scrollView, belowSubview: self.tabBar)
