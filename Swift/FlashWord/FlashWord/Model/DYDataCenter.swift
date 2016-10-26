@@ -26,6 +26,7 @@ public class DYDataCenter: NSObject {
         WordQuestionData.registerSubclass()
         WordTestData.registerSubclass()
         WordTestPara.registerSubclass()
+        SearchData.registerSubclass()
         
         LearnModeData.registerSubclass()
         

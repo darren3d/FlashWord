@@ -50,6 +50,9 @@ class WordBookDetailController: DYViewController {
     }
     
     func onBarBtnRight(sender:AnyObject!) {
+        Navigator.pushURL("/word/search")
+        
+        
 //        MyWordBookData.addMyWordBook("生词本", desc: "一些不熟悉的单词集合", type: MyWordBookData.BookType.NewWord)
 //        .start(Observer<MyWordBookData?, NSError>(
 //            failed: { error in

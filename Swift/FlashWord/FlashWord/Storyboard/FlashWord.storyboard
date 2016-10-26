@@ -464,10 +464,10 @@
             </objects>
             <point key="canvasLocation" x="-1298.4000000000001" y="-296.40179910044981"/>
         </scene>
-        <!--添加单词-->
+        <!--搜索单词-->
         <scene sceneID="0tF-Ym-kop">
             <objects>
-                <viewController storyboardIdentifier="AddWordController" id="OuA-Gb-Giu" customClass="AddWordController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchWordController" id="OuA-Gb-Giu" customClass="SearchWordController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tgy-bM-lB8"/>
                         <viewControllerLayoutGuide type="bottom" id="YUN-qg-hMb"/>
@@ -476,6 +476,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ShK-FC-aGh">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="没有您要的搜索结果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7a-Az-x6C">
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.83030533790000005" green="0.83046472069999999" blue="0.83027875419999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="J7a-Az-x6C" firstAttribute="centerX" secondItem="ShK-FC-aGh" secondAttribute="centerX" id="SCA-AW-0L4"/>
+                                    <constraint firstItem="J7a-Az-x6C" firstAttribute="centerY" secondItem="ShK-FC-aGh" secondAttribute="centerY" id="e9L-kS-iGp"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="caE-tT-U3o">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wik-0h-rXn">
@@ -484,7 +498,51 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchWordCell" id="nWv-Oq-uSf" customClass="SearchWordCell" customModule="FlashWord" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ay6-3F-jCS">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="N1X-9v-QNr"/>
+                                                        <constraint firstAttribute="width" constant="20" id="w7n-kH-o5z"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="800" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="单词" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MB0-Mw-UqK">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.2985658585" green="0.2985658585" blue="0.2985658585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="释义" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Vt-9t-X6r">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Ay6-3F-jCS" firstAttribute="centerY" secondItem="nWv-Oq-uSf" secondAttribute="centerY" id="4Jw-Pc-nL0"/>
+                                            <constraint firstItem="3Vt-9t-X6r" firstAttribute="leading" secondItem="MB0-Mw-UqK" secondAttribute="trailing" constant="10" id="51G-c5-a33"/>
+                                            <constraint firstItem="MB0-Mw-UqK" firstAttribute="leading" secondItem="nWv-Oq-uSf" secondAttribute="leading" constant="40" id="Fit-yx-qcP"/>
+                                            <constraint firstAttribute="bottom" secondItem="MB0-Mw-UqK" secondAttribute="bottom" priority="200" constant="10.5" id="J4h-4M-QrS"/>
+                                            <constraint firstItem="Ay6-3F-jCS" firstAttribute="leading" secondItem="nWv-Oq-uSf" secondAttribute="leading" constant="10" id="Lkb-7T-6oB"/>
+                                            <constraint firstItem="MB0-Mw-UqK" firstAttribute="top" secondItem="nWv-Oq-uSf" secondAttribute="top" constant="10" id="M1y-Xz-fLm"/>
+                                            <constraint firstAttribute="trailing" secondItem="3Vt-9t-X6r" secondAttribute="trailing" constant="10" id="XOV-wA-uNA"/>
+                                            <constraint firstItem="3Vt-9t-X6r" firstAttribute="centerY" secondItem="MB0-Mw-UqK" secondAttribute="centerY" id="ZHh-Fd-8yJ"/>
+                                        </constraints>
+                                        <size key="customSize" width="375" height="40"/>
+                                        <connections>
+                                            <outlet property="imageIcon" destination="Ay6-3F-jCS" id="gKo-TH-4cH"/>
+                                            <outlet property="labelMean" destination="3Vt-9t-X6r" id="FUt-Uh-d4w"/>
+                                            <outlet property="labelWord" destination="MB0-Mw-UqK" id="10G-Li-uQH"/>
+                                            <outlet property="labelWordLead" destination="Fit-yx-qcP" id="QwM-HL-314"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="OuA-Gb-Giu" id="4dh-81-KPV"/>
                                     <outlet property="delegate" destination="OuA-Gb-Giu" id="IpR-Sj-PAS"/>
@@ -493,21 +551,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ShK-FC-aGh" firstAttribute="width" secondItem="ZvZ-W7-DfN" secondAttribute="width" id="13F-8S-Kyr"/>
+                            <constraint firstItem="ShK-FC-aGh" firstAttribute="centerY" secondItem="ZvZ-W7-DfN" secondAttribute="centerY" id="GQI-9Y-Nx4"/>
+                            <constraint firstItem="ShK-FC-aGh" firstAttribute="height" secondItem="ZvZ-W7-DfN" secondAttribute="height" id="IHL-n3-YMx"/>
                             <constraint firstItem="caE-tT-U3o" firstAttribute="centerX" secondItem="ZvZ-W7-DfN" secondAttribute="centerX" id="IWb-5I-mZL"/>
                             <constraint firstItem="caE-tT-U3o" firstAttribute="width" secondItem="ZvZ-W7-DfN" secondAttribute="width" id="M9A-kc-okz"/>
                             <constraint firstItem="caE-tT-U3o" firstAttribute="height" secondItem="ZvZ-W7-DfN" secondAttribute="height" id="ZVv-D6-beR"/>
                             <constraint firstItem="caE-tT-U3o" firstAttribute="centerY" secondItem="ZvZ-W7-DfN" secondAttribute="centerY" id="fWe-Ir-d0q"/>
+                            <constraint firstItem="ShK-FC-aGh" firstAttribute="centerX" secondItem="ZvZ-W7-DfN" secondAttribute="centerX" id="n8n-NL-Pzh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="添加单词" id="6eJ-Qd-ueO"/>
+                    <navigationItem key="navigationItem" title="搜索单词" id="6eJ-Qd-ueO"/>
                     <connections>
                         <outlet property="collectionLayout" destination="wik-0h-rXn" id="EBQ-K0-FJw"/>
                         <outlet property="collectionView" destination="caE-tT-U3o" id="KHv-tD-OxU"/>
+                        <outlet property="viewNoResults" destination="ShK-FC-aGh" id="QYy-x4-3f4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXH-Nf-NjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-599" y="421"/>
+            <point key="canvasLocation" x="-1298" y="434"/>
         </scene>
         <!--背单词-->
         <scene sceneID="cVG-pk-6JD">
