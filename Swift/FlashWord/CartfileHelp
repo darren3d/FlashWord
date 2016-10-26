@@ -18,4 +18,5 @@ carthage build --platform iOS RxSwift
 #2.集成到项目
 #a.通过+号或拖动到"Link Binary With Libraries"
 #b.在Run Script中添加相应路径
+#c.对于OC库需要在bridge文件中import相应header
 #两者缺一不可，否则运行时会出现库找不到
