@@ -27,11 +27,7 @@ class DYRefreshComponent: UIView {
         removeKVOObservers()
     }
     
-    weak var scrollView : UIScrollView? {
-        didSet {
-            DYLog.info("teset")
-        }
-    }
+    weak var scrollView : UIScrollView?
     var scrollViewOriginalInset : UIEdgeInsets = UIEdgeInsetsZero
     
     var state : DYRefreshState = DYRefreshState.Idle {
