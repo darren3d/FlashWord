@@ -37,8 +37,12 @@ public struct AppError {
 
 
 public class AppConst: NSObject {
+    public static let kSmallDataLoadLimit = 10
     public static let kNormDataLoadLimit = 20
-    public static let kBigDataLoadLimit = 80
+    public static let kBigDataLoadLimit = 40
+    //受AVScloud限制，不要超过100
+    public static let kLargeDataLoadLimit = 80
+    
     
     public static let kNotificationSwithToHomeTab = "com.flashword.note.switch.hometab"
     

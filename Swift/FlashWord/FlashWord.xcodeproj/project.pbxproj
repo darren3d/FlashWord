@@ -21,6 +21,7 @@
 		63258AD81DC0C55D00B180A1 /* SearchWordCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258AD71DC0C55D00B180A1 /* SearchWordCellVM.swift */; };
 		63258ADB1DC0EEBC00B180A1 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258ADA1DC0EEBC00B180A1 /* SearchData.swift */; };
 		63258ADD1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63258ADC1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework */; };
+		63258AEB1DC1EDB000B180A1 /* SinglePixelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258AEA1DC1EDB000B180A1 /* SinglePixelView.swift */; };
 		6326562A1DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */; };
 		6326562C1DBDEF67009CC611 /* UIView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562B1DBDEF67009CC611 /* UIView+Utility.swift */; };
 		6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */; };
@@ -274,6 +275,7 @@
 		63258AD71DC0C55D00B180A1 /* SearchWordCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWordCellVM.swift; sourceTree = "<group>"; };
 		63258ADA1DC0EEBC00B180A1 /* SearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 		63258ADC1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSStickyHeaderFlowLayout.framework; path = Carthage/Build/iOS/CSStickyHeaderFlowLayout.framework; sourceTree = "<group>"; };
+		63258AEA1DC1EDB000B180A1 /* SinglePixelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePixelView.swift; sourceTree = "<group>"; };
 		632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utility.swift"; sourceTree = "<group>"; };
 		6326562B1DBDEF67009CC611 /* UIView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utility.swift"; sourceTree = "<group>"; };
 		6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordBookListVM+UI.swift"; sourceTree = "<group>"; };
@@ -666,6 +668,22 @@
 			path = SearchData;
 			sourceTree = "<group>";
 		};
+		63258AE81DC1EDA300B180A1 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				63258AE91DC1EDA300B180A1 /* SinglePixelView */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		63258AE91DC1EDA300B180A1 /* SinglePixelView */ = {
+			isa = PBXGroup;
+			children = (
+				63258AEA1DC1EDB000B180A1 /* SinglePixelView.swift */,
+			);
+			path = SinglePixelView;
+			sourceTree = "<group>";
+		};
 		6326562F1DBF25B0009CC611 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,6 +1041,7 @@
 		6388D5C21D0DAEAC0029C988 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				63258AE81DC1EDA300B180A1 /* UIView */,
 				6336F4121DBCEDEE009B1A70 /* Refresher */,
 				63E2ABBB1DB74CD800CF818B /* SegmentedControl */,
 				6349F2381D31E1C2002210E0 /* AlertController */,
@@ -1889,6 +1908,7 @@
 				63E2ABC31DB74CD800CF818B /* LUNGradientView.m in Sources */,
 				84301D1C1D19362A00BB3C5D /* AttributedString+Utility.swift in Sources */,
 				638649811DAE3420008A9719 /* WordBookData.swift in Sources */,
+				63258AEB1DC1EDB000B180A1 /* SinglePixelView.swift in Sources */,
 				63ECC4B61DB288E400C1342E /* NativeColor+OpenXML.m in Sources */,
 				639188041D0A915800757F60 /* DynamicColor+Deriving.swift in Sources */,
 				84301CFF1D18DE8300BB3C5D /* DYLoader.swift in Sources */,
