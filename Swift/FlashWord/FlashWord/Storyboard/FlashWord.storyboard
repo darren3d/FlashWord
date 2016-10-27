@@ -490,7 +490,7 @@
                                     <constraint firstItem="J7a-Az-x6C" firstAttribute="centerY" secondItem="ShK-FC-aGh" secondAttribute="centerY" id="e9L-kS-iGp"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="caE-tT-U3o">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="caE-tT-U3o">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wik-0h-rXn">
                                     <size key="itemSize" width="375" height="50"/>
@@ -522,6 +522,12 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKA-Yg-dnT" customClass="SinglePixelView" customModule="FlashWord" customModuleProvider="target">
+                                                    <color key="backgroundColor" red="0.76463330931133688" green="0.76463330931133688" blue="0.76463330931133688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="X3P-I4-VoR"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -529,10 +535,13 @@
                                             <constraint firstItem="3Vt-9t-X6r" firstAttribute="leading" secondItem="MB0-Mw-UqK" secondAttribute="trailing" constant="10" id="51G-c5-a33"/>
                                             <constraint firstItem="MB0-Mw-UqK" firstAttribute="leading" secondItem="nWv-Oq-uSf" secondAttribute="leading" constant="40" id="Fit-yx-qcP"/>
                                             <constraint firstAttribute="bottom" secondItem="MB0-Mw-UqK" secondAttribute="bottom" priority="200" constant="10.5" id="J4h-4M-QrS"/>
+                                            <constraint firstAttribute="trailing" secondItem="eKA-Yg-dnT" secondAttribute="trailing" id="K2n-hY-VEA"/>
                                             <constraint firstItem="Ay6-3F-jCS" firstAttribute="leading" secondItem="nWv-Oq-uSf" secondAttribute="leading" constant="10" id="Lkb-7T-6oB"/>
                                             <constraint firstItem="MB0-Mw-UqK" firstAttribute="top" secondItem="nWv-Oq-uSf" secondAttribute="top" constant="10" id="M1y-Xz-fLm"/>
+                                            <constraint firstAttribute="bottom" secondItem="eKA-Yg-dnT" secondAttribute="bottom" id="UTg-ew-WpX"/>
                                             <constraint firstAttribute="trailing" secondItem="3Vt-9t-X6r" secondAttribute="trailing" constant="10" id="XOV-wA-uNA"/>
                                             <constraint firstItem="3Vt-9t-X6r" firstAttribute="centerY" secondItem="MB0-Mw-UqK" secondAttribute="centerY" id="ZHh-Fd-8yJ"/>
+                                            <constraint firstItem="eKA-Yg-dnT" firstAttribute="leading" secondItem="nWv-Oq-uSf" secondAttribute="leading" id="uTB-4D-OyJ"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="40"/>
                                         <connections>

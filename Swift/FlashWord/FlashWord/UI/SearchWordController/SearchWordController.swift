@@ -10,6 +10,38 @@ import UIKit
 import AVOSCloud
 import ReactiveCocoa
 
+extension UISearchBar {
+    private struct AssociatedKey {
+        static var TextSignal = "dy.uisearchbar.text.signal"
+    }
+    
+    //调用前必须先设置delegate，且实现textDidChange方法
+    var dy_rac_textSignal: RACSignal? {
+        get {
+            guard let performer = self.delegate as? NSObject else {
+                return nil
+            }
+            guard let textSignal = self.dy_getAssociatedObject(&AssociatedKey.TextSignal,
+                                                            policy: .OBJC_ASSOCIATION_RETAIN_NONATOMIC,
+                                                            initial: {
+                                                                return performer.rac_signalForSelector(#selector(UISearchBarDelegate.searchBar(_:textDidChange:)), fromProtocol: UISearchBarDelegate.self)
+                                                                    .map { tuple in
+                                                                        guard let tuple = tuple as? RACTuple,
+                                                                            let text = tuple.second as? String else {
+                                                                                return ""
+                                                                        }
+                                                                        return text
+                                                                }
+            }) else {
+                DYLog.error("dy_rac_textSignal alloc failed")
+                return nil
+            }
+            
+            return textSignal
+        }
+    }
+}
+
 enum SearchStatus {
     case None
     case History
@@ -30,16 +62,21 @@ class SearchWordController: DYViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.automaticallyAdjustsScrollViewInsets = false
-        historyVM = SearchWordHistoryVM(sections: [], data: nil)
-        resultVM = SearchWordResultVM(sections: [], data: nil)
-        
-        setupNavigationBar()
-        
         collectionView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 0, 0)
         collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 120)
+        
+        setupNavigationBar()
+        
+        historyVM = SearchWordHistoryVM(sections: [], data: nil)
+        historyVM.vm_scrollView = collectionView
+        historyVM.vm_viewController = self
+        resultVM = SearchWordResultVM(textSignal:searchBar.dy_rac_textSignal)
+        resultVM.vm_scrollView = collectionView
+        resultVM.vm_viewController = self
+        
+        setupReactive()
     }
 
     override func viewFirstDidAppear() {
@@ -71,6 +108,32 @@ class SearchWordController: DYViewController {
         searchBar.delegate = self
         searchBar.placeholder = "搜索单词"
     }
+    
+    func setupReactive()  {
+//        let textSignal = self.rac_signalForSelector(#selector(searchBar(_:textDidChange:)), fromProtocol: UISearchBarDelegate.self)
+//            .map { tuple in
+//                guard let tuple = tuple as? RACTuple,
+//                    let text = tuple.second as? String else {
+//                        return ""
+//                }
+//                return text
+//        }
+
+        let textSignal = searchBar.dy_rac_textSignal!
+        textSignal.map { (text) -> AnyObject! in
+            guard let text = text as? String else {
+                return false
+            }
+            return text.length > 0
+        }.distinctUntilChanged()
+         .subscribeNext {[weak self] length in
+            guard let length = length as? NSNumber else {
+                return
+            }
+            self?.searchStatus = length.integerValue > 0 ? SearchStatus.Results : SearchStatus.History
+            self?.collectionView.reloadData()
+        }
+    }
 }
 
 extension SearchWordController : UISearchBarDelegate {
@@ -78,29 +141,23 @@ extension SearchWordController : UISearchBarDelegate {
         return true
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-    }
-    
+//    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+//    }
+//    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.length <= 0 {
-            if searchStatus != SearchStatus.History {
-                searchStatus = SearchStatus.History
-                
-            }
-        }
     }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        let text = searchBar.text
-        if text?.length > 0 {
-            searchStatus = SearchStatus.Results
-            
-            
-        } else {
-            searchStatus = SearchStatus.History
-            
-        }
-    }
+//
+//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+//        let text = searchBar.text
+//        if text?.length > 0 {
+//            searchStatus = SearchStatus.Results
+//            
+//            
+//        } else {
+//            searchStatus = SearchStatus.History
+//            
+//        }
+//    }
 }
 
 extension SearchWordController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

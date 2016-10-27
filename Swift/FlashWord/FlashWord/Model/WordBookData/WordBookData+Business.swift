@@ -152,7 +152,7 @@ extension WordBookData {
         return producer
     }
     
-    func updateWordDatas(policy policy: AVCachePolicy, limit: Int = AppConst.kBigDataLoadLimit) -> SignalProducer<[WordData], NSError> {
+    func updateWordDatas(policy policy: AVCachePolicy, limit: Int = AppConst.kLargeDataLoadLimit) -> SignalProducer<[WordData], NSError> {
         //FIXME：NOTE：考虑map操作符是否换别的
         let producer = self.wordDatas(policy: policy, skip: 0, limit: limit)
             .map {[weak self] (words) -> [WordData] in
@@ -163,7 +163,7 @@ extension WordBookData {
         return producer
     }
     
-    func loadMoreWordDatas(policy policy: AVCachePolicy, limit: Int = AppConst.kBigDataLoadLimit) -> SignalProducer<[WordData], NSError> {
+    func loadMoreWordDatas(policy policy: AVCachePolicy, limit: Int = AppConst.kLargeDataLoadLimit) -> SignalProducer<[WordData], NSError> {
         //FIXME：NOTE：考虑map操作符是否换别的
         let skip = self.wordDatas.count
         let producer = self.wordDatas(policy: policy, skip: skip, limit: limit)

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import ReactiveCocoa
 
 @objc(WordCD)
 public class WordCD: NSManagedObject {
@@ -20,6 +21,48 @@ extension WordCD {
 //    @nonobjc public class func fetchRequest() -> NSFetchRequest<WordCD> {
 //        return NSFetchRequest<WordCD>(entityName: "WordCD");
 //    }
+    class func searchDatas(text: String, limit: Int = AppConst.kNormDataLoadLimit) -> SignalProducer<[WordCD], NSError> {
+        let producer = SignalProducer<[WordCD], NSError> {(observer, dispose) in
+            var objectIDs : [NSManagedObjectID] = []
+            
+            MagicalRecord.saveWithBlock({ (localContext) in
+                let predicateF = NSPredicate(format: "word BEGINSWITH[cd] $text")
+                let predicate = predicateF.predicateWithSubstitutionVariables(["text": text])
+                let fetchRequest = WordCD.MR_requestAllSortedBy("level", ascending: true,
+                                                                                                         withPredicate: predicate,
+                                                                                                                inContext: localContext)
+                fetchRequest.fetchLimit = limit
+                if let wordCDs = WordCD.MR_executeFetchRequest(fetchRequest, inContext: localContext) {
+                    for word in wordCDs {
+                        objectIDs.append(word.objectID)
+                    }
+                }
+                }, completion: { (succeed, error) in
+                    if error == nil {
+                        var wordCDs : [WordCD] = []
+                        for objectID in objectIDs {
+                            do {
+                                let word = try NSManagedObjectContext.MR_defaultContext().existingObjectWithID(objectID)  as? WordCD
+                                if word != nil {
+                                    wordCDs.append(word!)
+                                }
+                            } catch let err as NSError {
+                                DYLog.error("existingObjectWithID error : \(err.localizedDescription)")
+                            }
+                        }
+                        observer.sendNext(wordCDs)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendFailed(error!)
+                    }
+            })
+            
+            dispose.addDisposable({ 
+                DYLog.info("searchDatas dispose: count: \(objectIDs.count)")
+            })
+        }
+        return producer
+    }
 
     class func checkWordCD() {
         MagicalRecord.saveWithBlock({ (context) in

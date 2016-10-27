@@ -40,7 +40,7 @@ class WordBookDetailVM: DYListViewModel {
             return false
         }
         
-        let limit = AppConst.kBigDataLoadLimit
+        let limit = AppConst.kLargeDataLoadLimit
         
         var producer = SignalProducer<(MyWordBookData?, WordBookData?), NSError>(value: (myBookData, bookData))
         if myBookData == nil || bookData == nil {
@@ -93,7 +93,7 @@ class WordBookDetailVM: DYListViewModel {
             return false
         }
         
-        let limit = AppConst.kBigDataLoadLimit
+        let limit = AppConst.kLargeDataLoadLimit
         let producer = bookData.loadMoreWordDatas(policy: policy, limit: limit)
         producer.start(Observer<[WordData], NSError>(
             failed: {[weak self] error in
