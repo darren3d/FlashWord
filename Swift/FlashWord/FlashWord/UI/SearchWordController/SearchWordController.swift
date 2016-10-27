@@ -77,6 +77,12 @@ class SearchWordController: DYViewController {
         resultVM.vm_viewController = self
         
         setupReactive()
+        
+        historyVM.vm_updateData(policy: AVCachePolicy.NetworkElseCache, callback: nil)
+    }
+    
+    override func viewFirstWillAppear() {
+        super.viewFirstWillAppear()
     }
 
     override func viewFirstDidAppear() {
@@ -130,8 +136,14 @@ class SearchWordController: DYViewController {
             guard let length = length as? NSNumber else {
                 return
             }
-            self?.searchStatus = length.integerValue > 0 ? SearchStatus.Results : SearchStatus.History
-            self?.collectionView.reloadData()
+            
+            if length.integerValue > 0 {
+                self?.searchStatus = SearchStatus.Results
+                self?.resultVM.vm_reloadData(sortID: -1, callback: nil)
+            } else {
+                self?.searchStatus = SearchStatus.History
+                self?.historyVM.vm_reloadData(sortID: -1, callback: nil)
+            }
         }
     }
 }
@@ -203,6 +215,13 @@ extension SearchWordController : UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if searchStatus == SearchStatus.Results {
+            //添加到搜索历史
+            if let sectionVM = resultVM.sectionAtIndex(indexPath.section) {
+                if let itemVM = sectionVM.itemAtIndex(indexPath.item) as? SearchWordCellVM {
+                    historyVM.addSearchHistory(itemVM.word, callback: nil)
+                }
+            }
+            
             resultVM.collectionView(collectionView, didSelectItemAtIndexPath: indexPath)
         } else if searchStatus == SearchStatus.History {
             historyVM.collectionView(collectionView, didSelectItemAtIndexPath: indexPath)

@@ -60,6 +60,7 @@ class SearchWordResultVM: DYListViewModel {
         
         for wordCD in wordsCD {
             let item = SearchWordCellVM(data: wordCD)
+            item.displayIcon = false
             let section = DYSectionViewModel(items: [item])
             sections.append(section)
         }
@@ -78,10 +79,10 @@ extension SearchWordResultVM {
     override func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         super.collectionView(collectionView, willDisplayCell: aCell, forItemAtIndexPath: indexPath)
         
-        guard let cell = aCell as? SearchWordCell else {
-            return
-        }
-        cell.setDisplayIcon(false)
+//        guard let cell = aCell as? SearchWordCell else {
+//            return
+//        }
+//        cell.setDisplayIcon(false)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

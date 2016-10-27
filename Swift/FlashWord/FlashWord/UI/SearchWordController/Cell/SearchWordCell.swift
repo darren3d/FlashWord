@@ -38,6 +38,14 @@ class SearchWordCell: UICollectionViewCell {
     func setupReactive() {
         RAC(target: self, keyPath: "labelWord.text", nilValue: "") <= RACObserve(target: self, keyPath: "viewModel.word")
         RAC(target: self, keyPath: "labelMean.text", nilValue: "") <= RACObserve(target: self, keyPath: "viewModel.mean")
+        RACObserve(target: self, keyPath: "viewModel.displayIcon")
+        .subscribeNext {[weak self] display in
+            guard let display = display as? NSNumber else {
+                return
+            }
+            
+            self?.setDisplayIcon(display.boolValue)
+        }
     }
     
     func setDisplayIcon(display : Bool) {
