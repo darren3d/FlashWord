@@ -99,28 +99,43 @@ class SearchWordHistoryVM: DYListViewModel {
 
 extension SearchWordHistoryVM {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return SearchWordCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
+        if indexPath.section == 0 {
+            return SearchHistoryHeader.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
+
+        } else {
+             return SearchWordCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
+        }
     }
     
     override func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         super.collectionView(collectionView, willDisplayCell: aCell, forItemAtIndexPath: indexPath)
         
-//        guard let cell = aCell as? SearchWordCell else {
-//            return
-//        }
-//        cell.setDisplayIcon(true)
+        if indexPath.section == 0 {
+            if let searchHeader = aCell as? SearchHistoryHeader {
+                searchHeader.callback = { [weak self] _ in
+                    self?.clearHistory()
+                    self?.vm_reloadData(sortID: -1, callback: nil)
+                }
+            }
+        }
+
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 40)
+        if indexPath.section == 0 {
+            return CGSize(width: collectionView.bounds.width, height: 30)
+        } else {
+            let halfWidth = floor(collectionView.bounds.width*0.5)
+            DYLog.info("section: \(indexPath.section) item: \(indexPath.item) halfWidth: \(halfWidth)")
+            return CGSize(width: halfWidth, height: 40)
+        }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let sectionCount = self.numberOfSectionsInCollectionView(collectionView);
-        if section != sectionCount - 1 {
-            return UIEdgeInsetsMake(10, 0, 0, 0)
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        if section == 0 {
+            return UIEdgeInsetsZero
         } else {
-            return UIEdgeInsetsMake(10, 0, 10, 0)
+            return UIEdgeInsetsMake(0, 0, 10, 0)
         }
     }
 }
