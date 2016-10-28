@@ -137,9 +137,14 @@ extension SearchWordHistoryVM {
         if indexPath.section == 0 {
             return CGSize(width: collectionView.bounds.width, height: 30)
         } else {
-            let halfWidth = floor(collectionView.bounds.width*0.5)
-            DYLog.info("section: \(indexPath.section) item: \(indexPath.item) halfWidth: \(halfWidth)")
-            return CGSize(width: halfWidth, height: 40)
+            var width = floor(collectionView.bounds.width*0.5)
+            let count = self.collectionView(collectionView, numberOfItemsInSection: 1)
+            if count % 2 == 1 && indexPath.item == count - 1 {
+                width = collectionView.bounds.width
+            }
+            
+            DYLog.info("section: \(indexPath.section) item: \(indexPath.item) width: \(width)")
+            return CGSize(width: width, height: 40)
         }
     }
     
