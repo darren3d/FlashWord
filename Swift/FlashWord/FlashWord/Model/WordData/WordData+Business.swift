@@ -48,48 +48,80 @@ extension WordData {
 //        }
 //        return producer
 //    }
-    
-    //从服务器查询单词
-    static func word(word : String) -> SignalProducer<(String, WordData?), NSError> {
-        if word.length <= 0 {
-            return SignalProducer.empty
-        }
-        
-        let producer = SignalProducer<(String, WordData?), NSError> { (observer, dispose) in
-            let query = WordData.query()
-            query.whereKey("word", equalTo: word)
-            query.getFirstObjectInBackgroundWithBlock { (wordData, error) in
-                if error == nil {
-                    if let wordData = wordData as? WordData {
-                        observer.sendNext((word, wordData))
-                        observer.sendCompleted()
-                    } else {
-                        observer.sendNext((word, nil))
-                        observer.sendCompleted()
-                    }
-                } else {
-                    observer.sendFailed(error)
-                }
-            }
-        }
-        return producer
-    }
         
     //添加word单词到WordData表
     //该函数先检测服务器是否已经添加，有直接返回，没有则查询翻译后添加到服务器
     static func addWordData(word : String) -> SignalProducer<(String, WordData?), NSError> {
         let producer = SignalProducer<String, NSError>(value: word)
-        .flatMap(FlattenStrategy.Concat) { word -> SignalProducer<(String, WordData?), NSError> in
+        .flatMap(FlattenStrategy.Concat) { word -> SignalProducer<(AnyObject, AVObject?), NSError> in
             //查询服务器
-            return WordData.word(word)
+            return WordData.dataWithKey(key: "word", value: word, cachePolicy: AVCachePolicy.NetworkOnly)
          }.flatMap(FlattenStrategy.Concat) { (word, wordData) -> SignalProducer<(String, WordData?), NSError> in
             if wordData != nil {
                 //服务器存在
-                return SignalProducer<(String, WordData?), NSError>(value: (word, wordData))
+                return SignalProducer<(String, WordData?), NSError>(value: (word as! String, wordData as? WordData))
             } else {
                 //服务器不存在，
-                return WordData.forceAddWordData(word)
+                return WordData.forceAddWordData(word as! String)
             }
+        }
+        return producer
+    }
+    
+    private func sentenceDatas(policy policy: AVCachePolicy, skip: Int, limit: Int = AppConst.kNormDataLoadLimit) -> SignalProducer<[WordSentenceData],NSError> {
+        let producer = SignalProducer<[WordSentenceData], NSError> {[weak self] (observer, dispose) in
+            guard let sSelf = self else {
+                observer.sendCompleted()
+                return
+            }
+            
+            let query = sSelf.sentences.query()
+            query.cachePolicy = policy
+            query.skip = skip
+            query.limit = limit
+            query.findObjectsInBackgroundWithBlock { (words, error) in
+                if error == nil {
+                    if let words = words as? [WordSentenceData] {
+                        observer.sendNext(words)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendNext([])
+                        observer.sendCompleted()
+                    }
+                } else {
+                    if error.code == kAVErrorObjectNotFound {
+                        observer.sendNext([])
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendFailed(error)
+                    }
+                }
+            }
+        }
+        return producer
+    }
+    
+    //更新句子
+    func updateSentenceDatas(policy policy: AVCachePolicy, limit: Int = AppConst.kLargeDataLoadLimit) -> SignalProducer<[WordSentenceData], NSError> {
+        //FIXME：NOTE：考虑map操作符是否换别的
+        let producer = self.sentenceDatas(policy: policy, skip: 0, limit: limit)
+            .map {[weak self] (sentences) -> [WordSentenceData] in
+                self?.hasNoMoreSentence = limit > sentences.count
+                self?.sentenceDatas = sentences
+                return sentences
+        }
+        return producer
+    }
+    
+    //加载更多句子
+    func loadMoreSentenceDatas(policy policy: AVCachePolicy, limit: Int = AppConst.kLargeDataLoadLimit) -> SignalProducer<[WordSentenceData], NSError> {
+        //FIXME：NOTE：考虑map操作符是否换别的
+        let skip = self.sentenceDatas.count
+        let producer = self.sentenceDatas(policy: policy, skip: skip, limit: limit)
+            .map {[weak self] (sentences) -> [WordSentenceData] in
+                self?.hasNoMoreSentence = limit > sentences.count
+                self?.sentenceDatas.appendContentsOf(sentences)
+                return sentences
         }
         return producer
     }
@@ -111,10 +143,13 @@ extension WordData {
                 }
 
                 if sentenceDatas.count > 0 {
-                    AVObject.saveAllInBackground(sentenceDatas, block: { (succeed, error) in
+                    //保存前乱序
+                    let randSentenceDatas = sentenceDatas.randomSubArray(count: sentenceDatas.count)
+                    AVObject.saveAllInBackground(randSentenceDatas, block: { (succeed, error) in
                         if error == nil {
                             if succeed {
-                                for data in sentenceDatas {
+                                
+                                for data in randSentenceDatas {
                                     wordData.sentences.addObject(data)
                                 }
 

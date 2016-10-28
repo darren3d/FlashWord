@@ -18,7 +18,10 @@ class WordData: AVObject, AVSubclassing {
     @NSManaged var phonationEn : String
     @NSManaged var phonationAm : String
     @NSManaged var sentences : AVRelation
-
+    //非持久化，用于存储获取的单词
+    dynamic var sentenceDatas : [WordSentenceData] = []
+    dynamic var hasNoMoreSentence : Bool = false
+    
     //第三人称单数数
     @NSManaged var formThird  : String
     //复数

@@ -90,7 +90,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WordBookPageCell" id="rC4-aM-LRY" customClass="WordBookPageCell" customModule="FlashWord" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-57" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="-56.5" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -621,11 +621,175 @@
                         <outlet property="collectionLayout" destination="wik-0h-rXn" id="EBQ-K0-FJw"/>
                         <outlet property="collectionView" destination="caE-tT-U3o" id="KHv-tD-OxU"/>
                         <outlet property="viewNoResults" destination="ShK-FC-aGh" id="QYy-x4-3f4"/>
+                        <segue destination="VGK-sC-LK1" kind="show" id="CXa-2E-EDN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXH-Nf-NjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1298" y="434"/>
+        </scene>
+        <!--单词详情-->
+        <scene sceneID="VNc-R7-6va">
+            <objects>
+                <viewController storyboardIdentifier="WordDetailController" id="VGK-sC-LK1" customClass="WordDetailController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y1n-ow-e8i"/>
+                        <viewControllerLayoutGuide type="bottom" id="wal-R5-g8j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7yD-Mq-apK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4UA-3o-aCp">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="没有您要的搜索结果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fig-2m-ro7">
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.83030533790000005" green="0.83046472069999999" blue="0.83027875419999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Fig-2m-ro7" firstAttribute="centerY" secondItem="4UA-3o-aCp" secondAttribute="centerY" id="Y5d-Oz-uIJ"/>
+                                    <constraint firstItem="Fig-2m-ro7" firstAttribute="centerX" secondItem="4UA-3o-aCp" secondAttribute="centerX" id="eCI-4g-uXG"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N63-kT-AXd">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="jdA-u2-RrS">
+                                    <size key="itemSize" width="375" height="30"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchWordCell" id="yd8-ef-WRh" customClass="SearchWordCell" customModule="FlashWord" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yzo-c6-Ml7">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="2Lr-e0-v8k"/>
+                                                        <constraint firstAttribute="height" constant="20" id="jK5-Lq-dHf"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="800" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="单词" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-6d-b38">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.2985658585" green="0.2985658585" blue="0.2985658585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="释义" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMd-cu-c0v">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acc-fs-dH7" customClass="SinglePixelView" customModule="FlashWord" customModuleProvider="target">
+                                                    <color key="backgroundColor" red="0.76463330929999995" green="0.76463330929999995" blue="0.76463330929999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="9iF-tk-uGn"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="acc-fs-dH7" secondAttribute="trailing" id="3G8-Xp-aQG"/>
+                                            <constraint firstItem="yzo-c6-Ml7" firstAttribute="centerY" secondItem="yd8-ef-WRh" secondAttribute="centerY" id="5Mf-ai-hgj"/>
+                                            <constraint firstItem="kMd-cu-c0v" firstAttribute="centerY" secondItem="zYo-6d-b38" secondAttribute="centerY" id="C5W-W0-Ovn"/>
+                                            <constraint firstAttribute="trailing" secondItem="kMd-cu-c0v" secondAttribute="trailing" constant="10" id="DPj-Wy-f8L"/>
+                                            <constraint firstAttribute="bottom" secondItem="acc-fs-dH7" secondAttribute="bottom" id="EF7-wj-bHb"/>
+                                            <constraint firstItem="kMd-cu-c0v" firstAttribute="leading" secondItem="zYo-6d-b38" secondAttribute="trailing" constant="10" id="Lf8-6c-3SG"/>
+                                            <constraint firstAttribute="bottom" secondItem="zYo-6d-b38" secondAttribute="bottom" priority="200" constant="10.5" id="l7n-Ex-SRv"/>
+                                            <constraint firstItem="yzo-c6-Ml7" firstAttribute="leading" secondItem="yd8-ef-WRh" secondAttribute="leading" constant="10" id="r4B-4C-obK"/>
+                                            <constraint firstItem="zYo-6d-b38" firstAttribute="leading" secondItem="yd8-ef-WRh" secondAttribute="leading" constant="40" id="tq4-dh-efS"/>
+                                            <constraint firstItem="zYo-6d-b38" firstAttribute="top" secondItem="yd8-ef-WRh" secondAttribute="top" constant="10" id="v2e-qv-qVV"/>
+                                            <constraint firstItem="acc-fs-dH7" firstAttribute="leading" secondItem="yd8-ef-WRh" secondAttribute="leading" id="yn5-if-3qM"/>
+                                        </constraints>
+                                        <size key="customSize" width="375" height="40"/>
+                                        <connections>
+                                            <outlet property="imageIcon" destination="yzo-c6-Ml7" id="RJG-fI-WGG"/>
+                                            <outlet property="labelMean" destination="kMd-cu-c0v" id="0cL-rB-Bex"/>
+                                            <outlet property="labelWord" destination="zYo-6d-b38" id="9HK-9V-hsy"/>
+                                            <outlet property="labelWordLead" destination="tq4-dh-efS" id="L8H-SB-h0T"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchHistoryHeader" id="Zb6-pI-Lw2" customClass="SearchHistoryHeader" customModule="FlashWord" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="375" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="800" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="搜索历史" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRI-66-RS3">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.65814919179999998" green="0.65814919179999998" blue="0.65814919179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sq-CU-grE">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="VUC-Li-fCD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <state key="normal" title="清空记录">
+                                                        <color key="titleColor" red="1" green="0.51989811659999996" blue="0.44112765790000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onBtnClear" destination="Zb6-pI-Lw2" eventType="touchUpInside" id="6cs-eI-AMS"/>
+                                                    </connections>
+                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxU-Eu-n5L" customClass="SinglePixelView" customModule="FlashWord" customModuleProvider="target">
+                                                    <color key="backgroundColor" red="0.76463330929999995" green="0.76463330929999995" blue="0.76463330929999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="3qS-Wf-5kH"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="gxU-Eu-n5L" secondAttribute="trailing" id="59j-pF-pBV"/>
+                                            <constraint firstItem="gxU-Eu-n5L" firstAttribute="leading" secondItem="Zb6-pI-Lw2" secondAttribute="leading" id="6e0-yu-LZg"/>
+                                            <constraint firstItem="mRI-66-RS3" firstAttribute="centerY" secondItem="Zb6-pI-Lw2" secondAttribute="centerY" id="esW-6E-U32"/>
+                                            <constraint firstItem="6sq-CU-grE" firstAttribute="centerY" secondItem="Zb6-pI-Lw2" secondAttribute="centerY" id="fDt-pI-kLW"/>
+                                            <constraint firstItem="mRI-66-RS3" firstAttribute="leading" secondItem="Zb6-pI-Lw2" secondAttribute="leading" constant="10" id="nAF-bd-Lvm"/>
+                                            <constraint firstAttribute="trailing" secondItem="6sq-CU-grE" secondAttribute="trailing" constant="10" id="omb-I5-UDh"/>
+                                            <constraint firstAttribute="bottom" secondItem="gxU-Eu-n5L" secondAttribute="bottom" id="zUY-OL-HOl"/>
+                                        </constraints>
+                                        <size key="customSize" width="375" height="28"/>
+                                        <connections>
+                                            <outlet property="btnClear" destination="6sq-CU-grE" id="zn7-kx-FTU"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="VGK-sC-LK1" id="eru-JZ-nSN"/>
+                                    <outlet property="delegate" destination="VGK-sC-LK1" id="uZR-OM-vTO"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="N63-kT-AXd" firstAttribute="centerX" secondItem="7yD-Mq-apK" secondAttribute="centerX" id="2mt-o2-VNo"/>
+                            <constraint firstItem="N63-kT-AXd" firstAttribute="height" secondItem="7yD-Mq-apK" secondAttribute="height" id="5ca-vr-i8U"/>
+                            <constraint firstItem="4UA-3o-aCp" firstAttribute="centerX" secondItem="7yD-Mq-apK" secondAttribute="centerX" id="7xs-Iy-Msy"/>
+                            <constraint firstItem="4UA-3o-aCp" firstAttribute="centerY" secondItem="7yD-Mq-apK" secondAttribute="centerY" id="Hvh-si-LZ0"/>
+                            <constraint firstItem="4UA-3o-aCp" firstAttribute="width" secondItem="7yD-Mq-apK" secondAttribute="width" id="RGi-rU-trO"/>
+                            <constraint firstItem="4UA-3o-aCp" firstAttribute="height" secondItem="7yD-Mq-apK" secondAttribute="height" id="Txx-aE-gZX"/>
+                            <constraint firstItem="N63-kT-AXd" firstAttribute="centerY" secondItem="7yD-Mq-apK" secondAttribute="centerY" id="sAy-Ne-95Q"/>
+                            <constraint firstItem="N63-kT-AXd" firstAttribute="width" secondItem="7yD-Mq-apK" secondAttribute="width" id="vO8-9A-B0W"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="单词详情" id="VIl-Li-tQf"/>
+                    <connections>
+                        <outlet property="collectionLayout" destination="jdA-u2-RrS" id="ugx-f4-Swb"/>
+                        <outlet property="collectionView" destination="N63-kT-AXd" id="Gi7-w0-2rP"/>
+                        <outlet property="viewNoResults" destination="4UA-3o-aCp" id="adf-95-7f4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zph-Kf-4EP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1298" y="1168"/>
         </scene>
         <!--背单词-->
         <scene sceneID="cVG-pk-6JD">
@@ -753,7 +917,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="4bd-pD-FPu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="4bd-pD-FPu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

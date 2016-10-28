@@ -29,5 +29,25 @@ extension AVObject {
         }
         return producer
     }
+    
+    class func dataWithKey(key key: String, value:AnyObject, cachePolicy: AVCachePolicy, includeKeys: [String] = [])-> SignalProducer<(AnyObject, AVObject?), NSError> {
+        let query = self.query()
+        query.cachePolicy = cachePolicy
+        query.whereKey(key, equalTo: value)
+        for key in includeKeys {
+            query.includeKey(key)
+        }
+        let producer = SignalProducer<(AnyObject, AVObject?), NSError> {(observer, dispose) in
+            query.getFirstObjectInBackgroundWithBlock { (object, error) in
+                if error == nil {
+                    observer.sendNext((value, object))
+                    observer.sendCompleted()
+                } else {
+                    observer.sendFailed(error)
+                }
+            }
+        }
+        return producer
+    }
 }
 
