@@ -22,6 +22,7 @@
 		63258ADB1DC0EEBC00B180A1 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258ADA1DC0EEBC00B180A1 /* SearchData.swift */; };
 		63258ADD1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63258ADC1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework */; };
 		63258AEB1DC1EDB000B180A1 /* SinglePixelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258AEA1DC1EDB000B180A1 /* SinglePixelView.swift */; };
+		63258AED1DC245D700B180A1 /* SearchHistoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258AEC1DC245D700B180A1 /* SearchHistoryHeader.swift */; };
 		6326562A1DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */; };
 		6326562C1DBDEF67009CC611 /* UIView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562B1DBDEF67009CC611 /* UIView+Utility.swift */; };
 		6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */; };
@@ -276,6 +277,7 @@
 		63258ADA1DC0EEBC00B180A1 /* SearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 		63258ADC1DC1559500B180A1 /* CSStickyHeaderFlowLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSStickyHeaderFlowLayout.framework; path = Carthage/Build/iOS/CSStickyHeaderFlowLayout.framework; sourceTree = "<group>"; };
 		63258AEA1DC1EDB000B180A1 /* SinglePixelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePixelView.swift; sourceTree = "<group>"; };
+		63258AEC1DC245D700B180A1 /* SearchHistoryHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryHeader.swift; sourceTree = "<group>"; };
 		632656291DBDE7A0009CC611 /* UICollectionViewCell+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Utility.swift"; sourceTree = "<group>"; };
 		6326562B1DBDEF67009CC611 /* UIView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Utility.swift"; sourceTree = "<group>"; };
 		6326562D1DBDF4C6009CC611 /* WordBookListVM+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordBookListVM+UI.swift"; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				63258AD51DC0C50F00B180A1 /* SearchWordCell.swift */,
+				63258AEC1DC245D700B180A1 /* SearchHistoryHeader.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1902,6 +1905,7 @@
 				844FBA761D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRipple.swift in Sources */,
 				6304C3211DAA9FEF000D9DA1 /* MyController.swift in Sources */,
 				633FDCF21DAF7500006F09AD /* WordSentenceData.swift in Sources */,
+				63258AED1DC245D700B180A1 /* SearchHistoryHeader.swift in Sources */,
 				844FBA7F1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationLineScaleParty.swift in Sources */,
 				6386498F1DAF372B008A9719 /* WordTestData.swift in Sources */,
 				6388D5ED1D108B090029C988 /* BusyNavigationBarOptions.swift in Sources */,

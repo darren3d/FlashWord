@@ -27,7 +27,7 @@ extension WordBookListVM {
         return CGSize(width: collectionView.bounds.width, height: 120)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         let sectionCount = self.numberOfSectionsInCollectionView(collectionView);
         if section != sectionCount - 1 {
             return UIEdgeInsetsMake(10, 0, 0, 0)

@@ -22,6 +22,9 @@ class SearchWordHistoryVM: DYListViewModel {
     override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool {
         var items: [SearchWordCellVM] = []
         
+        //header
+        let sectionHeader = DYSectionViewModel(items: [DYViewModel(data:nil)])
+        
         //filter
         var filterSearchDatas : [SearchData] = []
         var searchTestSet : [String] = []
@@ -40,7 +43,7 @@ class SearchWordHistoryVM: DYListViewModel {
         }
         
         if items.count > 0 {
-            self.sections = [DYSectionViewModel(items: items)]
+            self.sections = [sectionHeader, DYSectionViewModel(items: items)]
         } else {
              self.sections = []
         }
