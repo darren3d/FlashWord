@@ -94,6 +94,17 @@ class SearchWordHistoryVM: DYListViewModel {
             callback?(nil, nil)
         }
     }
+    
+    func clearHistory(callback: DYCommonCallback?)  {
+        SearchData.clearAllHistory {[weak self] (_, error) in
+            guard let sSelf = self  else {
+                    callback?(nil, error)
+                    return
+            }
+            sSelf.searchDatas = []
+            callback?(nil, nil)
+        }
+    }
 }
 
 
@@ -113,8 +124,9 @@ extension SearchWordHistoryVM {
         if indexPath.section == 0 {
             if let searchHeader = aCell as? SearchHistoryHeader {
                 searchHeader.callback = { [weak self] _ in
-                    self?.clearHistory()
-                    self?.vm_reloadData(sortID: -1, callback: nil)
+                    self?.clearHistory({ [weak self] (_, error) in
+                        self?.vm_reloadData(sortID: -1, callback: nil)
+                    })
                 }
             }
         }

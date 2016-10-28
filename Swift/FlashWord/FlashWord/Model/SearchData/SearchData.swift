@@ -14,7 +14,7 @@ import ReactiveCocoa
 class SearchData: AVObject, AVSubclassing {
     @NSManaged var text : String
     @NSManaged var creator : AccountData?
-    @NSManaged var addTime : NSDate
+    @NSManaged var updateTime : NSDate
     
     static func parseClassName() -> String! {
         return "SearchData"
@@ -42,7 +42,7 @@ extension SearchData {
                 let searchData = SearchData()
                 searchData.text = text
                 searchData.creator = creator
-                searchData.addTime = NSDate()
+                searchData.updateTime = NSDate()
                 searchData.saveInBackgroundWithBlock({ (succeed, error2) in
                     if error2 == nil && succeed {
                         callback?(searchData, nil)
@@ -52,10 +52,49 @@ extension SearchData {
                 })
             } else if data != nil {
                 if let data = data as? SearchData {
-                    data.addTime = NSDate()
+                    data.updateTime = NSDate()
                 }
                 data.saveInBackground()
                 callback?(data, nil)
+            } else {
+                DYLog.error("addSearchHistory: error:\(error.localizedDescription)")
+                callback?(nil, error)
+            }
+        }
+    }
+    
+    class func clearAllHistory(callback: DYCommonCallback?) {
+        let creator = AccountData.currentUser()
+        if creator == nil {
+            //不登录无法删除记录
+            callback?(nil, nil)
+            return
+        }
+
+        
+        let query = SearchData.query()
+        query.cachePolicy = AVCachePolicy.NetworkElseCache
+        query.whereKey("creator", equalTo: creator)
+        query.findObjectsInBackgroundWithBlock{ (datas, error) in
+            if (error == nil) {
+                if let datas = datas as? [SearchData] {
+                    if datas.count > 0 {
+                        let date = NSDate()
+                        for item in datas {
+                            item.updateTime = date
+                            item.creator = nil
+                        }
+                        AVObject.saveAllInBackground(datas, block: { (succeed, error2) in
+                            if error2 == nil && succeed {
+                                callback?(datas, nil)
+                            } else {
+                                callback?(nil, error2)
+                            }
+                        })
+                        return
+                    }
+                }
+                callback?(datas, nil)
             } else {
                 DYLog.error("addSearchHistory: error:\(error.localizedDescription)")
                 callback?(nil, error)

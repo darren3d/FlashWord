@@ -10,11 +10,12 @@ import UIKit
 
 typealias SearchHistoryHeaderCallback = (SearchHistoryHeader)->Void
 
+@objc
 class SearchHistoryHeader: UICollectionViewCell {
     var callback : SearchHistoryHeaderCallback?
     
     @IBOutlet weak var btnClear : UIButton!
-    @IBAction func onBtnClear(sender : AnyObject) {
+    @IBAction func onBtnClear() {
         callback?(self)
     }
 }
