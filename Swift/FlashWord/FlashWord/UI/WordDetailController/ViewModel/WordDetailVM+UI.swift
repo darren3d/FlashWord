@@ -10,7 +10,20 @@ import UIKit
 
 extension WordDetailVM {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return WordDataCell.dequeueReusableCellWithReuseIdentifier(collectionView, forIndexPath: indexPath)
+        switch indexPath.section {
+        case WordDetailSection.Phonation:
+            return WordPhonationCell.dequeueReusableCellWithReuseIdentifier(collectionView,
+                                                                     forIndexPath: indexPath)
+        case WordDetailSection.Meaning:
+            return WordMeanCell.dequeueReusableCellWithReuseIdentifier(collectionView,
+                                                                       forIndexPath: indexPath)
+        case WordDetailSection.Sentence:
+            return WordSentenceCell.dequeueReusableCellWithReuseIdentifier(collectionView,
+                                                                       forIndexPath: indexPath)
+        default:
+            DYLog.error("WordDetailVM cellForItemAtIndexPath error")
+            return UICollectionViewCell()
+        }
     }
     
     override func collectionView(collectionView: UICollectionView, willDisplayCell aCell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
@@ -24,7 +37,20 @@ extension WordDetailVM {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 63)
+        let width = collectionView.bounds.width
+        var  size = CGSize(width: width, height: 0)
+        
+        switch indexPath.section {
+        case WordDetailSection.Phonation:
+            size.height = 75
+        case WordDetailSection.Meaning:
+            size.height = 27
+        case WordDetailSection.Sentence:
+            size.height = 27
+        default:
+            DYLog.error("WordDetailVM cellForItemAtIndexPath error")
+        }
+        return size
     }
     
     override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {

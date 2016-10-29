@@ -197,6 +197,11 @@
 		63F4FF6C1DB0BBA4008AAE4C /* RAC+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */; };
 		63F4FF701DB1113D008AAE4C /* WordQuestionData+Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */; };
 		63F4FF731DB11796008AAE4C /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F4FF721DB11796008AAE4C /* WordService.swift */; };
+		63FFC8471DC363590015869E /* WordPhonationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFC8461DC363590015869E /* WordPhonationCell.swift */; };
+		63FFC8491DC3638A0015869E /* WordMeanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFC8481DC3638A0015869E /* WordMeanCell.swift */; };
+		63FFC84B1DC367F10015869E /* WordSentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFC84A1DC367F10015869E /* WordSentenceCell.swift */; };
+		63FFC84D1DC4345B0015869E /* WordMeanCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFC84C1DC4345B0015869E /* WordMeanCellVM.swift */; };
+		63FFC84F1DC4371E0015869E /* WordPhonationCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFC84E1DC4371E0015869E /* WordPhonationCellVM.swift */; };
 		840C8D141D179698009F2646 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C8D131D179698009F2646 /* Async.swift */; };
 		840C8D171D179876009F2646 /* DYLineProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C8D161D179876009F2646 /* DYLineProgress.swift */; };
 		84301CFF1D18DE8300BB3C5D /* DYLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84301CFE1D18DE8300BB3C5D /* DYLoader.swift */; };
@@ -529,6 +534,11 @@
 		63F4FF6B1DB0BBA4008AAE4C /* RAC+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RAC+Utility.swift"; sourceTree = "<group>"; };
 		63F4FF6F1DB1113D008AAE4C /* WordQuestionData+Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WordQuestionData+Business.swift"; sourceTree = "<group>"; };
 		63F4FF721DB11796008AAE4C /* WordService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
+		63FFC8461DC363590015869E /* WordPhonationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPhonationCell.swift; sourceTree = "<group>"; };
+		63FFC8481DC3638A0015869E /* WordMeanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordMeanCell.swift; sourceTree = "<group>"; };
+		63FFC84A1DC367F10015869E /* WordSentenceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSentenceCell.swift; sourceTree = "<group>"; };
+		63FFC84C1DC4345B0015869E /* WordMeanCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordMeanCellVM.swift; sourceTree = "<group>"; };
+		63FFC84E1DC4371E0015869E /* WordPhonationCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPhonationCellVM.swift; sourceTree = "<group>"; };
 		840C8D131D179698009F2646 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		840C8D161D179876009F2646 /* DYLineProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLineProgress.swift; sourceTree = "<group>"; };
 		84301CFE1D18DE8300BB3C5D /* DYLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYLoader.swift; sourceTree = "<group>"; };
@@ -1537,6 +1547,9 @@
 		63F1FBCF1DC3475B00573DA1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				63FFC8461DC363590015869E /* WordPhonationCell.swift */,
+				63FFC8481DC3638A0015869E /* WordMeanCell.swift */,
+				63FFC84A1DC367F10015869E /* WordSentenceCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1546,6 +1559,8 @@
 			children = (
 				63F1FBD11DC3475B00573DA1 /* WordDetailVM+UI.swift */,
 				63F1FBD21DC3475B00573DA1 /* WordDetailVM.swift */,
+				63FFC84C1DC4345B0015869E /* WordMeanCellVM.swift */,
+				63FFC84E1DC4371E0015869E /* WordPhonationCellVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1841,7 +1856,9 @@
 				63ECC4C51DB288E400C1342E /* BRAContentTypesDefaultExtension.m in Sources */,
 				6388D5F61D15CD9B0029C988 /* RegisterVM.swift in Sources */,
 				63F1FBD51DC3475B00573DA1 /* WordDetailVM.swift in Sources */,
+				63FFC8471DC363590015869E /* WordPhonationCell.swift in Sources */,
 				639187F41D09D7A800757F60 /* XCGLogger.swift in Sources */,
+				63FFC8491DC3638A0015869E /* WordMeanCell.swift in Sources */,
 				63ECC4EE1DB2899300C1342E /* zip.c in Sources */,
 				6388D5DD1D0DC45B0029C988 /* SkyFloatingLabelTextField.swift in Sources */,
 				63F4FF731DB11796008AAE4C /* WordService.swift in Sources */,
@@ -1893,6 +1910,7 @@
 				633FDCF41DAF7794006F09AD /* DYDataBase.swift in Sources */,
 				6336F4281DBCEDEE009B1A70 /* DYBallView.swift in Sources */,
 				63ECC4341DB147A400C1342E /* String+Html.swift in Sources */,
+				63FFC84B1DC367F10015869E /* WordSentenceCell.swift in Sources */,
 				63ECC4B51DB288E400C1342E /* NativeColor+HTML.m in Sources */,
 				6356DC3F1DC081BA0075AF77 /* WordCD.swift in Sources */,
 				6336F4221DBCEDEE009B1A70 /* DYRefreshComponent.swift in Sources */,
@@ -1900,6 +1918,7 @@
 				6336F4261DBCEDEE009B1A70 /* UIScrollView+DYRefresh.swift in Sources */,
 				638649841DAE34AF008A9719 /* WordData.swift in Sources */,
 				63ECC4BD1DB288E400C1342E /* BRACell.m in Sources */,
+				63FFC84D1DC4345B0015869E /* WordMeanCellVM.swift in Sources */,
 				63ECC4EB1DB2899300C1342E /* ioapi.c in Sources */,
 				63ECC4BA1DB288E400C1342E /* NSDictionary+OpenXmlString.m in Sources */,
 				63ECC4CC1DB288E400C1342E /* BRAOfficeDocumentPackage.m in Sources */,
@@ -2016,6 +2035,7 @@
 				63ECC4D91DB288E400C1342E /* BRAOpenXmlSubElement.m in Sources */,
 				6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */,
 				63ECC4BF1DB288E400C1342E /* BRACellFormat.m in Sources */,
+				63FFC84F1DC4371E0015869E /* WordPhonationCellVM.swift in Sources */,
 				844FBA771D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				634E44EF1DB4C83B00B1A9B4 /* AddWordBookController.swift in Sources */,
 			);

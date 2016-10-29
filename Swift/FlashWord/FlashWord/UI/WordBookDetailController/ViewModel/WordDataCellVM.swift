@@ -25,11 +25,11 @@ class WordDataCellVM: DYListCellVM {
             .mapAs({ (tuple : RACTuple) -> AnyObject in
             var phonation = ""
             if let en = tuple[0] as? String {
-                phonation.appendContentsOf("英：\(en)")
+                phonation.appendContentsOf("英：[\(en)]")
             }
             
             if let am = tuple[1] as? String {
-                phonation.appendContentsOf("美：\(am)")
+                phonation.appendContentsOf("美：[\(am)]")
             }
             
             return phonation

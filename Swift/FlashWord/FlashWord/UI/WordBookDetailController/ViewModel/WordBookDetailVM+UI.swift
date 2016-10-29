@@ -42,12 +42,17 @@ extension WordBookDetailVM {
         guard let sectionVM = self.sectionAtIndex(indexPath.section) else {
             return
         }
-        guard let itemVM = sectionVM.itemAtIndex(indexPath.item) as? MyWordBookCellVM else {
+        guard let itemVM = sectionVM.itemAtIndex(indexPath.item) as? WordDataCellVM else {
             return
         }
-        guard let myBook = itemVM.data as? MyWordBookData else {
+        guard let wordData = itemVM.data as? WordData else {
             return
         }
-        Navigator.pushURL("/mywordbook/detail?id=\(myBook.objectId)")
+        
+        if wordData.word.length <= 0 {
+            return
+        }
+        
+        Navigator.pushURL("/word/detail?word=\(wordData.word)")
     }
 }

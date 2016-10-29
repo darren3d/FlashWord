@@ -10,6 +10,13 @@ import Foundation
 import AVOSCloud
 import ReactiveCocoa
 
+typealias WordDetailSection = Int
+extension WordDetailSection {
+    static let Phonation = 0
+    static let  Meaning = 1
+    static let  Sentence = 2
+}
+
 class WordDetailVM: DYListViewModel {
     var word : String = ""
     var wordData : WordData?
@@ -21,6 +28,25 @@ class WordDetailVM: DYListViewModel {
     
     override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool{
         var sections: [DYSectionViewModel] = []
+        
+        repeat {
+            guard let wordData = self.wordData else {
+                break
+            }
+            
+            //section 发音
+            let sectionPhonation = DYSectionViewModel(items: [WordPhonationCellVM(data: wordData)])
+            sections.append(sectionPhonation)
+            
+            //section 释义
+            var itemsMean : [WordMeanCellVM] = []
+            for mean in wordData.desc {
+                itemsMean.append(WordMeanCellVM(data:mean))
+            }
+            let sectionMeans = DYSectionViewModel(items:itemsMean)
+            sections.append(sectionMeans)
+        } while false
+        
         self.sections = sections
         
         return super.vm_reloadData(sortID: sortID, callback: callback)
