@@ -45,6 +45,27 @@ class WordDetailVM: DYListViewModel {
             }
             let sectionMeans = DYSectionViewModel(items:itemsMean)
             sections.append(sectionMeans)
+            
+            //section 例句
+            var itemsSentence : [DYListCellVM] = []
+            //头部
+            let itemSentenceHead = DYListCellVM(data: nil)
+            itemsSentence.append(itemSentenceHead)
+            //句子
+            let markAttri = TextAttributes()
+                .foregroundColor(UIColor.flat(FlatColors.Valencia))
+            
+            let sentences = wordData.sentenceDatas
+            let count = min(2, sentences.count)
+            for index in 0..<count {
+                let sentenceData = sentences[index]
+                itemsSentence.append(WordSentenceCellVM(data:sentenceData, markEn:markAttri))
+            }
+            //尾部
+            let itemSentenceFoot = DYListCellVM(data: nil)
+            itemsSentence.append(itemSentenceFoot)
+            let sectionSentences = DYSectionViewModel(items:itemsSentence)
+            sections.append(sectionSentences)
         } while false
         
         self.sections = sections
@@ -58,7 +79,15 @@ class WordDetailVM: DYListViewModel {
         }
         
         let producer = WordData.dataWithKey(key: "word", value: word, cachePolicy: policy)
-        producer.start(Observer<(AnyObject, AVObject?), NSError>(
+        producer.flatMap(FlattenStrategy.Concat) { (_, wordData) -> SignalProducer<(WordData?, [WordSentenceData]?), NSError> in
+            if let wordData = wordData as? WordData {
+                return wordData.updateSentenceDatas(policy: policy, limit: AppConst.kTinyDataLoadLimit).map({ (sentences) -> (WordData?, [WordSentenceData]?) in
+                    return (wordData, sentences)
+                })
+            } else {
+                return SignalProducer<(WordData?, [WordSentenceData]?), NSError>(value:(nil, nil))
+            }
+        }.start(Observer<(WordData?, [WordSentenceData]?), NSError>(
             failed: {[weak self] error in
                 DYLog.info("failed:\(error.localizedDescription)")
                 guard let _ = self, let callback = callback else {
@@ -72,8 +101,8 @@ class WordDetailVM: DYListViewModel {
             interrupted: {
                 DYLog.info("interrupted")
             },
-            next: {[weak self] (_, wordData) in
-                self?.wordData = wordData as? WordData
+            next: {[weak self] (wordData, sentences) in
+                self?.wordData = wordData
                 self?.vm_reloadData(sortID: Int64(-1), callback: callback)
             }
         ))

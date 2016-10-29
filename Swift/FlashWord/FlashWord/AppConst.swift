@@ -37,6 +37,7 @@ public struct AppError {
 
 
 public class AppConst: NSObject {
+    public static let kTinyDataLoadLimit = 4
     public static let kSmallDataLoadLimit = 10
     public static let kNormDataLoadLimit = 20
     public static let kBigDataLoadLimit = 40

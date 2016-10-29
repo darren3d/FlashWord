@@ -18,8 +18,18 @@ extension WordDetailVM {
             return WordMeanCell.dequeueReusableCellWithReuseIdentifier(collectionView,
                                                                        forIndexPath: indexPath)
         case WordDetailSection.Sentence:
-            return WordSentenceCell.dequeueReusableCellWithReuseIdentifier(collectionView,
-                                                                       forIndexPath: indexPath)
+            let item = indexPath.item
+            let count = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section)
+            if item > 0 && item < count - 1  {
+                return WordSentenceCell.dequeueReusableCellWithReuseIdentifier(collectionView,
+                                                                               forIndexPath: indexPath)
+            } else if item == 0 {
+                return WordSentenceHeadCell.dequeueReusableCellWithReuseIdentifier(collectionView,
+                                                                               forIndexPath: indexPath)
+            } else {
+                return WordSentenceFootCell.dequeueReusableCellWithReuseIdentifier(collectionView,
+                                                                               forIndexPath: indexPath)
+            }
         default:
             DYLog.error("WordDetailVM cellForItemAtIndexPath error")
             return UICollectionViewCell()
@@ -46,7 +56,15 @@ extension WordDetailVM {
         case WordDetailSection.Meaning:
             size.height = 27
         case WordDetailSection.Sentence:
-            size.height = 27
+            let item = indexPath.item
+            let count = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section)
+            if item > 0 && item < count - 1  {
+                size.height = 66
+            } else if item == 0 {
+                size.height = 27
+            } else {
+                size.height = 4
+            }
         default:
             DYLog.error("WordDetailVM cellForItemAtIndexPath error")
         }

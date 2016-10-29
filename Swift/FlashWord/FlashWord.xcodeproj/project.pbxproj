@@ -74,6 +74,9 @@
 		635B93B21D09A40500A81CAF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B93B11D09A40500A81CAF /* SecondViewController.swift */; };
 		635B93B71D09A40500A81CAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B61D09A40500A81CAF /* Assets.xcassets */; };
 		635B93BA1D09A40500A81CAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635B93B81D09A40500A81CAF /* LaunchScreen.storyboard */; };
+		63790C861DC50A6200F58D20 /* WordSentenceHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63790C851DC50A6200F58D20 /* WordSentenceHeadCell.swift */; };
+		63790C881DC50A7700F58D20 /* WordSentenceFootCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63790C871DC50A7700F58D20 /* WordSentenceFootCell.swift */; };
+		63790C8A1DC50F9300F58D20 /* WordSentenceCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63790C891DC50F9300F58D20 /* WordSentenceCellVM.swift */; };
 		6380AE801DAC2779003700A4 /* LearnWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE7F1DAC2779003700A4 /* LearnWordCell.swift */; };
 		6380AE831DAC498E003700A4 /* LearnModeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE821DAC498E003700A4 /* LearnModeData.swift */; };
 		6380AE8E1DACE447003700A4 /* TripleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380AE8D1DACE447003700A4 /* TripleState.swift */; };
@@ -343,6 +346,9 @@
 		635B93C61D09A40500A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		635B93CF1D09A40600A81CAF /* FlashWordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashWordUITests.swift; sourceTree = "<group>"; };
 		635B93D11D09A40600A81CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63790C851DC50A6200F58D20 /* WordSentenceHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSentenceHeadCell.swift; sourceTree = "<group>"; };
+		63790C871DC50A7700F58D20 /* WordSentenceFootCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSentenceFootCell.swift; sourceTree = "<group>"; };
+		63790C891DC50F9300F58D20 /* WordSentenceCellVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSentenceCellVM.swift; sourceTree = "<group>"; };
 		6380AE7F1DAC2779003700A4 /* LearnWordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnWordCell.swift; sourceTree = "<group>"; };
 		6380AE821DAC498E003700A4 /* LearnModeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnModeData.swift; sourceTree = "<group>"; };
 		6380AE8D1DACE447003700A4 /* TripleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleState.swift; sourceTree = "<group>"; };
@@ -1550,6 +1556,8 @@
 				63FFC8461DC363590015869E /* WordPhonationCell.swift */,
 				63FFC8481DC3638A0015869E /* WordMeanCell.swift */,
 				63FFC84A1DC367F10015869E /* WordSentenceCell.swift */,
+				63790C851DC50A6200F58D20 /* WordSentenceHeadCell.swift */,
+				63790C871DC50A7700F58D20 /* WordSentenceFootCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1561,6 +1569,7 @@
 				63F1FBD21DC3475B00573DA1 /* WordDetailVM.swift */,
 				63FFC84C1DC4345B0015869E /* WordMeanCellVM.swift */,
 				63FFC84E1DC4371E0015869E /* WordPhonationCellVM.swift */,
+				63790C891DC50F9300F58D20 /* WordSentenceCellVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1822,6 +1831,7 @@
 				639187F91D09EE4200757F60 /* AppConst.swift in Sources */,
 				6380AE961DAD1F7F003700A4 /* LearnWordCellVM.swift in Sources */,
 				639188071D0A915800757F60 /* HSL.swift in Sources */,
+				63790C881DC50A7700F58D20 /* WordSentenceFootCell.swift in Sources */,
 				6304C31A1DAA86A0000D9DA1 /* CollectionType+Safe.swift in Sources */,
 				635A252A1DBD3F0F00DC5E43 /* MyWordBookCellVM.swift in Sources */,
 				6388D5FD1D15D8440029C988 /* URLConvertible.swift in Sources */,
@@ -1922,6 +1932,7 @@
 				63ECC4EB1DB2899300C1342E /* ioapi.c in Sources */,
 				63ECC4BA1DB288E400C1342E /* NSDictionary+OpenXmlString.m in Sources */,
 				63ECC4CC1DB288E400C1342E /* BRAOfficeDocumentPackage.m in Sources */,
+				63790C861DC50A6200F58D20 /* WordSentenceHeadCell.swift in Sources */,
 				844FBA891D0FE0F900D6C2EA /* NVActivityIndicatorShape.swift in Sources */,
 				844FBA6F1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulse.swift in Sources */,
 				6349F22F1D303ADE002210E0 /* DYOriginalRow.swift in Sources */,
@@ -2032,6 +2043,7 @@
 				844FBA871D0FE0F900D6C2EA /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
 				63ECC4321DB1475400C1342E /* String+Utility.swift in Sources */,
 				844FBA701D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
+				63790C8A1DC50F9300F58D20 /* WordSentenceCellVM.swift in Sources */,
 				63ECC4D91DB288E400C1342E /* BRAOpenXmlSubElement.m in Sources */,
 				6326562E1DBDF4C6009CC611 /* WordBookListVM+UI.swift in Sources */,
 				63ECC4BF1DB288E400C1342E /* BRACellFormat.m in Sources */,
