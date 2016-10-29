@@ -27,7 +27,7 @@ class WordDetailController: DYViewController {
         
         collectionView.contentInset = UIEdgeInsetsMake(64, 0, 40, 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 40, 0)
-        collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 120)
+        //collectionLayout.itemSize = CGSize(width: self.view.bounds.size.width, height: 60)
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
         
