@@ -56,10 +56,12 @@ class SearchWordResultVM: DYListViewModel {
     }
     
     override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool{
+        let width = self.vm_scrollView!.bounds.size.width
+        
         var sections: [DYSectionViewModel] = []
         
         for wordCD in wordsCD {
-            let item = SearchWordCellVM(data: wordCD)
+            let item = SearchWordCellVM(data: wordCD, width:width)
             item.displayIcon = false
             let section = DYSectionViewModel(items: [item])
             sections.append(section)

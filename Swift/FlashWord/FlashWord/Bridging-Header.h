@@ -13,4 +13,5 @@
 #import "LUNSegmentedControl.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import <CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.h>
+#import "TYAttributedLabel.h"
 #endif /* Bridging_Header_h */

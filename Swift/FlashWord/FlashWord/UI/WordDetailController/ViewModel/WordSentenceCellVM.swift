@@ -9,15 +9,15 @@
 import UIKit
 
 class WordSentenceCellVM: DYListCellVM {
-    dynamic var sentenceEn : NSAttributedString = NSAttributedString(string: "")
+    dynamic var containerEn : TYTextContainer!
+    dynamic var containerZh : TYTextContainer!
+    
     var markAttrEn : TextAttributes
     
-    dynamic var sentenceZh = ""
-    
-    init(data:AnyObject?, markEn: TextAttributes) {
+    init(data:AnyObject?, markEn: TextAttributes, width: CGFloat) {
         self.markAttrEn = markEn
         
-        super.init(data: data)
+        super.init(data: data, width:width)
     }
     
     override func setupViewModel() {
@@ -40,7 +40,15 @@ class WordSentenceCellVM: DYListCellVM {
             }
         }
         
-        self.sentenceZh = sentenceData.chinese
-        self.sentenceEn = markedSentence(sentenceData.english, mark: sentenceData.markEn, attr: self.markAttrEn)
+        let sentenceEn = markedSentence(sentenceData.english, mark: sentenceData.markEn, attr: self.markAttrEn)
+        let containerEn = TYTextContainer()
+        containerEn.linesSpacing = 2
+        containerEn.attributedText = sentenceEn;
+        self.containerEn = containerEn.createTextContainerWithTextWidth(self.width-10-45)
+        
+        let containerZh = TYTextContainer()
+        containerZh.linesSpacing = 2
+        containerZh.text = sentenceData.chinese
+        self.containerZh = containerZh.createTextContainerWithTextWidth(self.width-10-10)
     }
 }

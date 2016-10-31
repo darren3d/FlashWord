@@ -21,11 +21,13 @@ class WordBookDetailVM: DYListViewModel {
     }
     
     override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool{
+        let width = self.vm_scrollView!.bounds.size.width
+        
         var sections: [DYSectionViewModel] = []
 
         if let bookData = bookData {
             for wordData in bookData.wordDatas {
-                let item = WordDataCellVM(data: wordData)
+                let item = WordDataCellVM(data: wordData, width:width)
                 let section = DYSectionViewModel(items: [item])
                 sections.append(section)
             }

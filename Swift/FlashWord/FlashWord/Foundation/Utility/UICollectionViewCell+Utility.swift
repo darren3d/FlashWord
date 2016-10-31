@@ -27,14 +27,17 @@ extension UICollectionViewCell {
                                                                      forIndexPath: indexPath)
     }
     
-    class func sizeWith(viewModel viewModel: DYViewModel, cellWidth: CGFloat) -> CGSize {
-        return CGSizeZero
+    class func heightWith(viewModel viewModel: DYViewModel, cellWidth: CGFloat) -> CGFloat {
+        return 0
     }
     
     func cellWillDisplay() {
     }
     
     func cellDidEndDisplay() {
+    }
+    
+    func setViewWith(width: CGFloat) {
     }
     
     var cellViewModel: DYViewModel? {

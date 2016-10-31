@@ -21,6 +21,7 @@ class SearchWordHistoryVM: DYListViewModel {
     
     override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool {
         var items: [SearchWordCellVM] = []
+        let width = self.vm_scrollView!.bounds.size.width
         
         //header
         let sectionHeader = DYSectionViewModel(items: [DYViewModel(data:nil)])
@@ -37,7 +38,7 @@ class SearchWordHistoryVM: DYListViewModel {
         }
         
         for searchData in filterSearchDatas {
-            let item = SearchWordCellVM(data: searchData)
+            let item = SearchWordCellVM(data: searchData, width:width)
             item.displayIcon = true
             items.append(item)
         }

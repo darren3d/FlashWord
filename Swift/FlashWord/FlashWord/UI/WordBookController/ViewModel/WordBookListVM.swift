@@ -34,15 +34,17 @@ class MyWordBookListVM: WordBookListVM {
     private var myWordBooks : [MyWordBookData] = []
     
     override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool{
+        let width = self.vm_scrollView!.bounds.size.width
+        
         var sections: [DYSectionViewModel] = []
         if let newWordBook = myNewWordBook {
-            let item = MyWordBookCellVM(data: newWordBook)
+            let item = MyWordBookCellVM(data: newWordBook, width:width)
             let section = DYSectionViewModel(items: [item])
             sections.append(section)
         }
         
         for myBook in myWordBooks {
-            let item = MyWordBookCellVM(data: myBook)
+            let item = MyWordBookCellVM(data: myBook, width:width)
             let section = DYSectionViewModel(items: [item])
             sections.append(section)
         }

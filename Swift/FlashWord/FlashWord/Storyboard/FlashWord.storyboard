@@ -12,7 +12,7 @@
                 <navigationController storyboardIdentifier="RootNavigationController" id="s0o-L8-hmV" customClass="RootNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="qNq-2p-JPl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="qNq-2p-JPl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -56,7 +56,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="R35-Wy-Tmf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="R35-Wy-Tmf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -90,7 +90,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WordBookPageCell" id="rC4-aM-LRY" customClass="WordBookPageCell" customModule="FlashWord" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-56.5" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="-57" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -769,22 +769,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="800" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="sentence" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67A-Cu-R5N">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.2985658585" green="0.2985658585" blue="0.2985658585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2oM-fl-OzV" customClass="TYAttributedLabel">
+                                                    <frame key="frameInset" minX="10" minY="10" width="320" height="21"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gIc-Iw-xxa">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="WQr-g3-Drx"/>
                                                         <constraint firstAttribute="width" constant="15" id="bGB-gr-Njq"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="800" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="例句" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVd-js-y3i">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.65814919179999998" green="0.65814919179999998" blue="0.65814919179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VSY-A1-TJ4" customClass="TYAttributedLabel">
+                                                    <frame key="frameInset" minX="10" minY="43" width="355" height="13"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ3-rk-JIs" customClass="SinglePixelView" customModule="FlashWord" customModuleProvider="target">
                                                     <color key="backgroundColor" red="0.91406039263333327" green="0.91406039263333327" blue="0.91406039263333327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -794,24 +792,24 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="67A-Cu-R5N" secondAttribute="trailing" constant="45" id="02Z-qJ-krJ"/>
+                                            <constraint firstItem="VSY-A1-TJ4" firstAttribute="top" secondItem="2oM-fl-OzV" secondAttribute="bottom" constant="12" id="06w-sF-2m7"/>
                                             <constraint firstAttribute="bottom" secondItem="GZ3-rk-JIs" secondAttribute="bottom" id="2ze-cN-euG"/>
-                                            <constraint firstAttribute="trailing" secondItem="AVd-js-y3i" secondAttribute="trailing" constant="10" id="5LB-9S-M0d"/>
                                             <constraint firstAttribute="trailing" secondItem="gIc-Iw-xxa" secondAttribute="trailing" constant="15" id="8qt-bw-vR2"/>
-                                            <constraint firstItem="AVd-js-y3i" firstAttribute="leading" secondItem="m5J-Xp-KC0" secondAttribute="leading" constant="10" id="9bg-vD-8bO"/>
-                                            <constraint firstAttribute="bottom" secondItem="AVd-js-y3i" secondAttribute="bottom" priority="200" constant="10" id="9gv-h6-Syc"/>
-                                            <constraint firstItem="AVd-js-y3i" firstAttribute="top" secondItem="67A-Cu-R5N" secondAttribute="bottom" constant="12" id="CK0-uD-1dT"/>
                                             <constraint firstItem="gIc-Iw-xxa" firstAttribute="top" secondItem="m5J-Xp-KC0" secondAttribute="top" constant="8" id="GZb-Gy-hEg"/>
-                                            <constraint firstItem="67A-Cu-R5N" firstAttribute="leading" secondItem="m5J-Xp-KC0" secondAttribute="leading" constant="10" id="Lob-xs-yOI"/>
+                                            <constraint firstItem="VSY-A1-TJ4" firstAttribute="leading" secondItem="m5J-Xp-KC0" secondAttribute="leading" constant="10" id="JmE-mC-0w2"/>
+                                            <constraint firstAttribute="bottom" secondItem="VSY-A1-TJ4" secondAttribute="bottom" priority="200" constant="10" id="Nbp-aS-H95"/>
+                                            <constraint firstItem="2oM-fl-OzV" firstAttribute="leading" secondItem="m5J-Xp-KC0" secondAttribute="leading" constant="10" id="awG-p2-soc"/>
+                                            <constraint firstItem="2oM-fl-OzV" firstAttribute="top" secondItem="m5J-Xp-KC0" secondAttribute="top" constant="10" id="c7i-WL-KYC"/>
                                             <constraint firstAttribute="trailing" secondItem="GZ3-rk-JIs" secondAttribute="trailing" constant="20" id="cNY-Vq-kXD"/>
-                                            <constraint firstItem="67A-Cu-R5N" firstAttribute="top" secondItem="m5J-Xp-KC0" secondAttribute="top" constant="10" id="iyc-e9-5NT"/>
+                                            <constraint firstAttribute="trailing" secondItem="VSY-A1-TJ4" secondAttribute="trailing" constant="10" id="gA0-xc-HOn"/>
+                                            <constraint firstAttribute="trailing" secondItem="2oM-fl-OzV" secondAttribute="trailing" constant="45" id="i1q-hI-gja"/>
                                             <constraint firstItem="GZ3-rk-JIs" firstAttribute="leading" secondItem="m5J-Xp-KC0" secondAttribute="leading" constant="20" id="jXA-lI-Yjw"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="66"/>
                                         <connections>
                                             <outlet property="imagePhonation" destination="gIc-Iw-xxa" id="7C8-fN-h5L"/>
-                                            <outlet property="labelMean" destination="AVd-js-y3i" id="REN-g4-HYl"/>
-                                            <outlet property="labelSentence" destination="67A-Cu-R5N" id="mOt-V5-Gcp"/>
+                                            <outlet property="labelMean" destination="VSY-A1-TJ4" id="XK0-c3-DoZ"/>
+                                            <outlet property="labelSentence" destination="2oM-fl-OzV" id="O2G-IK-zyC"/>
                                             <outlet property="viewLineBottom" destination="GZ3-rk-JIs" id="miN-IM-RE6"/>
                                         </connections>
                                     </collectionViewCell>
@@ -847,7 +845,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QXh-7i-Hh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1298" y="1164"/>
+            <point key="canvasLocation" x="-1298.4000000000001" y="1163.568215892054"/>
         </scene>
         <!--背单词-->
         <scene sceneID="cVG-pk-6JD">
@@ -975,7 +973,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="4bd-pD-FPu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="4bd-pD-FPu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -28,6 +28,7 @@ class WordDetailVM: DYListViewModel {
     
     override func vm_reloadData(sortID sortID: Int64, callback: DYCommonCallback?) -> Bool{
         var sections: [DYSectionViewModel] = []
+        let width = self.vm_scrollView!.bounds.size.width
         
         repeat {
             guard let wordData = self.wordData else {
@@ -35,13 +36,13 @@ class WordDetailVM: DYListViewModel {
             }
             
             //section 发音
-            let sectionPhonation = DYSectionViewModel(items: [WordPhonationCellVM(data: wordData)])
+            let sectionPhonation = DYSectionViewModel(items: [WordPhonationCellVM(data: wordData, width: width)])
             sections.append(sectionPhonation)
             
             //section 释义
             var itemsMean : [WordMeanCellVM] = []
             for mean in wordData.desc {
-                itemsMean.append(WordMeanCellVM(data:mean))
+                itemsMean.append(WordMeanCellVM(data:mean, width: width))
             }
             let sectionMeans = DYSectionViewModel(items:itemsMean)
             sections.append(sectionMeans)
@@ -49,7 +50,7 @@ class WordDetailVM: DYListViewModel {
             //section 例句
             var itemsSentence : [DYListCellVM] = []
             //头部
-            let itemSentenceHead = DYListCellVM(data: nil)
+            let itemSentenceHead = DYListCellVM(data: nil, width: width)
             itemsSentence.append(itemSentenceHead)
             //句子
             let markAttri = TextAttributes()
@@ -59,10 +60,10 @@ class WordDetailVM: DYListViewModel {
             let count = min(2, sentences.count)
             for index in 0..<count {
                 let sentenceData = sentences[index]
-                itemsSentence.append(WordSentenceCellVM(data:sentenceData, markEn:markAttri))
+                itemsSentence.append(WordSentenceCellVM(data:sentenceData, markEn:markAttri, width: width))
             }
             //尾部
-            let itemSentenceFoot = DYListCellVM(data: nil)
+            let itemSentenceFoot = DYListCellVM(data: nil, width: width)
             itemsSentence.append(itemSentenceFoot)
             let sectionSentences = DYSectionViewModel(items:itemsSentence)
             sections.append(sectionSentences)

@@ -172,7 +172,6 @@ class WordBookDetailController: DYViewController {
 extension WordBookDetailController {
     func ui_setupRefresher() {
         self.collectionView.dy_setupHeader(target: self, selector: #selector(ui_updateData as Void -> Void))
-        self.collectionView.dy_setupFooter(target: self, selector: #selector(ui_loadMoreData as Void -> Void))
         let colors = [UIColor.flat(FlatColors.Nephritis),
                       UIColor.flat(FlatColors.Flamingo),
                       UIColor.flat(FlatColors.PeterRiver),
@@ -180,9 +179,6 @@ extension WordBookDetailController {
         
         let header = self.collectionView.dy_header as! DYRefreshBallHeader
         header.setBallColors(colors)
-        
-        let footer = self.collectionView.dy_footer as! DYRefreshBallFooter
-        footer.setBallColors(colors)
     }
     
     func ui_updateData() {
@@ -201,13 +197,6 @@ extension WordBookDetailController {
     
     
     func ui_loadMoreData() {
-        ui_loadMoreData(policy: AVCachePolicy.NetworkElseCache)
-    }
-    
-    func ui_loadMoreData(policy policy: AVCachePolicy) {
-        //        listVM.vm_loadMoreData { (obj, error) in
-        //            <#code#>
-        //        }
     }
 }
 

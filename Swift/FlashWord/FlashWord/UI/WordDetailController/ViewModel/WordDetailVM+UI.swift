@@ -47,19 +47,27 @@ extension WordDetailVM {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let section = indexPath.section
+        let item = indexPath.item
         let width = collectionView.bounds.width
         var  size = CGSize(width: width, height: 0)
         
-        switch indexPath.section {
+        switch section {
         case WordDetailSection.Phonation:
             size.height = 75
         case WordDetailSection.Meaning:
             size.height = 27
         case WordDetailSection.Sentence:
-            let item = indexPath.item
-            let count = self.collectionView(collectionView, numberOfItemsInSection: indexPath.section)
+            guard let sectionVM = self.sectionAtIndex(section) else {
+                break
+            }
+            guard let itemVM = sectionVM.itemAtIndex(item) else {
+                break
+            }
+            let count = self.collectionView(collectionView, numberOfItemsInSection: section)
             if item > 0 && item < count - 1  {
-                size.height = 66
+                
+                size.height = WordSentenceCell.heightWith(viewModel: itemVM, cellWidth: width)
             } else if item == 0 {
                 size.height = 27
             } else {

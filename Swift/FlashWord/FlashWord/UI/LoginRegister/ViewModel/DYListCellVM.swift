@@ -10,5 +10,9 @@ import UIKit
 
 @objc
 class DYListCellVM: DYViewModel {
-
+    var width : CGFloat = 0
+    init(data: AnyObject?, width: CGFloat) {
+        self.width = width
+        super.init(data: data)
+    }
 }
