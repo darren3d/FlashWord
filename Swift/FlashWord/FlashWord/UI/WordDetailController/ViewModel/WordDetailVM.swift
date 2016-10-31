@@ -17,9 +17,12 @@ extension WordDetailSection {
     static let  Sentence = 2
 }
 
+@objc (WordDetailVM)
 class WordDetailVM: DYListViewModel {
-    var word : String = ""
-    var wordData : WordData?
+    dynamic var word : String = ""
+    dynamic var wordData : WordData?
+    dynamic var newBookData : MyWordBookData?
+    dynamic var hasAddedWord : TripleState = TripleState.StateUndefined
     
     init(word: String) {
         super.init(sections: [], data: nil)
@@ -79,6 +82,48 @@ class WordDetailVM: DYListViewModel {
             return false
         }
         
+        let word = self.word
+        
+        //获取我的生词本
+        let user = AccountData.currentUser()
+        if user != nil {
+            MyWordBookData.myNewWordBook(AVCachePolicy.CacheElseNetwork)
+                .flatMap(FlattenStrategy.Concat, transform: { [weak self] (newWordBook) -> SignalProducer<Bool, NSError> in
+                    self?.newBookData = newWordBook
+                    
+                    if let newWordBook = newWordBook {
+                        return newWordBook.hasWord(word)
+                    } else {
+                        return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"参数错误，请稍后刷新重试"]))
+                    }
+                })
+                .start(Observer<Bool, NSError>(
+                    failed: {[weak self] error in
+                        DYLog.info("failed:\(error.localizedDescription)")
+                        guard let sSelf = self, let callback = callback else {
+                            return
+                        }
+                        sSelf.hasAddedWord = TripleState.StateUndefined
+                        callback(nil, error)
+                    },
+                    completed: {
+                        DYLog.info("completed")
+                    },
+                    interrupted: {
+                        DYLog.info("interrupted")
+                    },
+                    next: {[weak self] hasAddedWord in
+                        if hasAddedWord {
+                            self?.hasAddedWord = TripleState.StateYes
+                        } else{
+                            self?.hasAddedWord = TripleState.StateNo
+                        }
+                    }
+                ))
+        }
+
+        
+        //更新单词相关信息
         let producer = WordData.dataWithKey(key: "word", value: word, cachePolicy: policy)
         producer.flatMap(FlattenStrategy.Concat) { (_, wordData) -> SignalProducer<(WordData?, [WordSentenceData]?), NSError> in
             if let wordData = wordData as? WordData {

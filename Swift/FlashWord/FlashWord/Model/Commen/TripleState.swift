@@ -17,5 +17,6 @@ extension TripleState {
     static let StateChanging        = Int32(0x0100)
     /**状态2，已点赞，已藏等*/
     static let StateYes                = Int32(0x0001)
+    static let StateUndefined     = Int32(0x0080)
     static let StateMask              = Int32(0x00FF)
 }

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -90,7 +91,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WordBookPageCell" id="rC4-aM-LRY" customClass="WordBookPageCell" customModule="FlashWord" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-57" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="110" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -828,19 +829,52 @@
                                     <outlet property="delegate" destination="suZ-VV-2rx" id="9Dt-Qv-APV"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elZ-rU-RQu">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWd-2f-Szg" customClass="SinglePixelView" customModule="FlashWord" customModuleProvider="target">
+                                        <color key="backgroundColor" red="0.91406039260000005" green="0.91406039260000005" blue="0.91406039260000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="EeI-O5-UIj"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXq-SN-x6r">
+                                        <state key="normal" title="添加到生词本">
+                                            <color key="titleColor" red="0.20000000000000001" green="0.64313725489999995" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onBtnAddToNewWordBook" destination="suZ-VV-2rx" eventType="touchUpInside" id="hBZ-v6-Euy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="nXq-SN-x6r" firstAttribute="height" secondItem="elZ-rU-RQu" secondAttribute="height" id="QDr-HO-TZu"/>
+                                    <constraint firstItem="nXq-SN-x6r" firstAttribute="centerY" secondItem="elZ-rU-RQu" secondAttribute="centerY" id="b1k-bv-pra"/>
+                                    <constraint firstAttribute="height" constant="45" id="eUe-qc-0bq"/>
+                                    <constraint firstItem="BWd-2f-Szg" firstAttribute="top" secondItem="elZ-rU-RQu" secondAttribute="top" id="kkV-gS-E7u"/>
+                                    <constraint firstAttribute="trailing" secondItem="BWd-2f-Szg" secondAttribute="trailing" id="pVj-hb-faj"/>
+                                    <constraint firstItem="BWd-2f-Szg" firstAttribute="leading" secondItem="elZ-rU-RQu" secondAttribute="leading" id="q8Q-O5-ltY"/>
+                                    <constraint firstItem="nXq-SN-x6r" firstAttribute="centerX" secondItem="elZ-rU-RQu" secondAttribute="centerX" id="qtP-Av-3lQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="elZ-rU-RQu" secondAttribute="trailing" id="1Xh-fV-4do"/>
                             <constraint firstItem="AFT-ts-0kj" firstAttribute="centerY" secondItem="gqW-wf-lL0" secondAttribute="centerY" id="5Wv-IY-BAN"/>
+                            <constraint firstItem="elZ-rU-RQu" firstAttribute="leading" secondItem="gqW-wf-lL0" secondAttribute="leading" id="UzP-yY-u3x"/>
                             <constraint firstItem="AFT-ts-0kj" firstAttribute="centerX" secondItem="gqW-wf-lL0" secondAttribute="centerX" id="Vpy-UO-t2J"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="elZ-rU-RQu" secondAttribute="bottom" id="cyW-yR-skG"/>
                             <constraint firstItem="AFT-ts-0kj" firstAttribute="height" secondItem="gqW-wf-lL0" secondAttribute="height" id="gs9-Ao-ZBe"/>
                             <constraint firstItem="AFT-ts-0kj" firstAttribute="width" secondItem="gqW-wf-lL0" secondAttribute="width" id="nJx-K3-Fsk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="单词本详情" id="tcy-U6-u3F"/>
                     <connections>
+                        <outlet property="btnAddWord" destination="nXq-SN-x6r" id="GW9-O3-B0a"/>
                         <outlet property="collectionLayout" destination="Mao-Ae-zEN" id="zlI-N3-3LV"/>
                         <outlet property="collectionView" destination="AFT-ts-0kj" id="h7D-pn-ZwL"/>
+                        <outlet property="viewBottomWrap" destination="elZ-rU-RQu" id="i3p-MG-gCg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QXh-7i-Hh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -858,7 +892,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="h89-ON-C1T">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="h89-ON-C1T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -38,6 +38,42 @@ extension WordBookData {
         }
         return producer
     }
+    
+    func hasWord(word: String) -> SignalProducer<Bool, NSError> {
+        let adder = AccountData.currentUser()
+        if adder == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        
+        if word.length <= 0 {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"参数错误"]))
+        }
+        
+        let producer = SignalProducer<Bool, NSError> {(observer, dispose) in
+            let query = self.words.query()
+            query.cachePolicy = AVCachePolicy.NetworkOnly
+            query.whereKey("word", equalTo: word)
+            query.getFirstObjectInBackgroundWithBlock { (wordData, error) in
+                if error == nil {
+                    if let _ = wordData as? WordData {
+                        observer.sendNext(true)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendNext(false)
+                        observer.sendCompleted()
+                    }
+                } else {
+                    if error.code == kAVErrorObjectNotFound {
+                        observer.sendNext(false)
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendFailed(error)
+                    }
+                }
+            }
+        }
+        return producer
+    }
 
     //添加单词本，不检测服务器是否已经添加
     static func addWordBook(name: String, desc: String) -> SignalProducer<(String, WordBookData?), NSError> {
@@ -72,8 +108,19 @@ extension WordBookData {
     }
     
     func addWords(words: [String]) -> SignalProducer<Bool, NSError> {
+        let adder = AccountData.currentUser()
+        if adder == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        if self.creator.objectId != adder.objectId {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"只有单词本创建者才有权限添加单词"]))
+        }
+        
         //数组去重
         let  uniWords = Array(Set(words))
+        if uniWords.count <= 0 {
+            return SignalProducer<Bool, NSError>(value: true)
+        }
         
         return SignalProducer<String, NSError>(values: uniWords)
             .flatMap(FlattenStrategy.Concat) { (word) -> SignalProducer<(String, WordData?), NSError> in
@@ -264,6 +311,7 @@ extension MyWordBookData {
             query.whereKey("book", equalTo: book)
             query.whereKey("learner", equalTo: learner)
             query.whereKey("type", equalTo: type)
+            query.includeKey("book")
             query.getFirstObjectInBackgroundWithBlock { (myBook, error) in
                 if error == nil {
                     if let myBook = myBook as? MyWordBookData {
@@ -368,5 +416,29 @@ extension MyWordBookData {
                 }
         }
         return producer
+    }
+    
+    func addWords(words: [String]) -> SignalProducer<Bool, NSError> {
+        let adder = AccountData.currentUser()
+        if adder == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        
+        let bookData = self.book
+        return bookData.addWords(words)
+    }
+    
+    func hasWord(word: String) -> SignalProducer<Bool, NSError> {
+        let adder = AccountData.currentUser()
+        if adder == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        
+        if word.length <= 0 {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"参数错误"]))
+        }
+        
+        let bookData = self.book
+        return bookData.hasWord(word)
     }
 }
