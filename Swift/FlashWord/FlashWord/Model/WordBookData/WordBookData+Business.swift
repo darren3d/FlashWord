@@ -335,7 +335,7 @@ extension MyWordBookData {
     }
     
     //查询我的生词本，不存在则自动创建
-    static func myNewWordBook(policy: AVCachePolicy = AVCachePolicy.CacheElseNetwork) -> SignalProducer<MyWordBookData?,NSError> {
+    static func myNewWordBook(policy policy: AVCachePolicy = AVCachePolicy.CacheElseNetwork) -> SignalProducer<MyWordBookData?,NSError> {
         let learner = AccountData.currentUser()
         if learner == nil {
             return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))

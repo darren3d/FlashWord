@@ -56,7 +56,7 @@ class WordDetailController: DYViewController {
             return
         }
         let word = self.word
-        MyWordBookData.myNewWordBook(AVCachePolicy.CacheElseNetwork)
+        MyWordBookData.myNewWordBook(policy: AVCachePolicy.NetworkOnly)
         .flatMap(FlattenStrategy.Concat) { (myNewWordBook) -> SignalProducer<Bool, NSError> in
             guard let myNewWordBook = myNewWordBook else {
                 return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"数据有误无法添加"]))

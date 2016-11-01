@@ -87,7 +87,7 @@ class WordDetailVM: DYListViewModel {
         //获取我的生词本
         let user = AccountData.currentUser()
         if user != nil {
-            MyWordBookData.myNewWordBook(AVCachePolicy.CacheElseNetwork)
+            MyWordBookData.myNewWordBook(policy: policy)
                 .flatMap(FlattenStrategy.Concat, transform: { [weak self] (newWordBook) -> SignalProducer<Bool, NSError> in
                     self?.newBookData = newWordBook
                     

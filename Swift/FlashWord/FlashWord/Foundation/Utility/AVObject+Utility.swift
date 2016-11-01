@@ -43,7 +43,12 @@ extension AVObject {
                     observer.sendNext((value, object))
                     observer.sendCompleted()
                 } else {
-                    observer.sendFailed(error)
+                    if error.code == kAVErrorObjectNotFound {
+                        observer.sendNext((value, nil))
+                        observer.sendCompleted()
+                    } else {
+                        observer.sendFailed(error)
+                    }
                 }
             }
         }

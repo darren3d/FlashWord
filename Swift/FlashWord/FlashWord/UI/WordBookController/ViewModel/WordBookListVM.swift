@@ -59,7 +59,7 @@ class MyWordBookListVM: WordBookListVM {
         }
         
         let limit = AppConst.kNormDataLoadLimit
-        let producerMyNewBook = MyWordBookData.myNewWordBook(policy)
+        let producerMyNewBook = MyWordBookData.myNewWordBook(policy: policy)
         let producerMyBooks = MyWordBookData.myWordBooks(policy: policy, skip: 0, limit: limit)
         let producerZip = producerMyNewBook.zipWith(producerMyBooks)
         producerZip.start(Observer<(MyWordBookData?, [MyWordBookData]), NSError>(

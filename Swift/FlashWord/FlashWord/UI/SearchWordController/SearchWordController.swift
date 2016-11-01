@@ -215,16 +215,34 @@ extension SearchWordController : UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if searchStatus == SearchStatus.Results {
+            var word = ""
             //添加到搜索历史
             if let sectionVM = resultVM.sectionAtIndex(indexPath.section) {
                 if let itemVM = sectionVM.itemAtIndex(indexPath.item) as? SearchWordCellVM {
+                    word = itemVM.word
                     historyVM.addSearchHistory(itemVM.word, callback: nil)
                 }
             }
             
             resultVM.collectionView(collectionView, didSelectItemAtIndexPath: indexPath)
+            
+            if word.length > 0 {
+                Navigator.pushURL("/word/detail?word=\(word)")
+            }
         } else if searchStatus == SearchStatus.History {
+             var word = ""
+            //重新添加到搜索历史
+            if let sectionVM = historyVM.sectionAtIndex(indexPath.section) {
+                if let itemVM = sectionVM.itemAtIndex(indexPath.item) as? SearchWordCellVM {
+                    word = itemVM.word
+                    historyVM.addSearchHistory(itemVM.word, callback: nil)
+                }
+            }
+            
             historyVM.collectionView(collectionView, didSelectItemAtIndexPath: indexPath)
+            if word.length > 0 {
+                Navigator.pushURL("/word/detail?word=\(word)")
+            }
         }
     }
     
