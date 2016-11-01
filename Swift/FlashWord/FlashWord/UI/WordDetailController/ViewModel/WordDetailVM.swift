@@ -155,4 +155,43 @@ class WordDetailVM: DYListViewModel {
         
         return true
     }
+    
+    func addToMyNewBook(callback callback: DYCommonCallback?) {
+        if self.word.length <= 0 {
+            callback?(false, nil)
+            return
+        }
+        
+        guard let newBookData = self.newBookData else {
+            callback?(false, nil)
+            return
+        }
+        
+        guard let wordData = self.wordData else {
+            callback?(false, nil)
+            return
+        }
+        
+        newBookData.addWordData(wordData)
+            .start(Observer<Bool, NSError>(
+                failed: { error in
+                    callback?(false, error)
+                    DYLog.info("failed:\(error.localizedDescription)")
+                },
+                completed: {
+                    DYLog.info("completed")
+                },
+                interrupted: {
+                    DYLog.info("interrupted")
+                },
+                next: {[weak self] succeed in
+                    if succeed {
+                        self?.hasAddedWord = TripleState.StateYes
+                    } else{
+                        self?.hasAddedWord = TripleState.StateNo
+                    }
+                    callback?(succeed, nil)
+                    DYLog.info("next succeed \(succeed)")
+            }))
+    }
 }

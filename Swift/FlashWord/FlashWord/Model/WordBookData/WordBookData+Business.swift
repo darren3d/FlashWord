@@ -107,6 +107,46 @@ extension WordBookData {
         return producer
     }
     
+    func addWordData(wordData: WordData) -> SignalProducer<Bool, NSError> {
+        let adder = AccountData.currentUser()
+        if adder == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        if self.creator.objectId != adder.objectId {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"只有单词本创建者才有权限添加单词"]))
+        }
+        
+        return self.hasWord(wordData.word).flatMap(FlattenStrategy.Concat) { hasWord -> SignalProducer<Bool, NSError> in
+            if hasWord {
+                return SignalProducer<Bool, NSError>(value: true)
+            } else {
+                let producer = SignalProducer<Bool, NSError>{[weak self] (observer, dispose) in
+                    guard let stongSelf = self else {
+                        observer.sendNext(false)
+                        observer.sendCompleted()
+                        return
+                    }
+                    
+                    stongSelf.words.addObject(wordData)
+                    stongSelf.incrementKey("countWord")
+                    
+                    stongSelf.fetchWhenSave = true
+                    stongSelf.saveInBackgroundWithBlock({[weak self] (succeed, error) in
+                        if error == nil {
+                            self?.wordDatas.append(wordData)
+                            
+                            observer.sendNext(succeed)
+                            observer.sendCompleted()
+                        } else {
+                            observer.sendFailed(error)
+                        }
+                        })
+                }
+                return producer
+            }
+        }
+    }
+    
     func addWords(words: [String]) -> SignalProducer<Bool, NSError> {
         let adder = AccountData.currentUser()
         if adder == nil {
@@ -416,6 +456,16 @@ extension MyWordBookData {
                 }
         }
         return producer
+    }
+    
+    func addWordData(wordData: WordData) -> SignalProducer<Bool, NSError> {
+        let adder = AccountData.currentUser()
+        if adder == nil {
+            return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.needLogin, userInfo: ["msg":"请登录"]))
+        }
+        
+        let bookData = self.book
+        return bookData.addWordData(wordData)
     }
     
     func addWords(words: [String]) -> SignalProducer<Bool, NSError> {

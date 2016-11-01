@@ -55,26 +55,14 @@ class WordDetailController: DYViewController {
         if self.word.length <= 0 {
             return
         }
-        let word = self.word
-        MyWordBookData.myNewWordBook(policy: AVCachePolicy.NetworkOnly)
-        .flatMap(FlattenStrategy.Concat) { (myNewWordBook) -> SignalProducer<Bool, NSError> in
-            guard let myNewWordBook = myNewWordBook else {
-                return SignalProducer(error: NSError(domain: AppError.errorDomain, code: AppError.invalidPara, userInfo: ["msg":"数据有误无法添加"]))
-            }
-            return myNewWordBook.addWords([word])
-            }.start(Observer<Bool, NSError>(
-                failed: { error in
-                    DYLog.info("failed:\(error.localizedDescription)")
-                },
-                completed: {
-                    DYLog.info("completed")
-                },
-                interrupted: {
-                    DYLog.info("interrupted")
-                },
-                next: { succeed in
-                    DYLog.info("next succeed \(succeed)")
-            }))
+        
+        guard let viewModel = self.viewModel as? WordDetailVM else {
+            return
+        }
+        
+        viewModel.addToMyNewBook { (succeed, error) in
+            
+        }
     }
     
     func setupReactive() {
