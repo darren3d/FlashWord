@@ -18,6 +18,7 @@ class DYURLNavigationMap {
         Navigator.map("/mywordbook/detail", WordBookDetailController.self)
         Navigator.map("/word/search", SearchWordController.self)
         Navigator.map("/word/detail", WordDetailController.self)
+        Navigator.map("/vocabulary/update", VocabularyUpdateController.self)
     }
     
 }

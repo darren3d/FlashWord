@@ -13,6 +13,7 @@
 		6304C31D1DAA86A0000D9DA1 /* DYTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */; };
 		6304C31E1DAA86A0000D9DA1 /* DYTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */; };
 		6304C3211DAA9FEF000D9DA1 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304C3201DAA9FEF000D9DA1 /* MyController.swift */; };
+		630FC9171DC847E200F38539 /* VocabularyUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630FC9161DC847E200F38539 /* VocabularyUpdateController.swift */; };
 		63258ACA1DC0979A00B180A1 /* vocabulary.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 63258AC91DC0979A00B180A1 /* vocabulary.xlsx */; };
 		63258ACF1DC0A92400B180A1 /* SearchWordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258ACD1DC0A92400B180A1 /* SearchWordController.swift */; };
 		63258AD11DC0B80000B180A1 /* SearchWordHistoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63258AD01DC0B80000B180A1 /* SearchWordHistoryVM.swift */; };
@@ -289,6 +290,7 @@
 		6304C3181DAA86A0000D9DA1 /* DYTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarController.swift; sourceTree = "<group>"; };
 		6304C3191DAA86A0000D9DA1 /* DYTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DYTabBarItem.swift; sourceTree = "<group>"; };
 		6304C3201DAA9FEF000D9DA1 /* MyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
+		630FC9161DC847E200F38539 /* VocabularyUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabularyUpdateController.swift; sourceTree = "<group>"; };
 		63258AC91DC0979A00B180A1 /* vocabulary.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = vocabulary.xlsx; sourceTree = "<group>"; };
 		63258ACD1DC0A92400B180A1 /* SearchWordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWordController.swift; sourceTree = "<group>"; };
 		63258AD01DC0B80000B180A1 /* SearchWordHistoryVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWordHistoryVM.swift; sourceTree = "<group>"; };
@@ -684,6 +686,14 @@
 				6304C3201DAA9FEF000D9DA1 /* MyController.swift */,
 			);
 			path = MyController;
+			sourceTree = "<group>";
+		};
+		630FC9151DC847B400F38539 /* VocabularyUpdateController */ = {
+			isa = PBXGroup;
+			children = (
+				630FC9161DC847E200F38539 /* VocabularyUpdateController.swift */,
+			);
+			path = VocabularyUpdateController;
 			sourceTree = "<group>";
 		};
 		63258ACC1DC0A92400B180A1 /* SearchWordController */ = {
@@ -1189,6 +1199,7 @@
 		6388D5D01D0DB2CD0029C988 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				630FC9151DC847B400F38539 /* VocabularyUpdateController */,
 				63F1FBCE1DC3475B00573DA1 /* WordDetailController */,
 				63258ACC1DC0A92400B180A1 /* SearchWordController */,
 				635607F71DA7987E00D558E0 /* WordBookController */,
@@ -2075,6 +2086,7 @@
 				63C6C1201D2D4CEF0090AC38 /* RootTabBarController.swift in Sources */,
 				63790CA81DC5D27900F58D20 /* TYAttributedLabel.m in Sources */,
 				63ECC4D11DB288E400C1342E /* BRASheet.m in Sources */,
+				630FC9171DC847E200F38539 /* VocabularyUpdateController.swift in Sources */,
 				844FBA6C1D0FE0F900D6C2EA /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
 				63258ACF1DC0A92400B180A1 /* SearchWordController.swift in Sources */,
 				63E2ABC41DB74CD800CF818B /* LUNSegmentedControl.m in Sources */,

@@ -13,7 +13,7 @@
                 <navigationController storyboardIdentifier="RootNavigationController" id="s0o-L8-hmV" customClass="RootNavigationController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="qNq-2p-JPl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="qNq-2p-JPl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -57,7 +57,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="R35-Wy-Tmf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="R35-Wy-Tmf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -91,7 +91,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WordBookPageCell" id="rC4-aM-LRY" customClass="WordBookPageCell" customModule="FlashWord" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="110" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="-57" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -892,7 +892,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="h89-ON-C1T">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="h89-ON-C1T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1007,7 +1007,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="4bd-pD-FPu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="4bd-pD-FPu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1050,20 +1050,75 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcK-NK-Amf">
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="更新词汇"/>
+                                <connections>
+                                    <action selector="onBtnUpdate" destination="SLs-v7-TCK" eventType="touchUpInside" id="BGS-hq-Wyy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gtw-2b-3nl" firstAttribute="width" secondItem="0y1-pe-FFp" secondAttribute="width" id="86i-qG-G0Z"/>
                             <constraint firstItem="Gtw-2b-3nl" firstAttribute="centerX" secondItem="0y1-pe-FFp" secondAttribute="centerX" id="P6J-x6-9xm"/>
+                            <constraint firstItem="rcK-NK-Amf" firstAttribute="centerY" secondItem="0y1-pe-FFp" secondAttribute="centerY" id="kLz-Mx-sqD"/>
                             <constraint firstItem="Gtw-2b-3nl" firstAttribute="height" secondItem="0y1-pe-FFp" secondAttribute="height" id="sWn-qX-faf"/>
                             <constraint firstItem="Gtw-2b-3nl" firstAttribute="centerY" secondItem="0y1-pe-FFp" secondAttribute="centerY" id="xZW-wN-xcP"/>
+                            <constraint firstItem="rcK-NK-Amf" firstAttribute="centerX" secondItem="0y1-pe-FFp" secondAttribute="centerX" id="zxE-NG-KMW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我的" id="ILg-59-ACp"/>
+                    <connections>
+                        <segue destination="pdX-pl-7NB" kind="show" id="6c1-B3-TaV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIP-dr-THU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="593" y="-1054"/>
+        </scene>
+        <!--更新词汇-->
+        <scene sceneID="hRG-pJ-TCf">
+            <objects>
+                <viewController storyboardIdentifier="VocabularyUpdateController" id="pdX-pl-7NB" customClass="VocabularyUpdateController" customModule="FlashWord" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9GK-wF-aLE"/>
+                        <viewControllerLayoutGuide type="bottom" id="eI4-HE-mmw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I5l-yb-Ala">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6O-vt-c5M">
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="开始更新单词库"/>
+                                <connections>
+                                    <action selector="onBtnUpdate" destination="pdX-pl-7NB" eventType="touchUpInside" id="eIz-lt-AAx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1P-w0-1CQ">
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y6O-vt-c5M" firstAttribute="top" secondItem="9GK-wF-aLE" secondAttribute="bottom" constant="100" id="JdM-IA-fUF"/>
+                            <constraint firstItem="Y6O-vt-c5M" firstAttribute="centerX" secondItem="I5l-yb-Ala" secondAttribute="centerX" id="Zng-cf-EYJ"/>
+                            <constraint firstItem="o1P-w0-1CQ" firstAttribute="top" secondItem="Y6O-vt-c5M" secondAttribute="bottom" constant="26" id="gb6-qI-Oah"/>
+                            <constraint firstItem="o1P-w0-1CQ" firstAttribute="centerX" secondItem="I5l-yb-Ala" secondAttribute="centerX" id="gif-ot-lqH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="更新词汇" id="RZV-56-wFI"/>
+                    <connections>
+                        <outlet property="btnUpdate" destination="Y6O-vt-c5M" id="gHf-NQ-A2n"/>
+                        <outlet property="labelStatus" destination="o1P-w0-1CQ" id="utf-ua-692"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F3s-Zc-8mK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="-318"/>
         </scene>
     </scenes>
     <resources>

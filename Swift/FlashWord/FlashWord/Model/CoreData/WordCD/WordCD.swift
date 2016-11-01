@@ -85,7 +85,7 @@ extension WordCD {
         }
     }
     
-    private class func readVocabulary() -> [String] {
+    class func readVocabulary() -> [String] {
         let documentPath = NSBundle.mainBundle().pathForResource("vocabulary.xlsx", ofType: nil)
         let spreadsheet = BRAOfficeDocumentPackage.open(documentPath)
         

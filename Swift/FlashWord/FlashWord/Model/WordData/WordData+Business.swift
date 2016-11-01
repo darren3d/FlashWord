@@ -133,12 +133,14 @@ extension WordData {
             let wordParseSaver = SignalProducer<(String, WordData?), NSError> { (observer, dispose) in
                 guard let wordDict = wordDict else {
                     observer.sendNext((word, nil))
+                    observer.sendCompleted()
                     return
                 }
 
                 let (_, wordData1, sentenceDatas) = WordData.parseWordSentence(word, dict: wordDict)
                 guard let wordData = wordData1 else {
                     observer.sendNext((word, nil))
+                    observer.sendCompleted()
                     return
                 }
 
@@ -302,7 +304,18 @@ extension WordData {
         let ph_en = symbol["ph_en"] as? String
         var desc : [[String : AnyObject]] = []
         for part  in parts {
-            desc.append(["type" : part["part"]!, "means" : part["means"]!])
+            var type = part["part"] as?  String
+            if type == nil {
+                type = part["part_name"]  as?  String
+                if type == nil {
+                    continue
+                }
+            }
+            guard let means = part["means"] else {
+                continue
+            }
+            
+            desc.append(["type" : type!, "means" : means])
         }
         
         let wordData = WordData()
