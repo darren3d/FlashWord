@@ -124,16 +124,32 @@ class WordDetailVM: DYListViewModel {
 
         
         //更新单词相关信息
-        let producer = WordData.dataWithKey(key: "word", value: word, cachePolicy: policy)
-        producer.flatMap(FlattenStrategy.Concat) { (_, wordData) -> SignalProducer<(WordData?, [WordSentenceData]?), NSError> in
-            if let wordData = wordData as? WordData {
-                return wordData.updateSentenceDatas(policy: policy, limit: AppConst.kTinyDataLoadLimit).map({ (sentences) -> (WordData?, [WordSentenceData]?) in
-                    return (wordData, sentences)
-                })
-            } else {
-                return SignalProducer<(WordData?, [WordSentenceData]?), NSError>(value:(nil, nil))
-            }
-        }.start(Observer<(WordData?, [WordSentenceData]?), NSError>(
+        var producer : SignalProducer<(WordData?, [WordSentenceData]?), NSError>!
+        if policy == AVCachePolicy.CacheOnly {
+            producer = WordData.dataWithKey(key: "word", value: word, cachePolicy: policy)
+                .flatMap(FlattenStrategy.Concat) { (_, wordData) -> SignalProducer<(WordData?, [WordSentenceData]?), NSError> in
+                    if let wordData = wordData as? WordData {
+                        return wordData.updateSentenceDatas(policy: policy, limit: AppConst.kTinyDataLoadLimit).map({ (sentences) -> (WordData?, [WordSentenceData]?) in
+                            return (wordData, sentences)
+                        })
+                    } else {
+                        return SignalProducer<(WordData?, [WordSentenceData]?), NSError>(value:(nil, nil))
+                    }
+                }
+        } else {
+            producer = WordData.addWordData(word)
+                .flatMap(FlattenStrategy.Concat) { (_, wordData) -> SignalProducer<(WordData?, [WordSentenceData]?), NSError> in
+                    if let wordData = wordData {
+                        return wordData.updateSentenceDatas(policy: policy, limit: AppConst.kTinyDataLoadLimit).map({ (sentences) -> (WordData?, [WordSentenceData]?) in
+                            return (wordData, sentences)
+                        })
+                    } else {
+                        return SignalProducer<(WordData?, [WordSentenceData]?), NSError>(value:(nil, nil))
+                    }
+                }
+        }
+        
+        producer.start(Observer<(WordData?, [WordSentenceData]?), NSError>(
             failed: {[weak self] error in
                 DYLog.info("failed:\(error.localizedDescription)")
                 guard let _ = self, let callback = callback else {
